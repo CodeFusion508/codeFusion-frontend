@@ -1,6 +1,7 @@
 # frontend-skeleton-app
 
-This template should help get you started developing with Vue 3 in Vite. This was created using create-vue, and then I deleted and set up some basic things
+This is the frontend side of the "Code Fusion 508" website, a online school to teach people about full-stack web development.
+https://codefusion-frontend.web.app/
 
 ## Project Setup
 
