@@ -1,49 +1,41 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a
-        class="navbar-brand"
-        href="#"
-      >Navbar</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon" />
-      </button>
-      <div
-        id="navbarNav"
-        class="collapse navbar-collapse"
-      >
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="#"
-            >Home</a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="#"
-            >Features</a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="#"
-            >Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-          </li>
-        </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a
+      class="navbar-brand"
+      href="#"
+    >Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon" />
+    </button>
+    <div
+      id="navbarNavAltMarkup"
+      class="collapse navbar-collapse"
+    >
+      <div class="navbar-nav">
+        <a
+          class="nav-item nav-link active"
+          href="#"
+        >Home <span class="sr-only">(current)</span></a>
+        <a
+          class="nav-item nav-link"
+          href="#"
+        >Features</a>
+        <a
+          class="nav-item nav-link"
+          href="#"
+        >Pricing</a>
+        <a
+          class="nav-item nav-link disabled"
+          href="#"
+        >Disabled</a>
       </div>
     </div>
   </nav>

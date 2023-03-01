@@ -9,7 +9,7 @@ let baseRoutes = [
 ];
 
 // router object
-let router = createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes: baseRoutes,
   linkActiveClass: "current"
