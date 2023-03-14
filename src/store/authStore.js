@@ -8,8 +8,8 @@ import { defineStore } from "pinia";
 export const useAuthStore = defineStore("auth", {
     // these actions are like actions + mutations, you can use these async as well
     actions: {
-        async increment() {
-            await this.count++;
+        increment() {
+            this.count++;
         },
     },
     // these are basically computed properties for our store,
