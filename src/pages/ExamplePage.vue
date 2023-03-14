@@ -1,15 +1,15 @@
 <template>
   <nav-bar />
 
-  <h1>Hello World</h1>
+  <h1>Hola Mi Gente</h1>
   <h1>{{ count }}</h1>
 
   <button class="btn text-white me-4 btn-secondary" @click="getStore">
-    Get Store
+    Agarra El State
   </button>
 
   <button class="btn text-white btn-secondary" @click="manipulateState">
-    Increasing Count
+    Agrega 1
   </button>
 
   <nav-footer />
