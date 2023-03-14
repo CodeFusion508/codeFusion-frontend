@@ -47,13 +47,8 @@ module.exports = {
         "avoidEscape"           : true
       }
     ],
-    "semi"      : ["error", "always"],
-    "sort-keys" : [
-      "error",
-      "asc",
-      { "caseSensitive": true }
-    ],
-    "vue/component-definition-name-casing": [
+    "semi"                                 : ["error", "always"],
+    "vue/component-definition-name-casing" : [
       "error",
       "kebab-case"
     ]

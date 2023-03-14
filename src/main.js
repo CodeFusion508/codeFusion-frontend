@@ -1,6 +1,6 @@
 import { createApp } from "vue";
+import { createPinia } from "pinia";
 
-// use imports
 import App from "./App.vue";
 import router from "./router/router.js";
 
@@ -10,6 +10,7 @@ let app = createApp(App);
 
 app.component("nav-bar", exampleNavBar);
 
+app.use(createPinia());
 app.use(router);
 
 app.mount("#app");
