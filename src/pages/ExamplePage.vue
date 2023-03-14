@@ -1,14 +1,18 @@
 <template>
   <nav-bar />
+
   <h1>Hello World</h1>
   <h1>{{ count }}</h1>
 
-  <button @click="getStore">
+  <button class="btn text-white me-4 btn-secondary" @click="getStore">
     Get Store
   </button>
-  <button @click="manipulateState">
+
+  <button class="btn text-white btn-secondary" @click="manipulateState">
     Increasing Count
   </button>
+
+  <nav-footer />
 </template>
 
 <script>
@@ -116,5 +120,3 @@ export default {
   }
 };
 </script>
-
-<style></style>

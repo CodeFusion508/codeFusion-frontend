@@ -1,37 +1,45 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a
-      class="navbar-brand"
-      href="#"
-    >CodeFusion 508</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon" />
-    </button>
-    <div
-      id="navbarNavAltMarkup"
-      class="collapse navbar-collapse"
-    >
-      <div class="navbar-nav">
-        <a
-          class="nav-item nav-link active"
-          href="#"
-        >Home</a>
-        <a
-          class="nav-item nav-link"
-          href="#"
-        >About Us</a>
-        <a
-          class="nav-item nav-link"
-          href="#"
-        >Lessons</a>
+  <nav class="navbar navbar-expand-md bg-dark-subtle">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="../assets/CodeFusion508.ico" alt="">
+        CodeFusion508
+      </a>
+      <button
+        type="button"
+        class="navbar-toggler"
+        data-bs-toggle="collapse"
+        data-bs-target="#header1navbarCollapse"
+      >
+        <span class="navbar-toggler-icon" />
+      </button>
+      <div id="header1navbarCollapse" class="collapse navbar-collapse justify-content-between">
+        <ul class="nav nav-tabs flex-grow-1">
+          <li class="nav-item">
+            <a href="#" class="nav-link active">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">About Us</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">Lessons</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">Articles</a>
+          </li>
+        </ul>
+        <div class="navbar-nav">
+          <div class="bs_header_btn_wrapper bs_signin_btn_blk">
+            <a href="#" class="nav-item nav-link bs_signin_btn rounded">Sign In</a>
+          </div>
+
+          <div class="bs_header_btn_wrapper bs_signup_btn_blk">
+            <a href="#" class="nav-item nav-link bg-primary text-white bs_signup_btn rounded">Sign Up</a>
+          </div>
+        </div>
       </div>
     </div>
   </nav>

@@ -51,6 +51,11 @@ module.exports = {
     "vue/component-definition-name-casing" : [
       "error",
       "kebab-case"
-    ]
+    ],
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": {
+        "max": 3
+      }
+    }]
   }
 };
