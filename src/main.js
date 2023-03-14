@@ -1,15 +1,18 @@
 import { createApp } from "vue";
+import { createPinia } from "pinia";
 
-// use imports
 import App from "./App.vue";
 import router from "./router/router.js";
 
-import exampleNavBar from "./components/ExampleComponent.vue";
+import NavBar from "./components/NavBar.vue";
+import NavFooter from "./components/NavFooter.vue";
 
 let app = createApp(App);
 
-app.component("nav-bar", exampleNavBar);
+app.component("nav-bar", NavBar);
+app.component("nav-footer", NavFooter);
 
+app.use(createPinia());
 app.use(router);
 
 app.mount("#app");

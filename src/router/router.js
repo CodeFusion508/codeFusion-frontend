@@ -5,14 +5,14 @@ import ExamplePage from "../pages/ExamplePage.vue";
 
 // routes arrays
 let baseRoutes = [
-  { path: "/", component: ExamplePage }
+  { component: ExamplePage, path: "/" }
 ];
 
 // router object
 const router = createRouter({
-  history: createWebHistory(),
-  routes: baseRoutes,
-  linkActiveClass: "current"
+  history         : createWebHistory(),
+  linkActiveClass : "current",
+  routes          : baseRoutes
 });
 
 export default router;
