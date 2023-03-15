@@ -1,7 +1,9 @@
 <template>
   <nav-bar />
-  <h1>Lessons Page</h1>
-
+  <h3 class="text-center mt-3 fw-light fst-italic">
+    Lecciones
+  </h3>
+  <hr>
   <div class="container mt-4">
     <div class="container-fluid">
       <div class="row d-flex justify-content-center">
@@ -60,7 +62,7 @@
               </h5>
               <hr>
               <p class="card-text text-white">
-                Node.js es un ambiente de ejecución de JavaScript de código abierto y multiplataforma utilizado para la
+                Node.js es un ambiente de ejecución de JavaScript y utilizado para la
                 creación de aplicaciones del lado del servidor,
                 permitiendo la ejecución de código JavaScript fuera del navegador web.
               </p>
