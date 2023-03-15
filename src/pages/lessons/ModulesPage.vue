@@ -1,0 +1,5 @@
+<template>
+  <nav-bar />
+  <h1>Modules Page</h1>
+  <nav-footer />
+</template>
