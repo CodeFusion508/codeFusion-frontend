@@ -23,7 +23,7 @@
 
           <li class="nav-item">
             <router-link to="/deNosotros" class="nav-link">
-              De Nosotros
+              De nosotros
             </router-link>
           </li>
 
