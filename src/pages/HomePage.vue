@@ -10,11 +10,10 @@
           CodeFusion508
         </h1>
         <div class="col-lg-6 mx-auto text-white">
-          <p class="lead mb-4">
-            Una escuela para a aprender sobre del desarrollo web. Esta escuela te enseñara CSS, HTML, Javascript, NodeJS Y
-            mas.
-            Aprende como construir tus propios sitios, como construir tus propios servidores y mucho mas.
+          <p class="lead">
+            Descubre nuestra escuela de desarrollo web. Aprende CSS, HTML, Javascript, NodeJS y más. Crea tus propios sitios y servidores con la guía de expertos.
           </p>
+          <pre class="lead mb-4 fw-light fst-italic">Únete hoy para impulsar tu carrera!</pre>
           <div class="d-grid gap-2 d-flex justify-content-center">
             <button type="button" class="btn btn-lg px-4 gradient-purple text-white">
               Regístrate
@@ -104,9 +103,9 @@
               data-bs-parent="#accordionFlushExample"
             >
               <div class="accordion-body text-white">
-                Chrome o Firefox cualquier navegador moderno. NodeJS para correr Javascript en tu computadora. VSCode o
-                VSCodium para tener herramientas que ta ayudan
-                cuando andas programando. Git para aguardar tus proyectos, y tengan un terminal.
+                <code>Chrome</code> o <code>Firefox</code> cualquier navegador moderno. <code>NodeJS</code> para correr Javascript en tu computadora. <code>VSCode</code>
+                o <code>VSCodium</code> para tener herramientas que ta ayudan cuando andas programando.
+                <code>Git</code> para aguardar tus proyectos, y tengan un terminal.
               </div>
             </div>
           </div>
