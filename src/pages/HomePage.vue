@@ -78,6 +78,31 @@
               </div>
             </div>
           </div>
+
+          <div class="accordion-item my-4">
+            <h2 id="bs_accordion_faq_layout_2-headingThree" class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#bs_accordion_faq_layout_2-collapseThree"
+                aria-expanded="false"
+                aria-controls="bs_accordion_faq_layout_2-collapseThree"
+              >
+                Que tipos de programas necesito en mi computadora?
+              </button>
+            </h2>
+            <div
+              id="bs_accordion_faq_layout_2-collapseThree"
+              class="accordion-collapse collapse"
+              aria-labelledby="bs_accordion_faq_layout_2-headingThree"
+            >
+              <div class="accordion-body">
+                Chrome o Firefox cualquier navegador moderno. NodeJS para correr Javascript en tu computadora. VSCode o VSCodium para tener herramientas que ta ayudan
+                cuando andas programando. Git para aguardar tus proyectos, y tengan un terminal.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
