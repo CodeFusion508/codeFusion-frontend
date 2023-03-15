@@ -4,11 +4,11 @@
   <h1>Hola Mi Gente</h1>
   <h1>{{ count }}</h1>
 
-  <button class="btn text-white me-4 btn-secondary" @click="getStore">
+  <button class="btn me-4 btn-lg px-4 gradient-purple text-white" @click="getStore">
     Agarra El State
   </button>
 
-  <button class="btn text-white btn-secondary" @click="manipulateState">
+  <button class="btn btn-lg px-4 gradient-purple text-white" @click="manipulateState">
     Agrega 1
   </button>
 

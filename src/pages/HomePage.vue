@@ -1,9 +1,6 @@
 <template>
   <nav-bar />
-  <div
-    class="bg-image"
-    style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/Others/images/76.webp');height: 100vh;"
-  >
+  <div class="bg-image background">
     <div class="bs_hero-container bs_hero_layout_1">
       <div class="px-4 py-5 my-5 text-center">
         <div class="d-block mx-auto mb-4 display-4">
@@ -119,3 +116,13 @@
   </div>
   <nav-footer />
 </template>
+
+<style scoped>
+.background {
+  background-image: url('./assets/background.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+</style>
