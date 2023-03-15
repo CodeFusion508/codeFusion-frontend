@@ -1,27 +1,33 @@
 <template>
   <nav-bar />
-  <div class="bs_hero-container bs_hero_layout_1">
-    <div class="px-4 py-5 my-5 text-center">
-      <div class="d-block mx-auto mb-4 display-4">
-        <i class="bi bi-code-slash" style="color: white;" />
-      </div>
-      <h1 class="display-5 fw-bold">
-        CodeFusion508
-      </h1>
-      <div class="col-lg-6 mx-auto text-white">
-        <p class="lead mb-4">
-          Una escuela para a aprender sobre del desarrollo web. Esta escuela te enseñara CSS, HTML, Javascript, NodeJS Y
-          mas.
-          Aprende como construir tus propios sitios, como construir tus propios servidores y mucho mas.
-        </p>
-        <div class="d-grid gap-2 d-flex justify-content-center">
-          <button type="button" class="btn btn-lg px-4 gradient-purple text-white">
-            Regístrate
-          </button>
+  <div
+    class="bg-image"
+    style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/Others/images/76.webp');height: 100vh;"
+  >
+    <div class="bs_hero-container bs_hero_layout_1">
+      <div class="px-4 py-5 my-5 text-center">
+        <div class="d-block mx-auto mb-4 display-4">
+          <i class="bi bi-code-slash" style="color: white;" />
+        </div>
+        <h1 class="display-5 fw-bold">
+          CodeFusion508
+        </h1>
+        <div class="col-lg-6 mx-auto text-white">
+          <p class="lead mb-4">
+            Una escuela para a aprender sobre del desarrollo web. Esta escuela te enseñara CSS, HTML, Javascript, NodeJS Y
+            mas.
+            Aprende como construir tus propios sitios, como construir tus propios servidores y mucho mas.
+          </p>
+          <div class="d-grid gap-2 d-flex justify-content-center">
+            <button type="button" class="btn btn-lg px-4 gradient-purple text-white">
+              Regístrate
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
 
   <div class="bs_faq_container bs_faq_layout3">
     <div class="container py-5">
