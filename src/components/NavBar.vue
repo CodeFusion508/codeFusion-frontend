@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-md bg-dark-subtle">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="../pages/assets/CodeFusion508.ico" alt="">
+        <img src="../pages/assets/CodeFusion508.ico" alt="an icon of">
         CodeFusion508
       </a>
       <button

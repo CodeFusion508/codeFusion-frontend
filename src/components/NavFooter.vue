@@ -3,7 +3,7 @@
     <div class="container">
       <div class="d-flex bd-highlight mb-3">
         <div class="bd-highlight">
-          <img src="../pages/assets/CodeFusion508.ico" alt="logo" class="bs_footer_logo">
+          <img src="../pages/assets/CodeFusion508.ico" alt="an icon of" class="bs_footer_logo">
           CodeFusion508
         </div>
       </div>
