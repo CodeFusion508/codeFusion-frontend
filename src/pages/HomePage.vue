@@ -8,7 +8,7 @@
       <h1 class="display-5 fw-bold">
         CodeFusion508
       </h1>
-      <div class="col-lg-6 mx-auto">
+      <div class="col-lg-6 mx-auto text-white">
         <p class="lead mb-4">
           Una escuela para a aprender sobre del desarrollo web. Esta escuela te enseñara CSS, HTML, Javascript, NodeJS Y mas.
           Aprende como construir tus propios sitios, como construir tus propios servidores y mucho mas.
@@ -32,7 +32,7 @@
           <div class="accordion-item my-4">
             <h2 id="bs_accordion_faq_layout_2-headingOne" class="accordion-header">
               <button
-                class="accordion-button collapsed"
+                class="accordion-button collapsed text-white"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#bs_accordion_faq_layout_2-collapseOne"
@@ -44,7 +44,7 @@
             </h2>
             <div
               id="bs_accordion_faq_layout_2-collapseOne"
-              class="accordion-collapse collapse"
+              class="accordion-collapse collapse text-white"
               aria-labelledby="bs_accordion_faq_layout_2-headingOne"
             >
               <div class="accordion-body">
@@ -57,7 +57,7 @@
           <div class="accordion-item my-4">
             <h2 id="bs_accordion_faq_layout_2-headingTwo" class="accordion-header">
               <button
-                class="accordion-button collapsed"
+                class="accordion-button collapsed text-white"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#bs_accordion_faq_layout_2-collapseTwo"
@@ -69,7 +69,7 @@
             </h2>
             <div
               id="bs_accordion_faq_layout_2-collapseTwo"
-              class="accordion-collapse collapse"
+              class="accordion-collapse collapse text-white"
               aria-labelledby="bs_accordion_faq_layout_2-headingTwo"
             >
               <div class="accordion-body">
@@ -82,7 +82,7 @@
           <div class="accordion-item my-4">
             <h2 id="bs_accordion_faq_layout_2-headingThree" class="accordion-header">
               <button
-                class="accordion-button collapsed"
+                class="accordion-button collapsed text-white"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#bs_accordion_faq_layout_2-collapseThree"
@@ -94,7 +94,7 @@
             </h2>
             <div
               id="bs_accordion_faq_layout_2-collapseThree"
-              class="accordion-collapse collapse"
+              class="accordion-collapse collapse text-white"
               aria-labelledby="bs_accordion_faq_layout_2-headingThree"
             >
               <div class="accordion-body">
