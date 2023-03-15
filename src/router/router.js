@@ -6,7 +6,7 @@ import lessonsRoutes from "./lessons.js";
 // page imports
 import ExamplePage from "../pages/ExamplePage.vue";
 import HomePage from "../pages/HomePage.vue";
-import AboutUs from "../pages/AboutUse.vue";
+import AboutUs from "../pages/AboutUs.vue";
 import SignUp from "../pages/SignUp.vue";
 import UserSettings from "../pages/UserSettings.vue";
 import ArticlesPage from "../pages/ArticlesPage.vue";
