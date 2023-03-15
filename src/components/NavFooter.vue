@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-body-tertiary bg-dark-subtle">
+  <footer class="bg-body-tertiary bg-dark-subtle mt-auto">
     <div class="container">
       <div class="d-flex bd-highlight mb-3">
         <div class="bd-highlight">

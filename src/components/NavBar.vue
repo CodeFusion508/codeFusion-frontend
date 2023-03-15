@@ -16,7 +16,7 @@
       <div id="header1navbarCollapse" class="collapse navbar-collapse justify-content-between">
         <ul class="nav nav-tabs flex-grow-1">
           <li class="nav-item">
-            <router-link to="/inicio" class="nav-link active">
+            <router-link to="/inicio" class="nav-link">
               Inició
             </router-link>
           </li>
@@ -47,7 +47,7 @@
           </div>
 
           <div class="bs_header_btn_wrapper bs_signup_btn_blk">
-            <router-link to="/creaSesion" class="nav-item nav-link bg-primary text-white bs_signup_btn rounded">
+            <router-link to="/creaSesion" class="nav-item nav-link bg-primary text-white bs_signup_btn rounded gradient-purple">
               Regístrate
             </router-link>
           </div>
