@@ -10,13 +10,13 @@
       <div class="card mb-4">
         <div class="row no-gutters">
           <div class="col-auto m-2">
-            <img
-              src="../assets/self.jpg"
+            <!-- <img
+              src=""
               alt="una imagen de una persona"
               class="rounded"
               width="200"
               height="200"
-            >
+            > -->
           </div>
 
           <div class="col">
@@ -51,13 +51,13 @@
       <div class="card mb-5">
         <div class="row no-gutters">
           <div class="col-auto m-2">
-            <img
-              src="../assets/self.jpg"
+            <!-- <img
+              src=""
               alt="una imagen de una persona"
               class="rounded"
               width="200"
               height="200"
-            >
+            > -->
           </div>
 
           <div class="col">
