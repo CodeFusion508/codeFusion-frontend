@@ -7,7 +7,7 @@
 
   <div class="container mt-4">
     <div class="container-fluid">
-      <div class="card mb-4 bg-dark-subtle border-0">
+      <div class="card mb-4 bg-dark-subtle border-0 shadow-sm">
         <div class="row no-gutters">
           <div class="col-auto m-2">
             <!-- <img
@@ -48,7 +48,7 @@
 
   <div class="container mt-4">
     <div class="container-fluid">
-      <div class="card mb-5 bg-dark-subtle border-0">
+      <div class="card mb-5 bg-dark-subtle border-0 shadow-sm">
         <div class="row no-gutters">
           <div class="col-auto m-2">
             <!-- <img

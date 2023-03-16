@@ -6,7 +6,7 @@
   <hr>
   <div class="row g-0 text-center">
     <div class="col m-3">
-      <div class="card bg-dark-subtle border-0">
+      <div class="card bg-dark-subtle border-0 shadow-sm">
         <div class="card-body">
           <h5 class="card-title text-white">
             HTML
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="col m-3">
-      <div class="card bg-dark-subtle border-0">
+      <div class="card bg-dark-subtle border-0 shadow-sm">
         <div class="card-body">
           <h5 class="card-title text-white">
             CSS
@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="col m-3">
-      <div class="card bg-dark-subtle border-0">
+      <div class="card bg-dark-subtle border-0 shadow-sm">
         <div class="card-body">
           <h5 class="card-title text-white">
             Javascript
@@ -66,7 +66,7 @@
   <hr>
   <div class="row g-0 text-center">
     <div class="col m-3">
-      <div class="card bg-dark-subtle border-0">
+      <div class="card bg-dark-subtle border-0 shadow-sm">
         <div class="card-body">
           <h5 class="card-title text-white">
             React CDN
@@ -85,7 +85,7 @@
       </div>
     </div>
     <div class="col m-3">
-      <div class="card bg-dark-subtle border-0">
+      <div class="card bg-dark-subtle border-0 shadow-sm">
         <div class="card-body">
           <h5 class="card-title text-white">
             NodeJS
@@ -103,7 +103,7 @@
       </div>
     </div>
     <div class="col m-3">
-      <div class="card bg-dark-subtle border-0">
+      <div class="card bg-dark-subtle border-0 shadow-sm">
         <div class="card-body">
           <h5 class="card-title text-white">
             React/Babel
@@ -123,7 +123,7 @@
       </div>
     </div>
     <div class="col m-3">
-      <div class="card bg-dark-subtle border-0">
+      <div class="card bg-dark-subtle border-0 shadow-sm">
         <div class="card-body">
           <h5 class="card-title text-white">
             Redux
@@ -148,7 +148,7 @@
   <hr>
   <div class="row g-0 text-center">
     <div class="col m-3">
-      <div class="card bg-dark-subtle border-0">
+      <div class="card bg-dark-subtle border-0 shadow-sm">
         <div class="card-body">
           <h5 class="card-title text-white">
             Entendiendo El Servidor
@@ -167,7 +167,7 @@
       </div>
     </div>
     <div class="col m-3">
-      <div class="card bg-dark-subtle border-0">
+      <div class="card bg-dark-subtle border-0 shadow-sm">
         <div class="card-body">
           <h5 class="card-title text-white">
             MySQL
@@ -186,7 +186,7 @@
       </div>
     </div>
     <div class="col m-3">
-      <div class="card bg-dark-subtle border-0">
+      <div class="card bg-dark-subtle border-0 shadow-sm">
         <div class="card-body">
           <h5 class="card-title text-white">
             MongoDB
@@ -206,7 +206,7 @@
       </div>
     </div>
     <div class="col m-3">
-      <div class="card bg-dark-subtle border-0">
+      <div class="card bg-dark-subtle border-0 shadow-sm">
         <div class="card-body">
           <h5 class="card-title text-white">
             MVC
@@ -221,10 +221,9 @@
           </p>
           <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
             Aprende
-          </router-link>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
-  <nav-footer />
-</template>
+</div>
+<nav-footer /></template>

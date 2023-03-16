@@ -6,7 +6,7 @@
   <hr>
 
   <div class="align-self-start m-3">
-    <div class="container rounded bg-dark-subtle">
+    <div class="container rounded bg-dark-subtle shadow-sm">
       <div class="container-fluid">
         <br>
         <div class="row">
