@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-body-tertiary bg-dark-subtle mt-auto">
     <div class="container">
-      <div class="d-flex bd-highlight mb-3">
+      <div class="d-flex bd-highlight mb-3 mt-2">
         <div class="bd-highlight">
           <img src="../pages/assets/CodeFusion508.ico" alt="an icon of" class="bs_footer_logo">
           CodeFusion508
@@ -55,17 +55,7 @@
           </ul>
         </div> -->
       </div>
-
       <hr>
-      <div class="bs_footer_copyright_row align-items-center justify-content-between bs_copyright py-2">
-        <div class="d-flex bd-highlight mb-3">
-          <div class="bd-highlight bs_footer_copyright_1">
-            <p class="bs_text_copyright bs_footer_layout_7_bs_text_copyright1">
-              Aprende A Programar
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
   </footer>
 </template>
