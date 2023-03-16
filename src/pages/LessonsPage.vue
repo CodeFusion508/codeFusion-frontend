@@ -4,11 +4,12 @@
     Lecciones
   </h3>
   <hr>
+
   <div class="container mt-4">
     <div class="container-fluid">
       <div class="row d-flex justify-content-center">
         <div class="col col-sm-5 m-3">
-          <div class="card bg-dark-subtle">
+          <div class="card bg-dark-subtle border-0">
             <div class="card-body">
               <h5 class="card-title text-white">
                 HTML
@@ -23,7 +24,7 @@
           </div>
         </div>
         <div class="col col-sm-5 m-3">
-          <div class="card bg-dark-subtle">
+          <div class="card bg-dark-subtle border-0">
             <div class="card-body">
               <h5 class="card-title text-white">
                 CSS
@@ -39,7 +40,7 @@
           </div>
         </div>
         <div class="col col-sm-5 m-3">
-          <div class="card bg-dark-subtle">
+          <div class="card bg-dark-subtle border-0">
             <div class="card-body">
               <h5 class="card-title text-white">
                 Javascript
@@ -55,7 +56,7 @@
           </div>
         </div>
         <div class="col col-sm-5 m-3">
-          <div class="card bg-dark-subtle">
+          <div class="card bg-dark-subtle border-0">
             <div class="card-body">
               <h5 class="card-title text-white">
                 NodeJS
