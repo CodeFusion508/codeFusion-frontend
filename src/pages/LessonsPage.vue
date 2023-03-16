@@ -16,7 +16,9 @@
             HTML (HyperText Markup Language) es un lenguaje utilizado para crear páginas web y
             otra información que puede ser mostrada en un navegador web.
           </p>
-          <a href="#" class="btn gradient-purple text-white">Aprende</a>
+          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
+            Aprende
+          </router-link>
         </div>
       </div>
     </div>
@@ -32,7 +34,9 @@
             documento escrito en HTML o XML,
             incluyendo colores, diseño y fuentes.
           </p>
-          <a href="#" class="btn gradient-purple text-white">Aprende</a>
+          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
+            Aprende
+          </router-link>
         </div>
       </div>
     </div>
@@ -48,7 +52,9 @@
             aplicaciones web,
             así como para la programación del lado del servidor con Node.js.
           </p>
-          <a href="#" class="btn gradient-purple text-white">Aprende</a>
+          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
+            Aprende
+          </router-link>
         </div>
       </div>
     </div>
@@ -72,7 +78,9 @@
             biblioteca en sus servidores.
             Esto permite la creación de sitios web interactivos y eficientes con facilidad.
           </p>
-          <a href="#" class="btn gradient-purple text-white">Aprende</a>
+          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
+            Aprende
+          </router-link>
         </div>
       </div>
     </div>
@@ -88,7 +96,9 @@
             creación de aplicaciones del lado del servidor,
             permitiendo la ejecución de código JavaScript fuera del navegador web.
           </p>
-          <a href="#" class="btn gradient-purple text-white">Aprende</a>
+          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
+            Aprende
+          </router-link>
         </div>
       </div>
     </div>
@@ -101,11 +111,14 @@
           <hr>
           <p class="card-text text-white">
             React es una herramienta que ayuda a construir interfaces interactivas y reutilizables, mientras que
-            Babel es una herramienta que transforma el código JavaScript moderno en una versión compatible con navegadores antiguos.
+            Babel es una herramienta que transforma el código JavaScript moderno en una versión compatible con navegadores
+            antiguos.
             Juntos, React/Babel hacen que sea más fácil para los desarrolladores crear aplicaciones web modernas y
             eficientes con una sintaxis más sencilla de entender y mantener.
           </p>
-          <a href="#" class="btn gradient-purple text-white">Aprende</a>
+          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
+            Aprende
+          </router-link>
         </div>
       </div>
     </div>
@@ -121,7 +134,9 @@
             de una manera más fácil y organizada, lo que hace que la aplicación sea más escalable y fácil de mantener.
             Esto se logra al separar el estado de la aplicación de los componentes de la interfaz de usuario.
           </p>
-          <a href="#" class="btn gradient-purple text-white">Aprende</a>
+          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
+            Aprende
+          </router-link>
         </div>
       </div>
     </div>
@@ -141,10 +156,13 @@
           <hr>
           <p class="card-text text-white">
             Entender el lado del servidor implica comprender cómo funciona el software que se ejecuta en el servidor y
-            cómo interactúa con los clientes para proporcionar servicios y datos a través de la red. Es esencial para desarrollar
+            cómo interactúa con los clientes para proporcionar servicios y datos a través de la red. Es esencial para
+            desarrollar
             aplicaciones web y servicios en línea confiables y seguros.
           </p>
-          <a href="#" class="btn gradient-purple text-white">Aprende</a>
+          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
+            Aprende
+          </router-link>
         </div>
       </div>
     </div>
@@ -156,10 +174,14 @@
           </h5>
           <hr>
           <p class="card-text text-white">
-            MySQL es un software de base de datos que se utiliza para crear, modificar y administrar bases de datos relacionales.
-            Permite a los usuarios almacenar, organizar y acceder a grandes cantidades de información de manera eficiente y segura.
+            MySQL es un software de base de datos que se utiliza para crear, modificar y administrar bases de datos
+            relacionales.
+            Permite a los usuarios almacenar, organizar y acceder a grandes cantidades de información de manera eficiente
+            y segura.
           </p>
-          <a href="#" class="btn gradient-purple text-white">Aprende</a>
+          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
+            Aprende
+          </router-link>
         </div>
       </div>
     </div>
@@ -171,11 +193,15 @@
           </h5>
           <hr>
           <p class="card-text text-white">
-            MongoDB es un sistema de gestión de bases de datos NoSQL que se utiliza para almacenar y acceder a grandes cantidades de datos no estructurados
-            o semiestructurados.Es escalable y flexible, lo que lo hace ideal para aplicaciones web modernas y otras aplicaciones
+            MongoDB es un sistema de gestión de bases de datos NoSQL que se utiliza para almacenar y acceder a grandes
+            cantidades de datos no estructurados
+            o semiestructurados.Es escalable y flexible, lo que lo hace ideal para aplicaciones web modernas y otras
+            aplicaciones
             que requieren un almacenamiento de datos rápido y dinámico.
           </p>
-          <a href="#" class="btn gradient-purple text-white">Aprende</a>
+          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
+            Aprende
+          </router-link>
         </div>
       </div>
     </div>
@@ -187,11 +213,15 @@
           </h5>
           <hr>
           <p class="card-text text-white">
-            MVC (Model-View-Controller) es un patrón de arquitectura de software utilizado para separar la lógica de negocios,
-            la interfaz de usuario y la manipulación de datos en una aplicación web. Esto permite una mayor modularidad, mantenimiento
+            MVC (Model-View-Controller) es un patrón de arquitectura de software utilizado para separar la lógica de
+            negocios,
+            la interfaz de usuario y la manipulación de datos en una aplicación web. Esto permite una mayor modularidad,
+            mantenimiento
             y escalabilidad de la aplicación al separar las responsabilidades en componentes distintos.
           </p>
-          <a href="#" class="btn gradient-purple text-white">Aprende</a>
+          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
+            Aprende
+          </router-link>
         </div>
       </div>
     </div>
