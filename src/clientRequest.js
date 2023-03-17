@@ -1,14 +1,31 @@
 import axios from "axios";
 
-export const exampleCreateUser = async (uuid) => {
-    const param = `${uuid}`;
-
-    const data = await axios({
+export const getUser = async (uuid) => {
+    const { data } = await axios({
         method : "get",
-        url    : `http://127.0.0.1:8080/users/${param}`
+        url    : "http://127.0.0.1:8080/users/",
+        params : {
+            uuid
+        }
     })
-        .then((response) => response.data)
+        .then((response) => response)
         .catch((err) => err);
 
     return data.records;
+};
+
+export const createUser = async (email, password, userName) => {
+    const { data } = await axios({
+        method : "post",
+        url    : "http://127.0.0.1:8080/users/signUp",
+        data   : {
+            email,
+            password,
+            userName
+        }
+    })
+        .then((response) => response)
+        .catch((err) => err);
+
+    return data;
 };
