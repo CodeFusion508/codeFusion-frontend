@@ -4,7 +4,7 @@
 
   <div class="align-self-start" style="width: 70%;">
     <ol class=" list-group list-group-flush list-group-numbered">
-      <li class="list-group-item d-flex justify-content-between align-items-start">
+      <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
         <div class="ms-2 me-auto">
           <div class="fw-bold">
             Introducción a HTML
@@ -17,7 +17,7 @@
         </div>
         <span class="badge bg-primary rounded-pill">Completado</span>
       </li>
-      <li class="list-group-item d-flex justify-content-between align-items-start">
+      <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
         <div class="ms-2 me-auto">
           <div class="fw-bold">
             Problemas
@@ -30,7 +30,7 @@
         </div>
         <span class="badge bg-primary rounded-pill">Completado</span>
       </li>
-      <li class="list-group-item d-flex justify-content-between align-items-start">
+      <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
         <div class="ms-2 me-auto">
           <div class="fw-bold">
             Introducción al Proyecto
@@ -45,7 +45,7 @@
         </div>
         <span class="badge bg-secondary rounded-pill">Aprende</span>
       </li>
-      <li class="list-group-item d-flex justify-content-between align-items-start">
+      <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
         <div class="ms-2 me-auto">
           <div class="fw-bold">
             Lección de HTML avanzado
@@ -62,7 +62,7 @@
         </div>
         <span class="badge bg-secondary rounded-pill">Aprende</span>
       </li>
-      <li class="list-group-item d-flex justify-content-between align-items-start">
+      <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
         <div class="ms-2 me-auto">
           <div class="fw-bold">
             Solución en video del proyecto
@@ -79,7 +79,7 @@
         </div>
         <span class="badge bg-secondary rounded-pill">Aprende</span>
       </li>
-      <li class="list-group-item d-flex justify-content-between align-items-start">
+      <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
         <div class="ms-2 me-auto">
           <div class="fw-bold">
             Última lección de HTML en video
@@ -96,7 +96,7 @@
         </div>
         <span class="badge bg-secondary rounded-pill">Aprende</span>
       </li>
-      <li class="list-group-item d-flex justify-content-between align-items-start">
+      <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
         <div class="ms-2 me-auto">
           <div class="fw-bold">
             Cuestionario
@@ -119,3 +119,12 @@
 
   <nav-footer />
 </template>
+
+<style scoped>
+.list-group-item-action:hover {
+  padding: 1rem;
+  border: 1px solid #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+</style>
