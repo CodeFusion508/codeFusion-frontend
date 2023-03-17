@@ -4,7 +4,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import lessonsRoutes from "./lessons.js";
 
 // page imports
-import ExamplePage from "../pages/ExamplePage.vue";
 import HomePage from "../pages/HomePage.vue";
 import AboutUs from "../pages/AboutUs.vue";
 import SignUp from "../pages/SignUp.vue";
@@ -13,8 +12,7 @@ import ArticlesPage from "../pages/ArticlesPage.vue";
 
 // routes arrays
 let baseRoutes = [
-  { path: "/", component: ExamplePage },
-  { path: "/inicio", component: HomePage },
+  { path: "/", component: HomePage },
   { path: "/deNosotros", component: AboutUs },
   { path: "/creaSesion", component: SignUp },
   { path: "/ajustes", component: UserSettings },
