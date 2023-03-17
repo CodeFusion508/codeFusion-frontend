@@ -41,7 +41,10 @@
         </ul>
         <div class="navbar-nav">
           <div class="bs_header_btn_wrapper bs_signup_btn_blk ms-3">
-            <router-link to="/creaSesion" class="nav-item nav-link bg-primary text-white bs_signup_btn rounded gradient-purple">
+            <router-link
+              to="/creaSesion"
+              class="nav-item nav-link bg-primary text-white bs_signup_btn rounded gradient-purple"
+            >
               Regístrate
             </router-link>
           </div>

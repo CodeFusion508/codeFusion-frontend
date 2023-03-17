@@ -221,9 +221,10 @@
           </p>
           <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
             Aprende
-        </router-link>
+          </router-link>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<nav-footer /></template>
+  <nav-footer />
+</template>

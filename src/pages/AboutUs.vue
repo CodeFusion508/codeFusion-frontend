@@ -86,9 +86,6 @@
 
 <style>
 .gradient-purple {
-  /* fallback for old browsers */
-  background: #667eea;
-
   /* Chrome 10-25, Safari 5.1-6 */
   background: -webkit-linear-gradient(to bottom, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1));
 
