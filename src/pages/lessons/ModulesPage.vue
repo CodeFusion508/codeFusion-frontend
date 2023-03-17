@@ -1,6 +1,5 @@
 <template>
   <nav-bar />
-  <h1>Modules Page</h1>
 
   <div class="align-self-start" style="width: 70%;">
     <ol class=" list-group list-group-flush list-group-numbered">
