@@ -17,22 +17,19 @@
         <ul class="nav nav-tabs flex-grow-1">
           <li class="nav-item">
             <router-link to="/" class="nav-link">
-              Inició
+              Inicio
             </router-link>
           </li>
-
           <li class="nav-item">
             <router-link to="/deNosotros" class="nav-link">
               De nosotros
             </router-link>
           </li>
-
           <li class="nav-item">
             <router-link to="/lecciones" class="nav-link">
               Lecciones
             </router-link>
           </li>
-
           <li class="nav-item">
             <router-link to="/articulos" class="nav-link">
               Artículos
@@ -53,3 +50,20 @@
     </div>
   </nav>
 </template>
+
+<style scoped>
+.nav-tabs .nav-link {
+  background-color: transparent !important;
+  font-size: 1rem !important;
+  text-decoration: none !important;
+  padding: 0.5rem !important;
+}
+
+.nav-tabs .nav-link {
+  font-size: 1rem !important;
+}
+
+.nav-tabs .nav-link {
+  padding: 0.5rem !important;
+}
+</style>
