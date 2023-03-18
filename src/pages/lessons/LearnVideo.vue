@@ -17,7 +17,7 @@
       src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
       class="rounded float-start me-3 mb-2"
       style="width: 200px; height: 200px;"
-      alt="A filler image"
+      alt="a filler image"
     >
     <p>
       Lorem ipsum dolor sit amet consectetur adipiscing elit nisl quis, nullam odio sollicitudin natoque rutrum litora
