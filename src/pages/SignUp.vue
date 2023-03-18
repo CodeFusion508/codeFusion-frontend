@@ -30,7 +30,7 @@
                 required
               >
             </div>
-            <button type="submit" class="btn btn-primary w-100">
+            <button type="submit" class="btn btn-primary w-100 text-white">
               Iniciar sesión
             </button>
             <p class="pt-3 small mb-0" style="color: lightgray;">
@@ -83,7 +83,7 @@
                 required
               >
             </div>
-            <button type="submit" class="btn btn-primary w-100">
+            <button type="submit" class="btn btn-primary w-100 text-white">
               Crea Cuenta
             </button>
             <p class="pt-3 small mb-0" style="color: lightgray;">

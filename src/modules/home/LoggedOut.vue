@@ -5,7 +5,7 @@
         <div class="d-block mx-auto mb-4 display-4">
           <i class="bi bi-code-slash" style="color: white;" />
         </div>
-        <h1 class="display-5 fw-bold">
+        <h1 class="display-5 fw-bold text-white">
           CodeFusion508
         </h1>
         <div class="col-lg-6 mx-auto text-white">
@@ -29,7 +29,7 @@
 
   <div class="bs_faq_container bs_faq_layout3">
     <div class="container py-5">
-      <h2 class="text-center pt-2 pb-5 fw-bold">
+      <h2 class="text-center pt-2 pb-5 fw-bold text-white">
         Preguntas Mas Frecuentes
       </h2>
       <div class="bs_faq_content py-2">
