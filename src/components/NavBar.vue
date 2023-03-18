@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-md bg-dark-subtle">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand text-white" href="#">
         <img src="../pages/assets/CodeFusion508.ico" alt="an icon of">
         CodeFusion508
       </a>
@@ -16,22 +16,22 @@
       <div id="header1navbarCollapse" class="collapse navbar-collapse justify-content-between">
         <ul class="nav nav-tabs flex-grow-1">
           <li class="nav-item">
-            <router-link to="/" class="nav-link">
+            <router-link to="/" class="nav-link text-white">
               Inicio
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/deNosotros" class="nav-link">
+            <router-link to="/deNosotros" class="nav-link text-white">
               De nosotros
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/lecciones" class="nav-link">
+            <router-link to="/lecciones" class="nav-link text-white">
               Lecciones
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/articulos" class="nav-link">
+            <router-link to="/articulos" class="nav-link text-white">
               Artículos
             </router-link>
           </li>

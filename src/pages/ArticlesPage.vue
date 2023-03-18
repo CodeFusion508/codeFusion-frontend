@@ -1,6 +1,6 @@
 <template>
   <nav-bar />
-  <h3 class="text-center mt-3 fw-light fst-italic">
+  <h3 class="text-center mt-3 fw-light fst-italic text-white">
     Artículos
   </h3>
   <hr>
@@ -26,7 +26,7 @@
                   consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                   cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                 </p>
-                <button class="btn btn-sm btn-dark">
+                <button class="btn btn-sm btn-dark text-white">
                   Lea mas
                 </button>
               </div>
@@ -45,10 +45,10 @@
                   <li class="list-inline-item float-end">
                     <i class="fa fa-tags" aria-hidden="true" />
                     <span>Tags:</span>
-                    <span class="badge badge-dark">bootstrap 4.0</span>
-                    <span class="badge badge-dark">laravel</span>
-                    <span class="badge badge-dark">html</span>
-                    <span class="badge badge-dark">css</span>
+                    <span class="badge badge-dark text-white">bootstrap 4.0</span>
+                    <span class="badge badge-dark text-white">laravel</span>
+                    <span class="badge badge-dark text-white">html</span>
+                    <span class="badge badge-dark text-white">css</span>
                   </li>
                   <li class="list-inline-item float-end me-3">
                     <i class="fa fa-comment" aria-hidden="true" /> <span class="text-info">3 Comments</span>
@@ -76,7 +76,7 @@
                   consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                   cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                 </p>
-                <button class="btn btn-sm btn-dark">
+                <button class="btn btn-sm btn-dark text-white">
                   Lea mas
                 </button>
               </div>
@@ -95,10 +95,10 @@
                   <li class="list-inline-item float-end">
                     <i class="fa fa-tags" aria-hidden="true" />
                     <span>Tags:</span>
-                    <span class="badge badge-dark">bootstrap 4.0</span>
-                    <span class="badge badge-dark">laravel</span>
-                    <span class="badge badge-dark">html</span>
-                    <span class="badge badge-dark">css</span>
+                    <span class="badge badge-dark text-white">bootstrap 4.0</span>
+                    <span class="badge badge-dark text-white">laravel</span>
+                    <span class="badge badge-dark text-white">html</span>
+                    <span class="badge badge-dark text-white">css</span>
                   </li>
                   <li class="list-inline-item float-end me-3">
                     <i class="fa fa-comment" aria-hidden="true" /> <span class="text-info">3 Comments</span>
@@ -126,7 +126,7 @@
                   consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                   cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                 </p>
-                <button class="btn btn-sm btn-dark">
+                <button class="btn btn-sm btn-dark text-white">
                   Lea mas
                 </button>
               </div>
@@ -145,10 +145,10 @@
                   <li class="list-inline-item float-end">
                     <i class="fa fa-tags" aria-hidden="true" />
                     <span>Tags:</span>
-                    <span class="badge badge-dark">bootstrap 4.0</span>
-                    <span class="badge badge-dark">laravel</span>
-                    <span class="badge badge-dark">html</span>
-                    <span class="badge badge-dark">css</span>
+                    <span class="badge badge-dark text-white">bootstrap 4.0</span>
+                    <span class="badge badge-dark text-white">laravel</span>
+                    <span class="badge badge-dark text-white">html</span>
+                    <span class="badge badge-dark text-white">css</span>
                   </li>
                   <li class="list-inline-item float-end me-3">
                     <i class="fa fa-comment" aria-hidden="true" /> <span class="text-info">3 Comments</span>

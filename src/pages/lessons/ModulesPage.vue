@@ -5,7 +5,7 @@
     <ol class=" list-group list-group-flush list-group-numbered">
       <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
         <div class="ms-2 me-auto">
-          <div class="fw-bold">
+          <div class="fw-bold text-white">
             Introducción a HTML
           </div>
           En esta lección en video,
@@ -14,11 +14,11 @@
           Descubrirás por qué HTML es la base de todos los sitios web y cómo puedes utilizarlo para crear páginas web
           increíbles.
         </div>
-        <span class="badge bg-primary rounded-pill">Completado</span>
+        <span class="badge bg-primary rounded-pill text-white">Completado</span>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
         <div class="ms-2 me-auto">
-          <div class="fw-bold">
+          <div class="fw-bold text-white">
             Problemas
           </div>
           En esta sección, te presentaremos una serie de problemas que pondrán a prueba todo lo que aprendiste en la
@@ -27,11 +27,11 @@
           los conceptos de desarrollo web
           y a mejorar tus habilidades.
         </div>
-        <span class="badge bg-primary rounded-pill">Completado</span>
+        <span class="badge bg-primary rounded-pill text-white">Completado</span>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
         <div class="ms-2 me-auto">
-          <div class="fw-bold">
+          <div class="fw-bold text-white">
             Introducción al Proyecto
           </div>
           En esta sección, los estudiantes aprenderán a crear una página de perfil y un portfolio personalizado utilizando
@@ -42,11 +42,11 @@
           refleje su estilo personal y habilidades
           en el desarrollo web.
         </div>
-        <span class="badge bg-secondary rounded-pill">Aprende</span>
+        <span class="badge bg-secondary rounded-pill text-white">Aprende</span>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
         <div class="ms-2 me-auto">
-          <div class="fw-bold">
+          <div class="fw-bold text-white">
             Lección de HTML avanzado
           </div>
           En esta sección, los estudiantes continuarán su aprendizaje de HTML y se enfocarán en conceptos más avanzados
@@ -59,11 +59,11 @@
           comprensión más profunda de HTML
           y su uso en el desarrollo web.
         </div>
-        <span class="badge bg-secondary rounded-pill">Aprende</span>
+        <span class="badge bg-secondary rounded-pill text-white">Aprende</span>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
         <div class="ms-2 me-auto">
-          <div class="fw-bold">
+          <div class="fw-bold text-white">
             Solución en video del proyecto
           </div>
           En esta sección, los estudiantes tendrán acceso a un video instructivo que les ayudará a resolver cualquier
@@ -76,11 +76,11 @@
           para completar el proyecto
           o desean profundizar en su conocimiento del desarrollo web.
         </div>
-        <span class="badge bg-secondary rounded-pill">Aprende</span>
+        <span class="badge bg-secondary rounded-pill text-white">Aprende</span>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
         <div class="ms-2 me-auto">
-          <div class="fw-bold">
+          <div class="fw-bold text-white">
             Última lección de HTML en video
           </div>
           En esta sección final, los estudiantes tendrán la oportunidad de profundizar en su comprensión de HTML y
@@ -93,11 +93,11 @@
           conceptos cubiertos en la sección anterior
           y ayudará a los estudiantes a consolidar su comprensión de HTML y su uso en el desarrollo web.
         </div>
-        <span class="badge bg-secondary rounded-pill">Aprende</span>
+        <span class="badge bg-secondary rounded-pill text-white">Aprende</span>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
         <div class="ms-2 me-auto">
-          <div class="fw-bold">
+          <div class="fw-bold text-white">
             Cuestionario
           </div>
           En esta sección, los estudiantes tendrán la oportunidad de poner a prueba su conocimiento de HTML y
@@ -111,7 +111,7 @@
           También se anima a los estudiantes a continuar aprendiendo y explorando los conceptos de HTML más allá de esta
           sección.
         </div>
-        <span class="badge bg-secondary rounded-pill">Aprende</span>
+        <span class="badge bg-secondary rounded-pill text-white">Aprende</span>
       </li>
     </ol>
   </div>
