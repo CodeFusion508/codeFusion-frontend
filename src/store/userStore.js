@@ -11,13 +11,15 @@ export const useUserStore = defineStore("user", {
         },
         deleteUser() {
         },
-        async createUser() {
-            const data = await createUserReq();
+        async createUser(userData) {
+            const data = await createUserReq(userData);
+
+            this.userObj.name = userData.name;
 
             return data;
         },
-        async findUser() {
-            const data = await getUserReq();
+        async findUser(uuid) {
+            const data = await getUserReq(uuid);
 
             return data;
         },

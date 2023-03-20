@@ -14,14 +14,18 @@ export const getUserReq = async (uuid) => {
     return data.records;
 };
 
-export const createUserReq = async (email, password, userName) => {
+export const createUserReq = async ({
+    name,
+    email,
+    password
+}) => {
     const { data } = await axios({
         method : "post",
         url    : "http://127.0.0.1:8080/users/signUp",
         data   : {
+            userName: name,
             email,
-            password,
-            userName
+            password
         }
     })
         .then((response) => response)
