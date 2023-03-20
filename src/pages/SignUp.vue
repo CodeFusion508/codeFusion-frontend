@@ -125,10 +125,9 @@ export default {
 
       let data = await this.createUser(userObj);
 
-      alert("Account has been created!");
+      alert("Account has been created!", data);
     },
     logIn() {
-
       alert("Logged In!");
     },
     show() {
