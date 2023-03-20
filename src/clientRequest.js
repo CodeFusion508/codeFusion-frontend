@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getUser = async (uuid) => {
+export const getUserReq = async (uuid) => {
     const { data } = await axios({
         method : "get",
         url    : "http://127.0.0.1:8080/users/",
@@ -14,14 +14,18 @@ export const getUser = async (uuid) => {
     return data.records;
 };
 
-export const createUser = async (email, password, userName) => {
+export const createUserReq = async ({
+    name,
+    email,
+    password
+}) => {
     const { data } = await axios({
         method : "post",
         url    : "http://127.0.0.1:8080/users/signUp",
         data   : {
+            userName: name,
             email,
-            password,
-            userName
+            password
         }
     })
         .then((response) => response)

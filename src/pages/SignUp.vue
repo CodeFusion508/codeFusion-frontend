@@ -98,6 +98,10 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "pinia";
+
+import { useUserStore } from "../store/userStore.js";
+
 export default {
   data() {
     return {
@@ -107,18 +111,23 @@ export default {
       password : ""
     };
   },
+  computed: {
+    ...mapState(useUserStore, ["name", "uuid"])
+  },
   methods: {
-    createAccount() {
-      console.log("name ->", this.name);
-      console.log("email ->", this.email);
-      console.log("password ->", this.password);
+    ...mapActions(useUserStore, ["createUser", "findUser"]),
+    async createAccount() {
+      const userObj = {
+        name     : this.name,
+        email    : this.email,
+        password : this.password
+      };
 
-      alert("Account has been created!");
+      let data = await this.createUser(userObj);
+
+      alert("Account has been created!", data);
     },
     logIn() {
-      console.log("email ->", this.email);
-      console.log("password ->", this.password);
-
       alert("Logged In!");
     },
     show() {

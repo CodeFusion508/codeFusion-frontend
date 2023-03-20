@@ -1,28 +1,32 @@
 import { defineStore } from "pinia";
 
-/*
-    You can name the return value of `defineStore()` anything you want,
-    but it's best to use the name of the store and surround it with `use`
-    and `Store` (e.g. `useUserStore`, `useCartStore`, `useProductStore`)
-*/
+import {
+    getUserReq,
+    createUserReq
+} from "../clientRequest.js";
+
 export const useUserStore = defineStore("user", {
-    // these actions are like actions + mutations, you can use these async as well
     actions: {
         updateUser() {
         },
         deleteUser() {
         },
-        createUser() {
+        async createUser(userData) {
+            const data = await createUserReq(userData);
+
+            this.userObj.name = userData.name;
+
+            return data;
         },
-        findUser() {
+        async findUser(uuid) {
+            const data = await getUserReq(uuid);
+
+            return data;
         },
     },
-    // these are basically computed properties for our store,
-    // I am not sure, but I think getters is to mutate?
     getters: {
-        getAuthToken: (state) => state.userObj,
+        getUserInfo: (state) => state.userObj,
     },
-    // this is our state
     state: () => {
         return {
             userObj: {
