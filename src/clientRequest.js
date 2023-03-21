@@ -33,3 +33,14 @@ export const createUserReq = async ({
 
     return data;
 };
+
+export const getMD = async (path) => {
+    const { data } = await axios({
+        method : "get",
+        url    : `http://127.0.0.1:8080/static/${path}`
+    })
+        .then((response) => response)
+        .catch((err) => err);
+
+    return data;
+};
