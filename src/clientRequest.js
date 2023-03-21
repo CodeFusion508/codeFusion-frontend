@@ -20,10 +20,6 @@ export const createUserReq = async ({
     password
 }) => {
     const { data } = await axios({
-        headers: {
-            "Access-Control-Allow-Origin" : "*",
-            "Content-type"                : "application/json"
-        },
         method : "post",
         url    : "http://127.0.0.1:8080/users/signUp",
         data   : {
