@@ -6,8 +6,8 @@ import {
 
 export const useModuleStore = defineStore("module", {
     actions: {
-        getLesson(path) {
-            const data = getMD(path);
+        async getLesson(path) {
+            const data = await getMD(path);
 
             return data;
         }

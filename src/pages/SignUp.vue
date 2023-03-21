@@ -55,7 +55,7 @@
             <div class="mb-3">
               <input
                 id="signup-5-name"
-                v-model="name"
+                v-model="userName"
                 type="text"
                 class="form-control text-white"
                 placeholder="Nombre"
@@ -106,7 +106,7 @@ export default {
   data() {
     return {
       login    : false,
-      name     : "",
+      userName : "",
       email    : "",
       password : ""
     };
@@ -118,7 +118,7 @@ export default {
     ...mapActions(useUserStore, ["createUser", "findUser"]),
     async createAccount() {
       const userObj = {
-        name     : this.name,
+        name     : this.userName,
         email    : this.email,
         password : this.password
       };

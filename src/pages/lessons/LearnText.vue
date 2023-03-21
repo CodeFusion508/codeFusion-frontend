@@ -22,12 +22,12 @@ export default {
     ...mapState(useModuleStore, ["lessons"])
   },
   created() {
-    this.getMd();
+    this.getMd("javascript/day1.md");
   },
   methods: {
     ...mapActions(useModuleStore, ["getLesson"]),
-    getMd() {
-      const data = this.getLesson();
+    getMd(path) {
+      const data = this.getLesson(path);
 
       this.md = data;
     }
