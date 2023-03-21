@@ -1,9 +1,11 @@
+import process from "node:process";
+
 import axios from "axios";
 
 export const getUserReq = async (uuid) => {
     const { data } = await axios({
         method : "get",
-        url    : "http://127.0.0.1:8080/users/",
+        url    : `http://${process.env.SERVER}/users/`,
         params : {
             uuid
         }
@@ -21,7 +23,7 @@ export const createUserReq = async ({
 }) => {
     const { data } = await axios({
         method : "post",
-        url    : "http://127.0.0.1:8080/users/signUp",
+        url    : `http://${process.env.SERVER}/users/signUp`,
         data   : {
             userName: name,
             email,
@@ -37,7 +39,7 @@ export const createUserReq = async ({
 export const getMD = async (path) => {
     const { data } = await axios({
         method : "get",
-        url    : `http://127.0.0.1:8080/static/${path}`
+        url    : `http://${process.env.SERVER}/static/${path}`
     })
         .then((response) => response)
         .catch((err) => err);
