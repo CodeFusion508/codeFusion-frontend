@@ -1,6 +1,5 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-import { config } from "dotenv";
 
 import App from "./App.vue";
 import router from "./router/router.js";
@@ -9,7 +8,6 @@ import router from "./router/router.js";
 import NavBar from "./components/NavBar.vue";
 import NavFooter from "./components/NavFooter.vue";
 
-config();
 let app = createApp(App);
 
 // components
