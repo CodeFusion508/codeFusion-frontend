@@ -10,8 +10,8 @@
   <div class="form-floating mt-3">
     <textarea
       id="floatingTextarea2"
-      class="form-control text-white"
-      placeholder="Leave a comment here"
+      class="form-control text-white font-monospace"
+      placeholder=""
       style="height: 300px"
     />
     <label for="floatingTextarea2">Codigo</label>
