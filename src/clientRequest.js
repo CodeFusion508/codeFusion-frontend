@@ -3,7 +3,7 @@ import axios from "axios";
 export const getUserReq = async (uuid) => {
     const { data } = await axios({
         method : "get",
-        url    : `http://${import.meta.env.SERVER}/users/`,
+        url    : `http://${import.meta.env.BACK_SERVER}/users/`,
         params : {
             uuid
         }
@@ -21,7 +21,7 @@ export const createUserReq = async ({
 }) => {
     const { data } = await axios({
         method : "post",
-        url    : `http://${import.meta.env.SERVER}/users/signUp`,
+        url    : `http://${import.meta.env.BACK_SERVER}/users/signUp`,
         data   : {
             userName: name,
             email,
@@ -35,13 +35,13 @@ export const createUserReq = async ({
 };
 
 export const logInUserReq = async ({
-                                        email,
-                                        password
-                                    }) => {
+    email,
+    password
+}) => {
     const { data } = await axios({
         method : "post",
-        //url    : `http://${import.meta.env.SERVER}/users/signUp`,
-        url    : `http://localhost:8080/users/logIn`,
+        //url    : `http://${import.meta.env.BACK_SERVER}/users/signUp`,
+        url    : `http://${import.meta.env.BACK_SERVER}/users/logIn`,
         data   : {
             email,
             password
@@ -56,7 +56,7 @@ export const logInUserReq = async ({
 export const getMD = async (path) => {
     const { data } = await axios({
         method : "get",
-        url    : `http://${import.meta.env.SERVER}/static/${path}`
+        url    : `http://${import.meta.env.BACK_SERVER}/static/${path}`
     })
         .then((response) => response)
         .catch((err) => err);

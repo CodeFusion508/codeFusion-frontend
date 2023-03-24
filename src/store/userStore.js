@@ -2,7 +2,8 @@ import { defineStore } from "pinia";
 
 import {
     getUserReq,
-    createUserReq
+    createUserReq,
+    logInUserReq,
 } from "../clientRequest.js";
 
 export const useUserStore = defineStore("user", {
@@ -12,17 +13,26 @@ export const useUserStore = defineStore("user", {
         deleteUser() {
         },
         async createUser(userData) {
-            const data = await createUserReq(userData);
+            const { data, token } = await createUserReq(userData);
 
-            this.userObj.name = userData.name;
+            this.userObj.name = data.records[0].properties.userName;
+            this.userObj.uuid = data.records[0].properties.uuid;
 
-            return data;
+            return token;
         },
         async findUser(uuid) {
             const data = await getUserReq(uuid);
 
             return data;
         },
+        async logInUser(userObj) {
+            const { data, token } = await logInUserReq(userObj);
+
+            this.userObj.name = data.records[0].properties.userName;
+            this.userObj.uuid = data.records[0].properties.uuid;
+
+            return token;
+        }
     },
     getters: {
         getUserInfo: (state) => state.userObj,
