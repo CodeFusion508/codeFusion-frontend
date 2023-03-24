@@ -129,8 +129,6 @@ export default {
 
       const token = await this.createUser(userObj);
       this.authToken = token;
-
-      console.log("token", token);
     },
     async logIn() {
       const userObj = {

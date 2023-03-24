@@ -40,7 +40,6 @@ export const logInUserReq = async ({
 }) => {
     const { data } = await axios({
         method : "post",
-        //url    : `http://${import.meta.env.BACK_SERVER}/users/signUp`,
         url    : `http://${import.meta.env.BACK_SERVER}/users/logIn`,
         data   : {
             email,
