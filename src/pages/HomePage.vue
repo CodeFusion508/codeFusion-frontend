@@ -16,24 +16,14 @@
 <script>
 import LoggedOut from "../modules/home/LoggedOut.vue";
 import { useAuthStore } from '../store/authStore'
-import { mapWritableState } from 'pinia'
+import { mapState } from 'pinia'
 
 export default {
   components: {
     "logged-out": LoggedOut
   },
   computed: {
-    ...mapWritableState(useAuthStore, ["authToken"])
+    ...mapState(useAuthStore, ["authToken"])
   },
-  methods: {
-    initialize() {
-      if(localStorage.getItem('tkn') != localStorage.getItem('tkn') != undefined) {
-        this.authToken = localStorage.getItem('tkn')
-      }
-    }
-  },
-  mounted() {
-    this.initialize()
-  }
 };
 </script>

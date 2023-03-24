@@ -9,13 +9,14 @@ export const useAuthStore = defineStore("auth", {
      // this is our state
      state: () => {
         return {
-            authToken: null
+            authToken: localStorage.getItem('tkn')
         };
     },
     // these actions are like actions + mutations, you can use these async as well
     actions: {
         addAuthToken(token = "") {
             if(token != "") {
+                this.authToken = token
                 localStorage.setItem('tkn', token)
                 router.push({ path: '/' })
             }
