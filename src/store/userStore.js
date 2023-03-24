@@ -6,6 +6,7 @@ import {
     logInUserReq,
 } from "../clientRequest.js";
 
+
 export const useUserStore = defineStore("user", {
     actions: {
         updateUser() {
@@ -26,11 +27,10 @@ export const useUserStore = defineStore("user", {
             return data;
         },
         async logInUser(userObj) {
-            const { data, token } = await logInUserReq(userObj);
+            const { token, data } = await logInUserReq(userObj)
 
-            this.userObj.name = data.records[0].properties.userName;
-            this.userObj.uuid = data.records[0].properties.uuid;
-
+            this.userObj.name = data.userName;
+            this.userObj.uuid = data.uuid;
             return token;
         }
     },

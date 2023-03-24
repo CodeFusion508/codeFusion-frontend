@@ -1,9 +1,10 @@
-import axios from "axios";
+import axios from "axios"
+const routerRequest = 'users'
 
 export const getUserReq = async (uuid) => {
     const { data } = await axios({
         method : "get",
-        url    : `http://${import.meta.env.BACK_SERVER}/users/`,
+        url    : `${import.meta.env.VITE_SERVER}${routerRequest}`,
         params : {
             uuid
         }
@@ -21,7 +22,7 @@ export const createUserReq = async ({
 }) => {
     const { data } = await axios({
         method : "post",
-        url    : `http://${import.meta.env.BACK_SERVER}/users/signUp`,
+        url    : `${import.meta.env.BACK_SERVER}${routerRequest}/signUp`,
         data   : {
             userName: name,
             email,
@@ -38,24 +39,27 @@ export const logInUserReq = async ({
     email,
     password
 }) => {
-    const { data } = await axios({
-        method : "post",
-        url    : `http://${import.meta.env.BACK_SERVER}/users/logIn`,
-        data   : {
-            email,
-            password
-        }
-    })
-        .then((response) => response)
-        .catch((err) => err);
 
-    return data;
+    try {
+        const { data } = await axios({
+            method : "post",
+            url    : `${import.meta.env.VITE_SERVER}${routerRequest}/logIn`,
+            data   : {
+                email,
+                password
+            }
+        })
+        return data
+    } catch (error) {
+        alert('La contraseña y/o usuario son incorrectos')
+        throw new Error('La contraseña y/o usuario son incorrectos')
+    }
 };
 
 export const getMD = async (path) => {
     const { data } = await axios({
         method : "get",
-        url    : `http://${import.meta.env.BACK_SERVER}/static/${path}`
+        url    : `${import.meta.env.VITE_SERVER}static/${path}`
     })
         .then((response) => response)
         .catch((err) => err);
