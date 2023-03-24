@@ -34,6 +34,25 @@ export const createUserReq = async ({
     return data;
 };
 
+export const logInUserReq = async ({
+                                        email,
+                                        password
+                                    }) => {
+    const { data } = await axios({
+        method : "post",
+        //url    : `http://${import.meta.env.SERVER}/users/signUp`,
+        url    : `http://localhost:8080/users/logIn`,
+        data   : {
+            email,
+            password
+        }
+    })
+        .then((response) => response)
+        .catch((err) => err);
+
+    return data;
+};
+
 export const getMD = async (path) => {
     const { data } = await axios({
         method : "get",

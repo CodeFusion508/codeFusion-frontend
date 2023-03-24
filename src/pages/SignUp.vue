@@ -102,6 +102,8 @@ import { mapState, mapActions } from "pinia";
 
 import { useUserStore } from "../store/userStore.js";
 
+import { logInUserReq } from "../clientRequest.js";
+
 export default {
   data() {
     return {
@@ -127,8 +129,15 @@ export default {
 
       alert(`Account has been created!, ${data}`);
     },
-    logIn() {
+    async logIn() {
+      const userObj = {
+        email    : this.email,
+        password : this.password
+      };
+      let response = await logInUserReq(userObj);
+      console.log(response, "response");
       alert("Logged In!");
+
     },
     show() {
       this.login = !this.login;
