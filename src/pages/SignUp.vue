@@ -99,7 +99,7 @@
 
 <script>
 import {
- mapState, mapActions, mapWritableState
+  mapActions
 } from "pinia";
 
 import { useUserStore } from "../store/userStore.js";
@@ -114,12 +114,8 @@ export default {
       password : ""
     };
   },
-  computed: {
-    ...mapState(useUserStore, ["name", "uuid"]),
-    // ...mapWritableState(useAuthStore, ["authToken"])
-  },
   methods: {
-    ...mapActions(useUserStore, ["createUser", "findUser", "logInUser"]),
+    ...mapActions(useUserStore, ["createUser","logInUser"]),
     ...mapActions(useAuthStore, ["addAuthToken"]),
     async createAccount() {
       const userObj = {
@@ -129,7 +125,7 @@ export default {
       };
 
       const token = await this.createUser(userObj);
-      this.addAuthToken(token)
+      this.addAuthToken(token);
     },
     async logIn() {
       const userObj = {
@@ -138,7 +134,7 @@ export default {
       };
 
       const token = await this.logInUser(userObj);
-      this.addAuthToken(token)
+      this.addAuthToken(token);
     },
     show() {
       this.login = !this.login;

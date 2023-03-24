@@ -9,10 +9,6 @@ import {
 
 export const useUserStore = defineStore("user", {
     actions: {
-        updateUser() {
-        },
-        deleteUser() {
-        },
         async createUser(userData) {
             const { data, token } = await createUserReq(userData);
 
@@ -27,10 +23,11 @@ export const useUserStore = defineStore("user", {
             return data;
         },
         async logInUser(userObj) {
-            const { token, data } = await logInUserReq(userObj)
+            const { data, token } = await logInUserReq(userObj);
 
-            this.userObj.name = data.userName;
-            this.userObj.uuid = data.uuid;
+            this.userObj.name = data.records[0].properties.userName;
+            this.userObj.uuid = data.records[0].properties.uuid;
+
             return token;
         }
     },
