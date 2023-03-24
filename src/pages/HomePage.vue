@@ -1,14 +1,7 @@
 <template>
   <nav-bar />
 
-  <div v-if="authToken === null">
-    Usuario no inicio sesión
-  </div>
-  <div v-else >
-    Usuario Inicio Sesión
-  </div>
-  <!-- <div v-if="authToken != ''" />
-  <logged-out v-else /> -->
+  <logged-out  />
 
   <nav-footer />
 </template>
