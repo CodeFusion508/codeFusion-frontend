@@ -11,14 +11,14 @@
 import { mapState } from "pinia";
 
 import LoggedOut from "../modules/home/LoggedOut.vue";
-import loggedIn from "../modules/home/loggedIn.vue";
+import LoggedIn from "../modules/home/LoggedIn.vue";
 
 import { useAuthStore } from "../store/authStore";
 
 export default {
   components: {
     "logged-out" : LoggedOut,
-    "logged-in"  : loggedIn
+    "logged-in"  : LoggedIn
   },
   computed: {
     ...mapState(useAuthStore, ["authToken"])
