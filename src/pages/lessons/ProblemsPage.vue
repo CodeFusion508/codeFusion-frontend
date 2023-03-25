@@ -9,19 +9,16 @@
     </div>
     <hr>
 
-    <div class="form-floating mt-3">
-      <textarea
-        id="floatingTextarea2"
-        class="container-code"
-        placeholder=""
-        style="height: 300px"
-      />
-      <label for="floatingTextarea2" />
-    </div>
+    <vue-monaco-editor
+      v-model:value="code"
+      language="html"
+      theme="vs-dark"
+      height="400px"
+    />
 
     <div class="d-flex justify-content-end mt-2 mb-4">
       <div class="col-sm-2 col-12">
-        <button class="btn btn-primary form-control">
+        <button class="btn btn-primary form-control" @click="handleChange">
           Aceptar
         </button>
       </div>
@@ -31,29 +28,18 @@
   <nav-footer />
 </template>
 
-
 <script>
 export default {
   data() {
     return {
-      text: "Hola, en esta problema necesitan crear párrafo con una imagen"
+      text : "Hola, en esta problema necesitan crear párrafo con una imagen",
+      code : ""
     };
+  },
+  methods: {
+    handleChange() {
+      console.log(this.code);
+    }
   }
 };
 </script>
-
-<style scoped>
-.container-code {
-  width: 100%;
-  height: 200px;
-  background-color: #273746;
-  color: white;
-  font-size: 14px;
-  border: none;
-  padding: 15px;
-}
-
-.container-code:focus {
-  outline: none;
-}
-</style>

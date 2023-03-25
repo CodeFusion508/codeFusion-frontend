@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
+import { install } from "@guolao/vue-monaco-editor";
 
 import App from "./App.vue";
 import router from "./router/router.js";
@@ -17,5 +18,6 @@ app.component("nav-footer", NavFooter);
 // uses
 app.use(createPinia());
 app.use(router);
+app.use(install);
 
 app.mount("#app");
