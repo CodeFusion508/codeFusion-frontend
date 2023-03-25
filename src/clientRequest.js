@@ -1,12 +1,13 @@
 import axios from "axios";
-const routerRequest = "users";
+
+const students = "users";
 
 export const getUserReq = async (uuid) => {
     let err;
 
     const { data } = await axios({
         method : "get",
-        url    : `${import.meta.env.VITE_SERVER}${routerRequest}`,
+        url    : `${import.meta.env.VITE_SERVER}${students}`,
         params : {
             uuid
         }
@@ -28,7 +29,7 @@ export const createUserReq = async ({
 
     const { data } = await axios({
         method : "post",
-        url    : `${import.meta.env.VITE_SERVER}${routerRequest}/signUp`,
+        url    : `${import.meta.env.VITE_SERVER}${students}/signUp`,
         data   : {
             userName: name,
             email,
@@ -51,7 +52,7 @@ export const logInUserReq = async ({
 
     const { data } = await axios({
         method : "post",
-        url    : `${import.meta.env.VITE_SERVER}${routerRequest}/logIn`,
+        url    : `${import.meta.env.VITE_SERVER}${students}/logIn`,
         data   : {
             email,
             password
