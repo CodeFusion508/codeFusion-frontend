@@ -115,7 +115,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(useUserStore, ["createUser","logInUser"]),
+    ...mapActions(useUserStore, ["createUser", "logInUser"]),
     ...mapActions(useAuthStore, ["addAuthToken"]),
     async createAccount() {
       const userObj = {

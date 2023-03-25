@@ -1,7 +1,7 @@
 <template>
   <nav-bar />
 
-  <log-in v-if="authToken"></log-in>
+  <logged-in v-if="authToken" />
   <logged-out v-else />
 
   <nav-footer />
@@ -11,14 +11,14 @@
 import { mapState } from "pinia";
 
 import LoggedOut from "../modules/home/LoggedOut.vue";
-import LogIn from "../modules/home/LogIn.vue";
+import loggedIn from "../modules/home/loggedIn.vue";
 
 import { useAuthStore } from "../store/authStore";
 
 export default {
   components: {
-    "logged-out": LoggedOut,
-    "log-in": LogIn
+    "logged-out" : LoggedOut,
+    "logged-in"  : loggedIn
   },
   computed: {
     ...mapState(useAuthStore, ["authToken"])
