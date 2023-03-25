@@ -36,7 +36,8 @@
             </router-link>
           </li>
         </ul>
-        <div class="navbar-nav">
+
+        <div v-if="!getAuthToken" class="navbar-nav">
           <div class="bs_header_btn_wrapper bs_signup_btn_blk ms-3">
             <router-link
               to="/creaSesion"
@@ -46,10 +47,47 @@
             </router-link>
           </div>
         </div>
+
+        <div v-else class="dropstart btn-group">
+          <button
+            class="btn btn-primary rounded-circle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-person-fill" />
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  {{ userObj.name }}
+                </li>
+              </ul>
+            </li>
+            <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+            <li><a class="dropdown-item" href="#">Mis Cursos</a></li>
+            <li><a class="dropdown-item" href="#">Salir</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
 </template>
+
+<script>
+import { mapState } from "pinia";
+
+import { useUserStore } from "../store/userStore";
+import { useAuthStore } from "../store/authStore";
+
+export default {
+  computed: {
+    ...mapState(useAuthStore, ["getAuthToken"]),
+    ...mapState(useUserStore, ["userObj"])
+  }
+};
+</script>
 
 <style scoped>
 .nav-tabs .nav-link {
@@ -65,5 +103,13 @@
 
 .nav-tabs .nav-link {
   padding: 0.5rem !important;
+}
+
+.icon-profile {
+  background-image: url('../pages/assets/profile.png');
+  background-size: 50px 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

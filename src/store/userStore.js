@@ -6,12 +6,9 @@ import {
     logInUserReq,
 } from "../clientRequest.js";
 
+
 export const useUserStore = defineStore("user", {
     actions: {
-        updateUser() {
-        },
-        deleteUser() {
-        },
         async createUser(userData) {
             const { data, token } = await createUserReq(userData);
 
