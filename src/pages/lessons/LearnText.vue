@@ -1,8 +1,8 @@
 <template>
   <nav-bar />
-  <h1>Learn Text</h1>
-
-  <md-block :mdContent="md" />
+  <div class="container-md">
+    <md-block :mdContent="md" />
+  </div>
 
   <nav-footer />
 </template>
@@ -35,3 +35,13 @@ export default {
   }
 };
 </script>
+
+<style>
+
+  md-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+</style>

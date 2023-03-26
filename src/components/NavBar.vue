@@ -14,7 +14,7 @@
         <span class="navbar-toggler-icon" />
       </button>
       <div id="header1navbarCollapse" class="collapse navbar-collapse justify-content-between">
-        <ul class="nav nav-tabs flex-grow-1">
+        <ul class="nav nav-pills flex-grow-1">
           <li class="nav-item">
             <router-link to="/" class="nav-link text-white">
               Inicio
