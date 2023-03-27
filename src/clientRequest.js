@@ -7,10 +7,7 @@ export const getUserReq = async (uuid) => {
 
     const { data } = await axios({
         method : "get",
-        url    : `${import.meta.env.VITE_SERVER}${students}`,
-        params : {
-            uuid
-        }
+        url    : `${import.meta.env.VITE_SERVER}${students}/${uuid}`
     }).catch((error) => err = error);
 
     if (err) {
@@ -80,3 +77,15 @@ export const getMD = async (path) => {
 
     return data;
 };
+
+export const updateUser = async (dataUser) => {
+    const { data } = await axios({
+        method : "put",
+        url    : `${import.meta.env.VITE_SERVER}${students}/updateUser`,
+        data: dataUser
+    })
+
+    console.log(data)
+
+    return data
+}

@@ -8,7 +8,6 @@ export const useAuthStore = defineStore("auth", {
             if (token) {
                 this.authToken = token;
                 localStorage.setItem("tkn", token);
-
                 router.push({ path: "/" });
             }
         },
