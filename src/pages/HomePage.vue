@@ -17,8 +17,8 @@ import { useAuthStore } from "../store/authStore";
 
 export default {
   components: {
-    "logged-out" : LoggedOut,
-    "logged-in"  : LoggedIn
+    "logged-out": LoggedOut,
+    "logged-in": LoggedIn
   },
   computed: {
     ...mapState(useAuthStore, ["authToken"])
