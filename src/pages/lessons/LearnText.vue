@@ -1,7 +1,7 @@
 <template>
   <nav-bar />
   <div class="container-md">
-    <md-block :mdContent="md" />
+    <md-block :md-content="md" />
   </div>
 
   <nav-footer />
@@ -37,11 +37,9 @@ export default {
 </script>
 
 <style>
-
-  md-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
+md-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 </style>

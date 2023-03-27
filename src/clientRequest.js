@@ -8,10 +8,11 @@ export const getUserReq = async (uuid) => {
     const { data } = await axios({
         method : "get",
         url    : `${import.meta.env.VITE_SERVER}${students}/${uuid}`
-    }).catch((error) => err = error);
+    })
+        .catch((error) => err = error);
 
     if (err) {
-        throw new Error("Este usuario no existe, revisa la información.");
+        throw new Error(err.message);
     }
 
     return data;
@@ -32,10 +33,11 @@ export const createUserReq = async ({
             email,
             password
         }
-    }).catch((error) => err = error);
+    })
+        .catch((error) => err = error);
 
     if (err) {
-        throw new Error("Este correo electrónico ya esta registrado. Inicia la sesión o usa otro correo electrónico");
+        throw new Error(err.message);
     }
 
     return data;
@@ -54,10 +56,11 @@ export const logInUserReq = async ({
             email,
             password
         }
-    }).catch((error) => err = error);
+    })
+        .catch((error) => err = error);
 
     if (err) {
-        throw new Error("La contraseña o el correo electrónico es incorrecto.");
+        throw new Error(err.message);
     }
 
     return data;
@@ -69,23 +72,29 @@ export const getMD = async (path) => {
     const { data } = await axios({
         method : "get",
         url    : `${import.meta.env.VITE_SERVER}static/${path}`
-    }).catch((error) => err = error);
+    })
+        .catch((error) => err = error);
 
     if (err) {
-        throw new Error("Este archivo no existe.");
+        throw new Error(err.message);
     }
 
     return data;
 };
 
 export const updateUser = async (dataUser) => {
+    let err;
+
     const { data } = await axios({
         method : "put",
         url    : `${import.meta.env.VITE_SERVER}${students}/updateUser`,
-        data: dataUser
+        data   : dataUser
     })
+        .catch((error) => err = error);
 
-    console.log(data)
+    if (err) {
+        throw new Error(err.message);
+    }
 
-    return data
-}
+    return data;
+};

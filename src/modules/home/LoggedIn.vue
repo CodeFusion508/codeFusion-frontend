@@ -13,7 +13,7 @@
                   <div class="circle-wrap">
                     <div class="circle">
                       <div class="mask half">
-                        <div class="fill" :style="{ ...getPorcentProgress }" />
+                        <div class="fill" :style="{ ...getPercentProgress }" />
                       </div>
                       <div class="inside-circle" />
                     </div>
@@ -36,8 +36,14 @@
           </div>
           <div class="col-sm-12 d-flex justify-content-center">
             <div class="progress rotate-progress-bar">
-              <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="15" aria-valuemin="0"
-                aria-valuemax="100" />
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="width: 75%;"
+                aria-valuenow="15"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              />
             </div>
           </div>
         </div>
@@ -70,15 +76,15 @@
 export default {
   data: () => {
     return {
-      fullExp: 0,
-      fullPercent: {
-        full: 100,
-        progress: 75,
+      fullExp     : 0,
+      fullPercent : {
+        full     : 100,
+        progress : 75,
       }
     };
   },
   computed: {
-    getPorcentProgress() {
+    getPercentProgress() {
       const percentFull = (this.fullPercent.progress * 100) / this.fullPercent.full;
       const percentPixel = 150 * (percentFull / 100);
       return { clip: `rect(0px, ${percentPixel}px, 150px, 0px)` };
