@@ -65,7 +65,7 @@ export default {
       this.$refs.fileImageProfile.click();
     },
     uploadImage(event) {
-      const file = event.target.files[0];
+      const [file] = event.target.files;
       const reader = new FileReader();
       const that = this;
 

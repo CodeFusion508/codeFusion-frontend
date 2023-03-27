@@ -37,7 +37,7 @@ export const useUserStore = defineStore("user", {
             return token;
         },
         async updatedUser() {
-            const data = await updateUser({
+            await updateUser({
                 userName : this.userObj.name,
                 email    : this.userObj.email,
                 uuid     : this.userObj.uuid
