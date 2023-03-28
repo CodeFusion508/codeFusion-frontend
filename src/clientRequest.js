@@ -1,8 +1,7 @@
 import axios from "axios";
-import { storeToast } from './store/toastStore'
+import { useToastStore } from "./store/toastStore";
 
 const students = "users";
-const titleError = "Error Usuarios"
 
 export const getUserReq = async (uuid) => {
     let err;
@@ -14,7 +13,8 @@ export const getUserReq = async (uuid) => {
         .catch((error) => err = error);
 
     if (err) {
-        storeToast().Activeted({ text: err.message, title: titleError })
+        useToastStore().Activated({ text: err.message, title: "Usuarios" });
+
         throw new Error(err.message);
     }
 
@@ -40,7 +40,8 @@ export const createUserReq = async ({
         .catch((error) => err = error);
 
     if (err) {
-        storeToast().Activeted({ text: err.message, title: titleError })
+        useToastStore().Activated({ text: err.message, title: "Usuarios" });
+
         throw new Error(err.message);
     }
 
@@ -64,7 +65,8 @@ export const logInUserReq = async ({
         .catch((error) => err = error);
 
     if (err) {
-        storeToast().Activeted({ text: err.message, title: titleError })
+        useToastStore().Activated({ text: err.message, title: "Usuarios" });
+
         throw new Error(err.message);
     }
 
@@ -81,6 +83,8 @@ export const getMD = async (path) => {
         .catch((error) => err = error);
 
     if (err) {
+        useToastStore().Activated({ text: err.message, title: "Archivos" });
+
         throw new Error(err.message);
     }
 
@@ -98,7 +102,8 @@ export const updateUser = async (dataUser) => {
         .catch((error) => err = error);
 
     if (err) {
-        storeToast().Activeted({ text: err.message, title: titleError })
+        useToastStore().Activated({ text: err.message, title: "Usuarios" });
+
         throw new Error(err.message);
     }
 

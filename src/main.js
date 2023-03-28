@@ -8,7 +8,7 @@ import router from "./router/router.js";
 // global components
 import NavBar from "./components/NavBar.vue";
 import NavFooter from "./components/NavFooter.vue";
-import ToastError from './components/ToastError.vue'
+import ToastError from "./components/ToastError.vue";
 
 let app = createApp(App);
 

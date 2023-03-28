@@ -1,8 +1,6 @@
 <template>
-  <main>
-    <router-view />
-    <toast-error></toast-error>
-  </main>
+  <router-view />
+  <toast-error />
 </template>
 
 <style>
