@@ -15,7 +15,17 @@ let baseRoutes = [
   { path: "/", component: HomePage },
   { path: "/deNosotros", component: AboutUs },
   { path: "/creaSesion", component: SignUp },
-  { path: "/ajustes", component: UserSettings },
+  {
+    path        : "/ajustes",
+    component   : UserSettings,
+    beforeEnter : (from, to, next) => {
+      if (localStorage.getItem("tkn") != null) {
+        next();
+      } else {
+        next({ to: "/creaSesion" });
+      }
+    }
+  },
   { path: "/articulos", component: ArticlesPage },
   { path: "/articulos/articulo", component: ArticlesPage },
 ];

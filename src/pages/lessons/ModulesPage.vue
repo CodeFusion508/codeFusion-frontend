@@ -28,7 +28,8 @@
             </div>
             En esta sección, te presentaremos una serie de problemas que pondrán a prueba todo lo que aprendiste en la
             sección anterior.
-            Desde codificación hasta situaciones del mundo real, estos problemas te ayudarán a consolidar tu comprensión de
+            Desde codificación hasta situaciones del mundo real, estos problemas te ayudarán a consolidar tu comprensión
+            de
             los conceptos de desarrollo web
             y a mejorar tus habilidades.
           </div>
@@ -42,7 +43,8 @@
             <div class="fw-bold text-white">
               Introducción al Proyecto
             </div>
-            En esta sección, los estudiantes aprenderán a crear una página de perfil y un portfolio personalizado utilizando
+            En esta sección, los estudiantes aprenderán a crear una página de perfil y un portfolio personalizado
+            utilizando
             HTML y CSS.
             El proyecto tiene como objetivo proporcionar a los estudiantes experiencia práctica en el desarrollo web y
             permitirles demostrar sus habilidades
@@ -62,9 +64,11 @@
             </div>
             En esta sección, los estudiantes continuarán su aprendizaje de HTML y se enfocarán en conceptos más avanzados
             como listas ordenadas y desordenadas,
-            y tablas. Los estudiantes aprenderán cómo utilizar estas herramientas para organizar y presentar información de
+            y tablas. Los estudiantes aprenderán cómo utilizar estas herramientas para organizar y presentar información
+            de
             manera clara y efectiva en sus sitios web.
-            Además, también se les presentarán otros conceptos como formularios y estructuras de página, que les permitirán
+            Además, también se les presentarán otros conceptos como formularios y estructuras de página, que les
+            permitirán
             crear sitios web más sofisticados.
             Esta sección es una continuación natural de la sección anterior y proporcionará a los estudiantes una
             comprensión más profunda de HTML
@@ -102,7 +106,8 @@
             </div>
             En esta sección final, los estudiantes tendrán la oportunidad de profundizar en su comprensión de HTML y
             aprender cómo estructurar
-            sus páginas de manera efectiva. El instructor cubrirá temas más avanzados, como el uso del header y la etiqueta
+            sus páginas de manera efectiva. El instructor cubrirá temas más avanzados, como el uso del header y la
+            etiqueta
             "script",
             así como la introducción de las etiquetas "style" y "form". Los estudiantes también aprenderán cómo incorporar
             diferentes tipos de contenido,
@@ -121,10 +126,12 @@
               Cuestionario
             </div>
             En esta sección, los estudiantes tendrán la oportunidad de poner a prueba su conocimiento de HTML y
-            repasar los conceptos aprendidos en las lecciones anteriores. El cuestionario constará de preguntas relacionadas
+            repasar los conceptos aprendidos en las lecciones anteriores. El cuestionario constará de preguntas
+            relacionadas
             con la estructura
             y el contenido de las páginas web, así como de temas adicionales que no se han cubierto en las lecciones.
-            Esta sección es una herramienta útil para evaluar el nivel de comprensión de los estudiantes y para identificar
+            Esta sección es una herramienta útil para evaluar el nivel de comprensión de los estudiantes y para
+            identificar
             áreas en las que puedan necesitar
             más práctica. Los estudiantes deben estar preparados para dedicar tiempo y esfuerzo para completar el
             cuestionario de manera efectiva.

@@ -37,11 +37,9 @@ export default {
 </script>
 
 <style>
-
-  md-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
+md-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 </style>

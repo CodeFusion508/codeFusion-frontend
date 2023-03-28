@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useToastStore } from "./store/toastStore";
 
 const students = "users";
 
@@ -7,14 +8,14 @@ export const getUserReq = async (uuid) => {
 
     const { data } = await axios({
         method : "get",
-        url    : `${import.meta.env.VITE_SERVER}${students}`,
-        params : {
-            uuid
-        }
-    }).catch((error) => err = error);
+        url    : `${import.meta.env.VITE_SERVER}${students}/${uuid}`
+    })
+        .catch((error) => err = error);
 
     if (err) {
-        throw new Error("Este usuario no existe, revisa la información.");
+        useToastStore().Activated({ text: err.message, title: "Usuarios" });
+
+        throw new Error(err.message);
     }
 
     return data;
@@ -35,10 +36,13 @@ export const createUserReq = async ({
             email,
             password
         }
-    }).catch((error) => err = error);
+    })
+        .catch((error) => err = error);
 
     if (err) {
-        throw new Error("Este correo electrónico ya esta registrado. Inicia la sesión o usa otro correo electrónico");
+        useToastStore().Activated({ text: err.message, title: "Usuarios" });
+
+        throw new Error(err.message);
     }
 
     return data;
@@ -57,10 +61,13 @@ export const logInUserReq = async ({
             email,
             password
         }
-    }).catch((error) => err = error);
+    })
+        .catch((error) => err = error);
 
     if (err) {
-        throw new Error("La contraseña o el correo electrónico es incorrecto.");
+        useToastStore().Activated({ text: err.message, title: "Usuarios" });
+
+        throw new Error(err.message);
     }
 
     return data;
@@ -72,10 +79,32 @@ export const getMD = async (path) => {
     const { data } = await axios({
         method : "get",
         url    : `${import.meta.env.VITE_SERVER}static/${path}`
-    }).catch((error) => err = error);
+    })
+        .catch((error) => err = error);
 
     if (err) {
-        throw new Error("Este archivo no existe.");
+        useToastStore().Activated({ text: err.message, title: "Archivos" });
+
+        throw new Error(err.message);
+    }
+
+    return data;
+};
+
+export const updateUser = async (dataUser) => {
+    let err;
+
+    const { data } = await axios({
+        method : "put",
+        url    : `${import.meta.env.VITE_SERVER}${students}/updateUser`,
+        data   : dataUser
+    })
+        .catch((error) => err = error);
+
+    if (err) {
+        useToastStore().Activated({ text: err.message, title: "Usuarios" });
+
+        throw new Error(err.message);
     }
 
     return data;
