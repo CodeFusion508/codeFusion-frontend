@@ -147,9 +147,11 @@
   <nav-footer />
 </template>
 
-<style scoped>.list-group-item-action:hover {
+<style scoped>
+.list-group-item-action:hover {
   padding: 1rem;
   border: 1px solid #fff;
   background-color: rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease-in-out;
-}</style>
+}
+</style>
