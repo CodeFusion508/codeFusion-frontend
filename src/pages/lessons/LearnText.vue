@@ -1,7 +1,7 @@
 <template>
   <nav-bar />
   <div class="container-md">
-    <md-block :md-content="md" />
+    <md-block :mdContent="md" />
   </div>
 
   <nav-footer />
