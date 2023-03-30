@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useToastStore } from "./store/toastStore";
+import {useAuthStore} from "./store/authStore.js";
+
 
 const students = "users";
 
@@ -7,8 +9,11 @@ export const getUserReq = async (uuid) => {
     let err;
 
     const { data } = await axios({
-        method : "get",
-        url    : `${import.meta.env.VITE_SERVER}${students}/${uuid}`
+        method  : "get",
+        url     : `${import.meta.env.VITE_SERVER}${students}/${uuid}`,
+        headers : {
+            authorization: `Bearer ${useAuthStore().authToken}`
+        }
     })
         .catch((error) => err = error);
 
