@@ -4,7 +4,7 @@ import LearnVideo from "../pages/sprints/LearnVideo.vue";
 import ProblemsPage from "../pages/sprints/ProblemsPage.vue";
 import QuizPage from "../pages/sprints/QuizPage.vue";
 import SprintsPage from "@/pages/sprints/SprintsPage.vue";
-import DaysPage   from "@/pages/sprints/DaysPage.vue";
+import DaysPage from "@/pages/sprints/DaysPage.vue";
 
 export default [
     { path: "/lecciones", component: LessonsPage },

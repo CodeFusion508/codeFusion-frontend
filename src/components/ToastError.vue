@@ -32,14 +32,14 @@ import { mapState } from "pinia";
 import { useToastStore } from "../store/toastStore";
 
 export default {
-    computed: {
-        ...mapState(useToastStore, ["text", "title", "layout"])
-    }
+  computed: {
+    ...mapState(useToastStore, ["text", "title", "layout"])
+  }
 };
 </script>
 
 <style>
 .activated {
-    display: block !important;
+  display: block !important;
 }
 </style>
