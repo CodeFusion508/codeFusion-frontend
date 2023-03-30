@@ -23,7 +23,6 @@ export default {
   },
   beforeMount() {
     this.getMd("section1/javascript/day1.md");
-
   },
   methods: {
     ...mapActions(useModuleStore, ["getText"]),
