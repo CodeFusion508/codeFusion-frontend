@@ -32,8 +32,6 @@ export const useUserStore = defineStore("user", {
             this.userObj.name = data.node.properties.userName;
             this.userObj.uuid = data.node.properties.uuid;
 
-            localStorage.setItem("uuid", this.userObj.uuid);
-
             return token;
         },
         async updatedUser() {
@@ -51,7 +49,7 @@ export const useUserStore = defineStore("user", {
         return {
             userObj: {
                 name   : "",
-                uuid   : localStorage.getItem("uuid") != undefined || localStorage.getItem("uuid") != null ? localStorage.getItem("uuid") : "",
+                uuid   : "",
                 email  : "",
                 avatar : { image: "", file: null }
             }
