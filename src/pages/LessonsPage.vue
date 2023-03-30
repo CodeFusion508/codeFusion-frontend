@@ -1,7 +1,7 @@
 <template>
   <nav-bar />
   <h3 class="text-center mt-3 fw-light fst-italic text-white">
-    Modulo 1
+    Sección 1
   </h3>
   <hr>
   <div class="row g-0 text-center">
@@ -61,7 +61,7 @@
   </div>
 
   <h3 class="text-center mt-3 fw-light fst-italic text-white">
-    Modulo 2
+    Sección 2
   </h3>
   <hr>
   <div class="row g-0 text-center">
@@ -143,7 +143,7 @@
   </div>
 
   <h3 class="text-center mt-3 fw-light fst-italic text-white">
-    Modulo 3
+    Sección 3
   </h3>
   <hr>
   <div class="row g-0 text-center">
