@@ -53,10 +53,7 @@ export const createUserReq = async ({
     return data;
 };
 
-export const logInUserReq = async ({
-    email,
-    password
-}) => {
+export const logInUserReq = async ({ email, password }) => {
     let err;
 
     const { data } = await axios({
@@ -71,24 +68,6 @@ export const logInUserReq = async ({
 
     if (err) {
         useToastStore().Activated({ text: err.message, title: "Usuarios" });
-
-        throw new Error(err.message);
-    }
-
-    return data;
-};
-
-export const getMD = async (path) => {
-    let err;
-
-    const { data } = await axios({
-        method : "get",
-        url    : `${import.meta.env.VITE_SERVER}static/${path}`
-    })
-        .catch((error) => err = error);
-
-    if (err) {
-        useToastStore().Activated({ text: err.message, title: "Archivos" });
 
         throw new Error(err.message);
     }

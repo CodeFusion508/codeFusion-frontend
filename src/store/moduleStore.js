@@ -1,9 +1,6 @@
 import { defineStore } from "pinia";
 
-import {
-    getMD
-} from "../Requests/clientRequest.js";
-import { getDaysRequest } from "../Requests/daysRequest.js";
+import { getMD, getDaysRequest } from "../Requests/daysRequest.js";
 
 export const useModuleStore = defineStore("module", {
     actions: {
@@ -14,7 +11,7 @@ export const useModuleStore = defineStore("module", {
         },
         async getDays() {
             const data = await getDaysRequest();
-            console.log(data);
+
             return data;
         }
     },
