@@ -75,7 +75,7 @@ export const logInUserReq = async ({ email, password }) => {
     return data;
 };
 
-export const updateUser = async (dataUser) => {
+export const updateUserReq = async (dataUser) => {
     let err;
 
     const { data } = await axios({

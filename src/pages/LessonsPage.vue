@@ -3,7 +3,7 @@
 
   <div v-for="(item, indexMain) in 2" :key="indexMain">
     <h3 class="text-center mt-3 fw-light fst-italic text-white">
-      Modulo {{ indexMain + 1 }}
+      Sección {{ indexMain + 1 }}
     </h3>
 
     <div class="row g-0 text-center">
@@ -31,91 +31,6 @@
     <hr v-if="item < 2">
   </div>
 
-
-  <!-- <h3 class="text-center mt-3 fw-light fst-italic text-white">
-    Modulo 3
-  </h3>
-  <hr>
-  <div class="row g-0 text-center">
-    <div class="col m-3">
-      <div class="card bg-dark-subtle border-0 shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-white">
-            Entendiendo El Servidor
-          </h5>
-          <hr>
-          <p class="card-text text-white">
-            Entender el lado del servidor implica comprender cómo funciona el software que se ejecuta en el servidor y
-            cómo interactúa con los clientes para proporcionar servicios y datos a través de la red. Es esencial para
-            desarrollar
-            aplicaciones web y servicios en línea confiables y seguros.
-          </p>
-          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
-            Aprende
-          </router-link>
-        </div>
-      </div>
-    </div>
-    <div class="col m-3">
-      <div class="card bg-dark-subtle border-0 shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-white">
-            MySQL
-          </h5>
-          <hr>
-          <p class="card-text text-white">
-            MySQL es un software de base de datos que se utiliza para crear, modificar y administrar bases de datos
-            relacionales.
-            Permite a los usuarios almacenar, organizar y acceder a grandes cantidades de información de manera eficiente
-            y segura.
-          </p>
-          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
-            Aprende
-          </router-link>
-        </div>
-      </div>
-    </div>
-    <div class="col m-3">
-      <div class="card bg-dark-subtle border-0 shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-white">
-            MongoDB
-          </h5>
-          <hr>
-          <p class="card-text text-white">
-            MongoDB es un sistema de gestión de bases de datos NoSQL que se utiliza para almacenar y acceder a grandes
-            cantidades de datos no estructurados
-            o semiestructurados.Es escalable y flexible, lo que lo hace ideal para aplicaciones web modernas y otras
-            aplicaciones
-            que requieren un almacenamiento de datos rápido y dinámico.
-          </p>
-          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
-            Aprende
-          </router-link>
-        </div>
-      </div>
-    </div>
-    <div class="col m-3">
-      <div class="card bg-dark-subtle border-0 shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-white">
-            MVC
-          </h5>
-          <hr>
-          <p class="card-text text-white">
-            MVC (Model-View-Controller) es un patrón de arquitectura de software utilizado para separar la lógica de
-            negocios,
-            la interfaz de usuario y la manipulación de datos en una aplicación web. Esto permite una mayor modularidad,
-            mantenimiento
-            y escalabilidad de la aplicación al separar las responsabilidades en componentes distintos.
-          </p>
-          <router-link to="/lecciones/modulo" class="btn gradient-purple text-white">
-            Aprende
-          </router-link>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <nav-footer />
 </template>
 

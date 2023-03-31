@@ -4,7 +4,7 @@ import {
     getUserReq,
     createUserReq,
     logInUserReq,
-    updateUser
+    updateUserReq
 } from "../Requests/clientRequest.js";
 
 
@@ -37,7 +37,7 @@ export const useUserStore = defineStore("user", {
             return token;
         },
         async updatedUser() {
-            await updateUser({
+            await updateUserReq({
                 userName : this.userObj.name,
                 email    : this.userObj.email,
                 uuid     : this.userObj.uuid
