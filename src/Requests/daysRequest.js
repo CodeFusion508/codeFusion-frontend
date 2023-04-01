@@ -2,14 +2,14 @@ import axios from "axios";
 import { useToastStore } from "../store/toastStore.js";
 //import {useAuthStore} from "../../store/authStore.js";
 
-const days = "day";
+const days = "days";
 
 export const getDaysRequest = async () => {
     let err;
 
     const { data } = await axios({
         method : "get",
-        url    : `${import.meta.env.VITE_SERVER}${days}/`,
+        url    : `http://localhost:8080/${days}/`,
         /*headers : {
             authorization: `Bearer ${useAuthStore().authToken}`
         }*/
