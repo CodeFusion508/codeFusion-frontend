@@ -13,7 +13,9 @@ export const useAuthStore = defineStore("auth", {
             }
         },
         delAuthToken() {
-
+            this.authToken = null;
+            localStorage.removeItem("tkn");
+            router.push({ path: "/" });
         }
     },
     getters: {

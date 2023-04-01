@@ -60,7 +60,8 @@ export default {
   methods: {
       ...mapActions(useModuleStore, ["getDays"]),
     async gDays() {
-      await this.getDays();
+      const data  = await this.getDays();
+        console.log(data);
     }
   }
 };
