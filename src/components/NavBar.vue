@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-md bg-dark-subtle">
+  <nav class="navbar navbar-expand-md bg-dark-subtle special">
     <div class="container-fluid">
       <a class="navbar-brand text-white" href="#">
         <img src="../pages/assets/CodeFusion508.ico" alt="an icon of">
@@ -65,7 +65,14 @@
                 </li>
               </ul>
             </li>
-            <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+              <li>
+                  <router-link
+                          to="/"
+                          class="dropdown-item"
+                  >
+                      Mi perfil
+                  </router-link>
+              </li>
 
             <li>
                 <router-link
@@ -129,4 +136,5 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 </style>
