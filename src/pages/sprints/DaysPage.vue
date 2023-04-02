@@ -53,14 +53,14 @@ export default {
   },
   computed: {
     ...mapState(useAuthStore, ["authToken"]),
-    ...mapActions(useModuleStore, ["getDays"])
   },
   mounted() {
     this.gDays();
   },
   methods: {
+    ...mapActions(useModuleStore, ["getDays"]),
     async gDays() {
-      await this.getDays();
+      // await this.getDays();
     }
   }
 };
