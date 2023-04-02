@@ -16,6 +16,7 @@ export const useUserStore = defineStore("user", {
             this.userObj.name = data.node.properties.userName;
             this.userObj.uuid = data.node.properties.uuid;
 
+            localStorage.setItem("uuid", this.userObj.uuid);
             return token;
         },
         async findUser() {
@@ -42,6 +43,17 @@ export const useUserStore = defineStore("user", {
                 email    : this.userObj.email,
                 uuid     : this.userObj.uuid
             });
+        },
+        async cleanUser() {
+            this.userObj = {
+                name   : null,
+                uuid   : null,
+                email  : null,
+                avatar : { image: "", file: null }
+            };
+            console.log(this.userObj, "cleanUser");
+
+            localStorage.removeItem("uuid");
         }
     },
     getters: {

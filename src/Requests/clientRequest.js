@@ -35,7 +35,7 @@ export const createUserReq = async ({
 
     const { data } = await axios({
         method : "post",
-        url    : `${import.meta.env.VITE_SERVER}${students}/signUp`,
+        url    : `${import.meta.env.VITE_SERVER}${students}/`,
         data   : {
             userName: name,
             email,
@@ -80,7 +80,7 @@ export const updateUserReq = async (dataUser) => {
 
     const { data } = await axios({
         method : "put",
-        url    : `${import.meta.env.VITE_SERVER}${students}/updateUser`,
+        url    : `${import.meta.env.VITE_SERVER}${students}/`,
         data   : dataUser
     })
         .catch((error) => err = error);
