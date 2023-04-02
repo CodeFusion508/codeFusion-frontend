@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="col-md-12 col-sm-12 col-lg-12 col-12">
-        <time-line :day="indexContentDay + 1" :list-task="listDays[indexContentDay].task" />
+        <time-line :day="indexContentDay + 1" :list-task="listDays[indexContentDay]" />
       </div>
     </div>
   </div>
@@ -173,11 +173,22 @@ export default {
     methods: {
         ...mapActions(useModuleStore, ["getDays"]),
         async gDays() {
-            // await this.getDays();
+            const response = await this.getDays();
+            const dayData = [];
+            console.log(response);
+            response.node.forEach((item, index) => {
+                dayData.push([item.properties.dayNo, item.properties.desc, item.properties.exp]);
+            });
+            console.log(dayData);
+            this.listDays = dayData;
         },
         getContentDay(index = 0) {
             this.indexContentDay = index;
-        }
+        },
+        fastClean (array) {
+            const dayData = [];
+            return dayData;
+        },
     }
 };
 </script>
