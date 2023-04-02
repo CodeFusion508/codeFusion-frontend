@@ -51,7 +51,6 @@ export const useUserStore = defineStore("user", {
                 email  : null,
                 avatar : { image: "", file: null }
             };
-            console.log(this.userObj, "cleanUser");
 
             localStorage.removeItem("uuid");
         }

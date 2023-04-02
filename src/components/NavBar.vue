@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-md bg-dark-subtle special">
+  <nav class="navbar navbar-expand-md bg-dark-subtle">
     <div class="container-fluid">
       <a class="navbar-brand text-white" href="#">
         <img src="../pages/assets/CodeFusion508.ico" alt="an icon of">
@@ -65,22 +65,16 @@
                 </li>
               </ul>
             </li>
-              <li>
-                  <router-link
-                          to="/"
-                          class="dropdown-item"
-                  >
-                      Mi perfil
-                  </router-link>
-              </li>
+            <li>
+              <router-link to="/" class="dropdown-item">
+                Mi perfil
+              </router-link>
+            </li>
 
             <li>
-                <router-link
-                  to="ajustes"
-                  class="dropdown-item"
-                >
-                  Ajustes
-                </router-link>
+              <router-link to="ajustes" class="dropdown-item">
+                Ajustes
+              </router-link>
             </li>
             <li><a class="dropdown-item" href="#" @click="logout()">Salir</a></li>
           </ul>
@@ -91,11 +85,10 @@
 </template>
 
 <script>
-import {mapActions, mapState} from "pinia";
+import { mapActions, mapState } from "pinia";
 
 import { useUserStore } from "../store/userStore";
 import { useAuthStore } from "../store/authStore";
-import router from "@/router/router.js";
 
 export default {
   computed: {
@@ -103,8 +96,8 @@ export default {
     ...mapState(useUserStore, ["userObj"])
   },
   methods: {
-      ...mapActions(useAuthStore, ["delAuthToken"]),
-      ...mapActions(useUserStore, ["cleanUser"]),
+    ...mapActions(useAuthStore, ["delAuthToken"]),
+    ...mapActions(useUserStore, ["cleanUser"]),
     logout() {
       this.delAuthToken();
       this.cleanUser();
@@ -136,5 +129,4 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 </style>

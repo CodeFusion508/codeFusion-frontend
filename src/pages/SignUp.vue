@@ -125,7 +125,7 @@ export default {
       };
 
       const token = await this.createUser(userObj);
-        console.log(token);
+
       this.addAuthToken(token);
     },
     async logIn() {

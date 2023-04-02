@@ -1,5 +1,5 @@
-import axios from "axios"
-import { useToastStore } from "../store/toastStore.js"
+import axios from "axios";
+import { useToastStore } from "../store/toastStore.js";
 //import {useAuthStore} from "../../store/authStore.js"
 
 const days = "days";

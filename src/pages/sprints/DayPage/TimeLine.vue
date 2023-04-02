@@ -1,18 +1,22 @@
 <template>
-    <main>
-        <div class="card border-0 shadow-sm">
-            <div class="card-body">
-                <h6 class="card-title text-center py-3">
-                    <h4>Day {{ day }}</h4>
-                </h6>
-                <div>
-                    <ul class="timeline">
-                        <li class="event" v-for="(item, index) in listTask" :key="index" 
-                        :data-date="item.hours">
-                            <h3>{{item.title}}</h3>
-                            <p>{{ item.content }}</p>
-                        </li>
-                        <!-- <li class="event" data-date="2:30 - 4:00pm">
+  <main>
+    <div class="card border-0 shadow-sm">
+      <div class="card-body">
+        <h6 class="card-title text-center py-3">
+          <h4>Day {{ day }}</h4>
+        </h6>
+        <div>
+          <ul class="timeline">
+            <li
+              v-for="(item, index) in listTask"
+              :key="index"
+              class="event"
+              :data-date="item.hours"
+            >
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.content }}</p>
+            </li>
+            <!-- <li class="event" data-date="2:30 - 4:00pm">
                             <h3>Opening Ceremony</h3>
                             <p>
                                 Get ready for an exciting event, this will kick off in amazing fashion with MOP &amp; Busta
@@ -36,12 +40,24 @@
                                 glory.
                             </p>
                         </li> -->
-                    </ul>
-                </div>
-            </div>
+          </ul>
         </div>
-    </main>
+      </div>
+    </div>
+  </main>
 </template>
+
+<script>
+export default {
+    props: {
+        day: {
+            type     : Number,
+            required : true,
+            default  : 1
+        }
+    }
+};
+</script>
 
 <style scoped>
 body {
@@ -163,16 +179,3 @@ body {
     right: -55.8px;
 }
 </style>
-
-<script>
-export default {
-    props: {
-        day: {
-            type: Number,
-            required: true,
-            default: 1
-        },
-        listTask: []
-    }
-}
-</script>
