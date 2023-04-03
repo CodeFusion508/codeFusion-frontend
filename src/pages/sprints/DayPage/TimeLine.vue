@@ -27,10 +27,11 @@
 export default {
     props: {
         day: {
-            type     : Number,
+            type     : String,
             required : true,
-            default  : 1
-        }
+            default  : ""
+        },
+        listTask: Array
     }
 };
 </script>
