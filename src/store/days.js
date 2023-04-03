@@ -6,9 +6,10 @@ export const useDays = defineStore("days", {
         async getDays() {
             const data = await getDaysRequest()
             const newArrayDays = data.node.map(value => {
-                value["title"] = value.properties.desc
-                value["uuid"] = value.properties.uuid
-                return value
+                const objTemp = {
+                    title: value._fields[0].properties.desc, uuid: value._fields[0].properties.uuid
+                }
+                return objTemp
             })
             this.days = [ ... newArrayDays ]
             return newArrayDays

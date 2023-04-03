@@ -6,10 +6,10 @@ export const useContentDays = defineStore("contentDays", {
         async getDaysByContentDays(uuid = "") {
             const data = await contentDays.getContentDaysRelationByDays(uuid);
             const tempContenDays = []
-            data.node.forEach(value => {
+            data.forEach(value => {
                 tempContenDays.push({
-                    path: value._fields[0].properties.path,
-                    title: value._fields[0].properties.title,
+                    path: value.path,
+                    title: value.title,
                 })
             })
             this.contentDays = [ ... tempContenDays]
