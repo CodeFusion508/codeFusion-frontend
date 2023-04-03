@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useToastStore } from "./store/toastStore";
-import {useAuthStore} from "./store/authStore.js";
+import { useToastStore } from "../store/toastStore.js";
+import { useAuthStore } from "../store/authStore.js";
 
 
 const students = "users";
@@ -35,7 +35,7 @@ export const createUserReq = async ({
 
     const { data } = await axios({
         method : "post",
-        url    : `${import.meta.env.VITE_SERVER}${students}/signUp`,
+        url    : `${import.meta.env.VITE_SERVER}${students}/`,
         data   : {
             userName: name,
             email,
@@ -53,10 +53,7 @@ export const createUserReq = async ({
     return data;
 };
 
-export const logInUserReq = async ({
-    email,
-    password
-}) => {
+export const logInUserReq = async ({ email, password }) => {
     let err;
 
     const { data } = await axios({
@@ -78,30 +75,12 @@ export const logInUserReq = async ({
     return data;
 };
 
-export const getMD = async (path) => {
-    let err;
-
-    const { data } = await axios({
-        method : "get",
-        url    : `${import.meta.env.VITE_SERVER}static/${path}`
-    })
-        .catch((error) => err = error);
-
-    if (err) {
-        useToastStore().Activated({ text: err.message, title: "Archivos" });
-
-        throw new Error(err.message);
-    }
-
-    return data;
-};
-
-export const updateUser = async (dataUser) => {
+export const updateUserReq = async (dataUser) => {
     let err;
 
     const { data } = await axios({
         method : "put",
-        url    : `${import.meta.env.VITE_SERVER}${students}/updateUser`,
+        url    : `${import.meta.env.VITE_SERVER}${students}/`,
         data   : dataUser
     })
         .catch((error) => err = error);

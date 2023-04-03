@@ -1,15 +1,17 @@
 import LessonsPage from "../pages/LessonsPage.vue";
-import ModulesPage from "../pages/lessons/ModulesPage.vue";
-import LearnText from "../pages/lessons/LearnText.vue";
-import LearnVideo from "../pages/lessons/LearnVideo.vue";
-import ProblemsPage from "../pages/lessons/ProblemsPage.vue";
-import QuizPage from "../pages/lessons/QuizPage.vue";
+import LearnText from "../pages/sprints/LearnText.vue";
+import LearnVideo from "../pages/sprints/LearnVideo.vue";
+import ProblemsPage from "../pages/sprints/ProblemsPage.vue";
+import QuizPage from "../pages/sprints/QuizPage.vue";
+import ContentPage from "@/pages/sprints/ContentPage.vue";
+import DaysPage from "@/pages/sprints/DayPage/DayPage.vue";
 
 export default [
     { path: "/lecciones", component: LessonsPage },
-    { path: "/lecciones/modulo", component: ModulesPage },
-    { path: "/lecciones/modulo/leccionTexto", component: LearnText },
-    { path: "/lecciones/modulo/leccionVideo", component: LearnVideo },
-    { path: "/lecciones/modulo/problemas", component: ProblemsPage },
-    { path: "/lecciones/modulo/cuestionario", component: QuizPage }
+    { path: "/lecciones/dias", component: DaysPage },
+    { path: "/lecciones/dias/contenido", component: ContentPage },
+    { path: "/lecciones/dias/contenido/leccionTexto", component: LearnText },
+    { path: "/lecciones/dias/contenido/leccionVideo", component: LearnVideo },
+    { path: "/lecciones/dias/contenido/problemas", component: ProblemsPage },
+    { path: "/lecciones/dias/contenido/cuestionario", component: QuizPage }
 ];

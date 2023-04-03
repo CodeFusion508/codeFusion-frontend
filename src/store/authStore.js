@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-import router from "../router/router";
+import router from "../router/router.js";
 
 export const useAuthStore = defineStore("auth", {
     actions: {
@@ -13,7 +13,10 @@ export const useAuthStore = defineStore("auth", {
             }
         },
         delAuthToken() {
+            this.authToken = null;
+            localStorage.removeItem("tkn");
 
+            router.push({ path: "/" });
         }
     },
     getters: {

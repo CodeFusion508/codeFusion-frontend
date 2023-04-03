@@ -4,8 +4,8 @@ import {
     getUserReq,
     createUserReq,
     logInUserReq,
-    updateUser
-} from "../clientRequest.js";
+    updateUserReq
+} from "../Requests/clientRequest.js";
 
 
 export const useUserStore = defineStore("user", {
@@ -16,6 +16,7 @@ export const useUserStore = defineStore("user", {
             this.userObj.name = data.node.properties.userName;
             this.userObj.uuid = data.node.properties.uuid;
 
+            localStorage.setItem("uuid", this.userObj.uuid);
             return token;
         },
         async findUser() {
@@ -37,11 +38,21 @@ export const useUserStore = defineStore("user", {
             return token;
         },
         async updatedUser() {
-            await updateUser({
+            await updateUserReq({
                 userName : this.userObj.name,
                 email    : this.userObj.email,
                 uuid     : this.userObj.uuid
             });
+        },
+        async cleanUser() {
+            this.userObj = {
+                name   : null,
+                uuid   : null,
+                email  : null,
+                avatar : { image: "", file: null }
+            };
+
+            localStorage.removeItem("uuid");
         }
     },
     getters: {

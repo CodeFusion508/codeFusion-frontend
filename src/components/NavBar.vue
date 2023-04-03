@@ -37,7 +37,7 @@
           </li>
         </ul>
 
-        <div v-if="!getAuthToken" class="navbar-nav">
+        <div v-if="!authToken" class="navbar-nav">
           <div class="bs_header_btn_wrapper bs_signup_btn_blk ms-3">
             <router-link
               to="/creaSesion"
@@ -65,9 +65,18 @@
                 </li>
               </ul>
             </li>
-            <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
-            <li><a class="dropdown-item" href="#">Mis Cursos</a></li>
-            <li><a class="dropdown-item" href="#">Salir</a></li>
+            <li>
+              <router-link to="/" class="dropdown-item">
+                Mi perfil
+              </router-link>
+            </li>
+
+            <li>
+              <router-link to="ajustes" class="dropdown-item">
+                Ajustes
+              </router-link>
+            </li>
+            <li><a class="dropdown-item" href="#" @click="logout()">Salir</a></li>
           </ul>
         </div>
       </div>
@@ -76,15 +85,23 @@
 </template>
 
 <script>
-import { mapState } from "pinia";
+import { mapActions, mapState } from "pinia";
 
 import { useUserStore } from "../store/userStore";
 import { useAuthStore } from "../store/authStore";
 
 export default {
   computed: {
-    ...mapState(useAuthStore, ["getAuthToken"]),
+    ...mapState(useAuthStore, ["authToken"]),
     ...mapState(useUserStore, ["userObj"])
+  },
+  methods: {
+    ...mapActions(useAuthStore, ["delAuthToken"]),
+    ...mapActions(useUserStore, ["cleanUser"]),
+    logout() {
+      this.delAuthToken();
+      this.cleanUser();
+    }
   }
 };
 </script>
