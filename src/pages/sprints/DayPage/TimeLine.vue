@@ -3,51 +3,19 @@
     <div class="card border-0 shadow-sm">
       <div class="card-body">
         <h6 class="card-title text-center py-3">
-          <h4>Day {{ listTask[0] }}</h4>
+          <h4>Day {{ day }}</h4>
         </h6>
         <div>
           <ul class="timeline">
-            <li>
-              <!--<h3>{{ item.title }}</h3>-->
-              <p>{{ listTask[1] }}</p>
+            <li
+              v-for="(item, index) in listTask"
+              :key="index"
+              class="event"
+              :data-date="item.hours"
+            >
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.content }}</p>
             </li>
-              <li>
-                <h3>Exp: {{ listTask[2] }}</h3>
-              </li>
-              <hr class="hr hr-blurry" />
-             <li class="event" data-date="2:30 - 4:00pm">
-                            <h3>Video introductorio</h3>
-                            <p>
-                                En este video aprenderás los conceptos básicos del lenguaje y la configuración inicial del IDE.
-                            </p>
-                 <router-link to="/lecciones/dias/contenido/leccionVideo" class="dropdown-item">
-                     Watch Video
-                 </router-link>
-                        </li>
-                        <li class="event" data-date="5:00 - 8:00pm">
-                            <h3>Enunciado</h3>
-                            <router-link to="/lecciones/dias/contenido/leccionTexto" class="dropdown-item">
-                                Leer Enunciado
-                            </router-link>
-                        </li>
-                        <li class="event" data-date="8:30 - 9:30pm">
-                            <h3>Problemas</h3>
-                            <p>
-                                A continuación una breve descripción del problema que deberá tener en cuenta para resolver el cuestionario.
-                            </p>
-                            <router-link to="/lecciones/dias/contenido/problemas" class="dropdown-item">
-                                Leer el problema
-                            </router-link>
-                        </li>
-                        <li class="event" data-date="10:00 - 10:30pm">
-                            <h3>Cuestionario</h3>
-                            <p>
-                                Tendrá 30 minutos para resolver el cuestionario. Asegúrese de haber leído el enunciado y el problema.
-                            </p>
-                            <router-link to="/lecciones/dias/contenido/cuestionario" class="dropdown-item">
-                                Comenzar el cuestionario
-                            </router-link>
-                        </li>
           </ul>
         </div>
       </div>
@@ -57,14 +25,13 @@
 
 <script>
 export default {
-    props: ["listTask", "day"],
-    /*props: {
+    props: {
         day: {
             type     : Number,
             required : true,
             default  : 1
         }
-    }*/
+    }
 };
 </script>
 
@@ -186,5 +153,4 @@ body {
 .rtl .timeline .event::after {
     left: 0;
     right: -55.8px;
-}
-</style>
+}</style>
