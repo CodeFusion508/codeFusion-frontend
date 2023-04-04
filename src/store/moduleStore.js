@@ -9,11 +9,6 @@ export const useModuleStore = defineStore("module", {
 
             return data;
         },
-        async getDays() {
-            const data = await getDaysRequest();
-
-            return data;
-        }
     },
     getters: {
         getLesson: (state) => state.lesson,

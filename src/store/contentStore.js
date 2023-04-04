@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { getContentsRelationByDays } from "../requests/content.js";
+import { getContentsRelationByDays } from "../requests/contentDays.js";
 
 export const useContentStore = defineStore("content", {
     actions: {
@@ -18,6 +18,6 @@ export const useContentStore = defineStore("content", {
         }
     },
     state: () => {
-        return { content: [] };
+        return { result: [] };
     }
 });

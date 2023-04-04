@@ -18,8 +18,8 @@
           </div>
         </div>
       </div>
-      <div v-if="contents.length >= 1" class="col-md-12 col-sm-12 col-lg-12 col-12">
-        <time-line :day="days[indexcontent].title" :list-task="contents" />
+      <div v-if="result.length >= 1" class="col-md-12 col-sm-12 col-lg-12 col-12">
+        <time-line :day="days[indexcontent].title" :list-task="result" />
       </div>
     </div>
   </div>
@@ -28,10 +28,9 @@
 
 <script>
 import { mapActions, mapState } from "pinia";
-import { useAuthStore } from "../../../store/authStore";
-import { usecontents } from "@/store/contents";
-import { useModuleStore } from "@/store/moduleStore";
-import { useDays } from "@/store/days";
+import { useAuthStore } from "@/store/authStore";
+import { useContentStore } from "@/store/contentStore";
+import { useDaysStore } from "@/store/daysStore";
 
 import TimeLine from "./TimeLine.vue";
 
@@ -44,24 +43,23 @@ export default {
     },
     computed: {
         ...mapState(useAuthStore, ["authToken"]),
-        ...mapState(useDays, ["days"]),
-        ...mapState(usecontents, ["contents"]),
+        ...mapState(useDaysStore, ["days"]),
+        ...mapState(useContentStore, ["result"]),
     },
     async mounted() {
         await this.getDays();
         if(this.days.length >= 1) {
-            await this.getDaysBycontents(this.days[this.indexcontent].uuid);
+            await this.getByContent(this.days[this.indexcontent].uuid);
         }
     },
     methods: {
-        ...mapActions(useModuleStore, ["getDays"]),
-        ...mapActions(usecontents, ["getDaysBycontents"]),
-        ...mapActions(useDays, ["getDays"]),
+        ...mapActions(useContentStore, ["getByContent"]),
+        ...mapActions(useDaysStore, ["getDays"]),
         async gDays() {
             // await this.getDays();
         },
         async getcontent(uuid, index) {
-            await this.getDaysBycontents(uuid);
+            await this.getByContent(uuid);
             this.indexcontent = index;
         }
     }

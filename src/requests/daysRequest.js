@@ -9,7 +9,7 @@ export const getDaysRequest = async () => {
 
     const { data } = await axios({
         method : "get",
-        url    : `http://localhost:8080/${days}/`,
+        url    : ` ${import.meta.env.VITE_SERVER}${days}/`,
         /*headers : {
             authorization: `Bearer ${useAuthStore().authToken}`
         }*/
