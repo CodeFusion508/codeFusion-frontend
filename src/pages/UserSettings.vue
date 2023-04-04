@@ -23,6 +23,7 @@
               </div>
             </div>
           </div>
+
           <input
             v-model="userObj.name"
             type="text"
