@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { getDaysRequest } from "../requests/daysRequest";
+import { getDaysRequest, getContentsRelationByDays } from "../requests/daysRequest";
 
 export const useDaysStore = defineStore("days", {
     actions: {
@@ -12,13 +12,31 @@ export const useDaysStore = defineStore("days", {
                 return objTemp;
             });
             this.days = [...newArrayDays];*/
+            this.days = [...data.node];
             return data;
             //return newArrayDays;
+        },
+        async getByContent(uuid = "") {
+            const data = await getContentsRelationByDays(uuid);
+            console.log(data);
+            const tempContent = [];
+
+            data.node.forEach((value) => {
+                const objTemp = {
+                    title: value.node.title,
+                    path : value.node.path,
+                    exp: value.node.exp,
+                };
+                tempContent.push(objTemp);
+            });
+
+            this.result = [...tempContent];
         }
     },
     state: () => {
         return {
-            days: []
+            days: [],
+            result: []
         };
     }
 });

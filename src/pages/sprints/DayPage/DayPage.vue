@@ -11,7 +11,7 @@
                   'content-item-day d-flex justify-content-center align-items-center',
                   indexcontent === index ? 'content-activeted' : ''
                 ]"
-              @click="getcontent(item.uuid, index)"
+              @click="getContent(item.uuid, index)"
             >
               <h6>{{ item.title }}</h6>
             </div>
@@ -29,7 +29,6 @@
 <script>
 import { mapActions, mapState } from "pinia";
 import { useAuthStore } from "@/store/authStore";
-import { useContentStore } from "@/store/contentStore";
 import { useDaysStore } from "@/store/daysStore";
 
 import TimeLine from "./TimeLine.vue";
@@ -43,23 +42,21 @@ export default {
     },
     computed: {
         ...mapState(useAuthStore, ["authToken"]),
-        ...mapState(useDaysStore, ["days"]),
-        ...mapState(useContentStore, ["result"]),
+        ...mapState(useDaysStore, ["days", "result"]),
     },
     async mounted() {
-        await this.getDays();
+        const res = await this.getDays();
+        console.log(res, "content with relations");
         if(this.days.length >= 1) {
-            await this.getByContent(this.days[this.indexcontent].uuid);
+            await this.getContent(this.days[this.indexcontent].uuid);
         }
     },
     methods: {
-        ...mapActions(useContentStore, ["getByContent"]),
-        ...mapActions(useDaysStore, ["getDays"]),
-        async gDays() {
-            // await this.getDays();
-        },
-        async getcontent(uuid, index) {
-            await this.getByContent(uuid);
+        ...mapActions(useDaysStore, ["getDays", "getByContent"]),
+
+        async getContent(uuid, index) {
+            const res = await this.getByContent(uuid);
+            console.log(res, "content with relations");
             this.indexcontent = index;
         }
     }
