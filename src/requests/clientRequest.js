@@ -58,7 +58,7 @@ export const logInUserReq = async ({ email, password }) => {
 
     const { data } = await axios({
         method : "post",
-        url    : `${import.meta.env.VITE_SERVER}${students}/logIn`,
+        url    : `${import.meta.env.VITE_SERVER}${students}/login`,
         data   : {
             email,
             password
