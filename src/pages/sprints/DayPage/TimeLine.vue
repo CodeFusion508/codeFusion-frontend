@@ -3,7 +3,9 @@
     <div class="card border-0 shadow-sm">
       <div class="card-body">
         <h6 class="card-title text-center py-3">
-          <h4>Day {{ day }}</h4>
+          <h4>Day {{ index }}</h4>
+            <h3 class="text-center"> {{ day.desc }}</h3>
+            <hr class="hr hr-blurry" />
         </h6>
         <div>
           <ul class="timeline">
@@ -13,8 +15,26 @@
               class="event"
               :data-date="item.hours"
             >
-              <h3>{{ item.title }}</h3>
-              <p>{{ item.content }}</p>
+                <router-link v-if="item.label === 'video'" to="/lecciones/modulo/leccionVideo" style="text-decoration: none; color: inherit;">
+                  <h3>{{ item.title }}</h3>
+                  <p>{{ item.desc }}</p>
+                    <label>Earn {{ item.exp }} experience</label>
+                </router-link>
+                <router-link v-if="item.label === 'text'" to="/lecciones/modulo/leccionTexto" style="text-decoration: none; color: inherit;">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.desc }}</p>
+                    <label>Earn {{ item.exp }} experience</label>
+                </router-link>
+                <router-link v-if="item.label === 'cuestionaire'" to="/lecciones/modulo/cuestionario" style="text-decoration: none; color: inherit;">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.desc }}</p>
+                    <label>Earn {{ item.exp }} experience</label>
+                </router-link>
+                <router-link v-if="item.label === 'quiz'" to="/lecciones/modulo/problemas" style="text-decoration: none; color: inherit;">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.desc }}</p>
+                    <label>Earn {{ item.exp }} experience</label>
+                </router-link>
             </li>
           </ul>
         </div>
@@ -25,13 +45,9 @@
 
 <script>
 export default {
-    props: {
-        day: {
-            type     : String,
-            required : true,
-            default  : ""
-        },
-        listTask: Array
+    props: ["day", "listTask", "index"],
+    mounted() {
+        console.log(this.listTask, "listTask inside timeline");
     }
 };
 </script>

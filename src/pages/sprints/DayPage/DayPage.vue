@@ -13,13 +13,13 @@
                 ]"
               @click="getContent(item.uuid, index)"
             >
-              <h6>{{ item.title }}</h6>
+              <h6>{{ index }}</h6>
             </div>
           </div>
         </div>
       </div>
       <div v-if="result.length >= 1" class="col-md-12 col-sm-12 col-lg-12 col-12">
-        <time-line :day="days[indexcontent].title" :list-task="result" />
+        <time-line :index="indexcontent" :list-task="result" :day="days[indexcontent]" />
       </div>
     </div>
   </div>
@@ -46,9 +46,14 @@ export default {
     },
     async mounted() {
         const res = await this.getDays();
-        console.log(res, "content with relations");
+        console.log(res, "days with no relations");
         if(this.days.length >= 1) {
-            await this.getContent(this.days[this.indexcontent].uuid);
+            try {
+                await this.getContent(this.days[this.indexcontent].uuid);
+            }
+            catch (e) {
+                console.log(e);
+            }
         }
     },
     methods: {

@@ -14,8 +14,8 @@ export const getDaysRequest = async () => {
         .catch((error) => err = error);
 
     if (err) {
-        useToastStore().Activated({ text: err.message, title: "Days" });
-        throw new Error(err.message);
+        useToastStore().Activated({ text: err.response.data, title: "Days" });
+        throw new Error(err.response.data);
     }
 
     return data;
@@ -31,13 +31,14 @@ export const getContentsRelationByDays = async (uuid) => {
         .catch((error) => err = error);
 
     if (err) {
-        useToastStore().Activated({ text: err.message, title: "Days" });
         console.log(err);
-        throw new Error(err.message);
+        useToastStore().Activated({ text: err.response.data, title: "Days" });
+        console.log(err);
+        //throw new Error(err.response.data);
     }
-
+    console.log(data, "data sent from daysRequest");
     return data;
-}
+};
 
 export const getMD = async (path) => {
     let err;
@@ -49,9 +50,9 @@ export const getMD = async (path) => {
         .catch((error) => err = error);
 
     if (err) {
-        useToastStore().Activated({ text: err.message, title: "Archivos" });
+        useToastStore().Activated({ text: err.response.data, title: "Archivos" });
 
-        throw new Error(err.message);
+        throw new Error(err.response.data);
     }
 
     return data;
