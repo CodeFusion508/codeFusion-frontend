@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-import { getMD, getDaysRequest } from "../requests/daysRequest.js";
+import { getMD } from "../requests/daysRequest.js";
 
 export const useModuleStore = defineStore("module", {
     actions: {
@@ -9,9 +9,6 @@ export const useModuleStore = defineStore("module", {
 
             return data;
         }
-    },
-    getters: {
-        getLesson: (state) => state.lesson
     },
     state: () => {
         return {

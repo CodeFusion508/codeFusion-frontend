@@ -98,12 +98,10 @@
 </template>
 
 <script>
-import {
-  mapActions
-} from "pinia";
+import { mapActions } from "pinia";
 
-import { useUserStore } from "../store/userStore.js";
-import { useAuthStore } from "../store/authStore.js";
+import { useUserStore } from "@/store/userStore.js";
+import { useAuthStore } from "@/store/authStore.js";
 
 export default {
   data() {

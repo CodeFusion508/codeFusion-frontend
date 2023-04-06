@@ -12,8 +12,8 @@
         <div>
           <ul class="timeline">
             <li
-              v-for="(item, index) in listTask"
-              :key="index"
+              v-for="(item, ind) in listTask"
+              :key="ind"
               class="event"
               :data-date="item.hours"
             >
@@ -26,6 +26,7 @@
                 <p>{{ item.desc }}</p>
                 <label>Earn {{ item.exp }} experience</label>
               </router-link>
+
               <router-link
                 v-if="item.label[1] === 'text'"
                 to="/lecciones/dias/contenido/leccionVideo"
@@ -35,6 +36,7 @@
                 <p>{{ item.desc }}</p>
                 <label>Earn {{ item.exp }} experience</label>
               </router-link>
+
               <router-link
                 v-if="item.label[1] === 'problems'"
                 to="/lecciones/dias/contenido/problemas"
@@ -44,6 +46,7 @@
                 <p>{{ item.desc }}</p>
                 <label>Earn {{ item.exp }} experience</label>
               </router-link>
+
               <router-link
                 v-if="item.label[1] === 'quiz'"
                 to="/lecciones/dias/contenido/cuestionario"
@@ -63,9 +66,19 @@
 
 <script>
 export default {
-  props: ["day", "listTask", "index"],
-  mounted() {
-    console.log(this.listTask, "listTask inside timeline");
+  props: {
+    day: {
+      type    : Object,
+      default : () => { return {}; }
+    },
+    listTask: {
+      type    : Array,
+      default : () => []
+    },
+    index: {
+      type    : Number,
+      default : () => 0
+    }
   }
 };
 </script>

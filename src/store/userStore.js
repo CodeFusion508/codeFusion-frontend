@@ -5,7 +5,7 @@ import {
     createUserReq,
     logInUserReq,
     updateUserReq
-} from "../requests/clientRequest.js";
+} from "@/requests/clientRequest.js";
 
 
 export const useUserStore = defineStore("user", {

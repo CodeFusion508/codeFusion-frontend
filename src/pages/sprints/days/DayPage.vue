@@ -28,6 +28,7 @@
 
 <script>
 import { mapActions, mapState } from "pinia";
+
 import { useAuthStore } from "@/store/authStore";
 import { useDaysStore } from "@/store/daysStore";
 
@@ -45,23 +46,18 @@ export default {
     ...mapState(useDaysStore, ["days", "result"])
   },
   async mounted() {
-    const res = await this.getDays();
-    console.log(res, "days with no relations");
+    await this.getDays();
+
     if (this.days.length >= 1) {
-      try {
-        await this.getContent(this.days[this.indexContent].uuid);
-      }
-      catch (e) {
-        console.log(e);
-      }
+      await this.getContent(this.days[this.indexContent].uuid);
     }
   },
   methods: {
     ...mapActions(useDaysStore, ["getDays", "getByContent"]),
 
     async getContent(uuid, index) {
-      const res = await this.getByContent(uuid);
-      console.log(res, "content with relations");
+      await this.getByContent(uuid);
+
       this.indexContent = index;
     }
   }

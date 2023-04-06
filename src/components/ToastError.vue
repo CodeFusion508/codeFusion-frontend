@@ -29,7 +29,7 @@
 <script>
 import { mapState } from "pinia";
 
-import { useToastStore } from "../store/toastStore";
+import { useToastStore } from "@/store/toastStore";
 
 export default {
   computed: {
@@ -38,7 +38,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .activated {
   display: block !important;
 }

@@ -4,11 +4,11 @@ import { createRouter, createWebHistory } from "vue-router";
 import lessonsRoutes from "./lessons.js";
 
 // page imports
-import HomePage from "../pages/HomePage.vue";
-import AboutUs from "../pages/AboutUs.vue";
-import SignUp from "../pages/SignUp.vue";
-import UserSettings from "../pages/UserSettings.vue";
-import ArticlesPage from "../pages/ArticlesPage.vue";
+import HomePage from "@/pages/HomePage.vue";
+import AboutUs from "@/pages/AboutUs.vue";
+import SignUp from "@/pages/SignUp.vue";
+import UserSettings from "@/pages/UserSettings.vue";
+import ArticlesPage from "@/pages/ArticlesPage.vue";
 
 // routes arrays
 let baseRoutes = [

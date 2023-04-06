@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <nav-bar />
   <div class="container-md">
@@ -10,7 +11,7 @@
 <script>
 import { mapState, mapActions } from "pinia";
 
-import { useModuleStore } from "../../store/moduleStore.js";
+import { useModuleStore } from "@/store/moduleStore.js";
 
 export default {
   data() {

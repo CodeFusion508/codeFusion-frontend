@@ -40,20 +40,6 @@
             </li>
           </ul>
         </div>
-
-        <!-- <div class="col-xs-6  col-sm bs_footer_col">
-          <h4 class="bs_footer_widget_title">
-            Community
-          </h4>
-          <ul class="bs_footer_widget_links">
-            <li><a href="#" target="_blank" class="text-decoration-none text-reset"><span>Discussions</span></a></li>
-            <li><a href="#" target="_blank" class="text-decoration-none text-reset"><span>Issues</span></a></li>
-            <li><a href="#" target="_blank" class="text-decoration-none text-reset"><span>Open collective</span></a></li>
-            <li>
-              <a href="#" target="_blank" class="text-decoration-none text-reset"><span>Corporate sponsors</span></a>
-            </li>
-          </ul>
-        </div> -->
       </div>
       <hr>
     </div>
