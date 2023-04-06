@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     ...mapState(useAuthStore, ["authToken"]),
-    ...mapState(useDaysStore, ["days", "result"]),
+    ...mapState(useDaysStore, ["days", "result"])
   },
   async mounted() {
     const res = await this.getDays();

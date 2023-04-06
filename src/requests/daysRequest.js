@@ -9,7 +9,7 @@ export const getDaysRequest = async () => {
 
     const { data } = await axios({
         method : "get",
-        url    : ` ${import.meta.env.VITE_SERVER}${days}/`,
+        url    : ` ${import.meta.env.VITE_SERVER}${days}/`
     })
         .catch((error) => err = error);
 
@@ -26,7 +26,7 @@ export const getContentsRelationByDays = async (uuid) => {
 
     const { data } = await axios({
         method : "get",
-        url    : ` ${import.meta.env.VITE_SERVER}${days}/${uuid}/rel`,
+        url    : ` ${import.meta.env.VITE_SERVER}${days}/${uuid}/rel`
     })
         .catch((error) => err = error);
 

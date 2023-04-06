@@ -8,10 +8,10 @@ export const useModuleStore = defineStore("module", {
             const data = await getMD(path);
 
             return data;
-        },
+        }
     },
     getters: {
-        getLesson: (state) => state.lesson,
+        getLesson: (state) => state.lesson
     },
     state: () => {
         return {

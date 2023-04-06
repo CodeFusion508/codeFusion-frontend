@@ -54,7 +54,7 @@ export default {
               titleModule       : "Javascript", descriptionModule : `JavaScript es un lenguaje de programación utilizado principalmente para crear páginas web interactivas y
             aplicaciones web,
             así como para la programación del lado del servidor con Node.js.`, page: "/lecciones/dias"
-            },
+            }
           ]
         },
         {
@@ -86,7 +86,7 @@ export default {
               titleModule       : "Redux", descriptionModule : `Redux es una herramienta que ayuda a los desarrolladores a manejar la información y eventos de la aplicación
             de una manera más fácil y organizada, lo que hace que la aplicación sea más escalable y fácil de mantener.
             Esto se logra al separar el estado de la aplicación de los componentes de la interfaz de usuario.`, page: "/lecciones/dias"
-            },
+            }
           ]
         }
       ]

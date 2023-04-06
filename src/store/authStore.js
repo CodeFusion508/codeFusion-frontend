@@ -23,5 +23,5 @@ export const useAuthStore = defineStore("auth", {
         return {
             authToken: localStorage.getItem("tkn")
         };
-    },
+    }
 });

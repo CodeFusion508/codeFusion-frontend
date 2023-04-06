@@ -27,7 +27,7 @@ let baseRoutes = [
     }
   },
   { path: "/articulos", component: ArticlesPage },
-  { path: "/articulos/articulo", component: ArticlesPage },
+  { path: "/articulos/articulo", component: ArticlesPage }
 ];
 
 let routes1 = baseRoutes.concat(lessonsRoutes);
