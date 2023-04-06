@@ -18,8 +18,8 @@
               :data-date="item.hours"
             >
               <router-link
-                v-if="item.label === 'video'"
-                to="/lecciones/modulo/leccionVideo"
+                v-if="item.label[1] === 'video'"
+                to="/lecciones/dias/contenido/leccionTexto"
                 style="text-decoration: none; color: inherit;"
               >
                 <h3>{{ item.title }}</h3>
@@ -27,8 +27,8 @@
                 <label>Earn {{ item.exp }} experience</label>
               </router-link>
               <router-link
-                v-if="item.label === 'text'"
-                to="/lecciones/modulo/leccionTexto"
+                v-if="item.label[1] === 'text'"
+                to="/lecciones/dias/contenido/leccionVideo"
                 style="text-decoration: none; color: inherit;"
               >
                 <h3>{{ item.title }}</h3>
@@ -36,8 +36,8 @@
                 <label>Earn {{ item.exp }} experience</label>
               </router-link>
               <router-link
-                v-if="item.label === 'cuestionaire'"
-                to="/lecciones/modulo/cuestionario"
+                v-if="item.label[1] === 'problems'"
+                to="/lecciones/dias/contenido/problemas"
                 style="text-decoration: none; color: inherit;"
               >
                 <h3>{{ item.title }}</h3>
@@ -45,8 +45,8 @@
                 <label>Earn {{ item.exp }} experience</label>
               </router-link>
               <router-link
-                v-if="item.label === 'quiz'"
-                to="/lecciones/modulo/problemas"
+                v-if="item.label[1] === 'quiz'"
+                to="/lecciones/dias/contenido/cuestionario"
                 style="text-decoration: none; color: inherit;"
               >
                 <h3>{{ item.title }}</h3>

@@ -17,32 +17,29 @@ export const useDaysStore = defineStore("days", {
             //return newArrayDays;
         },
         async getByContent(uuid = "") {
-            console.log("entered to getByContent");
             const tempContent = [];
+
             try {
                 const data = await getContentsRelationByDays(uuid);
                 if (data !== undefined) {
-                console.log(data, "data received from daysRequest");
+                    data.node.forEach((value) => {
+                        const objTemp = {
+                            title : value.node.title,
+                            path  : value.node.path,
+                            exp   : value.node.exp,
+                            desc  : value.node.desc,
+                            label : value.node.label
+                        };
 
-                data.node.forEach((value) => {
-                    const objTemp = {
-                        title : value.node.title,
-                        path  : value.node.path,
-                        exp   : value.node.exp,
-                        desc  : value.node.desc,
-                        label : value.node.label
-                    };
-                    console.log(objTemp, "objTemp");
-                    if (objTemp.path !== undefined) {
-                        tempContent.push(objTemp);
-                    }
-                });
-                    console.log(tempContent, "tempContent");
-                this.result = [...tempContent];
-                console.log(this.result, "result");
+                        if (objTemp.path !== undefined) {
+                            tempContent.push(objTemp);
+                        }
+                    });
+
+                    this.result = [...tempContent];
                 }
                 else {
-                    console.log("data is undefined");
+
                     const fakeObj = {
                         title : "Aún no hay contenido disponible",
                         path  : "Aún no hay contenido disponible",
@@ -54,7 +51,6 @@ export const useDaysStore = defineStore("days", {
                 }
             }
             catch (error) {
-                console.log(error);
                 this.result = [];
             }
         }
