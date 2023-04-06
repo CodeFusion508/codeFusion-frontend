@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { getDaysRequest, getContentsRelationByDays } from "../requests/daysRequest";
+import { getDaysRequest, getContentsRelationByDays } from "@/requests/daysRequest";
 
 export const useDaysStore = defineStore("days", {
     actions: {

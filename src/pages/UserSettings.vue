@@ -47,8 +47,9 @@
 </template>
 
 <script>
-import { useUserStore } from "../store/userStore";
 import { mapActions, mapWritableState } from "pinia";
+import { useUserStore } from "@/store/userStore";
+
 export default {
   computed: {
     ...mapWritableState(useUserStore, ["userObj"])
@@ -80,7 +81,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .style-avatar {
   width: 150px;
   height: 150px;

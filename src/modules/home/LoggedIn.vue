@@ -76,8 +76,7 @@
 export default {
   data: () => {
     return {
-      fullExp     : 0,
-      fullPercent : {
+      fullPercent: {
         full     : 100,
         progress : 75
       }
@@ -93,7 +92,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .rotate-progress-bar {
   width: 150px;
   transform: rotate(-90deg) !important;

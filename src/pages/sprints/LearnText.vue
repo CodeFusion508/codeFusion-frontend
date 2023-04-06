@@ -10,7 +10,7 @@
 <script>
 import { mapState, mapActions } from "pinia";
 
-import { useModuleStore } from "../../store/moduleStore.js";
+import { useModuleStore } from "@/store/moduleStore.js";
 
 export default {
   data() {

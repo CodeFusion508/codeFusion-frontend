@@ -87,8 +87,8 @@
 <script>
 import { mapActions, mapState } from "pinia";
 
-import { useUserStore } from "../store/userStore";
-import { useAuthStore } from "../store/authStore";
+import { useUserStore } from "@/store/userStore";
+import { useAuthStore } from "@/store/authStore";
 
 export default {
   computed: {
@@ -120,13 +120,5 @@ export default {
 
 .nav-tabs .nav-link {
   padding: 0.5rem !important;
-}
-
-.icon-profile {
-  background-image: url('../pages/assets/profile.png');
-  background-size: 50px 50px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 </style>
