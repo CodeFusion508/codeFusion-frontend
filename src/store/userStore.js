@@ -5,7 +5,7 @@ import {
     createUserReq,
     logInUserReq,
     updateUserReq
-} from "../Requests/clientRequest.js";
+} from "../requests/clientRequest.js";
 
 
 export const useUserStore = defineStore("user", {
@@ -13,26 +13,25 @@ export const useUserStore = defineStore("user", {
         async createUser(userData) {
             const { data, token } = await createUserReq(userData);
 
-            this.userObj.name = data.node.properties.userName;
-            this.userObj.uuid = data.node.properties.uuid;
-
+            this.userObj.name = data.node.userName;
+            this.userObj.uuid = data.node.uuid;
             localStorage.setItem("uuid", this.userObj.uuid);
+
             return token;
         },
         async findUser() {
             const data = await getUserReq(this.userObj.uuid);
 
-            this.userObj.email = data.node.properties.email;
-            this.userObj.name = data.node.properties.userName;
+            this.userObj.email = data.node.email;
+            this.userObj.name = data.node.userName;
 
             return data;
         },
         async logInUser(userObj) {
             const { data, token } = await logInUserReq(userObj);
 
-            this.userObj.name = data.node.properties.userName;
-            this.userObj.uuid = data.node.properties.uuid;
-
+            this.userObj.name = data.node.userName;
+            this.userObj.uuid = data.node.uuid;
             localStorage.setItem("uuid", this.userObj.uuid);
 
             return token;
@@ -54,9 +53,6 @@ export const useUserStore = defineStore("user", {
 
             localStorage.removeItem("uuid");
         }
-    },
-    getters: {
-        getUserInfo: (state) => state.userObj,
     },
     state: () => {
         return {

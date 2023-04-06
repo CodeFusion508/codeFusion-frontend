@@ -19,12 +19,9 @@ export const useAuthStore = defineStore("auth", {
             router.push({ path: "/" });
         }
     },
-    getters: {
-        getAuthToken: (state) => state.authToken,
-    },
     state: () => {
         return {
             authToken: localStorage.getItem("tkn")
         };
-    },
+    }
 });

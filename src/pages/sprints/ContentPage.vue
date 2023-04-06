@@ -4,7 +4,7 @@
   <div class="align-self-start" style="width: 70%;">
     <ol class=" list-group list-group-flush list-group-numbered">
       <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
-        <router-link to="/lecciones/modulo/leccionVideo" style="text-decoration: none; color: inherit;">
+        <router-link to="/lecciones/dias/contenido/leccionVideo" style="text-decoration: none; color: inherit;">
           <div class="ms-2 me-auto">
             <div class="fw-bold text-white">
               Introducción a HTML
@@ -21,7 +21,7 @@
       </li>
 
       <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
-        <router-link to="/lecciones/modulo/problemas" style="text-decoration: none; color: inherit;">
+        <router-link to="/lecciones/dias/contenido/problemas" style="text-decoration: none; color: inherit;">
           <div class="ms-2 me-auto">
             <div class="fw-bold text-white">
               Problemas
@@ -38,7 +38,7 @@
       </li>
 
       <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
-        <router-link to="/lecciones/modulo/leccionTexto" style="text-decoration: none; color: inherit;">
+        <router-link to="/lecciones/dias/contenido/leccionTexto" style="text-decoration: none; color: inherit;">
           <div class="ms-2 me-auto">
             <div class="fw-bold text-white">
               Introducción al Proyecto
@@ -57,7 +57,7 @@
       </li>
 
       <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
-        <router-link to="/lecciones/modulo/leccionTexto" style="text-decoration: none; color: inherit;">
+        <router-link to="/lecciones/dias/contenido/leccionTexto" style="text-decoration: none; color: inherit;">
           <div class="ms-2 me-auto">
             <div class="fw-bold text-white">
               Lección de HTML avanzado
@@ -79,7 +79,7 @@
       </li>
 
       <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
-        <router-link to="/lecciones/modulo/leccionVideo" style="text-decoration: none; color: inherit;">
+        <router-link to="/lecciones/dias/contenido/leccionVideo" style="text-decoration: none; color: inherit;">
           <div class="ms-2 me-auto">
             <div class="fw-bold text-white">
               Solución en video del proyecto
@@ -99,7 +99,7 @@
       </li>
 
       <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
-        <router-link to="/lecciones/modulo/leccionVideo" style="text-decoration: none; color: inherit;">
+        <router-link to="/lecciones/dias/contenido/leccionVideo" style="text-decoration: none; color: inherit;">
           <div class="ms-2 me-auto">
             <div class="fw-bold text-white">
               Última lección de HTML en video
@@ -120,7 +120,7 @@
       </li>
 
       <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action rounded">
-        <router-link to="/lecciones/modulo/cuestionario" style="text-decoration: none; color: inherit;">
+        <router-link to="/lecciones/dias/contenido/cuestionario" style="text-decoration: none; color: inherit;">
           <div class="ms-2 me-auto">
             <div class="fw-bold text-white">
               Cuestionario

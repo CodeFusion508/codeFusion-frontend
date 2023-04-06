@@ -18,9 +18,9 @@ export const getUserReq = async (uuid) => {
         .catch((error) => err = error);
 
     if (err) {
-        useToastStore().Activated({ text: err.message, title: "Usuarios" });
+        useToastStore().Activated({ text: err.response.data, title: "Usuarios" });
 
-        throw new Error(err.message);
+        throw new Error(err.response.data);
     }
 
     return data;
@@ -45,9 +45,9 @@ export const createUserReq = async ({
         .catch((error) => err = error);
 
     if (err) {
-        useToastStore().Activated({ text: err.message, title: "Usuarios" });
+        useToastStore().Activated({ text: err.response.data, title: "Usuarios" });
 
-        throw new Error(err.message);
+        //throw new Error(err.response.data);
     }
 
     return data;
@@ -58,7 +58,7 @@ export const logInUserReq = async ({ email, password }) => {
 
     const { data } = await axios({
         method : "post",
-        url    : `${import.meta.env.VITE_SERVER}${students}/logIn`,
+        url    : `${import.meta.env.VITE_SERVER}${students}/login`,
         data   : {
             email,
             password
@@ -67,9 +67,9 @@ export const logInUserReq = async ({ email, password }) => {
         .catch((error) => err = error);
 
     if (err) {
-        useToastStore().Activated({ text: err.message, title: "Usuarios" });
+        useToastStore().Activated({ text: err.response.data, title: "Usuarios" });
 
-        throw new Error(err.message);
+        throw new Error(err.response.data);
     }
 
     return data;
@@ -86,9 +86,9 @@ export const updateUserReq = async (dataUser) => {
         .catch((error) => err = error);
 
     if (err) {
-        useToastStore().Activated({ text: err.message, title: "Usuarios" });
+        useToastStore().Activated({ text: err.response.data, title: "Usuarios" });
 
-        throw new Error(err.message);
+        throw new Error(err.response.data);
     }
 
     return data;

@@ -22,6 +22,6 @@ export default {
   },
   computed: {
     ...mapState(useAuthStore, ["authToken"])
-  },
+  }
 };
 </script>

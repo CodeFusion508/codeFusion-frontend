@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useToastStore = defineStore("toastStore", {
+export const useToastStore = defineStore("toast", {
     actions: {
         Activated(data = {
             text  : "",

@@ -79,7 +79,7 @@ export default {
       fullExp     : 0,
       fullPercent : {
         full     : 100,
-        progress : 75,
+        progress : 75
       }
     };
   },
@@ -89,7 +89,7 @@ export default {
       const percentPixel = 150 * (percentFull / 100);
       return { clip: `rect(0px, ${percentPixel}px, 150px, 0px)` };
     }
-  },
+  }
 };
 </script>
 

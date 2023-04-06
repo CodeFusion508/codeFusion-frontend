@@ -47,8 +47,15 @@ module.exports = {
         "avoidEscape"           : true
       }
     ],
-    "semi"                                 : ["error", "always"],
-    "vue/component-definition-name-casing" : [
+    "semi"         : ["error", "always"],
+    "comma-dangle" : ["error", {
+      "arrays"    : "never",
+      "objects"   : "never",
+      "imports"   : "never",
+      "exports"   : "never",
+      "functions" : "never"
+    }],
+    "vue/component-definition-name-casing": [
       "error",
       "kebab-case"
     ],
