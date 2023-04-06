@@ -48,6 +48,7 @@
 
 <script>
 import { mapActions, mapWritableState } from "pinia";
+
 import { useUserStore } from "@/store/userStore";
 
 export default {
@@ -61,6 +62,7 @@ export default {
     ...mapActions(useUserStore, ["findUser", "updatedUser"]),
     async initialize() {
       this.userObj.avatar.image = "../src/pages/assets/profile.jpg";
+
       await this.findUser();
     },
     eventSelectedImage() {

@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <nav-bar />
   <div class="container-md">

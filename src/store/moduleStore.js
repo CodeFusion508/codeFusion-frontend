@@ -10,9 +10,6 @@ export const useModuleStore = defineStore("module", {
             return data;
         }
     },
-    getters: {
-        getLesson: (state) => state.lesson
-    },
     state: () => {
         return {
             lesson: ""
