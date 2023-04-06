@@ -9,7 +9,7 @@
               :class="
                 [
                   'content-item-day d-flex justify-content-center align-items-center',
-                  indexcontent === index ? 'content-activeted' : ''
+                  indexContent === index ? 'content-activated' : ''
                 ]"
               @click="getContent(item.uuid, index)"
             >
@@ -19,7 +19,7 @@
         </div>
       </div>
       <div v-if="result.length >= 1" class="col-md-12 col-sm-12 col-lg-12 col-12">
-        <time-line :index="indexcontent" :list-task="result" :day="days[indexcontent]" />
+        <time-line :index="indexContent" :list-task="result" :day="days[indexContent]" />
       </div>
     </div>
   </div>
@@ -34,52 +34,52 @@ import { useDaysStore } from "@/store/daysStore";
 import TimeLine from "./TimeLine.vue";
 
 export default {
-    components : { "time-line": TimeLine },
-    data       : () => {
-        return {
-            indexcontent: 0
-        };
-    },
-    computed: {
-        ...mapState(useAuthStore, ["authToken"]),
-        ...mapState(useDaysStore, ["days", "result"]),
-    },
-    async mounted() {
-        const res = await this.getDays();
-        console.log(res, "days with no relations");
-        if(this.days.length >= 1) {
-            try {
-                await this.getContent(this.days[this.indexcontent].uuid);
-            }
-            catch (e) {
-                console.log(e);
-            }
-        }
-    },
-    methods: {
-        ...mapActions(useDaysStore, ["getDays", "getByContent"]),
-
-        async getContent(uuid, index) {
-            const res = await this.getByContent(uuid);
-            console.log(res, "content with relations");
-            this.indexcontent = index;
-        }
+  components : { "time-line": TimeLine },
+  data       : () => {
+    return {
+      indexContent: 0
+    };
+  },
+  computed: {
+    ...mapState(useAuthStore, ["authToken"]),
+    ...mapState(useDaysStore, ["days", "result"]),
+  },
+  async mounted() {
+    const res = await this.getDays();
+    console.log(res, "days with no relations");
+    if (this.days.length >= 1) {
+      try {
+        await this.getContent(this.days[this.indexContent].uuid);
+      }
+      catch (e) {
+        console.log(e);
+      }
     }
+  },
+  methods: {
+    ...mapActions(useDaysStore, ["getDays", "getByContent"]),
+
+    async getContent(uuid, index) {
+      const res = await this.getByContent(uuid);
+      console.log(res, "content with relations");
+      this.indexContent = index;
+    }
+  }
 };
 </script>
 
 <style>
 .content-item-day {
-    height: 55px;
-    border-bottom: 1px solid #727cf5;
-    cursor: pointer;
+  height: 55px;
+  border-bottom: 1px solid #727cf5;
+  cursor: pointer;
 }
 
 .content-item-day:hover {
-    background-color: rgba(114, 124, 245, 0.09);
+  background-color: rgba(114, 124, 245, 0.09);
 }
 
-.content-activeted {
-    background-color: rgba(114, 124, 245, 0.09);
+.content-activated {
+  background-color: rgba(114, 124, 245, 0.09);
 }
 </style>

@@ -46,7 +46,7 @@ export const createUserReq = async ({
 
     if (err) {
         useToastStore().Activated({ text: err.response.data, title: "Usuarios" });
-        console.log(err.response.data);
+
         //throw new Error(err.response.data);
     }
 
