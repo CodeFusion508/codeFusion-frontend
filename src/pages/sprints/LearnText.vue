@@ -22,7 +22,7 @@ export default {
     ...mapState(useModuleStore, ["lesson"])
   },
   beforeMount() {
-    this.getMd("section1/javascript/day1.md");
+    this.getMd("section1/javascript/day1/lessonText.md");
   },
   methods: {
     ...mapActions(useModuleStore, ["getText"]),
