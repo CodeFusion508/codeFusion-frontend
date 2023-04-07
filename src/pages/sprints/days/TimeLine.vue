@@ -11,15 +11,11 @@
         </h6>
         <div>
           <ul class="timeline">
-            <li
-              v-for="(item, ind) in listTask"
-              :key="ind"
-              class="event"
-            >
+            <li v-for="(obj, ind) in listTask" :key="ind" class="event">
               <div>
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.desc }}</p>
-                <label>Earn {{ item.exp }} experience</label>
+                <h3>{{ obj.title }}</h3>
+                <p>{{ obj.desc }}</p>
+                <label>Earn {{ obj.exp }} experience</label>
                 <div>
                   <div>
                     <button class="btn btn-primary">
@@ -47,41 +43,18 @@
 </template>
 
 <script>
-import {mapState} from "pinia";
-import {useDaysStore} from "@/store/daysStore.js";
-import router from "@/router/router.js";
-
 export default {
-  props: ["index", "listTask", "day"],/*{
-    day: {
-      type    : Object,
-      default : () => { return {}; }
-    },
-    listTask: {
-      type    : Array,
-      default : () => []
-    },
-    index: {
-      type    : Number,
-      default : () => 1
-    }
-  },*/
+  props   : ["index", "listTask", "day"],
+  methods : {
+    checkType(type, expected) {
+      if (type === expected) {
+        return true;
+      } else {
+        return false;
 
-    mounted() {
-        console.log("reached mounted");
-        console.log(this.listTask, "listTask inside timeline");
-        console.log(this.day, "day inside timeline");
-        console.log(this.index, "index inside timeline");
-    },
-    methods: {
-        checkType(type, expected) {
-            if (type === expected) {
-                console.log("type is", type, "expected", expected);
-                return true;
-            }
-            return false;
-        }
+      }
     }
+  }
 };
 </script>
 

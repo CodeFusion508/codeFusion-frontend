@@ -15,7 +15,8 @@ export const getDaysRequest = async () => {
 
     if (err) {
         useToastStore().Activated({ text: err.response.data, title: "Days" });
-        throw new Error(err.response.data);
+
+        // throw new Error(err.response.data);
     }
 
     return data;

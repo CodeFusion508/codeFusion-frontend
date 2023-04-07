@@ -18,10 +18,9 @@
           </div>
         </div>
       </div>
-        <!--This div is loading since day component loads beacause of indexContent being default to 0 so timeline loads with no data-->
+      <!--This div is loading since day component loads beacause of indexContent being default to 0 so timeline loads with no data-->
       <div v-if="result.length >= 1" class="col-md-12 col-sm-12 col-lg-12 col-12">
         <time-line
-          :key="counter"
           :index="indexContent"
           :list-task="result"
           :day="days[indexContent]"
@@ -41,37 +40,31 @@ import { useDaysStore } from "@/store/daysStore";
 import TimeLine from "./TimeLine.vue";
 
 export default {
-    components: {"time-line": TimeLine},
-    async beforeMount() {
-        await this.getDays();
+  components : { "time-line": TimeLine },
+  data       : () => {
+    return {
+      indexContent: 0
+    };
+  },
+  computed: {
+    ...mapState(useAuthStore, ["authToken"]),
+    ...mapState(useDaysStore, ["days", "result"])
+  },
+  async created() {
+    await this.getDays();
 
-        if (this.days.length >= 1) {
-            await this.getContent(this.days[this.indexContent].uuid);
-        }
-    },
-    computed: {
-        ...mapState(useAuthStore, ["authToken"]),
-        ...mapState(useDaysStore, ["days", "result"])
-    },
-    data: () => {
-        return {
-            indexContent : 0,
-            counter      : 0
-        };
-    },
-    methods: {
-        ...mapActions(useDaysStore, ["getDays", "getByContent"]),
-
-        async getContent(uuid, index) {
-            this.counter = this.counter + 1;
-            await this.getByContent(uuid);
-            this.indexContent = index;
-            console.log(index, "index  being sent from day page");
-            console.log(uuid, "uuid being sent from day page");
-            console.log(this.result, "result being sent from day page");
-            console.log(this.days[this.indexContent], "day being sent from day page");
-        }
+    if (this.days.length >= 1) {
+      await this.getContent(this.days[this.indexContent].uuid);
     }
+  },
+  methods: {
+    ...mapActions(useDaysStore, ["getDays", "getByContent"]),
+    async getContent(uuid, index) {
+      await this.getByContent(uuid);
+
+      this.indexContent = index;
+    }
+  }
 };
 </script>
 
