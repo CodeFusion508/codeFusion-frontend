@@ -18,6 +18,7 @@
           </div>
         </div>
       </div>
+        <!--This div is loading since day component loads beacause of indexContent being default to 0 so timeline loads with no data-->
       <div v-if="result.length >= 1" class="col-md-12 col-sm-12 col-lg-12 col-12">
         <time-line
           :key="counter"
