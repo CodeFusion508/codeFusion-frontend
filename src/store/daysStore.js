@@ -13,15 +13,15 @@ export const useDaysStore = defineStore("days", {
         async getByContent(uuid = "") {
             const tempContent = [];
             const data = await getContentsRelationByDays(uuid);
-
+try {
             if (data) {
                 data.node.forEach((value) => {
                     const objTemp = {
-                        title : value.node.title,
-                        path  : value.node.path,
-                        exp   : value.node.exp,
-                        desc  : value.node.desc,
-                        label : value.node.label
+                        title: value.node.title,
+                        path: value.node.path,
+                        exp: value.node.exp,
+                        desc: value.node.desc,
+                        labels: value.node.labels
                     };
 
                     if (objTemp.path) {
@@ -30,17 +30,20 @@ export const useDaysStore = defineStore("days", {
                 });
 
                 this.result = [...tempContent];
-            }
-            else {
+            } else {
                 const fakeObj = {
-                    title : "Aún no hay contenido disponible",
-                    path  : "Aún no hay contenido disponible",
-                    exp   : "Aún no hay contenido disponible",
-                    desc  : "Aún no hay contenido disponible",
-                    label : "Aún no hay contenido disponible"
+                    title: "Aún no hay contenido disponible",
+                    path: "Aún no hay contenido disponible",
+                    exp: "Aún no hay contenido disponible",
+                    desc: "Aún no hay contenido disponible",
+                    label: "Aún no hay contenido disponible"
                 };
                 this.result[0] = fakeObj;
             }
+        } catch (error) {
+            console.log(error);
+            this.result = [];
+        }
         }
     },
     state: () => {

@@ -15,47 +15,29 @@
               v-for="(item, ind) in listTask"
               :key="ind"
               class="event"
-              :data-date="item.hours"
             >
-              <router-link
-                v-if="item.label[1] === 'video'"
-                to="/lecciones/dias/contenido/leccionTexto"
-                style="text-decoration: none; color: inherit;"
-              >
+              <div>
                 <h3>{{ item.title }}</h3>
                 <p>{{ item.desc }}</p>
                 <label>Earn {{ item.exp }} experience</label>
-              </router-link>
-
-              <router-link
-                v-if="item.label[1] === 'text'"
-                to="/lecciones/dias/contenido/leccionVideo"
-                style="text-decoration: none; color: inherit;"
-              >
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.desc }}</p>
-                <label>Earn {{ item.exp }} experience</label>
-              </router-link>
-
-              <router-link
-                v-if="item.label[1] === 'problems'"
-                to="/lecciones/dias/contenido/problemas"
-                style="text-decoration: none; color: inherit;"
-              >
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.desc }}</p>
-                <label>Earn {{ item.exp }} experience</label>
-              </router-link>
-
-              <router-link
-                v-if="item.label[1] === 'quiz'"
-                to="/lecciones/dias/contenido/cuestionario"
-                style="text-decoration: none; color: inherit;"
-              >
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.desc }}</p>
-                <label>Earn {{ item.exp }} experience</label>
-              </router-link>
+                <div>
+                  <div>
+                    <button class="btn btn-primary">
+                      Ver
+                    </button>
+                  </div>
+                  <div>
+                    <button class="btn btn-primary">
+                      Ver
+                    </button>
+                  </div>
+                  <div>
+                    <button class="btn btn-primary">
+                      Ver
+                    </button>
+                  </div>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
@@ -65,8 +47,12 @@
 </template>
 
 <script>
+import {mapState} from "pinia";
+import {useDaysStore} from "@/store/daysStore.js";
+import router from "@/router/router.js";
+
 export default {
-  props: {
+  props: ["index", "listTask", "day"],/*{
     day: {
       type    : Object,
       default : () => { return {}; }
@@ -77,9 +63,25 @@ export default {
     },
     index: {
       type    : Number,
-      default : () => 0
+      default : () => 1
     }
-  }
+  },*/
+
+    mounted() {
+        console.log("reached mounted");
+        console.log(this.listTask, "listTask inside timeline");
+        console.log(this.day, "day inside timeline");
+        console.log(this.index, "index inside timeline");
+    },
+    methods: {
+        checkType(type, expected) {
+            if (type === expected) {
+                console.log("type is", type, "expected", expected);
+                return true;
+            }
+            return false;
+        }
+    }
 };
 </script>
 

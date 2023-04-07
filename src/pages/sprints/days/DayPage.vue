@@ -19,7 +19,12 @@
         </div>
       </div>
       <div v-if="result.length >= 1" class="col-md-12 col-sm-12 col-lg-12 col-12">
-        <time-line :index="indexContent" :list-task="result" :day="days[indexContent]" />
+        <time-line
+          :key="counter"
+          :index="indexContent"
+          :list-task="result"
+          :day="days[indexContent]"
+        />
       </div>
     </div>
   </div>
@@ -35,32 +40,37 @@ import { useDaysStore } from "@/store/daysStore";
 import TimeLine from "./TimeLine.vue";
 
 export default {
-  components : { "time-line": TimeLine },
-  data       : () => {
-    return {
-      indexContent: 0
-    };
-  },
-  computed: {
-    ...mapState(useAuthStore, ["authToken"]),
-    ...mapState(useDaysStore, ["days", "result"])
-  },
-  async mounted() {
-    await this.getDays();
+    components: {"time-line": TimeLine},
+    async beforeMount() {
+        await this.getDays();
 
-    if (this.days.length >= 1) {
-      await this.getContent(this.days[this.indexContent].uuid);
+        if (this.days.length >= 1) {
+            await this.getContent(this.days[this.indexContent].uuid);
+        }
+    },
+    computed: {
+        ...mapState(useAuthStore, ["authToken"]),
+        ...mapState(useDaysStore, ["days", "result"])
+    },
+    data: () => {
+        return {
+            indexContent : 0,
+            counter      : 0
+        };
+    },
+    methods: {
+        ...mapActions(useDaysStore, ["getDays", "getByContent"]),
+
+        async getContent(uuid, index) {
+            this.counter = this.counter + 1;
+            await this.getByContent(uuid);
+            this.indexContent = index;
+            console.log(index, "index  being sent from day page");
+            console.log(uuid, "uuid being sent from day page");
+            console.log(this.result, "result being sent from day page");
+            console.log(this.days[this.indexContent], "day being sent from day page");
+        }
     }
-  },
-  methods: {
-    ...mapActions(useDaysStore, ["getDays", "getByContent"]),
-
-    async getContent(uuid, index) {
-      await this.getByContent(uuid);
-
-      this.indexContent = index;
-    }
-  }
 };
 </script>
 
