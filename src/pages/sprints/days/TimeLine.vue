@@ -49,10 +49,10 @@ export default {
     checkType(type, expected) {
       if (type === expected) {
         return true;
-      } else {
+      }
         return false;
 
-      }
+
     }
   }
 };
