@@ -34,18 +34,18 @@
 </template>
 
 <script>
-import {mapActions, mapState} from "pinia";
-import {useContentStore} from "@/store/contentStore.js";
-import {logInUserReq} from "@/requests/clientRequest.js";
+import { mapActions, mapState } from "pinia";
+
+import { useContentStore } from "@/store/contentStore.js";
 
 export default {
   props   : ["index", "listTask", "day"],
   methods : {
-      ...mapActions(useContentStore, ["selectContent"]),
+    ...mapActions(useContentStore, ["selectContent"]),
     changeRouter(router = "", contIndex) {
-        this.selectContent(contIndex);
-        mapState(useContentStore, ["contIndex"]);
-        console.log(contIndex, "contIndex sent to Video component");
+      this.selectContent(contIndex);
+      mapState(useContentStore, ["contIndex"]);
+
       this.$router.push({ name: router });
     },
     getRouterPath(labels = []) {
@@ -67,10 +67,7 @@ export default {
       }
       throw ({ message: "The labels not content more 1 element" });
     }
-  },
-    mounted: function () {
-        console.log(this.listTask);
-    }
+  }
 };
 </script>
 

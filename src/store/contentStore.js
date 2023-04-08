@@ -9,7 +9,7 @@ export const useContentStore = defineStore("content", {
 
             return this.lesson;
         },
-         selectContent(index) {
+        selectContent(index) {
             this.contIndex = index;
         }
     },
