@@ -48,10 +48,10 @@ export default {
     },
     getRouterPath(labels = []) {
       if (labels.length >= 1) {
-        const [secondLabels] = labels;
+        const [, secondLabels] = labels;
 
         switch (secondLabels) {
-          case "Problem":
+          case "Problems":
             return "content-lessons-problems";
           case "Video":
             return "content-lessons-video";
