@@ -1,14 +1,18 @@
 import { defineStore } from "pinia";
 import { getDaysRequest, getContentsRelationByDays } from "@/requests/daysRequest";
+import { getSprintByUuid } from "@/requests/sprintsRequest";
 
 export const useDaysStore = defineStore("days", {
     actions: {
-        async getDays() {
-            const data = await getDaysRequest();
+        async getDaysByModule() {
+            const data = await getSprintByUuid(this.uuiModule);
+            this.days = data.node.map(value => {
+                return {
+                    uuid: value.node.uuid,
+                    desc: value.node.desc
+                }
+            })
 
-            this.days = [...data.node];
-
-            return data;
         },
         async getByContent(uuid = "") {
             const tempContent = [];
@@ -40,12 +44,16 @@ export const useDaysStore = defineStore("days", {
                 };
                 this.result[0] = fakeObj;
             }
+        },
+        setUuidMddule(uuiModule = "") {
+            this.uuiModule = uuiModule
         }
     },
     state: () => {
         return {
-            days   : [],
-            result : []
+            days     : [],
+            result   : [],
+            uuiModule: ''
         };
     }
 });

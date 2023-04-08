@@ -3,7 +3,7 @@
     <div class="card border-0 shadow-sm">
       <div class="card-body">
         <h6 class="card-title text-center py-3">
-          <h4>Day {{ index }}</h4>
+          <h4>Dia {{ index + 1 }}</h4>
           <h3 class="text-center">
             {{ day.desc }}
           </h3>
@@ -16,8 +16,11 @@
                 <h3>{{ obj.title }}</h3>
                 <p>{{ obj.desc }}</p>
                 <label>Earn {{ obj.exp }} experience</label>
-                <div>
-                  <div>
+                <div class="d-flex justify-content-end">
+                  <div class="col-sm-4 col-12" >
+                    <button class="btn btn-primary form-control" @click="changeRouter(getRouterPath(obj.labels))" >Ver selección</button>
+                  </div>
+                  <!-- <div>
                     <button class="btn btn-primary">
                       Ver
                     </button>
@@ -31,7 +34,7 @@
                     <button class="btn btn-primary">
                       Ver
                     </button>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </li>
@@ -51,10 +54,34 @@ export default {
         return true;
       }
         return false;
-
-
+    },
+    changeRouter(router = "") {
+      this.$router.push({ name: router })
+    },
+    getRouterPath(labels = []) {
+      if(labels.length >= 1) {
+        const secondLabels = labels[1]
+        switch (secondLabels) {
+          case 'Problem':
+            return 'content-lesseans-problems'
+          break;
+          case 'Video':
+            return 'content-lesseans-video'
+          break;
+          case 'Text':
+            return 'content-lesseans-text'
+          break;
+          case 'Quiz':
+            return 'cotenten-lesseans-quiz'
+          break;
+          default:
+            throw({ message: 'The label not found' })
+          break;
+        }
+      }
+      throw({ message: 'The labels not content more 1 element' })
     }
-  }
+  },
 };
 </script>
 

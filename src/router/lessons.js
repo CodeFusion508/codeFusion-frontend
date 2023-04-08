@@ -7,11 +7,11 @@ import ContentPage from "@/pages/sprints/ContentPage.vue";
 import DaysPage from "@/pages/sprints/days/DayPage.vue";
 
 export default [
-    { path: "/lecciones", component: LessonsPage },
-    { path: "/lecciones/dias", component: DaysPage },
+    { path: "/lecciones", component: LessonsPage, name: 'leasseans' },
+    { path: "/lecciones/dias", component: DaysPage, name: 'leasseans-day' },
     { path: "/lecciones/dias/contenido", component: ContentPage },
-    { path: "/lecciones/dias/contenido/leccionTexto", component: LearnText },
-    { path: "/lecciones/dias/contenido/leccionVideo", component: LearnVideo },
-    { path: "/lecciones/dias/contenido/problemas", component: ProblemsPage },
-    { path: "/lecciones/dias/contenido/cuestionario", component: QuizPage }
+    { path: "/lecciones/dias/contenido/leccionTexto", component: LearnText, name: 'content-lesseans-text' },
+    { path: "/lecciones/dias/contenido/leccionVideo", component: LearnVideo,name: 'content-lesseans-video' },
+    { path: "/lecciones/dias/contenido/problemas", component: ProblemsPage, name: 'content-lesseans-problems' },
+    { path: "/lecciones/dias/contenido/cuestionario", component: QuizPage, name: 'cotenten-lesseans-quiz' }
 ];

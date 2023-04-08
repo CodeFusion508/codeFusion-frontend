@@ -32,12 +32,9 @@ export const getContentsRelationByDays = async (uuid) => {
         .catch((error) => err = error);
 
     if (err) {
-        console.log(err);
         useToastStore().Activated({ text: err.response.data, title: "Days" });
-        console.log(err);
         //throw new Error(err.response.data);
     }
-    console.log(data, "data sent from daysRequest");
     return data;
 };
 
