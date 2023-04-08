@@ -8,20 +8,20 @@
 
     <div class="row g-0 text-center">
       <div
-        v-for="(itemModule, index) in modules"
+        v-for="(obj, index) in sprints"
         :key="index"
-        :class="['col-12 px-2 my-3', modules.length <= 3 ? 'col-sm' : 'col-sm-3']"
+        :class="['col-12 px-2 my-3', sprints.length <= 3 ? 'col-sm' : 'col-sm-3']"
       >
         <div class="card bg-dark-subtle border-0 shadow-sm">
           <div class="card-body">
             <h5 class="card-title text-white">
-              {{ itemModule.titleModule }}
+              {{ obj.title }}
             </h5>
             <hr>
             <p class="card-text text-white truncate-text-line">
-              {{ itemModule.descriptionModule }}
+              {{ obj.desc }}
             </p>
-            <button class="btn gradient-purple text-white" @click="changeRouteLessons(itemModule.uuid)">
+            <button class="btn gradient-purple text-white" @click="changeRouteLessons(obj.uuid)">
               Aprende
             </button>
           </div>
@@ -34,34 +34,24 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "pinia";
+
 import { useDaysStore } from "@/store/daysStore.js";
-import { mapActions } from "pinia";
-import { getAllSprints } from "@/requests/sprintsRequest";
+import { useSprintsStore } from "@/store/sprintsStore.js";
 
 export default {
-  data: () => {
-    return {
-      modules: []
-    };
+  computed: {
+    ...mapState(useSprintsStore, ["sprints"])
   },
   async mounted() {
-    await this.initialize();
+    await this.getSprints();
   },
   methods: {
     ...mapActions(useDaysStore, ["getDaysBySprintUuid"]),
+    ...mapActions(useSprintsStore, ["getSprints"]),
     changeRouteLessons(uuid) {
       this.getDaysBySprintUuid(uuid);
       this.$router.push({ name: "lessons-day" });
-    },
-    async initialize() {
-      const response = await getAllSprints();
-      this.modules = response.map(value => {
-        return {
-          titleModule       : value.title,
-          descriptionModule : value.desc,
-          uuid              : value.uuid
-        };
-      });
     }
   }
 };
