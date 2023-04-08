@@ -3,7 +3,7 @@
     <div class="card border-0 shadow-sm">
       <div class="card-body">
         <h6 class="card-title text-center py-3">
-          <h4>Dia {{ index + 1 }}</h4>
+          <h4>Día {{ index + 1 }}</h4>
           <h3 class="text-center">
             {{ day.desc }}
           </h3>
@@ -19,7 +19,7 @@
                 <label>Earn {{ obj.exp }} experience</label>
                 <div class="d-flex justify-content-end">
                   <div class="col-sm-4 col-12">
-                    <button class="btn btn-primary form-control" @click="changeRouter(getRouterPath(obj.labels))">
+                    <button class="btn btn-primary form-control" @click="changeRouter(getRouterPath(obj.labels), ind)">
                       Ver selección
                     </button>
                   </div>
@@ -34,16 +34,18 @@
 </template>
 
 <script>
+import {mapActions, mapState} from "pinia";
+import {useContentStore} from "@/store/contentStore.js";
+import {logInUserReq} from "@/requests/clientRequest.js";
+
 export default {
   props   : ["index", "listTask", "day"],
   methods : {
-    checkType(type, expected) {
-      if (type === expected) {
-        return true;
-      }
-      return false;
-    },
-    changeRouter(router = "") {
+      ...mapActions(useContentStore, ["selectContent"]),
+    changeRouter(router = "", contIndex) {
+        this.selectContent(contIndex);
+        mapState(useContentStore, ["contIndex"]);
+        console.log(contIndex, "contIndex sent to Video component");
       this.$router.push({ name: router });
     },
     getRouterPath(labels = []) {
@@ -65,7 +67,10 @@ export default {
       }
       throw ({ message: "The labels not content more 1 element" });
     }
-  }
+  },
+    mounted: function () {
+        console.log(this.listTask);
+    }
 };
 </script>
 

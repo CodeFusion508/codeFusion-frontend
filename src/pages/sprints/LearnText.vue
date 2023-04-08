@@ -2,7 +2,7 @@
 <template>
   <nav-bar />
   <div class="container-md">
-    <md-block :mdContent="md" />
+    <md-block :mdContent="lesson" />
   </div>
 
   <nav-footer />
@@ -12,26 +12,20 @@
 import { mapState, mapActions } from "pinia";
 
 import { useContentStore } from "@/store/contentStore.js";
+import {useDaysStore} from "@/store/daysStore.js";
 
 export default {
-  data() {
-    return {
-      md: ""
-    };
-  },
+    created() {
+      this.getText(this.result[this.contIndex].path);
+        console.log(this.result[this.contIndex], "result received on learnText");
+        console.log(this.lesson, "lesson received on learnText");
+    },
   computed: {
-    ...mapState(useContentStore, ["lesson"])
-  },
-  beforeMount() {
-    this.getMd("section1/javascript/day1/lessonText.md");
+    ...mapState(useContentStore, ["lesson", "contIndex"]),
+      ...mapState(useDaysStore, ["result"])
   },
   methods: {
-    ...mapActions(useContentStore, ["getText"]),
-    async getMd(path) {
-      const data = await this.getText(path);
-
-      this.md = data;
-    }
+    ...mapActions(useContentStore, ["getText"])
   }
 };
 </script>

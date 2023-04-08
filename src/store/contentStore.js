@@ -1,18 +1,22 @@
 import { defineStore } from "pinia";
 
-import { getMD } from "../requests/daysRequest.js";
+import { getMD } from "../requests/contentRequest.js";
 
 export const useContentStore = defineStore("content", {
     actions: {
         async getText(path) {
-            const data = await getMD(path);
+            this.lesson = await getMD(path);
 
-            return data;
+            return this.lesson;
+        },
+         selectContent(index) {
+            this.contIndex = index;
         }
     },
     state: () => {
         return {
-            lesson: ""
+            lesson    : "",
+            contIndex : 0
         };
     }
 });

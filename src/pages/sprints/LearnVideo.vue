@@ -1,10 +1,9 @@
 <template>
   <nav-bar />
-
-  <div style="position: fit-content; overflow: hidden; width: 100%;">
+  <div style="position: fit-content; overflow: hidden; width: 80%;" class="mx-auto">
     <iframe
       class="vw-100 vh-100"
-      src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ"
+      :src="result[contIndex].link"
       title="YouTube video player"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -20,23 +19,30 @@
       alt="a filler image"
     >
     <p>
-      Lorem ipsum dolor sit amet consectetur adipiscing elit nisl quis, nullam odio sollicitudin natoque rutrum litora
-      ullamcorper in, auctor et eros pellentesque suspendisse morbi tristique nunc. Hac magna venenatis nam lacus conubia
-      malesuada molestie nostra auctor euismod velit pellentesque proin cursus, non iaculis in vehicula sapien dis tempor
-      sagittis nunc per eleifend etiam mi. Euismod posuere eu ultricies purus in himenaeos mollis bibendum habitant, eget
-      ligula integer nulla inceptos dictumst mauris maecenas, a viverra tortor eros aenean proin scelerisque hac. Netus
-      aliquam tincidunt turpis rhoncus pellentesque et, diam sociosqu feugiat pretium mollis, fermentum mi augue ut
-      lectus. Tempor sociosqu eu montes placerat iaculis ad gravida rutrum, leo ultrices morbi pretium elementum maecenas
-      curabitur.
+      {{ result[contIndex].desc }}
     </p>
     <p>
-      At phasellus orci gravida dapibus suscipit egestas mollis ac dictumst, lacinia erat proin quam molestie conubia
-      quis nibh nascetur, ad pellentesque consequat vitae ligula posuere varius in. Sollicitudin hac morbi habitasse et
-      risus facilisis, litora velit semper curabitur dictumst convallis, tincidunt pretium ornare sociis himenaeos. Per
-      orci magna tristique proin viverra feugiat sed porttitor montes, inceptos nisi cubilia quis ad aliquet ullamcorper
-      vitae, ridiculus habitasse bibendum nascetur nibh eros fusce lobortis.
+      Here goes the info that we get from the MD
     </p>
   </div>
 
   <nav-footer />
 </template>
+<script>
+import {mapState} from "pinia";
+import {useContentStore} from "@/store/contentStore.js";
+import {useDaysStore} from "@/store/daysStore.js";
+
+export default {
+  name     : "learn-video",
+  computed : {
+      ...mapState(useContentStore, ["contIndex"]),
+      ...mapState(useDaysStore, ["result"])
+  },
+    created() {
+    console.log(this.result[this.contIndex], "result received on learn video");
+    },
+  methods: {
+  }
+};
+</script>
