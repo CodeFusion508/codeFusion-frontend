@@ -11,7 +11,7 @@
 <script>
 import { mapState, mapActions } from "pinia";
 
-import { useModuleStore } from "@/store/moduleStore.js";
+import { contentStore } from "@/store/moduleStore.js";
 
 export default {
   data() {
@@ -20,13 +20,13 @@ export default {
     };
   },
   computed: {
-    ...mapState(useModuleStore, ["lesson"])
+    ...mapState(contentStore, ["lesson"])
   },
   beforeMount() {
     this.getMd("section1/javascript/day1/lessonText.md");
   },
   methods: {
-    ...mapActions(useModuleStore, ["getText"]),
+    ...mapActions(contentStore, ["getText"]),
     async getMd(path) {
       const data = await this.getText(path);
 

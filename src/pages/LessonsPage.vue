@@ -21,7 +21,7 @@
             <p class="card-text text-white truncate-text-line">
               {{ itemModule.descriptionModule }}
             </p>
-            <button class="btn gradient-purple text-white" @click="changeRouteLesseans(itemModule.uuid)">
+            <button class="btn gradient-purple text-white" @click="changeRouteLessons(itemModule.uuid)">
               Aprende
             </button>
           </div>
@@ -34,34 +34,35 @@
 </template>
 
 <script>
-import { useDaysStore } from '@/store/daysStore.js'
-import { mapActions } from 'pinia'
-import { getAllSprints } from '@/requests/sprintsRequest'
+import { useDaysStore } from "@/store/daysStore.js";
+import { mapActions } from "pinia";
+import { getAllSprints } from "@/requests/sprintsRequest";
+
 export default {
   data: () => {
     return {
       modules: []
     };
   },
+  async mounted() {
+    await this.initialize();
+  },
   methods: {
-    ...mapActions(useDaysStore, ["setUuidMddule"]),
-    changeRouteLesseans(uuid) {
-      this.setUuidMddule(uuid)
-      this.$router.push({ name: 'leasseans-day' })
+    ...mapActions(useDaysStore, ["getDaysBySprintUuid"]),
+    changeRouteLessons(uuid) {
+      this.getDaysBySprintUuid(uuid);
+      this.$router.push({ name: "lessons-day" });
     },
     async initialize() {
-      const response = await getAllSprints()
+      const response = await getAllSprints();
       this.modules = response.map(value => {
         return {
-            titleModule: value.title,
-            descriptionModule: value.desc,
-            uuid: value.uuid
-        }
-      })
+          titleModule       : value.title,
+          descriptionModule : value.desc,
+          uuid              : value.uuid
+        };
+      });
     }
-  },
-  async mounted() {
-    await this.initialize()
   }
 };
 </script>

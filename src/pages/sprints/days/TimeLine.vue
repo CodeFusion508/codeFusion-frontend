@@ -9,6 +9,7 @@
           </h3>
           <hr class="hr hr-blurry">
         </h6>
+
         <div>
           <ul class="timeline">
             <li v-for="(obj, ind) in listTask" :key="ind" class="event">
@@ -17,24 +18,11 @@
                 <p>{{ obj.desc }}</p>
                 <label>Earn {{ obj.exp }} experience</label>
                 <div class="d-flex justify-content-end">
-                  <div class="col-sm-4 col-12" >
-                    <button class="btn btn-primary form-control" @click="changeRouter(getRouterPath(obj.labels))" >Ver selección</button>
-                  </div>
-                  <!-- <div>
-                    <button class="btn btn-primary">
-                      Ver
+                  <div class="col-sm-4 col-12">
+                    <button class="btn btn-primary form-control" @click="changeRouter(getRouterPath(obj.labels))">
+                      Ver selección
                     </button>
                   </div>
-                  <div>
-                    <button class="btn btn-primary">
-                      Ver
-                    </button>
-                  </div>
-                  <div>
-                    <button class="btn btn-primary">
-                      Ver
-                    </button>
-                  </div> -->
                 </div>
               </div>
             </li>
@@ -53,35 +41,31 @@ export default {
       if (type === expected) {
         return true;
       }
-        return false;
+      return false;
     },
     changeRouter(router = "") {
-      this.$router.push({ name: router })
+      this.$router.push({ name: router });
     },
     getRouterPath(labels = []) {
-      if(labels.length >= 1) {
-        const secondLabels = labels[1]
+      if (labels.length >= 1) {
+        const [secondLabels] = labels;
+
         switch (secondLabels) {
-          case 'Problem':
-            return 'content-lesseans-problems'
-          break;
-          case 'Video':
-            return 'content-lesseans-video'
-          break;
-          case 'Text':
-            return 'content-lesseans-text'
-          break;
-          case 'Quiz':
-            return 'cotenten-lesseans-quiz'
-          break;
+          case "Problem":
+            return "content-lessons-problems";
+          case "Video":
+            return "content-lessons-video";
+          case "Text":
+            return "content-lessons-text";
+          case "Quiz":
+            return "content-lessons-quiz";
           default:
-            throw({ message: 'The label not found' })
-          break;
+            throw ({ message: "The label not found" });
         }
       }
-      throw({ message: 'The labels not content more 1 element' })
+      throw ({ message: "The labels not content more 1 element" });
     }
-  },
+  }
 };
 </script>
 

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useToastStore } from "@/store/toastStore.js";
-//import {useAuthStore} from "../../store/authStore.js"
 
 const days = "days";
 
@@ -33,6 +32,7 @@ export const getContentsRelationByDays = async (uuid) => {
 
     if (err) {
         useToastStore().Activated({ text: err.response.data, title: "Days" });
+
         //throw new Error(err.response.data);
     }
     return data;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useToastStore } from "@/store/toastStore.js";
-import {  } from "@/store/moduleStore.js"
+import { } from "@/store/moduleStore.js";
 
 const path = "sprints";
 
@@ -15,13 +15,14 @@ export const getAllSprints = async () => {
 
     if (err) {
         useToastStore().Activated({ text: err.response.data, title: "Sprints" });
+
         // throw new Error(err.response.data);
     }
     return data.node;
 };
 
 export const getSprintByUuid = async (uuid = "") => {
-    let err; 
+    let err;
 
     const { data } = await axios({
         method : "get",
@@ -31,8 +32,9 @@ export const getSprintByUuid = async (uuid = "") => {
 
     if (err) {
         useToastStore().Activated({ text: err.response.data, title: "Sprints" });
+
         // throw new Error(err.response.data);
     }
 
-    return data
-}
+    return data;
+};

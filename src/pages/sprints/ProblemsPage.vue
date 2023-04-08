@@ -38,6 +38,7 @@ export default {
   },
   methods: {
     handleChange() {
+      console.log(this.code);
     }
   }
 };

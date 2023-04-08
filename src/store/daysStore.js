@@ -5,13 +5,14 @@ import { getSprintByUuid } from "@/requests/sprintsRequest";
 export const useDaysStore = defineStore("days", {
     actions: {
         async getDaysByModule() {
-            const data = await getSprintByUuid(this.uuiModule);
+            const data = await getSprintByUuid(this.sprintUuid);
+
             this.days = data.node.map(value => {
                 return {
-                    uuid: value.node.uuid,
-                    desc: value.node.desc
-                }
-            })
+                    uuid : value.node.uuid,
+                    desc : value.node.desc
+                };
+            });
 
         },
         async getByContent(uuid = "") {
@@ -36,24 +37,24 @@ export const useDaysStore = defineStore("days", {
                 this.result = [...tempContent];
             } else {
                 const fakeObj = {
-                    title : "Aún no hay contenido disponible",
-                    path  : "Aún no hay contenido disponible",
-                    exp   : "Aún no hay contenido disponible",
-                    desc  : "Aún no hay contenido disponible",
-                    label : "Aún no hay contenido disponible"
+                    title  : "Aún no hay contenido disponible",
+                    path   : "Aún no hay contenido disponible",
+                    exp    : "Aún no hay contenido disponible",
+                    desc   : "Aún no hay contenido disponible",
+                    labels : "Aún no hay contenido disponible"
                 };
                 this.result[0] = fakeObj;
             }
         },
-        setUuidMddule(uuiModule = "") {
-            this.uuiModule = uuiModule
+        getDaysBySprintUuid(uuid) {
+            this.sprintUuid = uuid;
         }
     },
     state: () => {
         return {
-            days     : [],
-            result   : [],
-            uuiModule: ''
+            days       : [],
+            result     : [],
+            sprintUuid : ""
         };
     }
 });
