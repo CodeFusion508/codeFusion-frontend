@@ -39,8 +39,21 @@ import { mapActions, mapState } from "pinia";
 import { useContentStore } from "@/store/contentStore.js";
 
 export default {
-  props   : ["index", "listTask", "day"],
-  methods : {
+  props: {
+    index: {
+      type    : Number,
+      default : () => 0
+    },
+    listTask: {
+      type    : Array,
+      default : () => []
+    },
+    day: {
+      type    : Object,
+      default : () => { return {}; }
+    }
+  },
+  methods: {
     ...mapActions(useContentStore, ["selectContent"]),
     changeRouter(router = "", contIndex) {
       this.selectContent(contIndex);
