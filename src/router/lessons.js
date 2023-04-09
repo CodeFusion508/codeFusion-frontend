@@ -17,12 +17,12 @@ export default [
         name      : "lessons-day"
     },
     {
-        path      : "/lecciones/dias/leccionTexto",
+        path      : "/lecciones/dias/texto",
         component : LearnText,
         name      : "content-text"
     },
     {
-        path      : "/lecciones/dias/leccionVideo",
+        path      : "/lecciones/dias/video",
         component : LearnVideo,
         name      : "content-video"
     },

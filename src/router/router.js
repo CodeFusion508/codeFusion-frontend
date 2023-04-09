@@ -13,8 +13,8 @@ import ArticlesPage from "@/pages/ArticlesPage.vue";
 // routes arrays
 let baseRoutes = [
   { path: "/", component: HomePage },
-  { path: "/deNosotros", component: AboutUs },
-  { path: "/creaSesion", component: SignUp },
+  { path: "/nosotros", component: AboutUs },
+  { path: "/session", component: SignUp },
   {
     path        : "/ajustes",
     component   : UserSettings,
@@ -22,7 +22,7 @@ let baseRoutes = [
       if (localStorage.getItem("tkn") != null) {
         next();
       } else {
-        next({ to: "/creaSesion" });
+        next({ to: "/session" });
       }
     }
   },
