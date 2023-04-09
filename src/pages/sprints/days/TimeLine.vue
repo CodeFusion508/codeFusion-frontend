@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "pinia";
+import { mapActions } from "pinia";
 
 import { useContentStore } from "@/store/contentStore.js";
 
@@ -57,28 +57,24 @@ export default {
     ...mapActions(useContentStore, ["selectContent"]),
     changeRouter(router = "", contIndex) {
       this.selectContent(contIndex);
-      mapState(useContentStore, ["contIndex"]);
 
       this.$router.push({ name: router });
     },
     getRouterPath(labels = []) {
-      if (labels.length >= 1) {
-        const [, secondLabels] = labels;
+      const [, secondLabels] = labels;
 
-        switch (secondLabels) {
-          case "Problems":
-            return "content-lessons-problems";
-          case "Video":
-            return "content-lessons-video";
-          case "Text":
-            return "content-lessons-text";
-          case "Quiz":
-            return "content-lessons-quiz";
-          default:
-            throw ({ message: "The label not found" });
-        }
+      switch (secondLabels) {
+        case "Problems":
+          return "content-problems";
+        case "Video":
+          return "content-video";
+        case "Text":
+          return "content-text";
+        case "Quiz":
+          return "content-quiz";
+        default:
+          throw ({ message: "The label not found" });
       }
-      throw ({ message: "The labels not content more 1 element" });
     }
   }
 };
