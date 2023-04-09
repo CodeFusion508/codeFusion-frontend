@@ -21,7 +21,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/deNosotros" class="nav-link text-white">
+            <router-link to="/nosotros" class="nav-link text-white">
               De nosotros
             </router-link>
           </li>
@@ -40,7 +40,7 @@
         <div v-if="!authToken" class="navbar-nav">
           <div class="bs_header_btn_wrapper bs_signup_btn_blk ms-3">
             <router-link
-              to="/creaSesion"
+              to="/session"
               class="nav-item nav-link bg-primary text-white bs_signup_btn rounded gradient-purple"
             >
               Regístrate
