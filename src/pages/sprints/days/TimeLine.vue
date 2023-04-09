@@ -3,59 +3,28 @@
     <div class="card border-0 shadow-sm">
       <div class="card-body">
         <h6 class="card-title text-center py-3">
-          <h4>Day {{ index }}</h4>
+          <h4>Día {{ index + 1 }}</h4>
           <h3 class="text-center">
             {{ day.desc }}
           </h3>
           <hr class="hr hr-blurry">
         </h6>
+
         <div>
           <ul class="timeline">
-            <li
-              v-for="(item, ind) in listTask"
-              :key="ind"
-              class="event"
-              :data-date="item.hours"
-            >
-              <router-link
-                v-if="item.label[1] === 'video'"
-                to="/lecciones/dias/contenido/leccionTexto"
-                style="text-decoration: none; color: inherit;"
-              >
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.desc }}</p>
-                <label>Earn {{ item.exp }} experience</label>
-              </router-link>
-
-              <router-link
-                v-if="item.label[1] === 'text'"
-                to="/lecciones/dias/contenido/leccionVideo"
-                style="text-decoration: none; color: inherit;"
-              >
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.desc }}</p>
-                <label>Earn {{ item.exp }} experience</label>
-              </router-link>
-
-              <router-link
-                v-if="item.label[1] === 'problems'"
-                to="/lecciones/dias/contenido/problemas"
-                style="text-decoration: none; color: inherit;"
-              >
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.desc }}</p>
-                <label>Earn {{ item.exp }} experience</label>
-              </router-link>
-
-              <router-link
-                v-if="item.label[1] === 'quiz'"
-                to="/lecciones/dias/contenido/cuestionario"
-                style="text-decoration: none; color: inherit;"
-              >
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.desc }}</p>
-                <label>Earn {{ item.exp }} experience</label>
-              </router-link>
+            <li v-for="(obj, ind) in listTask" :key="ind" class="event">
+              <div>
+                <h3>{{ obj.title }}</h3>
+                <p>{{ obj.desc }}</p>
+                <label>Earn {{ obj.exp }} experience</label>
+                <div class="d-flex justify-content-end">
+                  <div class="col-sm-4 col-12">
+                    <button class="btn btn-primary form-control" @click="changeRouter(getRouterPath(obj.labels), ind)">
+                      Ver selección
+                    </button>
+                  </div>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
@@ -65,19 +34,47 @@
 </template>
 
 <script>
+import { mapActions } from "pinia";
+
+import { useContentStore } from "@/store/contentStore.js";
+
 export default {
   props: {
-    day: {
-      type    : Object,
-      default : () => { return {}; }
+    index: {
+      type    : Number,
+      default : () => 0
     },
     listTask: {
       type    : Array,
       default : () => []
     },
-    index: {
-      type    : Number,
-      default : () => 0
+    day: {
+      type    : Object,
+      default : () => { return {}; }
+    }
+  },
+  methods: {
+    ...mapActions(useContentStore, ["selectContent"]),
+    changeRouter(router = "", contIndex) {
+      this.selectContent(contIndex);
+
+      this.$router.push({ name: router });
+    },
+    getRouterPath(labels = []) {
+      const [, secondLabels] = labels;
+
+      switch (secondLabels) {
+        case "Problems":
+          return "content-problems";
+        case "Video":
+          return "content-video";
+        case "Text":
+          return "content-text";
+        case "Quiz":
+          return "content-quiz";
+        default:
+          throw ({ message: "The label not found" });
+      }
     }
   }
 };

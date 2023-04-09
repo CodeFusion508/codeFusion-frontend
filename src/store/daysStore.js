@@ -1,14 +1,20 @@
 import { defineStore } from "pinia";
-import { getDaysRequest, getContentsRelationByDays } from "@/requests/daysRequest";
+
+import { getContentsRelationByDays } from "@/requests/daysRequest";
+import { getSprintByUuid } from "@/requests/sprintsRequest";
 
 export const useDaysStore = defineStore("days", {
     actions: {
-        async getDays() {
-            const data = await getDaysRequest();
+        async getDaysByModule() {
+            const data = await getSprintByUuid(this.sprintUuid);
 
-            this.days = [...data.node];
+            this.days = data.node.map(value => {
+                return {
+                    uuid : value.node.uuid,
+                    desc : value.node.desc
+                };
+            });
 
-            return data;
         },
         async getByContent(uuid = "") {
             const tempContent = [];
@@ -17,11 +23,13 @@ export const useDaysStore = defineStore("days", {
             if (data) {
                 data.node.forEach((value) => {
                     const objTemp = {
-                        title : value.node.title,
-                        path  : value.node.path,
-                        exp   : value.node.exp,
-                        desc  : value.node.desc,
-                        label : value.node.label
+                        title     : value.node.title,
+                        path      : value.node.path,
+                        exp       : value.node.exp,
+                        desc      : value.node.desc,
+                        labels    : value.node.labels,
+                        link      : value.node.link || "",
+                        contentNo : value.node.contentNo
                     };
 
                     if (objTemp.path) {
@@ -30,23 +38,28 @@ export const useDaysStore = defineStore("days", {
                 });
 
                 this.result = [...tempContent];
-            }
-            else {
+            } else {
                 const fakeObj = {
-                    title : "Aún no hay contenido disponible",
-                    path  : "Aún no hay contenido disponible",
-                    exp   : "Aún no hay contenido disponible",
-                    desc  : "Aún no hay contenido disponible",
-                    label : "Aún no hay contenido disponible"
+                    title     : "Aún no hay contenido disponible",
+                    path      : "Aún no hay contenido disponible",
+                    exp       : "Aún no hay contenido disponible",
+                    desc      : "Aún no hay contenido disponible",
+                    labels    : "Aún no hay contenido disponible",
+                    contentNo : "Aún no hay contenido disponible",
+                    link      : "Aún no hay contenido disponible"
                 };
                 this.result[0] = fakeObj;
             }
+        },
+        getDaysBySprintUuid(uuid) {
+            this.sprintUuid = uuid;
         }
     },
     state: () => {
         return {
-            days   : [],
-            result : []
+            days       : [],
+            result     : [],
+            sprintUuid : ""
         };
     }
 });

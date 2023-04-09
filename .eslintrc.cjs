@@ -55,7 +55,9 @@ module.exports = {
       "exports"   : "never",
       "functions" : "never"
     }],
-    "vue/component-definition-name-casing": [
+    "eqeqeq"                               : ["error", "smart"],
+    "no-else-return"                       : "error",
+    "vue/component-definition-name-casing" : [
       "error",
       "kebab-case"
     ],
