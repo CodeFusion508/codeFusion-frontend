@@ -17,11 +17,10 @@ export const useDaysStore = defineStore("days", {
 
         },
         async getByContent(uuid = "") {
-            const tempContent = [];
-            const data = await getContentsRelationByDays(uuid);
-
+            let data = await getContentsRelationByDays(uuid);
+            this.result = []
             if (data) {
-                data.node.forEach((value) => {
+                this.result = data.node.map((value) => {
                     const objTemp = {
                         title     : value.node.title,
                         path      : value.node.path,
@@ -29,16 +28,17 @@ export const useDaysStore = defineStore("days", {
                         desc      : value.node.desc,
                         labels    : value.node.labels,
                         link      : value.node.link || "",
-                        contentNo : value.node.contentNo
+                        contentNo : value.node.contentNo,
+                        uuid      : value.node.uuid
                     };
 
                     if (objTemp.path) {
-                        tempContent.push(objTemp);
+                        return objTemp
                     }
-                });
+                }).filter(value => value != null);
 
-                this.result = [...tempContent];
             } else {
+
                 const fakeObj = {
                     title     : "Aún no hay contenido disponible",
                     path      : "Aún no hay contenido disponible",
@@ -46,12 +46,14 @@ export const useDaysStore = defineStore("days", {
                     desc      : "Aún no hay contenido disponible",
                     labels    : "Aún no hay contenido disponible",
                     contentNo : "Aún no hay contenido disponible",
-                    link      : "Aún no hay contenido disponible"
+                    link      : "Aún no hay contenido disponible",
+                    uuid      : ""
                 };
-                this.result[0] = fakeObj;
+
+                this.result.unshift(fakeObj);
             }
         },
-        getDaysBySprintUuid(uuid) {
+        setDaysBySprintUuid(uuid) {
             this.sprintUuid = uuid;
         }
     },

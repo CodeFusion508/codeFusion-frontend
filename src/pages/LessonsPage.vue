@@ -45,9 +45,9 @@ export default {
     };
   },
   methods: {
-    ...mapActions(useDaysStore, ["setUuidMddule"]),
+    ...mapActions(useDaysStore, ["setDaysBySprintUuid"]),
     changeRouteLesseans(uuid) {
-      this.setUuidMddule(uuid)
+      this.setDaysBySprintUuid(uuid)
       this.$router.push({ name: 'leasseans-day' })
     },
     async initialize() {

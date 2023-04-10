@@ -18,7 +18,7 @@
                 <label>Earn {{ obj.exp }} experience</label>
                 <div class="d-flex justify-content-end">
                   <div class="col-sm-4 col-12" >
-                    <button class="btn btn-primary form-control" @click="changeRouter(getRouterPath(obj.labels))" >Ver selección</button>
+                    <button class="btn btn-primary form-control" @click="changeRouter(getRouterPath(obj.labels), obj.uuid)" >Ver selección</button>
                   </div>
                 </div>
               </div>
@@ -31,23 +31,27 @@
 </template>
 
 <script>
+import { useUserStore } from '@/store/userStore'
+import { mapActions } from 'pinia'
 export default {
   props   : ["index", "listTask", "day"],
   methods : {
+    ...mapActions(useUserStore, ["setUuidContent"]),
     checkType(type, expected) {
       if (type === expected) {
         return true;
       }
         return false;
     },
-    changeRouter(router = "") {
+    changeRouter(router = "", uuid = "") {
+      this.setUuidContent(uuid)
       this.$router.push({ name: router })
     },
     getRouterPath(labels = []) {
       if(labels.length >= 1) {
         const secondLabels = labels[1]
         switch (secondLabels) {
-          case 'Problem':
+          case 'Problems':
             return 'content-lesseans-problems'
           break;
           case 'Video':
