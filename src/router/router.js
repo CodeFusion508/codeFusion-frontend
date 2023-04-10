@@ -12,9 +12,9 @@ import ArticlesPage from "@/pages/ArticlesPage.vue";
 
 // routes arrays
 let baseRoutes = [
-  { path: "/", component: HomePage },
-  { path: "/nosotros", component: AboutUs },
-  { path: "/session", component: SignUp },
+  { path: "/", component: HomePage, meta: { name: 'initialize' } },
+  { path: "/deNosotros", component: AboutUs, meta: { name: 'about' } },
+  { path: "/creaSesion", component: SignUp, meta: { name: 'session' } },
   {
     path        : "/ajustes",
     component   : UserSettings,
@@ -22,12 +22,12 @@ let baseRoutes = [
       if (localStorage.getItem("tkn") != null) {
         next();
       } else {
-        next({ to: "/session" });
+        next({ to: "/creaSesion" });
       }
     }
   },
-  { path: "/articulos", component: ArticlesPage },
-  { path: "/articulos/articulo", component: ArticlesPage }
+  { path: "/articulos", component: ArticlesPage, meta: { name: 'articles' } },
+  { path: "/articulos/articulo", component: ArticlesPage, meta: { name: 'articles' } }
 ];
 
 let routes1 = baseRoutes.concat(lessonsRoutes);
@@ -35,7 +35,7 @@ let routes1 = baseRoutes.concat(lessonsRoutes);
 // router object
 const router = createRouter({
   history         : createWebHistory(),
-  linkActiveClass : "active",
+  // linkActiveClass : "active",
   routes          : routes1
 });
 

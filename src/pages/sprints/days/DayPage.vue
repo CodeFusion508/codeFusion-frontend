@@ -18,6 +18,7 @@
           </div>
         </div>
       </div>
+      <!--This div is loading since day component loads beacause of indexContent being default to 0 so timeline loads with no data-->
       <div v-if="layoutTimeLine" class="col-md-12 col-sm-12 col-lg-12 col-12">
         <time-line
           :index="indexContent"
@@ -35,6 +36,7 @@ import { mapActions, mapState } from "pinia";
 
 import { useAuthStore } from "@/store/authStore";
 import { useDaysStore } from "@/store/daysStore";
+import { getSprintByUuid } from '@/requests/sprintsRequest'
 
 import TimeLine from "./TimeLine.vue";
 
@@ -42,38 +44,33 @@ export default {
   components : { "time-line": TimeLine },
   data       : () => {
     return {
-      indexContent   : 0,
-      layoutTimeLine : false
+      indexContent: 0,
+      layoutTimeLine: false
     };
   },
   computed: {
     ...mapState(useAuthStore, ["authToken"]),
-    ...mapState(useDaysStore, ["days", "result", "sprintUuid"])
+    ...mapState(useDaysStore, ["days", "result", "uuiModule"])
   },
   async created() {
-    if (this.sprintUuid === "") {
-      this.$router.push({ name: "lessons" });
+    if(this.uuiModule === '') {
+      this.$router.push({ name: 'leasseans' })
     }
-
-    await this.getDaysByModule();
-
-
+    await this.getDaysByModule()
     if (this.days.length >= 1) {
-      await this.getContent(this.days[this.indexContent].uuid, 0);
+      await this.getContent(this.days[this.indexContent].uuid, 0)
     }
   },
   methods: {
     ...mapActions(useDaysStore, ["getDaysByModule", "getByContent"]),
     async getContent(uuid, index) {
-      this.layoutTimeLine = false;
-      this.indexContent = index;
-
-      await this.getByContent(uuid);
-
-      this.layoutTimeLine = true;
+      this.layoutTimeLine = false
+      this.indexContent = index
+      await this.getByContent(uuid)
+      this.layoutTimeLine = true
     }
   }
-};
+}
 </script>
 
 <style>

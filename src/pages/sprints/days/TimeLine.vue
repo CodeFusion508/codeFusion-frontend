@@ -3,13 +3,12 @@
     <div class="card border-0 shadow-sm">
       <div class="card-body">
         <h6 class="card-title text-center py-3">
-          <h4>Día {{ index + 1 }}</h4>
+          <h4>Dia {{ index + 1 }}</h4>
           <h3 class="text-center">
             {{ day.desc }}
           </h3>
           <hr class="hr hr-blurry">
         </h6>
-
         <div>
           <ul class="timeline">
             <li v-for="(obj, ind) in listTask" :key="ind" class="event">
@@ -18,10 +17,8 @@
                 <p>{{ obj.desc }}</p>
                 <label>Earn {{ obj.exp }} experience</label>
                 <div class="d-flex justify-content-end">
-                  <div class="col-sm-4 col-12">
-                    <button class="btn btn-primary form-control" @click="changeRouter(getRouterPath(obj.labels), ind)">
-                      Ver selección
-                    </button>
+                  <div class="col-sm-4 col-12" >
+                    <button class="btn btn-primary form-control" @click="changeRouter(getRouterPath(obj.labels))" >Ver selección</button>
                   </div>
                 </div>
               </div>
@@ -34,49 +31,42 @@
 </template>
 
 <script>
-import { mapActions } from "pinia";
-
-import { useContentStore } from "@/store/contentStore.js";
-
 export default {
-  props: {
-    index: {
-      type    : Number,
-      default : () => 0
+  props   : ["index", "listTask", "day"],
+  methods : {
+    checkType(type, expected) {
+      if (type === expected) {
+        return true;
+      }
+        return false;
     },
-    listTask: {
-      type    : Array,
-      default : () => []
-    },
-    day: {
-      type    : Object,
-      default : () => { return {}; }
-    }
-  },
-  methods: {
-    ...mapActions(useContentStore, ["selectContent"]),
-    changeRouter(router = "", contIndex) {
-      this.selectContent(contIndex);
-
-      this.$router.push({ name: router });
+    changeRouter(router = "") {
+      this.$router.push({ name: router })
     },
     getRouterPath(labels = []) {
-      const [, secondLabels] = labels;
-
-      switch (secondLabels) {
-        case "Problems":
-          return "content-problems";
-        case "Video":
-          return "content-video";
-        case "Text":
-          return "content-text";
-        case "Quiz":
-          return "content-quiz";
-        default:
-          throw ({ message: "The label not found" });
+      if(labels.length >= 1) {
+        const secondLabels = labels[1]
+        switch (secondLabels) {
+          case 'Problem':
+            return 'content-lesseans-problems'
+          break;
+          case 'Video':
+            return 'content-lesseans-video'
+          break;
+          case 'Text':
+            return 'content-lesseans-text'
+          break;
+          case 'Quiz':
+            return 'cotenten-lesseans-quiz'
+          break;
+          default:
+            throw({ message: 'The label not found' })
+          break;
+        }
       }
+      throw({ message: 'The labels not content more 1 element' })
     }
-  }
+  },
 };
 </script>
 
