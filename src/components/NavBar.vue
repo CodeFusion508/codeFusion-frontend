@@ -14,33 +14,18 @@
         <span class="navbar-toggler-icon" />
       </button>
       <div id="header1navbarCollapse" class="collapse navbar-collapse justify-content-between">
-        <ul class="nav nav-pills flex-grow-1">
-          <li class="nav-item">
-            <router-link to="/" class="nav-link text-white">
-              Inicio
+        <ul class="nav nav-pills flex-grow-1"  >
+          <li v-for="(item, index) in routes" :key="index" class="nav-item" >
+            <router-link :to="item.path" :class="['nav-link text-white', item.activeted ? 'activeted':'']">
+              {{ item.title }}
             </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/nosotros" class="nav-link text-white">
-              De nosotros
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/lecciones" class="nav-link text-white">
-              Lecciones
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/articulos" class="nav-link text-white">
-              Artículos
-            </router-link>
-          </li>
+          </li> 
         </ul>
 
         <div v-if="!authToken" class="navbar-nav">
           <div class="bs_header_btn_wrapper bs_signup_btn_blk ms-3">
             <router-link
-              to="/session"
+              to="/creaSesion"
               class="nav-item nav-link bg-primary text-white bs_signup_btn rounded gradient-purple"
             >
               Regístrate
@@ -91,6 +76,15 @@ import { useUserStore } from "@/store/userStore";
 import { useAuthStore } from "@/store/authStore";
 
 export default {
+  data: () =>({
+    routes: [
+      { title: 'Inicio', path: '/', activeted: false, meta: 'initialize' },
+      { title: 'De nosotros', path: '/deNosotros', activeted: false, meta: 'about' },
+      { title: 'Lecciones', path: '/lecciones', activeted: false, meta: 'lesseans' },
+      { title: 'Artículos', path: '/articulos', activeted: false, meta: 'articles' },
+    ]
+  }),
+  // const metaRouter = router.currentRoute.value.meta
   computed: {
     ...mapState(useAuthStore, ["authToken"]),
     ...mapState(useUserStore, ["userObj"])
@@ -101,7 +95,23 @@ export default {
     logout() {
       this.delAuthToken();
       this.cleanUser();
+    },
+    initialize() {
+      this.getActivetedMeta()
+    },
+    getActivetedMeta() {
+      const metaName = this.$router.currentRoute.value.meta.name
+      this.routes.filter((value, index) => {
+        if(value.meta === metaName) {
+          value.activeted = true
+        } else {
+          value.activeted = false
+        }
+      })
     }
+  },
+  mounted() {
+    this.initialize()
   }
 };
 </script>
@@ -120,5 +130,9 @@ export default {
 
 .nav-tabs .nav-link {
   padding: 0.5rem !important;
+}
+
+.activeted {
+  background-color: var(--bs-primary);
 }
 </style>

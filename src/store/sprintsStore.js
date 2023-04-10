@@ -6,14 +6,7 @@ export const useSprintsStore = defineStore("sprints", {
     actions: {
         async getSprints() {
             const response = await getAllSprints();
-
-            this.sprints = response.map(value => {
-                return {
-                  title : value.title,
-                  desc  : value.desc,
-                  uuid  : value.uuid
-                };
-              });
+            this.sprints = response
         }
     },
     state: () => {
