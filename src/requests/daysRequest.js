@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useToastStore } from "@/store/toastStore.js";
-//import {useAuthStore} from "../../store/authStore.js"
 
 const days = "days";
 
@@ -36,29 +35,11 @@ export const getContentsRelationByDays = async (uuid) => {
         //throw new Error(err.response.data);
     }
 
-    data.node = data.node.sort((valueA,valueB) => {
-        const nodeA = valueA.rels.properties.contentNo
-        const nodeB = valueB.rels.properties.contentNo
-        return nodeA - nodeB
-    })
-
-    return data;
-};
-
-export const getMD = async (path) => {
-    let err;
-
-    const { data } = await axios({
-        method : "get",
-        url    : `${import.meta.env.VITE_SERVER}static/${path}`
-    })
-        .catch((error) => err = error);
-
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Archivos" });
-
-        throw new Error(err.response.data);
-    }
+    data.node = data.node.sort((valueA, valueB) => {
+        const nodeA = valueA.rels.properties.contentNo;
+        const nodeB = valueB.rels.properties.contentNo;
+        return nodeA - nodeB;
+    });
 
     return data;
 };

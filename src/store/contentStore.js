@@ -13,10 +13,10 @@ export const useContentStore = defineStore("content", {
             this.contIndex = index;
         },
         setUuid(uuid) {
-            this.uuid = uuid
+            this.uuid = uuid;
         },
         getUuid() {
-            return this.uuid
+            return this.uuid;
         }
     },
     state: () => {
@@ -26,4 +26,4 @@ export const useContentStore = defineStore("content", {
             uuid      : ""
         };
     }
-})
+});

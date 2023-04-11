@@ -2,7 +2,6 @@ import axios from "axios";
 import { useToastStore } from "@/store/toastStore.js";
 import { useAuthStore } from "@/store/authStore.js";
 
-
 const students = "users";
 
 export const getUserReq = async (uuid) => {
@@ -99,10 +98,10 @@ export const createRelation = async (dataRequest = {}) => {
     let err;
 
     const { data } = await axios({
-        method : "post",
-        url    : `${import.meta.env.VITE_SERVER}${students}/rel`,
-        data   : dataRequest,
-        headers: { authorization: `Bearer ${useAuthStore().authToken}` }
+        method  : "post",
+        url     : `${import.meta.env.VITE_SERVER}${students}/rel`,
+        data    : dataRequest,
+        headers : { authorization: `Bearer ${useAuthStore().authToken}` }
     })
         .catch((error) => err = error);
 
@@ -113,4 +112,4 @@ export const createRelation = async (dataRequest = {}) => {
     }
 
     return data;
-}
+};

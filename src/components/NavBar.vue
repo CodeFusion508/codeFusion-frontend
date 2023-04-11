@@ -14,18 +14,18 @@
         <span class="navbar-toggler-icon" />
       </button>
       <div id="header1navbarCollapse" class="collapse navbar-collapse justify-content-between">
-        <ul class="nav nav-pills flex-grow-1"  >
-          <li v-for="(item, index) in routes" :key="index" class="nav-item" >
-            <router-link :to="item.path" :class="['nav-link text-white', item.activeted ? 'activeted':'']">
+        <ul class="nav nav-pills flex-grow-1">
+          <li v-for="(item, index) in routes" :key="index" class="nav-item">
+            <router-link :to="item.path" :class="['nav-link text-white', item.activated ? 'activated' : '']">
               {{ item.title }}
             </router-link>
-          </li> 
+          </li>
         </ul>
 
         <div v-if="!authToken" class="navbar-nav">
           <div class="bs_header_btn_wrapper bs_signup_btn_blk ms-3">
             <router-link
-              to="/creaSesion"
+              to="/session"
               class="nav-item nav-link bg-primary text-white bs_signup_btn rounded gradient-purple"
             >
               Regístrate
@@ -76,18 +76,43 @@ import { useUserStore } from "@/store/userStore";
 import { useAuthStore } from "@/store/authStore";
 
 export default {
-  data: () =>({
-    routes: [
-      { title: 'Inicio', path: '/', activeted: false, meta: 'initialize' },
-      { title: 'De nosotros', path: '/deNosotros', activeted: false, meta: 'about' },
-      { title: 'Lecciones', path: '/lecciones', activeted: false, meta: 'lesseans' },
-      { title: 'Artículos', path: '/articulos', activeted: false, meta: 'articles' },
-    ]
-  }),
-  // const metaRouter = router.currentRoute.value.meta
+  data: () => {
+    return {
+      routes: [
+        {
+          title     : "Inicio",
+          path      : "/",
+          activated : false,
+          meta      : "initialize"
+        },
+        {
+          title     : "De nosotros",
+          path      : "/nosotros",
+          activated : false,
+          meta      : "about"
+        },
+
+        {
+          title     : "Lecciones",
+          path      : "/lecciones",
+          activated : false,
+          meta      : "lessons"
+        },
+        {
+          title     : "Artículos",
+          path      : "/articulos",
+          activated : false,
+          meta      : "articles"
+        }
+      ]
+    };
+  },
   computed: {
     ...mapState(useAuthStore, ["authToken"]),
     ...mapState(useUserStore, ["userObj"])
+  },
+  mounted() {
+    this.initialize();
   },
   methods: {
     ...mapActions(useAuthStore, ["delAuthToken"]),
@@ -97,21 +122,18 @@ export default {
       this.cleanUser();
     },
     initialize() {
-      this.getActivetedMeta()
+      this.getActivatedMeta();
     },
-    getActivetedMeta() {
-      const metaName = this.$router.currentRoute.value.meta.name
-      this.routes.filter((value, index) => {
-        if(value.meta === metaName) {
-          value.activeted = true
+    getActivatedMeta() {
+      const metaName = this.$router.currentRoute.value.meta.name;
+      this.routes.filter((value, _) => {
+        if (value.meta === metaName) {
+          value.activated = true;
         } else {
-          value.activeted = false
+          value.activated = false;
         }
-      })
+      });
     }
-  },
-  mounted() {
-    this.initialize()
   }
 };
 </script>
@@ -132,7 +154,7 @@ export default {
   padding: 0.5rem !important;
 }
 
-.activeted {
+.activated {
   background-color: var(--bs-primary);
 }
 </style>

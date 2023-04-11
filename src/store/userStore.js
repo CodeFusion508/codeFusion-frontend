@@ -1,11 +1,11 @@
 import { defineStore } from "pinia";
-import { createRelation } from '@/requests/clientRequest'
 
 import {
     getUserReq,
     createUserReq,
     logInUserReq,
-    updateUserReq
+    updateUserReq,
+    createRelation
 } from "@/requests/clientRequest.js";
 import router from "../router/router";
 
@@ -56,15 +56,20 @@ export const useUserStore = defineStore("user", {
             localStorage.removeItem("uuid");
         },
         setUuidContent(uuid = "") {
-            this.uuidContent = uuid
+            this.uuidContent = uuid;
         },
         getUuidContent() {
-            return this.uuidContent
+            return this.uuidContent;
         },
         async createdRelation() {
-            const response = await createRelation({ contentUuid: this.uuidContent, op: 'Content', relation: 'Completed' })
-            if(response != undefined) {
-                router.push({ name: 'leasseans-day' })
+            const response = await createRelation({
+                contentUuid : this.uuidContent,
+                op          : "Content",
+                relation    : "COMPLETED"
+            });
+
+            if (response !== undefined) {
+                router.push({ name: "lessons-day" });
             }
         }
     },

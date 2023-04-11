@@ -18,7 +18,9 @@ export const useDaysStore = defineStore("days", {
         },
         async getByContent(uuid = "") {
             let data = await getContentsRelationByDays(uuid);
-            this.result = []
+
+            this.result = [];
+
             if (data) {
                 this.result = data.node.map((value) => {
                     const objTemp = {
@@ -33,12 +35,10 @@ export const useDaysStore = defineStore("days", {
                     };
 
                     if (objTemp.path) {
-                        return objTemp
+                        return objTemp;
                     }
                 }).filter(value => value != null);
-
             } else {
-
                 const fakeObj = {
                     title     : "Aún no hay contenido disponible",
                     path      : "Aún no hay contenido disponible",

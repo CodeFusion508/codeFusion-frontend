@@ -1,67 +1,70 @@
 import axios from "axios";
 import { useToastStore } from "@/store/toastStore.js";
 
-const path = "sprints";
+const sprints = "sprints";
 
 export const getAllSprints = async () => {
     let err;
 
     const { data } = await axios({
         method : "get",
-        url    : `${import.meta.env.VITE_SERVER}${path}/`
+        url    : `${import.meta.env.VITE_SERVER}${sprints}/`
     })
         .catch((error) => err = error);
 
     if (err) {
         useToastStore().Activated({ text: err.response.data, title: "Sprints" });
+
         // throw new Error(err.response.data);
     }
-    
+
     data.node = data.node.map(value => {
-
-        if(value.labels[1] === undefined) {
-            value.labels.push('Section_1')
+        if (value.labels[1] === undefined) {
+            value.labels.push("Section_1");
         }
-        return value
 
+        return value;
     }).sort((valueA, valueB) => {
+        const numberSectionA = parseInt(valueA.labels[1].split("_")[1]);
+        const numberSectionB = parseInt(valueB.labels[1].split("_")[1]);
 
-        const numberSectionA = parseInt(valueA.labels[1].split('_')[1])
-        const numberSectionB = parseInt(valueB.labels[1].split('_')[1])
+        return numberSectionA - numberSectionB;
 
-        return numberSectionA - numberSectionB
+    }).reduce((accumulator, value, _, values) => {
+        const [,labelMain] = value.labels;
 
-    }).reduce((acumulator, value, index, values) => {
-        
-        const labelMain = value.labels[1]
-        if(acumulator[labelMain] === undefined) {
-            acumulator[labelMain] = []
+        if (accumulator[labelMain] === undefined) {
+            accumulator[labelMain] = [];
+
             const valuesTemp = values.filter(valueFilter => {
-                const label = valueFilter.labels[1]
-                if(label === labelMain) return valueFilter
-            })
-            acumulator[labelMain] = valuesTemp
-        }
-        return acumulator
+                const [,label] = valueFilter.labels;
 
-    }, {})
+                if (label === labelMain) return valueFilter;
+            });
+
+            accumulator[labelMain] = valuesTemp;
+        }
+
+        return accumulator;
+    }, {});
 
     return data.node;
 };
 
 export const getSprintByUuid = async (uuid = "") => {
-    let err; 
+    let err;
 
     const { data } = await axios({
         method : "get",
-        url    : `${import.meta.env.VITE_SERVER}${path}/${uuid}/rel`
+        url    : `${import.meta.env.VITE_SERVER}${sprints}/${uuid}/rel`
     })
         .catch((error) => err = error);
 
     if (err) {
         useToastStore().Activated({ text: err.response.data, title: "Sprints" });
+
         // throw new Error(err.response.data);
     }
 
-    return data
-}
+    return data;
+};
