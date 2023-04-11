@@ -1,6 +1,7 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <nav-bar />
+
   <div class="container-md">
     <md-block :mdContent="lesson" />
   </div>
@@ -22,7 +23,6 @@ export default {
   created() {
     this.getText(this.result[this.contIndex].path);
   },
-
   methods: {
     ...mapActions(useContentStore, ["getText"])
   }

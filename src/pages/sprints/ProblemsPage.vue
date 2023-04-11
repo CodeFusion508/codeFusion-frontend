@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import { useUserStore } from '@/store/userStore'
-import { mapActions } from 'pinia'
+import { useUserStore } from "@/store/userStore";
+import { mapActions } from "pinia";
 
 
 export default {
