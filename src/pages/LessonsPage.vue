@@ -1,14 +1,14 @@
 <template>
   <nav-bar />
 
-  <div v-for="(item, index) in modules" :key="index">
+  <div v-for="(item, index) in sprints" :key="index">
     <h3 class="text-center mt-3 fw-light fst-italic text-white">
       Sección {{ index.split('_')[1] }}
     </h3>
 
     <div class="row g-0 text-center">
       <div
-        v-for="(sprint, i) in modules[index]"
+        v-for="(sprint, i) in sprints[index]"
         :key="i"
         :class="['col-12 px-2 my-3', sprints.length <= 3 ? 'col-sm' : 'col-sm-3']"
       >
@@ -43,14 +43,15 @@ export default {
   computed: {
     ...mapState(useSprintsStore, ["sprints"])
   },
-  async mounted() {
+  async created() {
     await this.getSprints();
   },
   methods: {
-    ...mapActions(useDaysStore, ["getDaysBySprintUuid"]),
+    ...mapActions(useDaysStore, ["setDaysBySprintUuid"]),
     ...mapActions(useSprintsStore, ["getSprints"]),
     changeRouteLessons(uuid) {
-      this.getDaysBySprintUuid(uuid);
+      this.setDaysBySprintUuid(uuid);
+
       this.$router.push({ name: "lessons-day" });
     }
   }

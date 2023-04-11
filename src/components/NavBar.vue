@@ -126,7 +126,7 @@ export default {
     },
     getActivatedMeta() {
       const metaName = this.$router.currentRoute.value.meta.name;
-      this.routes.filter((value, _) => {
+      this.routes.filter((value) => {
         if (value.meta === metaName) {
           value.activated = true;
         } else {

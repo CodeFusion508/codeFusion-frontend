@@ -3,12 +3,13 @@
     <div class="card border-0 shadow-sm">
       <div class="card-body">
         <h6 class="card-title text-center py-3">
-          <h4>Dia {{ index + 1 }}</h4>
+          <h4>Día {{ index + 1 }}</h4>
           <h3 class="text-center">
             {{ day.desc }}
           </h3>
           <hr class="hr hr-blurry">
         </h6>
+
         <div>
           <ul class="timeline">
             <li v-for="(obj, ind) in listTask" :key="ind" class="event">
@@ -17,8 +18,13 @@
                 <p>{{ obj.desc }}</p>
                 <label>Earn {{ obj.exp }} experience</label>
                 <div class="d-flex justify-content-end">
-                  <div class="col-sm-4 col-12" >
-                    <button class="btn btn-primary form-control" @click="changeRouter(getRouterPath(obj.labels), obj.uuid)" >Ver selección</button>
+                  <div class="col-sm-4 col-12">
+                    <button
+                      class="btn btn-primary form-control"
+                      @click="changeRouter(getRouterPath(obj.labels), obj.uuid)"
+                    >
+                      Ver selección
+                    </button>
                   </div>
                 </div>
               </div>
@@ -31,46 +37,57 @@
 </template>
 
 <script>
-import { useUserStore } from '@/store/userStore'
-import { mapActions } from 'pinia'
+import { mapActions } from "pinia";
+
+import { useContentStore } from "@/store/contentStore.js";
+import { useUserStore } from "@/store/userStore";
+
 export default {
-  props   : ["index", "listTask", "day"],
-  methods : {
+  props: {
+    index: {
+      type    : Number,
+      default : () => 0
+    },
+    listTask: {
+      type    : Array,
+      default : () => []
+    },
+    day: {
+      type    : Object,
+      default : () => { return {}; }
+    }
+  },
+  methods: {
     ...mapActions(useUserStore, ["setUuidContent"]),
+    ...mapActions(useContentStore, ["selectContent"]),
+    changeRouter(router = "", uuid = "") {
+      this.setUuidContent(uuid);
+
+      this.$router.push({ name: router });
+    },
     checkType(type, expected) {
       if (type === expected) {
         return true;
       }
-        return false;
-    },
-    changeRouter(router = "", uuid = "") {
-      this.setUuidContent(uuid)
-      this.$router.push({ name: router })
+      return false;
     },
     getRouterPath(labels = []) {
-      if(labels.length >= 1) {
-        const secondLabels = labels[1]
-        switch (secondLabels) {
-          case 'Problems':
-            return 'content-lesseans-problems'
-          break;
-          case 'Video':
-            return 'content-lesseans-video'
-          break;
-          case 'Text':
-            return 'content-lesseans-text'
-          break;
-          case 'Quiz':
-            return 'cotenten-lesseans-quiz'
-          break;
-          default:
-            throw({ message: 'The label not found' })
-          break;
-        }
+      const [, secondLabels] = labels;
+
+      switch (secondLabels) {
+        case "Problems":
+          return "content-problems";
+        case "Video":
+          return "content-video";
+        case "Text":
+          return "content-text";
+        case "Quiz":
+          return "content-quiz";
+        default:
+          throw ({ message: "The label not found" });
       }
-      throw({ message: 'The labels not content more 1 element' })
     }
-  },
+  }
 };
 </script>
 
