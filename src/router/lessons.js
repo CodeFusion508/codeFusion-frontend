@@ -3,7 +3,6 @@ import LearnText from "@/pages/sprints/LearnText.vue";
 import LearnVideo from "@/pages/sprints/LearnVideo.vue";
 import ProblemsPage from "@/pages/sprints/ProblemsPage.vue";
 import QuizPage from "@/pages/sprints/QuizPage.vue";
-import ContentPage from "@/pages/sprints/ContentPage.vue";
 import DaysPage from "@/pages/sprints/days/DayPage.vue";
 
 export default [
@@ -18,27 +17,23 @@ export default [
         name      : "lessons-day"
     },
     {
-        path      : "/lecciones/dias/contenido",
-        component : ContentPage
-    },
-    {
-        path      : "/lecciones/dias/contenido/leccionTexto",
+        path      : "/lecciones/dias/texto",
         component : LearnText,
-        name      : "content-lessons-text"
+        name      : "content-text"
     },
     {
-        path      : "/lecciones/dias/contenido/leccionVideo",
+        path      : "/lecciones/dias/video",
         component : LearnVideo,
-        name      : "content-lessons-video"
+        name      : "content-video"
     },
     {
-        path      : "/lecciones/dias/contenido/problemas",
+        path      : "/lecciones/dias/problemas",
         component : ProblemsPage,
-        name      : "content-lessons-problems"
+        name      : "content-problems"
     },
     {
-        path      : "/lecciones/dias/contenido/cuestionario",
+        path      : "/lecciones/dias/cuestionario",
         component : QuizPage,
-        name      : "content-lessons-quiz"
+        name      : "content-quiz"
     }
 ];

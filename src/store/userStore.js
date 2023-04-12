@@ -4,8 +4,10 @@ import {
     getUserReq,
     createUserReq,
     logInUserReq,
-    updateUserReq
+    updateUserReq,
+    createRelation
 } from "@/requests/clientRequest.js";
+import router from "../router/router";
 
 
 export const useUserStore = defineStore("user", {
@@ -52,6 +54,23 @@ export const useUserStore = defineStore("user", {
             };
 
             localStorage.removeItem("uuid");
+        },
+        setUuidContent(uuid = "") {
+            this.uuidContent = uuid;
+        },
+        getUuidContent() {
+            return this.uuidContent;
+        },
+        async createdRelation() {
+            const response = await createRelation({
+                contentUuid : this.uuidContent,
+                op          : "Content",
+                relation    : "COMPLETED"
+            });
+
+            if (response !== undefined) {
+                router.push({ name: "lessons-day" });
+            }
         }
     },
     state: () => {
@@ -61,7 +80,8 @@ export const useUserStore = defineStore("user", {
                 uuid   : localStorage.getItem("uuid") !== undefined || localStorage.getItem("uuid") !== null ? localStorage.getItem("uuid") : "",
                 email  : "",
                 avatar : { image: "", file: null }
-            }
+            },
+            uuidContent: ""
         };
     }
 });

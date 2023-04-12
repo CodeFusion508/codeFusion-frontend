@@ -29,20 +29,15 @@
   <nav-footer />
 </template>
 <script>
-import {mapState} from "pinia";
-import {useContentStore} from "@/store/contentStore.js";
-import {useDaysStore} from "@/store/daysStore.js";
+import { mapState } from "pinia";
+
+import { useContentStore } from "@/store/contentStore.js";
+import { useDaysStore } from "@/store/daysStore.js";
 
 export default {
-  name     : "learn-video",
-  computed : {
-      ...mapState(useContentStore, ["contIndex"]),
-      ...mapState(useDaysStore, ["result"])
-  },
-    created() {
-    console.log(this.result[this.contIndex], "result received on learn video");
-    },
-  methods: {
+  computed: {
+    ...mapState(useContentStore, ["contIndex"]),
+    ...mapState(useDaysStore, ["result"])
   }
 };
 </script>

@@ -1,27 +1,27 @@
 <template>
   <nav-bar />
 
-  <div>
+  <div v-for="(item, index) in sprints" :key="index">
     <h3 class="text-center mt-3 fw-light fst-italic text-white">
-      Sección 1
+      Sección {{ index.split('_')[1] }}
     </h3>
 
     <div class="row g-0 text-center">
       <div
-        v-for="(obj, index) in sprints"
-        :key="index"
+        v-for="(sprint, i) in sprints[index]"
+        :key="i"
         :class="['col-12 px-2 my-3', sprints.length <= 3 ? 'col-sm' : 'col-sm-3']"
       >
         <div class="card bg-dark-subtle border-0 shadow-sm">
           <div class="card-body">
             <h5 class="card-title text-white">
-              {{ obj.title }}
+              {{ sprint.title }}
             </h5>
             <hr>
             <p class="card-text text-white truncate-text-line">
-              {{ obj.desc }}
+              {{ sprint.desc }}
             </p>
-            <button class="btn gradient-purple text-white" @click="changeRouteLessons(obj.uuid)">
+            <button class="btn gradient-purple text-white" @click="changeRouteLessons(sprint.uuid)">
               Aprende
             </button>
           </div>
@@ -43,14 +43,15 @@ export default {
   computed: {
     ...mapState(useSprintsStore, ["sprints"])
   },
-  async mounted() {
+  async created() {
     await this.getSprints();
   },
   methods: {
-    ...mapActions(useDaysStore, ["getDaysBySprintUuid"]),
+    ...mapActions(useDaysStore, ["setDaysBySprintUuid"]),
     ...mapActions(useSprintsStore, ["getSprints"]),
     changeRouteLessons(uuid) {
-      this.getDaysBySprintUuid(uuid);
+      this.setDaysBySprintUuid(uuid);
+
       this.$router.push({ name: "lessons-day" });
     }
   }

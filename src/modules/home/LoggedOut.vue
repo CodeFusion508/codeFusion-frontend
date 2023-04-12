@@ -15,7 +15,7 @@
           </p>
           <pre class="lead mb-4 fw-light fst-italic">Únete hoy para impulsar tu carrera!</pre>
           <div class="d-grid gap-2 d-flex justify-content-center">
-            <router-link to="/creaSesion">
+            <router-link to="/session">
               <button type="button" class="btn btn-lg px-4 gradient-purple text-white">
                 Regístrate
               </button>

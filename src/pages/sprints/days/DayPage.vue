@@ -32,12 +32,9 @@
 
 <script>
 import { mapActions, mapState } from "pinia";
-
 import { useAuthStore } from "@/store/authStore";
 import { useDaysStore } from "@/store/daysStore";
-
 import TimeLine from "./TimeLine.vue";
-
 export default {
   components : { "time-line": TimeLine },
   data       : () => {
@@ -56,7 +53,6 @@ export default {
     }
 
     await this.getDaysByModule();
-
 
     if (this.days.length >= 1) {
       await this.getContent(this.days[this.indexContent].uuid, 0);
@@ -82,11 +78,9 @@ export default {
   border-bottom: 1px solid #727cf5;
   cursor: pointer;
 }
-
 .content-item-day:hover {
   background-color: rgba(114, 124, 245, 0.09);
 }
-
 .content-activated {
   background-color: rgba(114, 124, 245, 0.09);
 }

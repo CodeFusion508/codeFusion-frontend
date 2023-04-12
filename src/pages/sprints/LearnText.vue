@@ -1,6 +1,7 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <nav-bar />
+
   <div class="container-md">
     <md-block :mdContent="lesson" />
   </div>
@@ -12,17 +13,15 @@
 import { mapState, mapActions } from "pinia";
 
 import { useContentStore } from "@/store/contentStore.js";
-import {useDaysStore} from "@/store/daysStore.js";
+import { useDaysStore } from "@/store/daysStore.js";
 
 export default {
-    created() {
-      this.getText(this.result[this.contIndex].path);
-        console.log(this.result[this.contIndex], "result received on learnText");
-        console.log(this.lesson, "lesson received on learnText");
-    },
   computed: {
     ...mapState(useContentStore, ["lesson", "contIndex"]),
-      ...mapState(useDaysStore, ["result"])
+    ...mapState(useDaysStore, ["result"])
+  },
+  created() {
+    this.getText(this.result[this.contIndex].path);
   },
   methods: {
     ...mapActions(useContentStore, ["getText"])

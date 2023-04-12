@@ -32,8 +32,14 @@ export const getContentsRelationByDays = async (uuid) => {
 
     if (err) {
         useToastStore().Activated({ text: err.response.data, title: "Days" });
-
         //throw new Error(err.response.data);
     }
+
+    data.node = data.node.sort((valueA, valueB) => {
+        const nodeA = valueA.rels.properties.contentNo;
+        const nodeB = valueB.rels.properties.contentNo;
+        return nodeA - nodeB;
+    });
+
     return data;
 };

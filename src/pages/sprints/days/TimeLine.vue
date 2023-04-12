@@ -19,7 +19,10 @@
                 <label>Earn {{ obj.exp }} experience</label>
                 <div class="d-flex justify-content-end">
                   <div class="col-sm-4 col-12">
-                    <button class="btn btn-primary form-control" @click="changeRouter(getRouterPath(obj.labels), ind)">
+                    <button
+                      class="btn btn-primary form-control"
+                      @click="changeRouter(getRouterPath(obj.labels), obj.uuid)"
+                    >
                       Ver selección
                     </button>
                   </div>
@@ -34,43 +37,57 @@
 </template>
 
 <script>
-import {mapActions, mapState} from "pinia";
-import {useContentStore} from "@/store/contentStore.js";
-import {logInUserReq} from "@/requests/clientRequest.js";
+import { mapActions } from "pinia";
+
+import { useContentStore } from "@/store/contentStore.js";
+import { useUserStore } from "@/store/userStore";
 
 export default {
-  props   : ["index", "listTask", "day"],
-  methods : {
-      ...mapActions(useContentStore, ["selectContent"]),
-    changeRouter(router = "", contIndex) {
-        this.selectContent(contIndex);
-        mapState(useContentStore, ["contIndex"]);
-        console.log(contIndex, "contIndex sent to Video component");
-      this.$router.push({ name: router });
+  props: {
+    index: {
+      type    : Number,
+      default : () => 0
     },
-    getRouterPath(labels = []) {
-      if (labels.length >= 1) {
-        const [, secondLabels] = labels;
-
-        switch (secondLabels) {
-          case "Problems":
-            return "content-lessons-problems";
-          case "Video":
-            return "content-lessons-video";
-          case "Text":
-            return "content-lessons-text";
-          case "Quiz":
-            return "content-lessons-quiz";
-          default:
-            throw ({ message: "The label not found" });
-        }
-      }
-      throw ({ message: "The labels not content more 1 element" });
+    listTask: {
+      type    : Array,
+      default : () => []
+    },
+    day: {
+      type    : Object,
+      default : () => { return {}; }
     }
   },
-    mounted: function () {
-        console.log(this.listTask);
+  methods: {
+    ...mapActions(useUserStore, ["setUuidContent"]),
+    ...mapActions(useContentStore, ["selectContent"]),
+    changeRouter(router = "", uuid = "") {
+      this.setUuidContent(uuid);
+
+      this.$router.push({ name: router });
+    },
+    checkType(type, expected) {
+      if (type === expected) {
+        return true;
+      }
+      return false;
+    },
+    getRouterPath(labels = []) {
+      const [, secondLabels] = labels;
+
+      switch (secondLabels) {
+        case "Problems":
+          return "content-problems";
+        case "Video":
+          return "content-video";
+        case "Text":
+          return "content-text";
+        case "Quiz":
+          return "content-quiz";
+        default:
+          throw ({ message: "The label not found" });
+      }
     }
+  }
 };
 </script>
 

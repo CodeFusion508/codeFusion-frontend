@@ -15,24 +15,9 @@
       </button>
       <div id="header1navbarCollapse" class="collapse navbar-collapse justify-content-between">
         <ul class="nav nav-pills flex-grow-1">
-          <li class="nav-item">
-            <router-link to="/" class="nav-link text-white">
-              Inicio
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/deNosotros" class="nav-link text-white">
-              De nosotros
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/lecciones" class="nav-link text-white">
-              Lecciones
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/articulos" class="nav-link text-white">
-              Artículos
+          <li v-for="(item, index) in routes" :key="index" class="nav-item">
+            <router-link :to="item.path" :class="['nav-link text-white', item.activated ? 'activated' : '']">
+              {{ item.title }}
             </router-link>
           </li>
         </ul>
@@ -40,7 +25,7 @@
         <div v-if="!authToken" class="navbar-nav">
           <div class="bs_header_btn_wrapper bs_signup_btn_blk ms-3">
             <router-link
-              to="/creaSesion"
+              to="/session"
               class="nav-item nav-link bg-primary text-white bs_signup_btn rounded gradient-purple"
             >
               Regístrate
@@ -91,9 +76,43 @@ import { useUserStore } from "@/store/userStore";
 import { useAuthStore } from "@/store/authStore";
 
 export default {
+  data: () => {
+    return {
+      routes: [
+        {
+          title     : "Inicio",
+          path      : "/",
+          activated : false,
+          meta      : "initialize"
+        },
+        {
+          title     : "De nosotros",
+          path      : "/nosotros",
+          activated : false,
+          meta      : "about"
+        },
+
+        {
+          title     : "Lecciones",
+          path      : "/lecciones",
+          activated : false,
+          meta      : "lessons"
+        },
+        {
+          title     : "Artículos",
+          path      : "/articulos",
+          activated : false,
+          meta      : "articles"
+        }
+      ]
+    };
+  },
   computed: {
     ...mapState(useAuthStore, ["authToken"]),
     ...mapState(useUserStore, ["userObj"])
+  },
+  mounted() {
+    this.initialize();
   },
   methods: {
     ...mapActions(useAuthStore, ["delAuthToken"]),
@@ -101,6 +120,19 @@ export default {
     logout() {
       this.delAuthToken();
       this.cleanUser();
+    },
+    initialize() {
+      this.getActivatedMeta();
+    },
+    getActivatedMeta() {
+      const metaName = this.$router.currentRoute.value.meta.name;
+      this.routes.filter((value) => {
+        if (value.meta === metaName) {
+          value.activated = true;
+        } else {
+          value.activated = false;
+        }
+      });
     }
   }
 };
@@ -120,5 +152,9 @@ export default {
 
 .nav-tabs .nav-link {
   padding: 0.5rem !important;
+}
+
+.activated {
+  background-color: var(--bs-primary);
 }
 </style>
