@@ -17,11 +17,23 @@ export const useAuthStore = defineStore("auth", {
             localStorage.removeItem("tkn");
 
             router.push({ path: "/" });
+        },
+        setEmail(email) {
+            this.storeEmail = email;
+        },
+        setName(name) {
+            this.storeName = name;
+        },
+        setPassword(password) {
+            this.storePassword = password;
         }
     },
     state: () => {
         return {
-            authToken: localStorage.getItem("tkn")
+            authToken     : localStorage.getItem("tkn"),
+            storeEmail    : "",
+            storeName     : "",
+            storePassword : ""
         };
     }
 });

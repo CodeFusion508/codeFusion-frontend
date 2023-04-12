@@ -86,6 +86,7 @@
             <button type="submit" class="btn btn-primary w-100 text-white">
               Crea Cuenta
             </button>
+              <GLoginButton @loggedIn="checkGLogin"/>
             <p class="pt-3 small mb-0" style="color: lightgray;">
               Ya tienes una cuenta? <a class="text-decoration-none" @click.prevent="show">Iniciar sesión</a>
             </p>
@@ -98,12 +99,15 @@
 </template>
 
 <script>
-import { mapActions } from "pinia";
-
+import {mapActions, mapState} from "pinia";
+import GLoginButton from "@/components/GLoginButton.vue";
 import { useUserStore } from "@/store/userStore.js";
 import { useAuthStore } from "@/store/authStore.js";
 
 export default {
+    components: {
+        GLoginButton
+    },
   data() {
     return {
       login    : false,
@@ -112,9 +116,27 @@ export default {
       password : ""
     };
   },
+    computed: {
+        ...mapState(useAuthStore, ["storeName", "storeEmail", "storePassword"])
+    },
   methods: {
     ...mapActions(useUserStore, ["createUser", "logInUser"]),
     ...mapActions(useAuthStore, ["addAuthToken"]),
+      checkGLogin(value) {
+        if (value) {
+            if (this.storeEmail !== "") {
+                this.email = this.storeEmail;
+            }
+            if (this.storeName !== "") {
+                this.userName = this.storeName;
+            }
+            if (this.storePassword !== "") {
+                this.password = this.storePassword;
+            }
+            console.log(this.email, this.userName, this.password);
+            this.createAccount();
+        }
+      },
     async createAccount() {
       const userObj = {
         name     : this.userName,
