@@ -34,7 +34,7 @@
             v-model="userObj.email"
             type="text"
             class="form-control mt-3"
-            placeholder="Correo Electronico"
+            placeholder="Correo Electrónico"
           >
           <button class="btn btn-primary form-control mt-3" @click="updatedUser">
             Guardar
