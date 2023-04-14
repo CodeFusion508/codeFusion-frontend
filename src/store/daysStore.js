@@ -14,7 +14,6 @@ export const useDaysStore = defineStore("days", {
                     desc : value.node.desc
                 };
             });
-
         },
         async getByContent(uuid = "") {
             let data = await getContentsRelationByDays(uuid);

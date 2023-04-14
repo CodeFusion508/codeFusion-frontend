@@ -12,6 +12,7 @@ import router from "../router/router";
 
 export const useUserStore = defineStore("user", {
     actions: {
+        // Basic User Operations
         async createUser(userData) {
             const { data, token } = await createUserReq(userData);
 
@@ -45,6 +46,18 @@ export const useUserStore = defineStore("user", {
                 uuid     : this.userObj.uuid
             });
         },
+        async createdRelation() {
+            const response = await createRelation({
+                contentUuid : this.uuidContent,
+                op          : "Content",
+                relation    : "COMPLETED"
+            });
+
+            if (response !== undefined) {
+                router.push({ name: "lessons-day" });
+            }
+        },
+        // Store Operations such as logOut aka cleanUser
         async cleanUser() {
             this.userObj = {
                 name   : null,
@@ -60,17 +73,6 @@ export const useUserStore = defineStore("user", {
         },
         getUuidContent() {
             return this.uuidContent;
-        },
-        async createdRelation() {
-            const response = await createRelation({
-                contentUuid : this.uuidContent,
-                op          : "Content",
-                relation    : "COMPLETED"
-            });
-
-            if (response !== undefined) {
-                router.push({ name: "lessons-day" });
-            }
         }
     },
     state: () => {

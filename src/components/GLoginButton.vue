@@ -1,6 +1,7 @@
 <template>
   <GoogleLogin :callback="callback" />
 </template>
+
 <script>
 import { decodeCredential } from "vue3-google-login";
 import { mapActions } from "pinia";
@@ -8,7 +9,6 @@ import { mapActions } from "pinia";
 import { useAuthStore } from "@/store/authStore.js";
 
 export default {
-    name: "g-login-button",
     data() {
         return {
             callback: (response) => {

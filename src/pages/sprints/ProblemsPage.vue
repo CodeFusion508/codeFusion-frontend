@@ -29,9 +29,9 @@
 </template>
 
 <script>
-import { useUserStore } from "@/store/userStore";
 import { mapActions } from "pinia";
 
+import { useUserStore } from "@/store/userStore";
 
 export default {
   data() {
@@ -41,7 +41,7 @@ export default {
     };
   },
   methods: {
-    ... mapActions(useUserStore, ["createdRelation"])
+    ...mapActions(useUserStore, ["createdRelation"])
   }
 };
 </script>

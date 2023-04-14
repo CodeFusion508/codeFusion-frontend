@@ -19,11 +19,7 @@
         </div>
       </div>
       <div v-if="layoutTimeLine" class="col-md-12 col-sm-12 col-lg-12 col-12">
-        <time-line
-          :index="indexContent"
-          :list-task="result"
-          :day="days[indexContent]"
-        />
+        <time-line :index="indexContent" :list-task="result" :day="days[indexContent]" />
       </div>
     </div>
   </div>
@@ -32,12 +28,17 @@
 
 <script>
 import { mapActions, mapState } from "pinia";
+
 import { useAuthStore } from "@/store/authStore";
 import { useDaysStore } from "@/store/daysStore";
+
 import TimeLine from "./TimeLine.vue";
+
 export default {
-  components : { "time-line": TimeLine },
-  data       : () => {
+  components: {
+    "time-line": TimeLine
+  },
+  data: () => {
     return {
       indexContent   : 0,
       layoutTimeLine : false
@@ -78,9 +79,11 @@ export default {
   border-bottom: 1px solid #727cf5;
   cursor: pointer;
 }
+
 .content-item-day:hover {
   background-color: rgba(114, 124, 245, 0.09);
 }
+
 .content-activated {
   background-color: rgba(114, 124, 245, 0.09);
 }

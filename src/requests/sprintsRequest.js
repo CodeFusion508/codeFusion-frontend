@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { useToastStore } from "@/store/toastStore.js";
 
 const sprints = "sprints";
@@ -18,6 +19,7 @@ export const getAllSprints = async () => {
         // throw new Error(err.response.data);
     }
 
+    // Sorting and Cleaning our data for our lessonsPage
     data.node = data.node.map(value => {
         if (value.labels[1] === undefined) {
             value.labels.push("Section_1");
@@ -31,13 +33,13 @@ export const getAllSprints = async () => {
         return numberSectionA - numberSectionB;
 
     }).reduce((accumulator, value, _, values) => {
-        const [,labelMain] = value.labels;
+        const [, labelMain] = value.labels;
 
         if (accumulator[labelMain] === undefined) {
             accumulator[labelMain] = [];
 
             const valuesTemp = values.filter(valueFilter => {
-                const [,label] = valueFilter.labels;
+                const label = valueFilter.labels[1];
 
                 if (label === labelMain) return valueFilter;
             });

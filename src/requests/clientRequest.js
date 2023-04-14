@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { useToastStore } from "@/store/toastStore.js";
 import { useAuthStore } from "@/store/authStore.js";
 
@@ -101,7 +102,9 @@ export const createRelation = async (dataRequest = {}) => {
         method  : "post",
         url     : `${import.meta.env.VITE_SERVER}${students}/rel`,
         data    : dataRequest,
-        headers : { authorization: `Bearer ${useAuthStore().authToken}` }
+        headers : {
+            authorization: `Bearer ${useAuthStore().authToken}`
+        }
     })
         .catch((error) => err = error);
 

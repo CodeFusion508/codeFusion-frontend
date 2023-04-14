@@ -86,7 +86,7 @@
             <button type="submit" class="btn btn-primary w-100 text-white">
               Crea Cuenta
             </button>
-            <GLoginButton @logged="checkGLogin" />
+            <g-login @logged="checkGLogin" />
             <p class="pt-3 small mb-0" style="color: lightgray;">
               Ya tienes una cuenta? <a class="text-decoration-none" @click.prevent="show">Iniciar sesión</a>
             </p>
@@ -108,7 +108,7 @@ import GLoginButton from "@/components/GLoginButton.vue";
 
 export default {
   components: {
-    GLoginButton
+    "g-login": GLoginButton
   },
   data() {
     return {
