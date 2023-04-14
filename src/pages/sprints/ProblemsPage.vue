@@ -18,7 +18,7 @@
 
     <div class="d-flex justify-content-end mt-2 mb-4">
       <div class="col-sm-2 col-12">
-        <button class="btn btn-primary form-control" @click="handleChange">
+        <button class="btn btn-primary form-control" @click="createdRelation">
           Aceptar
         </button>
       </div>
@@ -29,6 +29,10 @@
 </template>
 
 <script>
+import { mapActions } from "pinia";
+
+import { useUserStore } from "@/store/userStore";
+
 export default {
   data() {
     return {
@@ -37,9 +41,7 @@ export default {
     };
   },
   methods: {
-    handleChange() {
-      console.log(this.code);
-    }
+    ...mapActions(useUserStore, ["createdRelation"])
   }
 };
 </script>

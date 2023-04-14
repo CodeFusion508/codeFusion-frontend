@@ -1,7 +1,7 @@
 import axios from "axios";
+
 import { useToastStore } from "@/store/toastStore.js";
 import { useAuthStore } from "@/store/authStore.js";
-
 
 const students = "users";
 
@@ -87,6 +87,29 @@ export const updateUserReq = async (dataUser) => {
 
     if (err) {
         useToastStore().Activated({ text: err.response.data, title: "Usuarios" });
+
+        throw new Error(err.response.data);
+    }
+
+    return data;
+};
+
+
+export const createRelation = async (dataRequest = {}) => {
+    let err;
+
+    const { data } = await axios({
+        method  : "post",
+        url     : `${import.meta.env.VITE_SERVER}${students}/rel`,
+        data    : dataRequest,
+        headers : {
+            authorization: `Bearer ${useAuthStore().authToken}`
+        }
+    })
+        .catch((error) => err = error);
+
+    if (err) {
+        useToastStore().Activated({ text: err.response.data, title: "Archivos" });
 
         throw new Error(err.response.data);
     }

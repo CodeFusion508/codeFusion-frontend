@@ -19,11 +19,7 @@
         </div>
       </div>
       <div v-if="layoutTimeLine" class="col-md-12 col-sm-12 col-lg-12 col-12">
-        <time-line
-          :index="indexContent"
-          :list-task="result"
-          :day="days[indexContent]"
-        />
+        <time-line :index="indexContent" :list-task="result" :day="days[indexContent]" />
       </div>
     </div>
   </div>
@@ -39,8 +35,10 @@ import { useDaysStore } from "@/store/daysStore";
 import TimeLine from "./TimeLine.vue";
 
 export default {
-  components : { "time-line": TimeLine },
-  data       : () => {
+  components: {
+    "time-line": TimeLine
+  },
+  data: () => {
     return {
       indexContent   : 0,
       layoutTimeLine : false
@@ -56,7 +54,6 @@ export default {
     }
 
     await this.getDaysByModule();
-
 
     if (this.days.length >= 1) {
       await this.getContent(this.days[this.indexContent].uuid, 0);

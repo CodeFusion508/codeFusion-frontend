@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { useToastStore } from "@/store/toastStore.js";
 
 const days = "days";
@@ -35,5 +36,12 @@ export const getContentsRelationByDays = async (uuid) => {
 
         //throw new Error(err.response.data);
     }
+
+    data.node = data.node.sort((valueA, valueB) => {
+        const nodeA = valueA.rels.properties.contentNo;
+        const nodeB = valueB.rels.properties.contentNo;
+        return nodeA - nodeB;
+    });
+
     return data;
 };

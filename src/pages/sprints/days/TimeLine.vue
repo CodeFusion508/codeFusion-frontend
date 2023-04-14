@@ -19,7 +19,10 @@
                 <label>Earn {{ obj.exp }} experience</label>
                 <div class="d-flex justify-content-end">
                   <div class="col-sm-4 col-12">
-                    <button class="btn btn-primary form-control" @click="changeRouter(getRouterPath(obj.labels), ind)">
+                    <button
+                      class="btn btn-primary form-control"
+                      @click="changeRouter(getRouterPath(obj.labels), obj.uuid)"
+                    >
                       Ver selección
                     </button>
                   </div>
@@ -37,6 +40,7 @@
 import { mapActions } from "pinia";
 
 import { useContentStore } from "@/store/contentStore.js";
+import { useUserStore } from "@/store/userStore";
 
 export default {
   props: {
@@ -54,14 +58,15 @@ export default {
     }
   },
   methods: {
+    ...mapActions(useUserStore, ["setUuidContent"]),
     ...mapActions(useContentStore, ["selectContent"]),
-    changeRouter(router = "", contIndex) {
-      this.selectContent(contIndex);
+    changeRouter(router = "", uuid = "") {
+      this.setUuidContent(uuid);
 
       this.$router.push({ name: router });
     },
     getRouterPath(labels = []) {
-      const [, secondLabels] = labels;
+      const secondLabels = labels[1];
 
       switch (secondLabels) {
         case "Problems":

@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { install } from "@guolao/vue-monaco-editor";
+import vue3GoogleLogin from "vue3-google-login";
 
 import App from "./App.vue";
 import router from "./router/router.js";
@@ -21,5 +22,8 @@ app.component("toast-error", ToastError);
 app.use(createPinia());
 app.use(router);
 app.use(install);
+app.use(vue3GoogleLogin, {
+    clientId: "1079746536463-hu5gv65n5jin72ee5s4gt7de5n7qhs4e.apps.googleusercontent.com"
+});
 
 app.mount("#app");

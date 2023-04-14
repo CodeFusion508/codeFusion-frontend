@@ -11,12 +11,19 @@ export const useContentStore = defineStore("content", {
         },
         selectContent(index) {
             this.contIndex = index;
+        },
+        setUuid(uuid) {
+            this.uuid = uuid;
+        },
+        getUuid() {
+            return this.uuid;
         }
     },
     state: () => {
         return {
             lesson    : "",
-            contIndex : 0
+            contIndex : 0,
+            uuid      : ""
         };
     }
 });

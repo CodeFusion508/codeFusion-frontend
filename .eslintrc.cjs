@@ -35,11 +35,8 @@ module.exports = {
       "ObjectExpression"  : { "consistent": true, "minProperties": 3 },
       "ObjectPattern"     : { "consistent": true, "minProperties": 3 }
     }],
-    "prefer-destructuring": ["error", {
-      "array"  : true,
-      "object" : true
-    }],
-    "quotes": [
+    "prefer-destructuring" : ["error", { "object": true }],
+    "quotes"               : [
       "error",
       "double",
       {
