@@ -65,14 +65,8 @@ export default {
 
       this.$router.push({ name: router });
     },
-    checkType(type, expected) {
-      if (type === expected) {
-        return true;
-      }
-      return false;
-    },
     getRouterPath(labels = []) {
-      const [, secondLabels] = labels;
+      const secondLabels = labels[1];
 
       switch (secondLabels) {
         case "Problems":
