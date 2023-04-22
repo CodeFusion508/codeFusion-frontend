@@ -51,7 +51,7 @@
           <p class="text-secondary h6 bs_fw-300 pb-3 text-white">
             Crea una Cuenta
           </p>
-          <form class="py-3 pt-lg-3 w-100 md-mx-w-550" @submit.prevent="createAccount">
+          <form class="py-3 pt-lg-3 w-100 md-mx-w-550" @submit.prevent="createAccount(false)">
             <div class="mb-3">
               <input
                 id="signup-5-name"
@@ -83,10 +83,13 @@
                 required
               >
             </div>
+            <div v-if="gLogin && password === ''" class="alert alert-warning" role="alert">
+              Introduzca su contraseña
+            </div>
             <button type="submit" class="btn btn-primary w-100 text-white">
               Crea Cuenta
             </button>
-            <g-login @logged="checkGLogin" />
+            <g-login @logged-in="checkGLogin" @credential="fillCredential" />
             <p class="pt-3 small mb-0" style="color: lightgray;">
               Ya tienes una cuenta? <a class="text-decoration-none" @click.prevent="show">Iniciar sesión</a>
             </p>
@@ -112,43 +115,60 @@ export default {
   },
   data() {
     return {
-      login    : false,
-      userName : "",
-      email    : "",
-      password : ""
+      login      : false,
+      userName   : "",
+      email      : "",
+      password   : "",
+        gLogin     : false,
+        credential : ""
     };
   },
   computed: {
     ...mapState(useAuthStore, ["storeName", "storeEmail", "storePassword"])
   },
   methods: {
-    ...mapActions(useUserStore, ["createUser", "logInUser"]),
+    ...mapActions(useUserStore, ["createUser", "logInUser", "createGoogleUser", "verifyUser"]),
     ...mapActions(useAuthStore, ["addAuthToken"]),
-    checkGLogin(value) {
+      fillCredential(value) {
+        this.credential = value;
+      },
+    async checkGLogin(value) {
+        let verified = await this.verifyUser(this.credential);
       if (value) {
+          this.gLogin = true;
         if (this.storeEmail !== "") {
           this.email = this.storeEmail;
         }
         if (this.storeName !== "") {
           this.userName = this.storeName;
         }
-        if (this.storePassword !== "") {
-          this.password = this.storePassword;
-        }
 
-        this.createAccount();
+        if (verified.data)
+            await this.createAccount(true);
       }
     },
-    async createAccount() {
-      const userObj = {
-        name     : this.userName,
-        email    : this.email,
-        password : this.password
-      };
+    async createAccount(google) {
+        if (!google) {
+            const userObj = {
+                name     : this.userName,
+                email    : this.email,
+                password : this.password
+            };
 
-      const token = await this.createUser(userObj);
+            const token = await this.createUser(userObj);
 
-      this.addAuthToken(token);
+            this.addAuthToken(token);
+        } else {
+            const userObj = {
+                name  : this.userName,
+                email : this.email
+            };
+
+            const token = await this.createGoogleUser(userObj);
+
+            this.addAuthToken(token);
+        }
+
     },
     async logIn() {
       const userObj = {

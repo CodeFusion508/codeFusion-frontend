@@ -3,6 +3,8 @@ import { defineStore } from "pinia";
 import {
     getUserReq,
     createUserReq,
+    createGoogleUserReq,
+    verifyGUserReq,
     logInUserReq,
     updateUserReq,
     createRelation
@@ -21,6 +23,20 @@ export const useUserStore = defineStore("user", {
             localStorage.setItem("uuid", this.userObj.uuid);
 
             return token;
+        },
+        async createGoogleUser(userData) {
+            const { data, token } = await createGoogleUserReq(userData);
+
+            this.userObj.name = data.node.userName;
+            this.userObj.uuid = data.node.uuid;
+            localStorage.setItem("uuid", this.userObj.uuid);
+
+            return token;
+        },
+        async verifyUser() {
+            const { data } = await verifyGUserReq();
+            console.log(data, "verifying user in user store");
+            return data;
         },
         async findUser() {
             const data = await getUserReq(this.userObj.uuid);

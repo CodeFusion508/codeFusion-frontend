@@ -53,6 +53,31 @@ export const createUserReq = async ({
     return data;
 };
 
+export const createGoogleUserReq = async ({
+                                        name,
+                                        email
+                                    }) => {
+    let err;
+
+    const { data } = await axios({
+        method : "post",
+        url    : `${import.meta.env.VITE_SERVER}${students}/google`,
+        data   : {
+            userName: name,
+            email
+        }
+    })
+        .catch((error) => err = error);
+
+    if (err) {
+        useToastStore().Activated({ text: err.response.data, title: "Usuarios de Google" });
+
+        //throw new Error(err.response.data);
+    }
+
+    return data;
+};
+
 export const logInUserReq = async ({ email, password }) => {
     let err;
 
@@ -114,5 +139,23 @@ export const createRelation = async (dataRequest = {}) => {
         throw new Error(err.response.data);
     }
 
+    return data;
+};
+export const verifyGUserReq = async (dataRequest = {}) => {
+    let err;
+
+    const { data } = await axios({
+        method : "post",
+        url    : `${import.meta.env.VITE_SERVER}gVerify`,
+        data   : dataRequest
+    })
+        .catch((error) => err = error);
+
+    if (err) {
+        useToastStore().Activated({ text: err.response.data, title: "Archivos" });
+
+        throw new Error(err.response.data);
+    }
+    console.log(data, "USER VERIFIED IN CLIENT REQUEST");
     return data;
 };
