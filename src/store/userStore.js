@@ -25,17 +25,21 @@ export const useUserStore = defineStore("user", {
             return token;
         },
         async createGoogleUser(userData) {
+
             const { data, token } = await createGoogleUserReq(userData);
 
             this.userObj.name = data.node.userName;
             this.userObj.uuid = data.node.uuid;
             localStorage.setItem("uuid", this.userObj.uuid);
+            localStorage.setItem("tkn", token);
+            this.userObj.tkn = token
 
             return token;
+
         },
-        async verifyUser() {
-            const { data } = await verifyGUserReq();
-            console.log(data, "verifying user in user store");
+        async verifyUser(token) {
+            const data = await verifyGUserReq(token);
+            // console.log(data, "verifying user in user store");
             return data;
         },
         async findUser() {
@@ -97,7 +101,8 @@ export const useUserStore = defineStore("user", {
                 name   : "",
                 uuid   : localStorage.getItem("uuid") !== undefined || localStorage.getItem("uuid") !== null ? localStorage.getItem("uuid") : "",
                 email  : "",
-                avatar : { image: "", file: null }
+                avatar : { image: "", file: null },
+                tkn    : localStorage.getItem('tkn') != undefined || localStorage.getItem('tkn') != null
             },
             uuidContent: ""
         };

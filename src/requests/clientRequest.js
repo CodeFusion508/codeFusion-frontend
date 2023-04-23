@@ -9,9 +9,9 @@ export const getUserReq = async (uuid) => {
     let err;
 
     const { data } = await axios({
-        method  : "get",
-        url     : `${import.meta.env.VITE_SERVER}${students}/${uuid}`,
-        headers : {
+        method: "get",
+        url: `${import.meta.env.VITE_SERVER}${students}/${uuid}`,
+        headers: {
             authorization: `Bearer ${useAuthStore().authToken}`
         }
     })
@@ -34,9 +34,9 @@ export const createUserReq = async ({
     let err;
 
     const { data } = await axios({
-        method : "post",
-        url    : `${import.meta.env.VITE_SERVER}${students}/`,
-        data   : {
+        method: "post",
+        url: `${import.meta.env.VITE_SERVER}${students}/`,
+        data: {
             userName: name,
             email,
             password
@@ -53,18 +53,15 @@ export const createUserReq = async ({
     return data;
 };
 
-export const createGoogleUserReq = async ({
-                                        name,
-                                        email
-                                    }) => {
+export const createGoogleUserReq = async ({ name, email, token }) => {
     let err;
 
     const { data } = await axios({
-        method : "post",
-        url    : `${import.meta.env.VITE_SERVER}${students}/google`,
-        data   : {
+        method: "post",
+        url: `${import.meta.env.VITE_SERVER}${students}/google`,
+        data: {
             userName: name,
-            email
+            email, token
         }
     })
         .catch((error) => err = error);
@@ -75,6 +72,8 @@ export const createGoogleUserReq = async ({
         //throw new Error(err.response.data);
     }
 
+    console.log(data)
+
     return data;
 };
 
@@ -82,9 +81,9 @@ export const logInUserReq = async ({ email, password }) => {
     let err;
 
     const { data } = await axios({
-        method : "post",
-        url    : `${import.meta.env.VITE_SERVER}${students}/login`,
-        data   : {
+        method: "post",
+        url: `${import.meta.env.VITE_SERVER}${students}/login`,
+        data: {
             email,
             password
         }
@@ -104,9 +103,9 @@ export const updateUserReq = async (dataUser) => {
     let err;
 
     const { data } = await axios({
-        method : "put",
-        url    : `${import.meta.env.VITE_SERVER}${students}/`,
-        data   : dataUser
+        method: "put",
+        url: `${import.meta.env.VITE_SERVER}${students}/`,
+        data: dataUser
     })
         .catch((error) => err = error);
 
@@ -124,10 +123,10 @@ export const createRelation = async (dataRequest = {}) => {
     let err;
 
     const { data } = await axios({
-        method  : "post",
-        url     : `${import.meta.env.VITE_SERVER}${students}/rel`,
-        data    : dataRequest,
-        headers : {
+        method: "post",
+        url: `${import.meta.env.VITE_SERVER}${students}/rel`,
+        data: dataRequest,
+        headers: {
             authorization: `Bearer ${useAuthStore().authToken}`
         }
     })
@@ -143,11 +142,10 @@ export const createRelation = async (dataRequest = {}) => {
 };
 export const verifyGUserReq = async (dataRequest = {}) => {
     let err;
-
     const { data } = await axios({
-        method : "post",
-        url    : `${import.meta.env.VITE_SERVER}gVerify`,
-        data   : dataRequest
+        method: "post",
+        url: `${import.meta.env.VITE_SERVER}gVerify`,
+        data: { idtoken: dataRequest }
     })
         .catch((error) => err = error);
 
@@ -156,6 +154,6 @@ export const verifyGUserReq = async (dataRequest = {}) => {
 
         throw new Error(err.response.data);
     }
-    console.log(data, "USER VERIFIED IN CLIENT REQUEST");
+    // console.log(data, "USER VERIFIED IN CLIENT REQUEST");
     return data;
 };

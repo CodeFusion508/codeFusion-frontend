@@ -33,6 +33,7 @@
             <button type="submit" class="btn btn-primary w-100 text-white">
               Iniciar sesión
             </button>
+            <g-login @logged-in="checkGLogin" @credential="fillCredential" />
             <p class="pt-3 small mb-0" style="color: lightgray;">
               No tienes una Cuenta? <a class="text-decoration-none" @click.prevent="show">Crea una Cuenta</a>
             </p>
@@ -143,9 +144,9 @@ export default {
           this.userName = this.storeName;
         }
 
-        if (verified.data)
+        if (verified)
             await this.createAccount(true);
-      }
+        }
     },
     async createAccount(google) {
         if (!google) {
@@ -161,7 +162,8 @@ export default {
         } else {
             const userObj = {
                 name  : this.userName,
-                email : this.email
+                email : this.email,
+                token : this.credential
             };
 
             const token = await this.createGoogleUser(userObj);
