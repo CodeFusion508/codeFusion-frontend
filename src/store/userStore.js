@@ -32,7 +32,7 @@ export const useUserStore = defineStore("user", {
             this.userObj.uuid = data.node.uuid;
             localStorage.setItem("uuid", this.userObj.uuid);
             localStorage.setItem("tkn", token);
-            this.userObj.tkn = token
+            this.userObj.tkn = token;
 
             return token;
 
@@ -93,6 +93,9 @@ export const useUserStore = defineStore("user", {
         },
         getUuidContent() {
             return this.uuidContent;
+        },
+        setAvatar(avatar) {
+            this.userObj.avatar = avatar;
         }
     },
     state: () => {
@@ -102,7 +105,7 @@ export const useUserStore = defineStore("user", {
                 uuid   : localStorage.getItem("uuid") !== undefined || localStorage.getItem("uuid") !== null ? localStorage.getItem("uuid") : "",
                 email  : "",
                 avatar : { image: "", file: null },
-                tkn    : localStorage.getItem('tkn') != undefined || localStorage.getItem('tkn') != null
+                tkn    : localStorage.getItem("tkn") != undefined || localStorage.getItem("tkn") != null
             },
             uuidContent: ""
         };
