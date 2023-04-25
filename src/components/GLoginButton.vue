@@ -1,29 +1,8 @@
 <template>
-    <GoogleLogin :callback="callback" class="col-sm-12">
-        <button class="btn-google-logIn">
-            <div class="row">
-                <div class="col-2 img-google" ></div>
-                <div class="col-10 text-center" >
-                    Iniciar / Crear cuenta con Google
-                </div>
-            </div>
-        </button>
-    </GoogleLogin>
+    <main>
+        <GoogleLogin :callback="callback" class="col-sm-12 btn-google-logIn img-google" />
+    </main>
 </template>
-
-<style scoped>
-.btn-google-logIn {
-    width: 100%;
-    height: 45px;
-    border: none !important;
-}
-.img-google {
-    background-image: url('../pages/assets/google.png');
-    background-repeat: no-repeat;
-    background-size: 20px;
-    background-position: 50%;
-}
-</style>
 
 <script>
 import { decodeCredential } from "vue3-google-login";

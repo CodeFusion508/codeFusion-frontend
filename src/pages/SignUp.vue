@@ -3,7 +3,7 @@
 
   <div class="d-flex justify-content-center mt-5">
     <div class="col-sm-4 col-12">
-      <div class="position-btn-google bg-primary">
+      <div class="position-btn-google">
             <g-login class="col-12" @logged-in="checkGLogin" @credential="fillCredential" />
       </div>
       <div class="row">
@@ -91,19 +91,19 @@
 
 <style>
 .position-btn-google {
-  width: 350px;
+  /* width: 350px; */
   position: absolute;
-  left: 82.5%;
+  left: 77.5%;
   top: 12.5%;
-  transform: translate(-82.5%, -12.5%);
+  transform: translate(-77.5%, -12.5%);
   z-index: 50;
 }
 
 @media only screen and (max-width: 600px) {
   .position-btn-google {
-    width: 100%;
-    left: 0% !important;
-    transform: translate(0%, -12.5%);
+    /* width: 100%; */
+    left: 50% !important;
+    transform: translate(-50%, -12.5%);
   }
 }
 </style>
