@@ -1,3 +1,5 @@
+import router from "../router/router";
+
 import { defineStore } from "pinia";
 
 import {
@@ -9,8 +11,10 @@ import {
     updateUserReq,
     createRelation
 } from "@/requests/clientRequest.js";
-import router from "../router/router";
 
+
+const nameUuidLocalStorange = "uuid"
+const nameTokenLocalStorange = "tkn"
 
 export const useUserStore = defineStore("user", {
     actions: {
@@ -20,7 +24,7 @@ export const useUserStore = defineStore("user", {
 
             this.userObj.name = data.node.userName;
             this.userObj.uuid = data.node.uuid;
-            localStorage.setItem("uuid", this.userObj.uuid);
+            localStorage.setItem(nameUuidLocalStorange, this.userObj.uuid);
 
             return token;
         },
@@ -30,8 +34,8 @@ export const useUserStore = defineStore("user", {
 
             this.userObj.name = data.node.userName;
             this.userObj.uuid = data.node.uuid;
-            localStorage.setItem("uuid", this.userObj.uuid);
-            localStorage.setItem("tkn", token);
+            localStorage.setItem(nameUuidLocalStorange, this.userObj.uuid);
+            localStorage.setItem(nameTokenLocalStorange, token);
             this.userObj.tkn = token;
 
             return token;
@@ -55,7 +59,7 @@ export const useUserStore = defineStore("user", {
 
             this.userObj.name = data.node.userName;
             this.userObj.uuid = data.node.uuid;
-            localStorage.setItem("uuid", this.userObj.uuid);
+            localStorage.setItem(nameUuidLocalStorange, this.userObj.uuid);
 
             return token;
         },
@@ -86,7 +90,7 @@ export const useUserStore = defineStore("user", {
                 avatar : { image: "", file: null }
             };
 
-            localStorage.removeItem("uuid");
+            localStorage.removeItem(nameUuidLocalStorange);
         },
         setUuidContent(uuid = "") {
             this.uuidContent = uuid;
@@ -102,10 +106,10 @@ export const useUserStore = defineStore("user", {
         return {
             userObj: {
                 name   : "",
-                uuid   : localStorage.getItem("uuid") !== undefined || localStorage.getItem("uuid") !== null ? localStorage.getItem("uuid") : "",
+                uuid   : localStorage.getItem(nameUuidLocalStorange) !== undefined || localStorage.getItem(nameUuidLocalStorange) !== null ? localStorage.getItem(nameUuidLocalStorange) : "",
                 email  : "",
                 avatar : { image: "", file: null },
-                tkn    : localStorage.getItem("tkn") != undefined || localStorage.getItem("tkn") != null
+                tkn    : localStorage.getItem(nameTokenLocalStorange) != undefined || localStorage.getItem(nameTokenLocalStorange) != null ? localStorage.getItem(nameTokenLocalStorange): ""
             },
             uuidContent: ""
         };

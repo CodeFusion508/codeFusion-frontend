@@ -11,7 +11,7 @@ import UserSettings from "@/pages/UserSettings.vue";
 import ArticlesPage from "@/pages/ArticlesPage.vue";
 
 // routes arrays
-let baseRoutes = [
+const baseRoutes = [
   {
     path      : "/",
     component : HomePage,
@@ -50,12 +50,12 @@ let baseRoutes = [
   }
 ];
 
-let routes1 = baseRoutes.concat(lessonsRoutes);
+const routes = baseRoutes.concat(lessonsRoutes);
 
 // router object
 const router = createRouter({
   history : createWebHistory(),
-  routes  : routes1
+  routes
 });
 
 export default router;

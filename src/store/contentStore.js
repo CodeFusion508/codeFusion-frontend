@@ -5,8 +5,7 @@ import { getMD } from "../requests/contentRequest.js";
 export const useContentStore = defineStore("content", {
     actions: {
         async getText(path) {
-            this.lesson = await getMD(path);
-
+            this.lesson = await getMD(path)
             return this.lesson;
         },
         selectContent(index) {
@@ -14,16 +13,13 @@ export const useContentStore = defineStore("content", {
         },
         setUuid(uuid) {
             this.uuid = uuid;
-        },
-        getUuid() {
-            return this.uuid;
         }
     },
     state: () => {
         return {
-            lesson    : "",
-            contIndex : 0,
-            uuid      : ""
+            lesson: "",
+            contIndex: 0,
+            uuid: ""
         };
     }
 });

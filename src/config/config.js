@@ -1,0 +1,17 @@
+import App from "../App.vue";
+import router from "../router/router.js";
+
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import { install } from "@guolao/vue-monaco-editor";
+
+// Styles global
+import '../assets/style.css'
+
+export const app = createApp(App);
+
+
+// uses
+app.use(createPinia());
+app.use(router);
+app.use(install);

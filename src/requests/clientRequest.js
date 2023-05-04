@@ -1,159 +1,28 @@
-import axios from "axios";
+import { Https } from "./Https";
 
-import { useToastStore } from "@/store/toastStore.js";
-import { useAuthStore } from "@/store/authStore.js";
+const https = new Https('Usuarios', 'users')
 
-const students = "users";
-
-export const getUserReq = async (uuid) => {
-    let err;
-
-    const { data } = await axios({
-        method: "get",
-        url: `${import.meta.env.VITE_SERVER}${students}/${uuid}`,
-        headers: {
-            authorization: `Bearer ${useAuthStore().authToken}`
-        }
-    })
-        .catch((error) => err = error);
-
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Usuarios" });
-
-        throw new Error(err.response.data);
-    }
-
-    return data;
-};
+export const getUserReq = async (uuid) => (await https.get(`/${uuid}`).Builder()).data;
 
 export const createUserReq = async ({
     name,
     email,
     password
-}) => {
-    let err;
+}) => (await https.post(`/`, { userName: name, email, password }).Builder()).data;
 
-    const { data } = await axios({
-        method: "post",
-        url: `${import.meta.env.VITE_SERVER}${students}/`,
-        data: {
-            userName: name,
-            email,
-            password
-        }
-    })
-        .catch((error) => err = error);
+export const createGoogleUserReq = async ({ 
+    name, 
+    email, 
+    token 
+}) => (await https.post(`/google`, { userName: name, email, token }).Builder()).data;
 
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Usuarios" });
+export const logInUserReq = async ({ email, password }) => (await https.post(`/`, { email, password }).Builder()).data;
 
-        //throw new Error(err.response.data);
-    }
-
-    return data;
-};
-
-export const createGoogleUserReq = async ({ name, email, token }) => {
-    let err;
-
-    const { data } = await axios({
-        method: "post",
-        url: `${import.meta.env.VITE_SERVER}${students}/google`,
-        data: {
-            userName: name,
-            email, token
-        }
-    })
-        .catch((error) => err = error);
-
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Usuarios de Google" });
-
-        //throw new Error(err.response.data);
-    }
-
-    console.log(data)
-
-    return data;
-};
-
-export const logInUserReq = async ({ email, password }) => {
-    let err;
-
-    const { data } = await axios({
-        method: "post",
-        url: `${import.meta.env.VITE_SERVER}${students}/login`,
-        data: {
-            email,
-            password
-        }
-    })
-        .catch((error) => err = error);
-
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Usuarios" });
-
-        throw new Error(err.response.data);
-    }
-
-    return data;
-};
-
-export const updateUserReq = async (dataUser) => {
-    let err;
-
-    const { data } = await axios({
-        method: "put",
-        url: `${import.meta.env.VITE_SERVER}${students}/`,
-        data: dataUser
-    })
-        .catch((error) => err = error);
-
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Usuarios" });
-
-        throw new Error(err.response.data);
-    }
-
-    return data;
-};
+export const updateUserReq = async (dataUser) => (await https.put(`/`, dataUser).Builder()).data;
 
 
-export const createRelation = async (dataRequest = {}) => {
-    let err;
+export const createRelation = async (dataRequest = {}) =>  (await https.post(`/rel`, dataRequest).Builder()).data;
 
-    const { data } = await axios({
-        method: "post",
-        url: `${import.meta.env.VITE_SERVER}${students}/rel`,
-        data: dataRequest,
-        headers: {
-            authorization: `Bearer ${useAuthStore().authToken}`
-        }
-    })
-        .catch((error) => err = error);
+const httpsVerify = new Https('Archivos', 'gVerify')
 
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Archivos" });
-
-        throw new Error(err.response.data);
-    }
-
-    return data;
-};
-export const verifyGUserReq = async (dataRequest = {}) => {
-    let err;
-    const { data } = await axios({
-        method: "post",
-        url: `${import.meta.env.VITE_SERVER}gVerify`,
-        data: { idtoken: dataRequest }
-    })
-        .catch((error) => err = error);
-
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Archivos" });
-
-        throw new Error(err.response.data);
-    }
-    // console.log(data, "USER VERIFIED IN CLIENT REQUEST");
-    return data;
-};
+export const verifyGUserReq = async (dataRequest = {}) => (await httpsVerify.post('', { idtoken: dataRequest }).Builder()).data;

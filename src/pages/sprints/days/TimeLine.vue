@@ -19,10 +19,8 @@
                 <label>Earn {{ obj.exp }} experience</label>
                 <div class="d-flex justify-content-end">
                   <div class="col-sm-4 col-12">
-                    <button
-                      class="btn btn-primary form-control"
-                      @click="changeRouter(getRouterPath(obj.labels), obj.uuid)"
-                    >
+                    <button class="btn btn-primary form-control"
+                      @click="changeRouter(getRouterPath(obj.labels), obj.uuid)">
                       Ver selección
                     </button>
                   </div>
@@ -45,16 +43,16 @@ import { useUserStore } from "@/store/userStore";
 export default {
   props: {
     index: {
-      type    : Number,
-      default : () => 0
+      type: Number,
+      default: () => 0
     },
     listTask: {
-      type    : Array,
-      default : () => []
+      type: Array,
+      default: () => []
     },
     day: {
-      type    : Object,
-      default : () => { return {}; }
+      type: Object,
+      default: () => { return {}; }
     }
   },
   methods: {
