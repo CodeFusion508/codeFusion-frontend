@@ -1,5 +1,5 @@
-import { Https } from "./Https";
+import { Http } from "./http.js";
 
-const https = new Https("Archivos", "static");
+const request = new Http("Archivos", "static");
 
-export const getMD = async (path) => (await https.get(`/${path}`).Builder()).data;
+export const getMD = async (path) => (await request.get(`/${path}`).Builder()).data;

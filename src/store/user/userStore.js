@@ -1,6 +1,6 @@
-import router from "../router/router";
-
 import { defineStore } from "pinia";
+
+import router from "@router/router.js";
 
 import {
     getUserReq,
@@ -13,37 +13,33 @@ import {
 } from "@/requests/clientRequest.js";
 
 
-const nameUuidLocalStorange = "uuid";
-const nameTokenLocalStorange = "tkn";
-
 export const useUserStore = defineStore("user", {
     actions: {
-        // Basic User Operations
+        // User operations
         async createUser(userData) {
             const { data, token } = await createUserReq(userData);
 
             this.userObj.name = data.node.userName;
             this.userObj.uuid = data.node.uuid;
-            localStorage.setItem(nameUuidLocalStorange, this.userObj.uuid);
+            localStorage.setItem("uuid", this.userObj.uuid);
 
             return token;
         },
         async createGoogleUser(userData) {
-
             const { data, token } = await createGoogleUserReq(userData);
 
             this.userObj.name = data.node.userName;
             this.userObj.uuid = data.node.uuid;
-            localStorage.setItem(nameUuidLocalStorange, this.userObj.uuid);
-            localStorage.setItem(nameTokenLocalStorange, token);
             this.userObj.tkn = token;
 
-            return token;
+            localStorage.setItem("uuid", this.userObj.uuid);
+            localStorage.setItem("tkn", token);
 
+            return token;
         },
         async verifyUser(token) {
             const data = await verifyGUserReq(token);
-            // console.log(data, "verifying user in user store");
+
             return data;
         },
         async findUser() {
@@ -59,7 +55,7 @@ export const useUserStore = defineStore("user", {
 
             this.userObj.name = data.node.userName;
             this.userObj.uuid = data.node.uuid;
-            localStorage.setItem(nameUuidLocalStorange, this.userObj.uuid);
+            localStorage.setItem("uuid", this.userObj.uuid);
 
             return token;
         },
@@ -81,7 +77,7 @@ export const useUserStore = defineStore("user", {
                 router.push({ name: "lessons-day" });
             }
         },
-        // Store Operations such as logOut aka cleanUser
+        // Store operations
         async cleanUser() {
             this.userObj = {
                 name   : null,
@@ -90,13 +86,10 @@ export const useUserStore = defineStore("user", {
                 avatar : { image: "", file: null }
             };
 
-            localStorage.removeItem(nameUuidLocalStorange);
+            localStorage.removeItem("uuid");
         },
         setUuidContent(uuid = "") {
             this.uuidContent = uuid;
-        },
-        getUuidContent() {
-            return this.uuidContent;
         },
         setAvatar(avatar) {
             this.userObj.avatar = avatar;
@@ -106,10 +99,10 @@ export const useUserStore = defineStore("user", {
         return {
             userObj: {
                 name   : "",
-                uuid   : localStorage.getItem(nameUuidLocalStorange) !== undefined || localStorage.getItem(nameUuidLocalStorange) !== null ? localStorage.getItem(nameUuidLocalStorange) : "",
+                uuid   : localStorage.getItem("uuid") !== undefined ? localStorage.getItem("uuid") : "",
                 email  : "",
                 avatar : { image: "", file: null },
-                tkn    : localStorage.getItem(nameTokenLocalStorange) != undefined || localStorage.getItem(nameTokenLocalStorange) != null ? localStorage.getItem(nameTokenLocalStorange): ""
+                tkn    : localStorage.getItem("tkn") !== undefined ? localStorage.getItem("tkn") : ""
             },
             uuidContent: ""
         };

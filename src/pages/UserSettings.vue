@@ -61,7 +61,7 @@ export default {
   methods: {
     ...mapActions(useUserStore, ["findUser", "updatedUser", "setAvatar"]),
     async initialize() {
-      this.userObj.avatar.image = this.userObj.avatar.image === "" ? "../src/pages/assets/profile.jpg":this.userObj.avatar.image;
+      this.userObj.avatar.image = this.userObj.avatar.image === "" ? "../src/pages/assets/profile.jpg" : this.userObj.avatar.image;
 
       await this.findUser();
     },
@@ -69,7 +69,7 @@ export default {
       this.$refs.fileImageProfile.click();
     },
     uploadImage(event) {
-      const [ file ] = event.target.files;
+      const [file] = event.target.files;
       const reader = new FileReader();
       const that = this;
 

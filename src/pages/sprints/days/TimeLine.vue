@@ -59,7 +59,6 @@ export default {
   },
   methods: {
     ...mapActions(useUserStore, ["setUuidContent"]),
-    ...mapActions(useContentStore, ["selectContent"]),
     changeRouter(router = "", uuid = "") {
       this.setUuidContent(uuid);
 

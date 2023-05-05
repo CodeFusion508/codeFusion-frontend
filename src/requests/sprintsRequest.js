@@ -1,13 +1,11 @@
-import { Https } from "./Https";
+import { Http } from "./http.js";
 
-const sprints = "sprints";
-const https = new Https("Sprint", sprints);
+const request = new Http("Sprint", "sprints");
 
 export const getAllSprints = async () => {
+    const { data } = await request.get("/").Builder();
 
-    const { data } = await https.get("/").Builder();
-
-    // Sorting and Cleaning our data for our lessonsPage
+    // Sorting and cleaning data
     data.node = data.node.map(value => {
         if (value.labels[1] === undefined) {
             value.labels.push("Section_1");
@@ -19,7 +17,6 @@ export const getAllSprints = async () => {
         const numberSectionB = parseInt(valueB.labels[1].split("_")[1]);
 
         return numberSectionA - numberSectionB;
-
     }).reduce((accumulator, value, _, values) => {
         const [, labelMain] = value.labels;
 
@@ -41,4 +38,4 @@ export const getAllSprints = async () => {
     return data.node;
 };
 
-export const getSprintByUuid = async (uuid = "") => (await https.get(`/${uuid}/rel`).Builder()).data;
+export const getSprintByUuid = async (uuid) => (await request.get(`/${uuid}/rel`).Builder()).data;

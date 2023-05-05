@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useAuthStore } from "../store/authStore";
+
+import { useAuthStore } from "@/store/user/authStore.js";
 import { useToastStore } from "@/store/toastStore.js";
 
-export class Https {
-
+export class Http {
     constructor(nameRequest = "", pathNameRequest = "") {
         this.router = `${import.meta.env.VITE_SERVER}`;
         this.data = null;
@@ -42,7 +42,7 @@ export class Https {
 
     async Builder() {
         try {
-            const { data } = await axios({
+            const data = await axios({
                 method  : this.method,
                 url     : `${this.router}${this.pathNameRequest}${this.path}`,
                 data    : this.data,
@@ -50,10 +50,11 @@ export class Https {
                     authorization: `Bearer ${useAuthStore().authToken}`
                 }
             });
-            return { data };
+
+            return data;
         } catch (error) {
             useToastStore().Activated({ text: error.response.data, title: this.NameRequest });
-            console.log(error.response.data);
+
             throw new Error(error.response.data);
         }
     }

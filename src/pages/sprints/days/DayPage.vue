@@ -37,7 +37,7 @@ export default {
   components: {
     "time-line": TimeLine
   },
-  data: () => {
+  data() {
     return {
       indexContent   : 0,
       layoutTimeLine : false
@@ -48,7 +48,6 @@ export default {
     ...mapState(useDaysStore, ["days", "result", "sprintUuid"])
   },
   async created() {
-
     if (this.sprintUuid === "") this.$router.push({ name: "lessons" });
 
     await this.getDaysByModule();

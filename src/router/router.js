@@ -31,7 +31,7 @@ const baseRoutes = [
     path        : "/ajustes",
     component   : UserSettings,
     beforeEnter : (from, to, next) => {
-      if (localStorage.getItem("tkn") != null) {
+      if (localStorage.getItem("tkn") !== undefined) {
         next();
       } else {
         next({ to: "/session" });

@@ -108,13 +108,14 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "pinia";
+import { mapActions } from "pinia";
+import { decodeCredential } from "vue3-google-login";
+
 
 import { useUserStore } from "@/store/userStore.js";
 import { useAuthStore } from "@/store/authStore.js";
 
 import GLoginButton from "@/components/GLoginButton.vue";
-import { decodeCredential } from "vue3-google-login";
 
 export default {
   components: {
@@ -143,11 +144,15 @@ export default {
       this.credential = value;
       if (this.credential) {
         let userData = decodeCredential(this.credential);
+
         this.email = userData.email;
         this.userName = userData.email.split("@")[0];
+
         let verified = await this.verifyUser(this.credential);
         if (verified) await this.createAccount(true);
-      } else throw new Error("No se pudo verificar el usuario");
+      } else {
+        throw new Error("No se pudo verificar el usuario");
+      }
     },
     async createAccount(google) {
       if (!google) {
@@ -189,7 +194,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .position-btn-google {
   /* width: 350px; */
   position: absolute;

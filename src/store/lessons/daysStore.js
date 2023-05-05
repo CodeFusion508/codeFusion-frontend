@@ -36,7 +36,7 @@ export const useDaysStore = defineStore("days", {
                 return;
             }
 
-            this.result = data.node.filter(value =>  value.node.path).map(value => {
+            this.result = data.node.filter(value => value.node.path).map(value => {
                 return {
                     title     : value.node.title,
                     path      : value.node.path,
@@ -48,25 +48,6 @@ export const useDaysStore = defineStore("days", {
                     uuid      : value.node.uuid
                 };
             });
-
-            // this.result = data.node.map((value) => {
-            //     const objTemp = {
-            //         title: value.node.title,
-            //         path: value.node.path,
-            //         exp: value.node.exp,
-            //         desc: value.node.desc,
-            //         labels: value.node.labels,
-            //         link: value.node.link || "",
-            //         contentNo: value.node.contentNo,
-            //         uuid: value.node.uuid
-            //     };
-
-            //     if (objTemp.path) {
-            //         return objTemp;
-            //     }
-
-            // }).filter(value => value != null);
-
         },
         setDaysBySprintUuid(uuid) {
             this.sprintUuid = uuid;
