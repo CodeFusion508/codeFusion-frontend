@@ -54,7 +54,7 @@ const routes = baseRoutes.concat(lessonsRoutes);
 
 // router object
 const router = createRouter({
-  history : createWebHistory(),
+  history: createWebHistory(),
   routes
 });
 

@@ -1,8 +1,8 @@
-import { app } from './config'
+import { app } from "./config";
 import vue3GoogleLogin from "vue3-google-login";
 
 app.use(vue3GoogleLogin, {
     clientId:
       "1079746536463-hu5gv65n5jin72ee5s4gt7de5n7qhs4e.apps.googleusercontent.com",
-    scope: "profile email openid",
+    scope: "profile email openid"
   });

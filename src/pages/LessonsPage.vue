@@ -7,8 +7,11 @@
     </h3>
 
     <div class="row g-0 text-center">
-      <div v-for="(sprint, i) in sprints[index]" :key="i"
-        :class="['col-12 px-2 my-3', sprints.length <= 3 ? 'col-sm' : 'col-sm-3']">
+      <div
+        v-for="(sprint, i) in sprints[index]"
+        :key="i"
+        :class="['col-12 px-2 my-3', sprints.length <= 3 ? 'col-sm' : 'col-sm-3']"
+      >
         <div class="card bg-dark-subtle border-0 shadow-sm">
           <div class="card-body">
             <h5 class="card-title text-white">

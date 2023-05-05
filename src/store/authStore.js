@@ -15,11 +15,11 @@ export const useAuthStore = defineStore("auth", {
             localStorage.removeItem("tkn");
             router.push({ path: "/" });
             this.authToken = null;
-        },
+        }
     },
     state: () => {
         return {
-            authToken: localStorage.getItem("tkn"),
+            authToken: localStorage.getItem("tkn")
         };
-    },
+    }
 });

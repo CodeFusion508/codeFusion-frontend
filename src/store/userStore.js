@@ -13,8 +13,8 @@ import {
 } from "@/requests/clientRequest.js";
 
 
-const nameUuidLocalStorange = "uuid"
-const nameTokenLocalStorange = "tkn"
+const nameUuidLocalStorange = "uuid";
+const nameTokenLocalStorange = "tkn";
 
 export const useUserStore = defineStore("user", {
     actions: {

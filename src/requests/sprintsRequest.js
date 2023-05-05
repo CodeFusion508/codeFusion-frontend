@@ -1,11 +1,11 @@
 import { Https } from "./Https";
 
 const sprints = "sprints";
-const https = new Https('Sprint', sprints)
+const https = new Https("Sprint", sprints);
 
 export const getAllSprints = async () => {
 
-    const { data } = await https.get("/").Builder()
+    const { data } = await https.get("/").Builder();
 
     // Sorting and Cleaning our data for our lessonsPage
     data.node = data.node.map(value => {

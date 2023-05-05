@@ -10,8 +10,8 @@ export const useDaysStore = defineStore("days", {
 
             this.days = data.node.map(value => {
                 return {
-                    uuid: value.node.uuid,
-                    desc: value.node.desc
+                    uuid : value.node.uuid,
+                    desc : value.node.desc
                 };
             });
         },
@@ -22,32 +22,32 @@ export const useDaysStore = defineStore("days", {
 
             if (!data) {
                 const fakeObj = {
-                    title: "Aún no hay contenido disponible",
-                    path: "Aún no hay contenido disponible",
-                    exp: "Aún no hay contenido disponible",
-                    desc: "Aún no hay contenido disponible",
-                    labels: "Aún no hay contenido disponible",
-                    contentNo: "Aún no hay contenido disponible",
-                    link: "Aún no hay contenido disponible",
-                    uuid: ""
+                    title     : "Aún no hay contenido disponible",
+                    path      : "Aún no hay contenido disponible",
+                    exp       : "Aún no hay contenido disponible",
+                    desc      : "Aún no hay contenido disponible",
+                    labels    : "Aún no hay contenido disponible",
+                    contentNo : "Aún no hay contenido disponible",
+                    link      : "Aún no hay contenido disponible",
+                    uuid      : ""
                 };
 
                 this.result.unshift(fakeObj);
-                return
+                return;
             }
 
             this.result = data.node.filter(value =>  value.node.path).map(value => {
                 return {
-                    title: value.node.title,
-                    path: value.node.path,
-                    exp: value.node.exp,
-                    desc: value.node.desc,
-                    labels: value.node.labels,
-                    link: value.node.link || "",
-                    contentNo: value.node.contentNo,
-                    uuid: value.node.uuid
+                    title     : value.node.title,
+                    path      : value.node.path,
+                    exp       : value.node.exp,
+                    desc      : value.node.desc,
+                    labels    : value.node.labels,
+                    link      : value.node.link || "",
+                    contentNo : value.node.contentNo,
+                    uuid      : value.node.uuid
                 };
-            })
+            });
 
             // this.result = data.node.map((value) => {
             //     const objTemp = {
@@ -64,7 +64,7 @@ export const useDaysStore = defineStore("days", {
             //     if (objTemp.path) {
             //         return objTemp;
             //     }
-                
+
             // }).filter(value => value != null);
 
         },
@@ -74,9 +74,9 @@ export const useDaysStore = defineStore("days", {
     },
     state: () => {
         return {
-            days: [],
-            result: [],
-            sprintUuid: ""
+            days       : [],
+            result     : [],
+            sprintUuid : ""
         };
     }
 });

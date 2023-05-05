@@ -6,7 +6,7 @@ import { createPinia } from "pinia";
 import { install } from "@guolao/vue-monaco-editor";
 
 // Styles global
-import '../assets/style.css'
+import "../assets/style.css";
 
 export const app = createApp(App);
 

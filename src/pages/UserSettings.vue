@@ -9,16 +9,33 @@
         <div class="row px-3">
           <div class="d-flex justify-content-center my-3">
             <div class="style-avatar shadow-lg" :style="{ 'background-image': 'url(' + userObj.avatar.image + ')' }">
-              <input ref="fileImageProfile" type="file" hidden @change="uploadImage">
-              <div class="content-save d-flex justify-content-center align-items-center shadow-lg rounded-circle"
-                @click="eventSelectedImage">
+              <input
+                ref="fileImageProfile"
+                type="file"
+                hidden
+                @change="uploadImage"
+              >
+              <div
+                class="content-save d-flex justify-content-center align-items-center shadow-lg rounded-circle"
+                @click="eventSelectedImage"
+              >
                 <i class="bi bi-camera-fill" />
               </div>
             </div>
           </div>
 
-          <input v-model="userObj.name" type="text" class="form-control mt-3" placeholder="Nombre(s) Completo">
-          <input v-model="userObj.email" type="text" class="form-control mt-3" placeholder="Correo Electrónico">
+          <input
+            v-model="userObj.name"
+            type="text"
+            class="form-control mt-3"
+            placeholder="Nombre(s) Completo"
+          >
+          <input
+            v-model="userObj.email"
+            type="text"
+            class="form-control mt-3"
+            placeholder="Correo Electrónico"
+          >
           <button class="btn btn-primary form-control mt-3" @click="updatedUser">
             Guardar
           </button>

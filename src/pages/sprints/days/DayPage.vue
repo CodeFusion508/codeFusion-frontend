@@ -5,10 +5,13 @@
       <div class="col-sm-12 col-md-12 col-lg-12 col-12 pb-3">
         <div class="row justify-content-between">
           <div v-for="(item, index) in days" :key="index" class="col-sm px-3">
-            <div :class="[
+            <div
+              :class="[
                 'content-item-day d-flex justify-content-center align-items-center',
                 indexContent === index ? 'content-activated' : ''
-              ]" @click="getContent(item.uuid, index)">
+              ]"
+              @click="getContent(item.uuid, index)"
+            >
               <h6>Día {{ index + 1 }}</h6>
             </div>
           </div>
@@ -36,8 +39,8 @@ export default {
   },
   data: () => {
     return {
-      indexContent: 0,
-      layoutTimeLine: false
+      indexContent   : 0,
+      layoutTimeLine : false
     };
   },
   computed: {
@@ -46,11 +49,11 @@ export default {
   },
   async created() {
 
-    if (this.sprintUuid === "") this.$router.push({ name: "lessons" })
+    if (this.sprintUuid === "") this.$router.push({ name: "lessons" });
 
     await this.getDaysByModule();
 
-    if (this.days.length >= 1) await this.getContent(this.days[this.indexContent].uuid, 0)
+    if (this.days.length >= 1) await this.getContent(this.days[this.indexContent].uuid, 0);
   },
   methods: {
     ...mapActions(useDaysStore, ["getDaysByModule", "getByContent"]),

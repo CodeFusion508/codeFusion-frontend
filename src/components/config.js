@@ -1,4 +1,4 @@
-import { app } from '../config/config'
+import { app } from "../config/config";
 // global components
 import NavBar from "../components/NavBar.vue";
 import NavFooter from "../components/NavFooter.vue";

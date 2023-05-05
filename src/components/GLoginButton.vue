@@ -1,7 +1,7 @@
 <template>
-    <main>
-        <GoogleLogin :callback="callback" :button-config="buttonConfig" class="w-50" />
-    </main>
+  <main>
+    <GoogleLogin :callback="callback" :button-config="buttonConfig" class="w-50" />
+  </main>
 </template>
 
 <script>
@@ -11,8 +11,8 @@ export default {
     data() {
         return {
             buttonConfig: {
-                width: 270,
-                theme: "filled_blue"
+                width : 270,
+                theme : "filled_blue"
             }
         };
     },
