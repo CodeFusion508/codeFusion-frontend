@@ -53,7 +53,7 @@ export class Http {
 
             return data;
         } catch (error) {
-            useToastStore().Activated({ text: error.response.data, title: this.NameRequest });
+            useToastStore().activate({ text: error.response.data, title: this.NameRequest });
 
             throw new Error(error.response.data);
         }

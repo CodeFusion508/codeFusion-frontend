@@ -21,9 +21,9 @@ export const createGoogleUserReq = async ({
     email,
     token
 }) => (await requestGoogle.post(``, {
-    userName: name,
+    userName : name,
     email,
-    idToken: token
+    idToken  : token
 }).Builder()).data;
 
 export const logInUserReq = async ({ email, password }) => (await request.post(`/`, { email, password }).Builder()).data;

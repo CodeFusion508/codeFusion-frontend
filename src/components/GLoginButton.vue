@@ -6,7 +6,9 @@
 
 <script>
 import { mapActions } from "pinia";
+
 import { useUserStore } from "@/store/user/userStore.js";
+
 export default {
     data() {
         return {
@@ -19,11 +21,7 @@ export default {
     methods: {
         ...mapActions(useUserStore, ["setAvatar"]),
         callback(response) {
-            try {
-                this.$emit("credential", response.credential);
-            } catch (error) {
-                console.log(error);
-            }
+            this.$emit("credential", response.credential);
         }
     }
 };

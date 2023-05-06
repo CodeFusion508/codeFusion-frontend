@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
-import { getContentsRelationByDays } from "@/requests/daysRequest";
-import { getSprintByUuid } from "@/requests/sprintsRequest";
+import { getContentsRelationByDays } from "@/requests/daysRequest.js";
+import { getSprintByUuid } from "@/requests/sprintsRequest.js";
 
 export const useDaysStore = defineStore("days", {
     actions: {

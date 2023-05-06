@@ -29,7 +29,7 @@
 <script>
 import { mapState } from "pinia";
 
-import { useToastStore } from "@/store/toastStore";
+import { useToastStore } from "@/store/toastStore.js";
 
 export default {
   computed: {

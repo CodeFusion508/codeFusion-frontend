@@ -1,6 +1,6 @@
-import router from "@/router/router.js";
-
 import { defineStore } from "pinia";
+
+import router from "@/router/router.js";
 
 export const useAuthStore = defineStore("auth", {
     actions: {

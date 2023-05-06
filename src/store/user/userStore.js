@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-import router from "@/router/router";
+import router from "@/router/router.js";
 
 import {
     getUserReq,
