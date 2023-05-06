@@ -1,30 +1,28 @@
 <template>
-  <GoogleLogin :callback="callback" />
+  <main>
+    <GoogleLogin :callback="callback" :button-config="buttonConfig" class="w-50" />
+  </main>
 </template>
 
 <script>
-import { decodeCredential } from "vue3-google-login";
 import { mapActions } from "pinia";
 
-import { useAuthStore } from "@/store/authStore.js";
+import { useUserStore } from "@/store/user/userStore.js";
 
 export default {
     data() {
         return {
-            callback: (response) => {
-                const userData = decodeCredential(response.credential);
-                this.setEmail(userData.email);
-                let userName = userData.email.split("@")[0];
-
-                this.setName(userName);
-                this.setPassword(userData.jti);
-
-                this.$emit("logged-in", true);
+            buttonConfig: {
+                width : 270,
+                theme : "filled_blue"
             }
         };
     },
     methods: {
-        ...mapActions(useAuthStore, ["setEmail", "setName", "setPassword"])
+        ...mapActions(useUserStore, ["setAvatar"]),
+        callback(response) {
+            this.$emit("credential", response.credential);
+        }
     }
 };
 </script>

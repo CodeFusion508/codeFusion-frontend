@@ -6,11 +6,10 @@
         <div class="row justify-content-between">
           <div v-for="(item, index) in days" :key="index" class="col-sm px-3">
             <div
-              :class="
-                [
-                  'content-item-day d-flex justify-content-center align-items-center',
-                  indexContent === index ? 'content-activated' : ''
-                ]"
+              :class="[
+                'content-item-day d-flex justify-content-center align-items-center',
+                indexContent === index ? 'content-activated' : ''
+              ]"
               @click="getContent(item.uuid, index)"
             >
               <h6>Día {{ index + 1 }}</h6>
@@ -29,8 +28,8 @@
 <script>
 import { mapActions, mapState } from "pinia";
 
-import { useAuthStore } from "@/store/authStore";
-import { useDaysStore } from "@/store/daysStore";
+import { useAuthStore } from "@/store/user/authStore.js";
+import { useDaysStore } from "@/store/lessons/daysStore.js";
 
 import TimeLine from "./TimeLine.vue";
 
@@ -38,7 +37,7 @@ export default {
   components: {
     "time-line": TimeLine
   },
-  data: () => {
+  data() {
     return {
       indexContent   : 0,
       layoutTimeLine : false
@@ -49,15 +48,11 @@ export default {
     ...mapState(useDaysStore, ["days", "result", "sprintUuid"])
   },
   async created() {
-    if (this.sprintUuid === "") {
-      this.$router.push({ name: "lessons" });
-    }
+    if (this.sprintUuid === "") this.$router.push({ name: "lessons" });
 
     await this.getDaysByModule();
 
-    if (this.days.length >= 1) {
-      await this.getContent(this.days[this.indexContent].uuid, 0);
-    }
+    if (this.days.length >= 1) await this.getContent(this.days[this.indexContent].uuid, 0);
   },
   methods: {
     ...mapActions(useDaysStore, ["getDaysByModule", "getByContent"]),

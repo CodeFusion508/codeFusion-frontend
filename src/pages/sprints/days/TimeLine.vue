@@ -39,8 +39,7 @@
 <script>
 import { mapActions } from "pinia";
 
-import { useContentStore } from "@/store/contentStore.js";
-import { useUserStore } from "@/store/userStore";
+import { useUserStore } from "@/store/user/userStore.js";
 
 export default {
   props: {
@@ -59,7 +58,6 @@ export default {
   },
   methods: {
     ...mapActions(useUserStore, ["setUuidContent"]),
-    ...mapActions(useContentStore, ["selectContent"]),
     changeRouter(router = "", uuid = "") {
       this.setUuidContent(uuid);
 

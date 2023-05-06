@@ -1,25 +1,11 @@
-import axios from "axios";
+import { Http } from "./http.js";
 
-import { useToastStore } from "@/store/toastStore.js";
-
-const sprints = "sprints";
+const request = new Http("Sprint", "sprints");
 
 export const getAllSprints = async () => {
-    let err;
+    const { data } = await request.get("/").Builder();
 
-    const { data } = await axios({
-        method : "get",
-        url    : `${import.meta.env.VITE_SERVER}${sprints}/`
-    })
-        .catch((error) => err = error);
-
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Sprints" });
-
-        // throw new Error(err.response.data);
-    }
-
-    // Sorting and Cleaning our data for our lessonsPage
+    // Sorting and cleaning data
     data.node = data.node.map(value => {
         if (value.labels[1] === undefined) {
             value.labels.push("Section_1");
@@ -31,7 +17,6 @@ export const getAllSprints = async () => {
         const numberSectionB = parseInt(valueB.labels[1].split("_")[1]);
 
         return numberSectionA - numberSectionB;
-
     }).reduce((accumulator, value, _, values) => {
         const [, labelMain] = value.labels;
 
@@ -53,20 +38,4 @@ export const getAllSprints = async () => {
     return data.node;
 };
 
-export const getSprintByUuid = async (uuid = "") => {
-    let err;
-
-    const { data } = await axios({
-        method : "get",
-        url    : `${import.meta.env.VITE_SERVER}${sprints}/${uuid}/rel`
-    })
-        .catch((error) => err = error);
-
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Sprints" });
-
-        // throw new Error(err.response.data);
-    }
-
-    return data;
-};
+export const getSprintByUuid = async (uuid) => (await request.get(`/${uuid}/rel`).Builder()).data;

@@ -49,7 +49,7 @@
 <script>
 import { mapActions, mapWritableState } from "pinia";
 
-import { useUserStore } from "@/store/userStore";
+import { useUserStore } from "@/store/user/userStore.js";
 
 export default {
   computed: {
@@ -59,9 +59,9 @@ export default {
     await this.initialize();
   },
   methods: {
-    ...mapActions(useUserStore, ["findUser", "updatedUser"]),
+    ...mapActions(useUserStore, ["findUser", "updatedUser", "setAvatar"]),
     async initialize() {
-      this.userObj.avatar.image = "../src/pages/assets/profile.jpg";
+      this.userObj.avatar.image = this.userObj.avatar.image === "" ? "../src/pages/assets/profile.jpg" : this.userObj.avatar.image;
 
       await this.findUser();
     },

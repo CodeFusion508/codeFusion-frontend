@@ -13,7 +13,7 @@ import { mapState } from "pinia";
 import LoggedOut from "@/modules/home/LoggedOut.vue";
 import LoggedIn from "@/modules/home/LoggedIn.vue";
 
-import { useAuthStore } from "@/store/authStore";
+import { useAuthStore } from "@/store/user/authStore.js";
 
 export default {
   components: {

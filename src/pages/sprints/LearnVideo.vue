@@ -31,8 +31,8 @@
 <script>
 import { mapState } from "pinia";
 
-import { useContentStore } from "@/store/contentStore.js";
-import { useDaysStore } from "@/store/daysStore.js";
+import { useContentStore } from "@/store/lessons/contentStore.js";
+import { useDaysStore } from "@/store/lessons/daysStore.js";
 
 export default {
   computed: {

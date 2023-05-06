@@ -11,7 +11,7 @@ import UserSettings from "@/pages/UserSettings.vue";
 import ArticlesPage from "@/pages/ArticlesPage.vue";
 
 // routes arrays
-let baseRoutes = [
+const baseRoutes = [
   {
     path      : "/",
     component : HomePage,
@@ -31,7 +31,7 @@ let baseRoutes = [
     path        : "/ajustes",
     component   : UserSettings,
     beforeEnter : (from, to, next) => {
-      if (localStorage.getItem("tkn") != null) {
+      if (localStorage.getItem("tkn") !== undefined) {
         next();
       } else {
         next({ to: "/session" });
@@ -50,12 +50,12 @@ let baseRoutes = [
   }
 ];
 
-let routes1 = baseRoutes.concat(lessonsRoutes);
+const routes = baseRoutes.concat(lessonsRoutes);
 
 // router object
 const router = createRouter({
-  history : createWebHistory(),
-  routes  : routes1
+  history: createWebHistory(),
+  routes
 });
 
 export default router;

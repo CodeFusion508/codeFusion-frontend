@@ -72,8 +72,8 @@
 <script>
 import { mapActions, mapState } from "pinia";
 
-import { useUserStore } from "@/store/userStore";
-import { useAuthStore } from "@/store/authStore";
+import { useUserStore } from "@/store/user/userStore.js";
+import { useAuthStore } from "@/store/user/authStore.js";
 
 export default {
   data: () => {
@@ -120,6 +120,7 @@ export default {
     logout() {
       this.delAuthToken();
       this.cleanUser();
+      // revokeAccessToken(this.userObj.tkn)
     },
     initialize() {
       this.getActivatedMeta();

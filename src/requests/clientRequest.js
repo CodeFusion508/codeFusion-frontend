@@ -1,118 +1,35 @@
-import axios from "axios";
+import { Http } from "./http.js";
 
-import { useToastStore } from "@/store/toastStore.js";
-import { useAuthStore } from "@/store/authStore.js";
+const request = new Http("Usuarios", "users");
 
-const students = "users";
-
-export const getUserReq = async (uuid) => {
-    let err;
-
-    const { data } = await axios({
-        method  : "get",
-        url     : `${import.meta.env.VITE_SERVER}${students}/${uuid}`,
-        headers : {
-            authorization: `Bearer ${useAuthStore().authToken}`
-        }
-    })
-        .catch((error) => err = error);
-
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Usuarios" });
-
-        throw new Error(err.response.data);
-    }
-
-    return data;
-};
+export const getUserReq = async (uuid) => (await request.get(`/${uuid}`).Builder()).data;
 
 export const createUserReq = async ({
     name,
     email,
     password
-}) => {
-    let err;
+}) => (await request.post(``, {
+    userName: name,
+    email,
+    password
+}).Builder()).data;
 
-    const { data } = await axios({
-        method : "post",
-        url    : `${import.meta.env.VITE_SERVER}${students}/`,
-        data   : {
-            userName: name,
-            email,
-            password
-        }
-    })
-        .catch((error) => err = error);
+const requestGoogle = new Http("Google", "google");
 
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Usuarios" });
+export const createGoogleUserReq = async ({
+    name,
+    email,
+    token
+}) => (await requestGoogle.post(``, {
+    userName : name,
+    email,
+    idToken  : token
+}).Builder()).data;
 
-        //throw new Error(err.response.data);
-    }
+export const logInUserReq = async ({ email, password }) => (await request.post(`/`, { email, password }).Builder()).data;
 
-    return data;
-};
+export const updateUserReq = async (dataUser) => (await request.put(`/`, dataUser).Builder()).data;
 
-export const logInUserReq = async ({ email, password }) => {
-    let err;
+export const createRelation = async (dataRequest) => (await request.post(`/rel`, dataRequest).Builder()).data;
 
-    const { data } = await axios({
-        method : "post",
-        url    : `${import.meta.env.VITE_SERVER}${students}/login`,
-        data   : {
-            email,
-            password
-        }
-    })
-        .catch((error) => err = error);
-
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Usuarios" });
-
-        throw new Error(err.response.data);
-    }
-
-    return data;
-};
-
-export const updateUserReq = async (dataUser) => {
-    let err;
-
-    const { data } = await axios({
-        method : "put",
-        url    : `${import.meta.env.VITE_SERVER}${students}/`,
-        data   : dataUser
-    })
-        .catch((error) => err = error);
-
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Usuarios" });
-
-        throw new Error(err.response.data);
-    }
-
-    return data;
-};
-
-
-export const createRelation = async (dataRequest = {}) => {
-    let err;
-
-    const { data } = await axios({
-        method  : "post",
-        url     : `${import.meta.env.VITE_SERVER}${students}/rel`,
-        data    : dataRequest,
-        headers : {
-            authorization: `Bearer ${useAuthStore().authToken}`
-        }
-    })
-        .catch((error) => err = error);
-
-    if (err) {
-        useToastStore().Activated({ text: err.response.data, title: "Archivos" });
-
-        throw new Error(err.response.data);
-    }
-
-    return data;
-};
+export const verifyGUserReq = async (dataRequest) => (await requestGoogle.post("/ver", { idToken: dataRequest }).Builder()).data;

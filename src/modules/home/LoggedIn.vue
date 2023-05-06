@@ -26,7 +26,7 @@
             </div>
 
             <div class="col-sm-12 mt-3">
-              Echale ganas, ya casi acompletas tu semana
+              Échale ganas, ya casi completas tu semana
             </div>
           </div>
         </div>
@@ -74,7 +74,7 @@
 
 <script>
 export default {
-  data: () => {
+  data() {
     return {
       fullPercent: {
         full     : 100,
@@ -86,6 +86,7 @@ export default {
     getPercentProgress() {
       const percentFull = (this.fullPercent.progress * 100) / this.fullPercent.full;
       const percentPixel = 150 * (percentFull / 100);
+
       return { clip: `rect(0px, ${percentPixel}px, 150px, 0px)` };
     }
   }

@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-import { getMD } from "../requests/contentRequest.js";
+import { getMD } from "@/requests/contentRequest.js";
 
 export const useContentStore = defineStore("content", {
     actions: {
@@ -9,14 +9,8 @@ export const useContentStore = defineStore("content", {
 
             return this.lesson;
         },
-        selectContent(index) {
-            this.contIndex = index;
-        },
         setUuid(uuid) {
             this.uuid = uuid;
-        },
-        getUuid() {
-            return this.uuid;
         }
     },
     state: () => {

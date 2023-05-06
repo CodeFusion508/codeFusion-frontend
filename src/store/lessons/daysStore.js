@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
-import { getContentsRelationByDays } from "@/requests/daysRequest";
-import { getSprintByUuid } from "@/requests/sprintsRequest";
+import { getContentsRelationByDays } from "@/requests/daysRequest.js";
+import { getSprintByUuid } from "@/requests/sprintsRequest.js";
 
 export const useDaysStore = defineStore("days", {
     actions: {
@@ -16,28 +16,11 @@ export const useDaysStore = defineStore("days", {
             });
         },
         async getByContent(uuid = "") {
-            let data = await getContentsRelationByDays(uuid);
+            const data = await getContentsRelationByDays(uuid);
 
             this.result = [];
 
-            if (data) {
-                this.result = data.node.map((value) => {
-                    const objTemp = {
-                        title     : value.node.title,
-                        path      : value.node.path,
-                        exp       : value.node.exp,
-                        desc      : value.node.desc,
-                        labels    : value.node.labels,
-                        link      : value.node.link || "",
-                        contentNo : value.node.contentNo,
-                        uuid      : value.node.uuid
-                    };
-
-                    if (objTemp.path) {
-                        return objTemp;
-                    }
-                }).filter(value => value != null);
-            } else {
+            if (!data) {
                 const fakeObj = {
                     title     : "Aún no hay contenido disponible",
                     path      : "Aún no hay contenido disponible",
@@ -50,7 +33,21 @@ export const useDaysStore = defineStore("days", {
                 };
 
                 this.result.unshift(fakeObj);
+                return;
             }
+
+            this.result = data.node.filter(value => value.node.path).map(value => {
+                return {
+                    title     : value.node.title,
+                    path      : value.node.path,
+                    exp       : value.node.exp,
+                    desc      : value.node.desc,
+                    labels    : value.node.labels,
+                    link      : value.node.link || "",
+                    contentNo : value.node.contentNo,
+                    uuid      : value.node.uuid
+                };
+            });
         },
         setDaysBySprintUuid(uuid) {
             this.sprintUuid = uuid;

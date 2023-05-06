@@ -6,7 +6,6 @@ export const useSprintsStore = defineStore("sprints", {
     actions: {
         async getSprints() {
             const response = await getAllSprints();
-
             this.sprints = response;
         }
     },
