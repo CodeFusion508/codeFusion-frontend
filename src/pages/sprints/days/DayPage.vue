@@ -26,10 +26,12 @@
 </template>
 
 <script>
+
+import { useAuthStore } from "@/store/user/authStore";
+import { useDaysStore } from "@/store/lessons/daysStore";
+
 import { mapActions, mapState } from "pinia";
 
-import { useAuthStore } from "@/store/authStore";
-import { useDaysStore } from "@/store/daysStore";
 
 import TimeLine from "./TimeLine.vue";
 

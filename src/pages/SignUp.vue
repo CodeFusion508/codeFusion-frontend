@@ -112,8 +112,8 @@ import { mapActions } from "pinia";
 import { decodeCredential } from "vue3-google-login";
 
 
-import { useUserStore } from "@/store/userStore.js";
-import { useAuthStore } from "@/store/authStore.js";
+import { useUserStore } from "@/store/user/userStore.js";
+import { useAuthStore } from "@/store/user/authStore.js";
 
 import GLoginButton from "@/components/GLoginButton.vue";
 

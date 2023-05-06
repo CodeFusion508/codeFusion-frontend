@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-import router from "@router/router.js";
+import router from "@/router/router";
 
 import {
     getUserReq,
@@ -39,7 +39,6 @@ export const useUserStore = defineStore("user", {
         },
         async verifyUser(token) {
             const data = await verifyGUserReq(token);
-
             return data;
         },
         async findUser() {
@@ -99,10 +98,10 @@ export const useUserStore = defineStore("user", {
         return {
             userObj: {
                 name   : "",
-                uuid   : localStorage.getItem("uuid") !== undefined ? localStorage.getItem("uuid") : "",
+                uuid   : localStorage.getItem("uuid") !== undefined || localStorage.getItem("uuid") !== null ? localStorage.getItem("uuid") : "",
                 email  : "",
                 avatar : { image: "", file: null },
-                tkn    : localStorage.getItem("tkn") !== undefined ? localStorage.getItem("tkn") : ""
+                tkn    : localStorage.getItem("tkn") !== undefined || localStorage.getItem("tkn") !== null ? localStorage.getItem("tkn") : ""
             },
             uuidContent: ""
         };

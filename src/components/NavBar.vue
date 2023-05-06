@@ -72,8 +72,8 @@
 <script>
 import { mapActions, mapState } from "pinia";
 
-import { useUserStore } from "@/store/userStore";
-import { useAuthStore } from "@/store/authStore";
+import { useUserStore } from "@/store/user/userStore";
+import { useAuthStore } from "@/store/user/authStore";
 import { revokeAccessToken } from "vue3-google-signin";
 
 export default {

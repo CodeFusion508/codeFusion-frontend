@@ -39,8 +39,8 @@
 <script>
 import { mapActions } from "pinia";
 
-import { useContentStore } from "@/store/contentStore.js";
-import { useUserStore } from "@/store/userStore";
+import { useContentStore } from "@/store/lessons/contentStore.js";
+import { useUserStore } from "@/store/user/userStore";
 
 export default {
   props: {
@@ -66,7 +66,7 @@ export default {
     },
     getRouterPath(labels = []) {
       const secondLabels = labels[1];
-
+      console.log(labels)
       switch (secondLabels) {
         case "Problems":
           return "content-problems";

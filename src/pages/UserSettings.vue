@@ -49,7 +49,7 @@
 <script>
 import { mapActions, mapWritableState } from "pinia";
 
-import { useUserStore } from "@/store/userStore";
+import { useUserStore } from "@/store/user/userStore";
 
 export default {
   computed: {

@@ -6,7 +6,7 @@
 
 <script>
 import { mapActions } from "pinia";
-import { useUserStore } from "@/store/userStore.js";
+import { useUserStore } from "@/store/user/userStore.js";
 export default {
     data() {
         return {
