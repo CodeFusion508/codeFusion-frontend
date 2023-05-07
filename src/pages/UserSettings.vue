@@ -1,7 +1,7 @@
 <template>
   <nav-bar />
   <div class="container-fluid my-3 d-flex justify-content-center" style="height: 50vh;">
-    <div class="card col-sm-3 col-sx-8 col-12 border-0">
+    <div class="card col-sm-5 col-sx-8 col-12 border-0">
       <div class="card-body " style="background-color: #17202A;">
         <h4 class="card-title text-center">
           Configuración de Perfil
@@ -24,18 +24,33 @@
             </div>
           </div>
 
-          <input
-            v-model="userObj.name"
-            type="text"
-            class="form-control mt-3"
-            placeholder="Nombre(s) Completo"
-          >
-          <input
-            v-model="userObj.email"
-            type="text"
-            class="form-control mt-3"
-            placeholder="Correo Electrónico"
-          >
+          <div>
+            <div class="d-inline">
+              <label class="p-3 w-50 d-block">Usuario:</label>
+              <label class="p-3 w-50 d-block">Correo:&nbsp&nbsp</label>
+              <label class="p-3 w-50 d-block">Contraseña:</label>
+            </div>
+            <div class="d-inline">
+              <input
+                v-model="userObj.name"
+                type="text"
+                class="form-control w-50 mt-3 d-block"
+                placeholder="Nombre(s) Completo"
+              >
+              <input
+                v-model="userObj.email"
+                type="text"
+                class="form-control w-50 mt-3 d-block"
+                placeholder="Correo Electrónico"
+              >
+              <input
+                v-model="userObj.password"
+                type="text"
+                class="form-control w-50 mt-3 d-block"
+                placeholder="Contraseña"
+              >
+            </div>
+          </div>
           <button class="btn btn-primary form-control mt-3" @click="updatedUser">
             Guardar
           </button>
