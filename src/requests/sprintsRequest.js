@@ -18,7 +18,7 @@ export const getAllSprints = async () => {
 
         return numberSectionA - numberSectionB;
     }).reduce((accumulator, value, _, values) => {
-        const [, labelMain] = value.labels;
+        const labelMain = value.labels[1];
 
         if (accumulator[labelMain] === undefined) {
             accumulator[labelMain] = [];

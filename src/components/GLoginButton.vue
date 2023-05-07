@@ -10,6 +10,7 @@ import { mapActions } from "pinia";
 import { useUserStore } from "@/store/user/userStore.js";
 
 export default {
+    emits: ["credential"],
     data() {
         return {
             buttonConfig: {

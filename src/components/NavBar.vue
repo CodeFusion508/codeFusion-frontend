@@ -119,14 +119,15 @@ export default {
     ...mapActions(useUserStore, ["cleanUser"]),
     logout() {
       this.delAuthToken();
+
       this.cleanUser();
-      // revokeAccessToken(this.userObj.tkn)
     },
     initialize() {
       this.getActivatedMeta();
     },
     getActivatedMeta() {
       const metaName = this.$router.currentRoute.value.meta.name;
+
       this.routes.filter((value) => {
         if (value.meta === metaName) {
           value.activated = true;
