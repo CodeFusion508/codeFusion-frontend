@@ -41,6 +41,10 @@
             aria-expanded="false"
           >
             <i class="bi bi-person-fill" />
+              <span v-if="verificationAlerts !== 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger">
+                  {{ verificationAlerts }}
+                  <span class="visually-hidden">unread messages</span>
+              </span>
           </button>
           <ul class="dropdown-menu">
             <li>
@@ -74,6 +78,7 @@ import { mapActions, mapState } from "pinia";
 
 import { useUserStore } from "@/store/user/userStore.js";
 import { useAuthStore } from "@/store/user/authStore.js";
+import {useAlertStore} from "@/store/alertStore.js";
 
 export default {
   data: () => {
@@ -104,19 +109,26 @@ export default {
           activated : false,
           meta      : "articles"
         }
-      ]
+      ],
+        verificationAlerts: 0
     };
   },
   computed: {
     ...mapState(useAuthStore, ["authToken"]),
-    ...mapState(useUserStore, ["userObj"])
+    ...mapState(useUserStore, ["userObj"]),
+    ...mapState(useAlertStore, ["amount", "passwordExists"])
   },
   mounted() {
     this.initialize();
+    if (this.authToken) {
+    this.verifyUser(this.userObj);
+    console.log(this.userObj);
+    }
   },
   methods: {
     ...mapActions(useAuthStore, ["delAuthToken"]),
-    ...mapActions(useUserStore, ["cleanUser"]),
+    ...mapActions(useUserStore, ["cleanUser", "findUser"]),
+    ...mapActions(useAlertStore, ["verifyUser"]),
     logout() {
       this.delAuthToken();
       this.cleanUser();

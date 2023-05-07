@@ -18,7 +18,6 @@ export const useUserStore = defineStore("user", {
         // User operations
         async createUser(userData) {
             const { data, token } = await createUserReq(userData);
-
             this.userObj.name = data.node.userName;
             this.userObj.uuid = data.node.uuid;
             localStorage.setItem("uuid", this.userObj.uuid);
@@ -43,7 +42,7 @@ export const useUserStore = defineStore("user", {
         },
         async findUser() {
             const data = await getUserReq(this.userObj.uuid);
-
+            console.log(data);
             this.userObj.email = data.node.email;
             this.userObj.name = data.node.userName;
 
