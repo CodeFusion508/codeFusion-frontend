@@ -9,7 +9,8 @@ export default [
     {
         path      : "/lecciones",
         component : LessonsPage,
-        name      : "lessons"
+        name      : "lessons",
+        meta      : { name: "lessons" }
     },
     {
         path      : "/lecciones/dias",
