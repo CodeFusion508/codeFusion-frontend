@@ -50,7 +50,7 @@ export class Http {
                     authorization: `Bearer ${useAuthStore().authToken}`
                 }
             });
-
+            this.data = {}
             return data;
         } catch (error) {
             useToastStore().activate({ text: error.response.data, title: this.NameRequest });
