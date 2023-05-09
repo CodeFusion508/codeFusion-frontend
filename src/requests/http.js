@@ -51,7 +51,7 @@ export class Http {
                 }
             });
 
-            this.data = {};
+            //this.data = {};
 
             return data;
         } catch (error) {

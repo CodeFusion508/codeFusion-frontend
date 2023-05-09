@@ -49,7 +49,11 @@
                   type="text"
                   class="form-control"
                   placeholder="Correo Electrónico"
+                  @keyup="validEmail"
                 >
+              </div>
+              <div v-if="messageErrorEmail != ''" class="text-danger">
+                {{ messageErrorEmail }}
               </div>
             </div>
 
@@ -63,12 +67,22 @@
                   type="text"
                   class="form-control d-block"
                   placeholder="Contraseña"
+                  @keyup="validPassword"
                 >
+              </div>
+              <div v-if="userObj.password.length >= 1" class="progress mt-1" style="height: 5px;">
+                <div
+                  :class="['progress-bar', objValidPassword.colorProgress]"
+                  role="progressbar"
+                  :style="{'width': objValidPassword.progressPasword+'%'}"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                />
               </div>
             </div>
           </div>
 
-          <button class="btn btn-primary form-control mt-3" @click="updatedUser">
+          <button class="btn btn-primary form-control mt-3" @click="updateUser">
             Guardar
           </button>
         </div>
@@ -82,8 +96,30 @@
 import { mapActions, mapWritableState } from "pinia";
 
 import { useUserStore } from "@/store/user/userStore.js";
+import {updateUserReq} from "@/requests/clientRequest.js";
 
 export default {
+    data() {
+        return {
+            email: {
+                valid : false,
+                text  : ""
+            },
+            messageErrorEmail : "",
+            objValidPassword  : {
+                min            : 8,
+                strong         : 15,
+                message        : "",
+                colorsProgress : {
+                    "weak": "bg-danger", "regular": "bg-warning", "strong": "bg-success"
+                },
+                progressPasword : 0,
+                maxProgress     : 100,
+                colorProgress   : "",
+                typePassword    : ""
+            }
+        };
+    },
   computed: {
     ...mapWritableState(useUserStore, ["userObj"])
   },
@@ -91,7 +127,8 @@ export default {
     await this.initialize();
   },
   methods: {
-    ...mapActions(useUserStore, ["findUser", "updatedUser", "setAvatar"]),
+      updateUserReq,
+    ...mapActions(useUserStore, ["findUser", "updateUser", "setAvatar"]),
     async initialize() {
       this.userObj.avatar.image = this.userObj.avatar.image === "" ? "../src/assets/profile.jpg" : this.userObj.avatar.image;
 
@@ -110,6 +147,36 @@ export default {
         that.userObj.avatar.image = this.result;
         that.userObj.avatar.file = file;
       };
+    },
+    validPassword() {
+        const passwordLength = this.userObj.password.length;
+        let progress =  (passwordLength * 100) / this.objValidPassword.strong;
+        let color = "";
+        let type = "";
+        if(passwordLength >= 1 && passwordLength < this.objValidPassword.min) {
+            color = this.objValidPassword.colorsProgress.weak;
+            type = "Débil";
+        } else if(passwordLength >= this.objValidPassword.min && passwordLength < this.objValidPassword.strong) {
+            color = this.objValidPassword.colorsProgress.regular;
+            type = "Regular";
+        } else {
+            color = this.objValidPassword.colorsProgress.strong;
+            progress = this.objValidPassword.maxProgress;
+            type = "Fuerte";
+        }
+        this.objValidPassword.colorProgress = color;
+        this.objValidPassword.progressPasword = progress;
+        this.objValidPassword.typePassword = type;
+    },
+    validEmail() {
+        const regEmail = new RegExp(/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/, "gi");
+        if (!regEmail.test(this.userObj.email)) {
+            this.email.valid = false;
+            this.messageErrorEmail = "El correo no cumple con las características";
+        } else {
+            this.email.valid = true;
+            this.messageErrorEmail = "";
+        }
     }
   }
 };
