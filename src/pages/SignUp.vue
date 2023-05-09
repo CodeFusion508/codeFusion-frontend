@@ -40,7 +40,7 @@
                     <button type="submit" class="btn btn-primary w-100 text-white">
                       Iniciar sesión
                     </button>
-                      <g-login class="mt-3 w-100 d-inline-block" @credential="fillCredential" />
+                    <g-login class="mt-3 w-100 d-inline-block" @credential="fillCredential" />
                     <p class="pt-3 small mb-0" style="color: lightgray">
                       No tienes una Cuenta?
                       <a class="text-decoration-none" @click.prevent="show('Crea una Cuenta')">Crea una Cuenta</a>
