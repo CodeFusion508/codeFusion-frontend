@@ -16,7 +16,7 @@ export const useToastStore = defineStore("toast", {
             }
 
             setTimeout(() => {
-                this.close()
+                this.close();
             }, data.time);
         },
         close() {

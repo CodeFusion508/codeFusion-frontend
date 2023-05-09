@@ -41,10 +41,10 @@
             aria-expanded="false"
           >
             <i class="bi bi-person-fill" />
-              <span v-if="verificationAlerts !== 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger">
-                  {{ verificationAlerts }}
-                  <span class="visually-hidden">unread messages</span>
-              </span>
+            <span v-if="verificationAlerts !== 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger">
+              {{ verificationAlerts }}
+              <span class="visually-hidden">unread messages</span>
+            </span>
           </button>
           <ul class="dropdown-menu">
             <li>
@@ -72,27 +72,6 @@
     </div>
   </nav>
 </template>
-
-<style scoped>
-.nav-tabs .nav-link {
-  background-color: transparent !important;
-  font-size: 1rem !important;
-  text-decoration: none !important;
-  padding: 0.5rem !important;
-}
-
-.nav-tabs .nav-link {
-  font-size: 1rem !important;
-}
-
-.nav-tabs .nav-link {
-  padding: 0.5rem !important;
-}
-
-.activated {
-  background-color: var(--bs-primary);
-}
-</style>
 
 <script>
 import { mapActions, mapState } from "pinia";
@@ -171,4 +150,25 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.nav-tabs .nav-link {
+  background-color: transparent !important;
+  font-size: 1rem !important;
+  text-decoration: none !important;
+  padding: 0.5rem !important;
+}
+
+.nav-tabs .nav-link {
+  font-size: 1rem !important;
+}
+
+.nav-tabs .nav-link {
+  padding: 0.5rem !important;
+}
+
+.activated {
+  background-color: var(--bs-primary);
+}
+</style>
 

@@ -9,7 +9,8 @@
             <div class="container-fluid px-0">
               <div class="col-lg-12 mx-auto">
                 <div
-                  class="d-flex justify-center flex-column align-items-center bg-dark-subtle border-0 rounded p-5 bs_signup_content">
+                  class="d-flex justify-center flex-column align-items-center bg-dark-subtle border-0 rounded p-5 bs_signup_content"
+                >
                   <p class="text-secondary h6 bs_fw-300 pb-3 text-white text-center">
                     {{ titleForm }}
                   </p>
@@ -17,12 +18,24 @@
                   <!-- Inicio Formulario de Iniciar Sesión -->
                   <form v-show="login" class="py-3 pt-lg-3 w-100 md-mx-w-550" @submit.prevent="logIn">
                     <div class="mb-3">
-                      <input id="signup-5-Email" v-model="email.text" type="email" class="form-control text-white"
-                        placeholder="Correo Electrónico" required>
+                      <input
+                        id="signup-5-Email"
+                        v-model="email.text"
+                        type="email"
+                        class="form-control text-white"
+                        placeholder="Correo Electrónico"
+                        required
+                      >
                     </div>
                     <div class="mb-3">
-                      <input id="signup-5-Password" v-model="password" type="password" class="form-control text-white"
-                        placeholder="Contraseña" required>
+                      <input
+                        id="signup-5-Password"
+                        v-model="password"
+                        type="password"
+                        class="form-control text-white"
+                        placeholder="Contraseña"
+                        required
+                      >
                     </div>
                     <button type="submit" class="btn btn-primary w-100 text-white">
                       Iniciar sesión
@@ -36,41 +49,89 @@
                   <!-- Final Formulario de Iniciar Sesión -->
 
                   <!-- Inicio Formulario de Crear una Cuenta -->
-                  <form novalidate v-show="!login" class="py-3 pt-lg-3 w-100 md-mx-w-550 needs-validation"
-                    @submit.prevent="createAccount(false)">
+                  <form
+                    v-show="!login"
+                    novalidate
+                    class="py-3 pt-lg-3 w-100 md-mx-w-550 needs-validation"
+                    @submit.prevent="createAccount(false)"
+                  >
                     <div class="mb-3">
-                      <input id="signup-5-name" v-model="userName" type="text" class="form-control text-white"
-                        placeholder="Nombre" aria-describedby="infotext" required>
+                      <input
+                        id="signup-5-name"
+                        v-model="userName"
+                        type="text"
+                        class="form-control text-white"
+                        placeholder="Nombre"
+                        aria-describedby="infotext"
+                        required
+                      >
                     </div>
                     <div class="mb-3">
-                      <input id="signup-5-Email" v-model="email.text" type="email" class="form-control text-white"
-                        placeholder="Correo Electrónico" required @keyup="validEmail">
-                      <div class="text-danger" v-if="messageErrorEmail != ''">{{ messageErrorEmail }}</div>
+                      <input
+                        id="signup-5-Email"
+                        v-model="email.text"
+                        type="email"
+                        class="form-control text-white"
+                        placeholder="Correo Electrónico"
+                        required
+                        @keyup="validEmail"
+                      >
+                      <div v-if="messageErrorEmail != ''" class="text-danger">
+                        {{ messageErrorEmail }}
+                      </div>
                     </div>
-                    <div class="mb-3" v-if="email.valid">
-                      <input id="signup-5-Email" v-model="confirmEmail" type="email" class="form-control text-white"
-                        placeholder="Confirmar Correo Electrónico" required @keyup="validConfirmEmail">
-                      <div class="text-danger" v-if="messagerErrorEmailConfirm != ''">{{ messagerErrorEmailConfirm }}
+                    <div v-if="email.valid" class="mb-3">
+                      <input
+                        id="signup-5-Email"
+                        v-model="confirmEmail"
+                        type="email"
+                        class="form-control text-white"
+                        placeholder="Confirmar Correo Electrónico"
+                        required
+                        @keyup="validConfirmEmail"
+                      >
+                      <div v-if="messagerErrorEmailConfirm != ''" class="text-danger">
+                        {{ messagerErrorEmailConfirm }}
                       </div>
                     </div>
                     <div class="mb-3">
-                      <input id="signup-5-Password" v-model="password" type="password" class="form-control text-white"
-                        placeholder="Contraseña" required @keyup="validPassword">
-                      <div class="progress mt-1" v-if="password.length >= 1" style="height: 5px;">
-                        <div :class="['progress-bar', objValidPassword.colorProgress]" role="progressbar" 
-                        :style="{'width': objValidPassword.progressPasword+'%'}" 
-                        aria-valuemin="0" aria-valuemax="100"></div>
+                      <input
+                        id="signup-5-Password"
+                        v-model="password"
+                        type="password"
+                        class="form-control text-white"
+                        placeholder="Contraseña"
+                        required
+                        @keyup="validPassword"
+                      >
+                      <div v-if="password.length >= 1" class="progress mt-1" style="height: 5px;">
+                        <div
+                          :class="['progress-bar', objValidPassword.colorProgress]"
+                          role="progressbar"
+                          :style="{'width': objValidPassword.progressPasword+'%'}"
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                        />
                       </div>
-                      <div class="text-end" v-if="password.length >= 1" >
+                      <div v-if="password.length >= 1" class="text-end">
                         <small>{{ objValidPassword.typePassword }}</small>
                       </div>
                     </div>
 
                     <div class="mb-3">
-                      <input id="signup-5-Password" v-model="confirmPaswword" type="password" class="form-control text-white"
-                        placeholder="Confirmar Contraseña" required @keyup="validPasswordConfirm" >
+                      <input
+                        id="signup-5-Password"
+                        v-model="confirmPaswword"
+                        type="password"
+                        class="form-control text-white"
+                        placeholder="Confirmar Contraseña"
+                        required
+                        @keyup="validPasswordConfirm"
+                      >
                     </div>
-                    <div class="text-danger" v-if="messagerErrorPasswordConfirm != ''">{{ messagerErrorPasswordConfirm }}</div>
+                    <div v-if="messagerErrorPasswordConfirm !== ''" class="text-danger">
+                      {{ messagerErrorPasswordConfirm }}
+                    </div>
 
                     <div v-if="gLogin && password === ''" class="alert alert-warning" role="alert">
                       Introduzca su contraseña
@@ -98,12 +159,6 @@
   <nav-footer />
 </template>
 
-<style scoped>
-.invalid-input:focus {
-  outline: none !important;
-}
-</style>
-
 <script>
 import { mapActions } from "pinia";
 import { decodeCredential } from "vue3-google-login";
@@ -120,31 +175,33 @@ export default {
   },
   data() {
     return {
-      login: false,
-      userName: "",
-      email: {
-        valid: false,
-        text: ""
+      login    : false,
+      userName : "",
+      email    : {
+        valid : false,
+        text  : ""
       },
-      confirmEmail: "",
-      password: "",
-      confirmPaswword: "",
-      gLogin: false,
-      credential: "",
-      titleForm: "Crea una Cuenta",
-      messageErrorEmail: "",
-      messagerErrorEmailConfirm: "",
-      objValidPassword: {
-        min: 8,
-        strong: 15,
-        message: "",
-        colorsProgress: { "weak": "bg-danger", "regular":"bg-warning", "strong":"bg-success" },
-        progressPasword: 0,
-        maxProgress: 100,
-        colorProgress: "",
-        typePassword: ""
+      confirmEmail              : "",
+      password                  : "",
+      confirmPaswword           : "",
+      gLogin                    : false,
+      credential                : "",
+      titleForm                 : "Crea una Cuenta",
+      messageErrorEmail         : "",
+      messagerErrorEmailConfirm : "",
+      objValidPassword          : {
+        min            : 8,
+        strong         : 15,
+        message        : "",
+        colorsProgress : {
+ "weak": "bg-danger", "regular": "bg-warning", "strong": "bg-success"
+},
+        progressPasword : 0,
+        maxProgress     : 100,
+        colorProgress   : "",
+        typePassword    : ""
       },
-      messagerErrorPasswordConfirm: "",
+      messagerErrorPasswordConfirm: ""
     };
   },
   methods: {
@@ -172,9 +229,9 @@ export default {
     async createAccount(google) {
       if (!google) {
         const userObj = {
-          name: this.userName,
-          email: this.confirmEmail,
-          password: this.confirmPaswword
+          name     : this.userName,
+          email    : this.confirmEmail,
+          password : this.confirmPaswword
         };
 
         const token = await this.createUser(userObj);
@@ -182,9 +239,9 @@ export default {
         this.addAuthToken(token);
       } else {
         const userObj = {
-          name: this.userName,
-          email: this.email.text,
-          token: this.credential
+          name  : this.userName,
+          email : this.email.text,
+          token : this.credential
         };
 
         const token = await this.createGoogleUser(userObj);
@@ -194,10 +251,10 @@ export default {
     },
     async logIn() {
       const userObj = {
-        email: this.email.text,
-        password: this.password
+        email    : this.email.text,
+        password : this.password
       };
-      
+
       const token = await this.logInUser(userObj);
       this.addAuthToken(token);
     },
@@ -206,49 +263,55 @@ export default {
       this.login = !this.login;
     },
     validEmail() {
-      const regEmail = new RegExp(/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/, 'gi');
+      const regEmail = new RegExp(/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/, "gi");
       if (!regEmail.test(this.email.text)) {
-        this.email.valid = false
-        this.messageErrorEmail = "El correo no cumple con las caracteriscas"
+        this.email.valid = false;
+        this.messageErrorEmail = "El correo no cumple con las características";
       } else {
-        this.email.valid = true
-        this.messageErrorEmail = ""
+        this.email.valid = true;
+        this.messageErrorEmail = "";
       }
     },
     validConfirmEmail() {
-      if (this.email.text != this.confirmEmail) {
-        this.messagerErrorEmailConfirm = "El correo no coindice con el ingresado"
+      if (this.email.text !== this.confirmEmail) {
+        this.messagerErrorEmailConfirm = "El correo no coindice con el ingresado";
       } else {
-        this.messagerErrorEmailConfirm = ""
+        this.messagerErrorEmailConfirm = "";
       }
     },
     validPassword() {
-      const passwordLength = this.password.length
-      let progress =  (passwordLength * 100) / this.objValidPassword.strong
-      let color = ""
-      let type = ""
+      const passwordLength = this.password.length;
+      let progress =  (passwordLength * 100) / this.objValidPassword.strong;
+      let color = "";
+      let type = "";
       if(passwordLength >= 1 && passwordLength < this.objValidPassword.min) {
-        color = this.objValidPassword.colorsProgress.weak
-        type = "Débil"
+        color = this.objValidPassword.colorsProgress.weak;
+        type = "Débil";
       } else if(passwordLength >= this.objValidPassword.min && passwordLength < this.objValidPassword.strong) {
-        color = this.objValidPassword.colorsProgress.regular
-        type = "Regular"
+        color = this.objValidPassword.colorsProgress.regular;
+        type = "Regular";
       } else {
-        color = this.objValidPassword.colorsProgress.strong
-        progress = this.objValidPassword.maxProgress
-        type = "Fuerte"
+        color = this.objValidPassword.colorsProgress.strong;
+        progress = this.objValidPassword.maxProgress;
+        type = "Fuerte";
       }
-      this.objValidPassword.colorProgress = color
-      this.objValidPassword.progressPasword = progress
-      this.objValidPassword.typePassword = type
+      this.objValidPassword.colorProgress = color;
+      this.objValidPassword.progressPasword = progress;
+      this.objValidPassword.typePassword = type;
     },
     validPasswordConfirm() {
-      if(this.password != this.confirmPaswword) return this.messagerErrorPasswordConfirm = "Las contraseñas no coindicen"
-      this.messagerErrorPasswordConfirm = ""
+      if(this.password != this.confirmPaswword) return this.messagerErrorPasswordConfirm = "Las contraseñas no coindicen";
+      this.messagerErrorPasswordConfirm = "";
     }
   }
 };
 </script>
+
+<style scoped>
+.invalid-input:focus {
+  outline: none !important;
+}
+</style>
 
 <style scoped>
 .position-btn-google {
