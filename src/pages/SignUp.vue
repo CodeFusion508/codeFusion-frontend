@@ -102,21 +102,10 @@
                         class="form-control text-white"
                         placeholder="Contraseña"
                         required
-                        @keyup="validPassword"
+                        @keyup="passwordChanged"
                       >
-                      <div v-if="password.length >= 1" class="progress mt-1" style="height: 5px;">
-                        <div
-                          :class="['progress-bar', validPassword.colorProgress]"
-                          role="progressbar"
-                          :style="{ 'width': validPassword.passwordProgress + '%' }"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        />
-                      </div>
-                      <div v-if="password.length >= 1" class="text-end">
-                        <small>{{ validPassword.passwordType }}</small>
-                      </div>
                     </div>
+                    <password-progress ref="passProgress" :password="password" />
 
                     <div class="mb-3">
                       <input
@@ -131,10 +120,6 @@
                     </div>
                     <div v-if="passwordConfirmError !== ''" class="text-danger">
                       {{ passwordConfirmError }}
-                    </div>
-
-                    <div v-if="gLogin && password === ''" class="alert alert-warning" role="alert">
-                      Introduzca su contraseña
                     </div>
 
                     <button type="submit" class="btn btn-primary text-white w-100">
@@ -168,10 +153,12 @@ import { useUserStore } from "@/store/user/userStore.js";
 import { useAuthStore } from "@/store/user/authStore.js";
 
 import GLoginButton from "@/components/GLoginButton.vue";
+import PasswordProgress from "../components/PasswordProgress.vue";
 
 export default {
   components: {
-    "g-login": GLoginButton
+    "g-login"           : GLoginButton,
+    "password-progress" : PasswordProgress
   },
   data() {
     return {
@@ -185,27 +172,13 @@ export default {
         valid : false,
         text  : ""
       },
-      confirmEmail      : "",
-      password          : "",
-      confirmPassword   : "",
+      confirmEmail         : "",
+      password             : "",
+      confirmPassword      : "",
       // Email and password error handling
-      emailErrorMessage : "",
-      emailConfirmError : "",
-      validPassword     : {
-        min           : 8,
-        strong        : 15,
-        message       : "",
-        colorProgress : {
-          "weak"    : "bg-danger",
-          "regular" : "bg-warning",
-          "strong"  : "bg-success"
-        },
-        passwordProgress : 0,
-        maxProgress      : 100,
-        color            : "",
-        passwordType     : ""
-      },
-      passwordConfirmError: ""
+      emailErrorMessage    : "",
+      emailConfirmError    : "",
+      passwordConfirmError : ""
     };
   },
   methods: {
@@ -284,27 +257,8 @@ export default {
         this.emailConfirmError = "";
       }
     },
-    checkPassword() {
-      const passwordLength = this.password.length;
-      let progress = (passwordLength * 100) / this.validPassword.strong;
-      let color = "";
-      let type = "";
-
-      if (passwordLength >= 1 && passwordLength < this.validPassword.min) {
-        color = this.validPassword.colorProgress.weak;
-        type = "Débil";
-      } else if (passwordLength >= this.validPassword.min && passwordLength < this.validPassword.strong) {
-        color = this.validPassword.colorProgress.regular;
-        type = "Regular";
-      } else {
-        color = this.validPassword.colorProgress.strong;
-        progress = this.validPassword.maxProgress;
-        type = "Fuerte";
-      }
-
-      this.validPassword.color = color;
-      this.validPassword.passwordProgress = progress;
-      this.validPassword.passwordType = type;
+    passwordChanged() {
+      this.$refs.passProgress.checkPassword();
     },
     validPasswordConfirm() {
       if (this.password !== this.confirmPassword) return this.passwordConfirmError = "Las contraseñas no coindicen";

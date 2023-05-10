@@ -67,18 +67,10 @@
                   type="text"
                   class="form-control d-block"
                   placeholder="Contraseña"
-                  @keyup="validPassword"
+                  @keyup="passwordChanged"
                 >
               </div>
-              <div v-if="userObj.password.length >= 1" class="progress mt-1" style="height: 5px;">
-                <div
-                  :class="['progress-bar', objValidPassword.colorProgress]"
-                  role="progressbar"
-                  :style="{'width': objValidPassword.progressPasword+'%'}"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                />
-              </div>
+              <password-progress ref="passProgress" :password="userObj.password" />
             </div>
           </div>
 
@@ -96,30 +88,14 @@
 import { mapActions, mapWritableState } from "pinia";
 
 import { useUserStore } from "@/store/user/userStore.js";
-import {updateUserReq} from "@/requests/clientRequest.js";
+import { updateUserReq } from "@/requests/clientRequest.js";
+
+import PasswordProgress from "@/components/PasswordProgress.vue";
 
 export default {
-    data() {
-        return {
-            email: {
-                valid : false,
-                text  : ""
-            },
-            messageErrorEmail : "",
-            objValidPassword  : {
-                min            : 8,
-                strong         : 15,
-                message        : "",
-                colorsProgress : {
-                    "weak": "bg-danger", "regular": "bg-warning", "strong": "bg-success"
-                },
-                progressPasword : 0,
-                maxProgress     : 100,
-                colorProgress   : "",
-                typePassword    : ""
-            }
-        };
-    },
+  components: {
+    "password-progress": PasswordProgress
+  },
   computed: {
     ...mapWritableState(useUserStore, ["userObj"])
   },
@@ -127,7 +103,7 @@ export default {
     await this.initialize();
   },
   methods: {
-      updateUserReq,
+    updateUserReq,
     ...mapActions(useUserStore, ["findUser", "updateUser", "setAvatar"]),
     async initialize() {
       this.userObj.avatar.image = this.userObj.avatar.image === "" ? "../src/assets/profile.jpg" : this.userObj.avatar.image;
@@ -148,37 +124,8 @@ export default {
         that.userObj.avatar.file = file;
       };
     },
-    validPassword() {
-        const passwordLength = this.userObj.password.length;
-        let progress =  (passwordLength * 100) / this.objValidPassword.strong;
-        let color = "";
-        let type = "";
-
-        if(passwordLength >= 1 && passwordLength < this.objValidPassword.min) {
-            color = this.objValidPassword.colorsProgress.weak;
-            type = "Débil";
-        } else if(passwordLength >= this.objValidPassword.min && passwordLength < this.objValidPassword.strong) {
-            color = this.objValidPassword.colorsProgress.regular;
-            type = "Regular";
-        } else {
-            color = this.objValidPassword.colorsProgress.strong;
-            progress = this.objValidPassword.maxProgress;
-            type = "Fuerte";
-        }
-
-        this.objValidPassword.colorProgress = color;
-        this.objValidPassword.progressPasword = progress;
-        this.objValidPassword.typePassword = type;
-    },
-    validEmail() {
-        const regEmail = /^\w+(?:[.\-_+]?\w+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,10}$/i;
-        if (!regEmail.test(this.userObj.email)) {
-            this.email.valid = false;
-            this.messageErrorEmail = "El correo no cumple con las características";
-        } else {
-            this.email.valid = true;
-            this.messageErrorEmail = "";
-        }
+    passwordChanged() {
+      this.$refs.passProgress.checkPassword();
     }
   }
 };
