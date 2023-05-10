@@ -171,7 +171,7 @@ export default {
         this.objValidPassword.typePassword = type;
     },
     validEmail() {
-        const regEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/gi;
+        const regEmail = /^\w+(?:[.\-_+]?\w+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,10}$/i;
         if (!regEmail.test(this.userObj.email)) {
             this.email.valid = false;
             this.messageErrorEmail = "El correo no cumple con las características";
