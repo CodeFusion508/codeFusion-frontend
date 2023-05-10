@@ -31,7 +31,7 @@ import { mapActions, mapState } from "pinia";
 import { useAuthStore } from "@/store/user/authStore.js";
 import { useDaysStore } from "@/store/lessons/daysStore.js";
 
-import TimeLine from "./TimeLine.vue";
+import TimeLine from "@/modules/TimeLine.vue";
 
 export default {
   components: {

@@ -10,8 +10,8 @@
 <script>
 import { mapState } from "pinia";
 
-import LoggedOut from "@/modules/home/LoggedOut.vue";
-import LoggedIn from "@/modules/home/LoggedIn.vue";
+import LoggedOut from "@/modules/HomePage/LoggedOut.vue";
+import LoggedIn from "@/modules/HomePage/LoggedIn.vue";
 
 import { useAuthStore } from "@/store/user/authStore.js";
 

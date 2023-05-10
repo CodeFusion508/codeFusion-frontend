@@ -76,8 +76,8 @@
                         required
                         @keyup="validEmail"
                       >
-                      <div v-if="messageErrorEmail != ''" class="text-danger">
-                        {{ messageErrorEmail }}
+                      <div v-if="emailErrorMessage != ''" class="text-danger">
+                        {{ emailErrorMessage }}
                       </div>
                     </div>
                     <div v-if="email.valid" class="mb-3">
@@ -90,8 +90,8 @@
                         required
                         @keyup="validConfirmEmail"
                       >
-                      <div v-if="messagerErrorEmailConfirm != ''" class="text-danger">
-                        {{ messagerErrorEmailConfirm }}
+                      <div v-if="emailConfirmError != ''" class="text-danger">
+                        {{ emailConfirmError }}
                       </div>
                     </div>
                     <div class="mb-3">
@@ -106,22 +106,22 @@
                       >
                       <div v-if="password.length >= 1" class="progress mt-1" style="height: 5px;">
                         <div
-                          :class="['progress-bar', objValidPassword.colorProgress]"
+                          :class="['progress-bar', validPassword.colorProgress]"
                           role="progressbar"
-                          :style="{'width': objValidPassword.progressPasword+'%'}"
+                          :style="{ 'width': validPassword.passwordProgress + '%' }"
                           aria-valuemin="0"
                           aria-valuemax="100"
                         />
                       </div>
                       <div v-if="password.length >= 1" class="text-end">
-                        <small>{{ objValidPassword.typePassword }}</small>
+                        <small>{{ validPassword.passwordType }}</small>
                       </div>
                     </div>
 
                     <div class="mb-3">
                       <input
                         id="signup-5-Password"
-                        v-model="confirmPaswword"
+                        v-model="confirmPassword"
                         type="password"
                         class="form-control text-white"
                         placeholder="Confirmar Contraseña"
@@ -129,8 +129,8 @@
                         @keyup="validPasswordConfirm"
                       >
                     </div>
-                    <div v-if="messagerErrorPasswordConfirm !== ''" class="text-danger">
-                      {{ messagerErrorPasswordConfirm }}
+                    <div v-if="passwordConfirmError !== ''" class="text-danger">
+                      {{ passwordConfirmError }}
                     </div>
 
                     <div v-if="gLogin && password === ''" class="alert alert-warning" role="alert">
@@ -175,33 +175,37 @@ export default {
   },
   data() {
     return {
-      login    : false,
-      userName : "",
-      email    : {
+      gLogin     : false,
+      credential : "",
+      titleForm  : "Crea una Cuenta",
+      login      : false,
+      // Input values
+      userName   : "",
+      email      : {
         valid : false,
         text  : ""
       },
-      confirmEmail              : "",
-      password                  : "",
-      confirmPaswword           : "",
-      gLogin                    : false,
-      credential                : "",
-      titleForm                 : "Crea una Cuenta",
-      messageErrorEmail         : "",
-      messagerErrorEmailConfirm : "",
-      objValidPassword          : {
-        min            : 8,
-        strong         : 15,
-        message        : "",
-        colorsProgress : {
- "weak": "bg-danger", "regular": "bg-warning", "strong": "bg-success"
-},
-        progressPasword : 0,
-        maxProgress     : 100,
-        colorProgress   : "",
-        typePassword    : ""
+      confirmEmail      : "",
+      password          : "",
+      confirmPassword   : "",
+      // Email and password error handling
+      emailErrorMessage : "",
+      emailConfirmError : "",
+      validPassword     : {
+        min           : 8,
+        strong        : 15,
+        message       : "",
+        colorProgress : {
+          "weak"    : "bg-danger",
+          "regular" : "bg-warning",
+          "strong"  : "bg-success"
+        },
+        passwordProgress : 0,
+        maxProgress      : 100,
+        color            : "",
+        passwordType     : ""
       },
-      messagerErrorPasswordConfirm: ""
+      passwordConfirmError: ""
     };
   },
   methods: {
@@ -231,7 +235,7 @@ export default {
         const userObj = {
           name     : this.userName,
           email    : this.confirmEmail,
-          password : this.confirmPaswword
+          password : this.confirmPassword
         };
 
         const token = await this.createUser(userObj);
@@ -263,45 +267,49 @@ export default {
       this.login = !this.login;
     },
     validEmail() {
-      const regEmail = new RegExp(/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/, "gi");
+      const regEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/gi;
+
       if (!regEmail.test(this.email.text)) {
         this.email.valid = false;
-        this.messageErrorEmail = "El correo no cumple con las características";
+        this.emailErrorMessage = "El correo no cumple con las características";
       } else {
         this.email.valid = true;
-        this.messageErrorEmail = "";
+        this.emailErrorMessage = "";
       }
     },
     validConfirmEmail() {
       if (this.email.text !== this.confirmEmail) {
-        this.messagerErrorEmailConfirm = "El correo no coindice con el ingresado";
+        this.emailConfirmError = "El correo no coindice con el ingresado";
       } else {
-        this.messagerErrorEmailConfirm = "";
+        this.emailConfirmError = "";
       }
     },
-    validPassword() {
+    checkPassword() {
       const passwordLength = this.password.length;
-      let progress =  (passwordLength * 100) / this.objValidPassword.strong;
+      let progress = (passwordLength * 100) / this.validPassword.strong;
       let color = "";
       let type = "";
-      if(passwordLength >= 1 && passwordLength < this.objValidPassword.min) {
-        color = this.objValidPassword.colorsProgress.weak;
+
+      if (passwordLength >= 1 && passwordLength < this.validPassword.min) {
+        color = this.validPassword.colorProgress.weak;
         type = "Débil";
-      } else if(passwordLength >= this.objValidPassword.min && passwordLength < this.objValidPassword.strong) {
-        color = this.objValidPassword.colorsProgress.regular;
+      } else if (passwordLength >= this.validPassword.min && passwordLength < this.validPassword.strong) {
+        color = this.validPassword.colorProgress.regular;
         type = "Regular";
       } else {
-        color = this.objValidPassword.colorsProgress.strong;
-        progress = this.objValidPassword.maxProgress;
+        color = this.validPassword.colorProgress.strong;
+        progress = this.validPassword.maxProgress;
         type = "Fuerte";
       }
-      this.objValidPassword.colorProgress = color;
-      this.objValidPassword.progressPasword = progress;
-      this.objValidPassword.typePassword = type;
+
+      this.validPassword.color = color;
+      this.validPassword.passwordProgress = progress;
+      this.validPassword.passwordType = type;
     },
     validPasswordConfirm() {
-      if(this.password != this.confirmPaswword) return this.messagerErrorPasswordConfirm = "Las contraseñas no coindicen";
-      this.messagerErrorPasswordConfirm = "";
+      if (this.password !== this.confirmPassword) return this.passwordConfirmError = "Las contraseñas no coindicen";
+
+      this.passwordConfirmError = "";
     }
   }
 };
