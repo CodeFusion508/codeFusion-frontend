@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 export const useAlertStore = defineStore("alert", {
     actions: {
         async verifyUser(data) {
-            if(!data.hasOwnProperty("node")) {
+            if(!(Object.prototype.hasOwnProperty.call(data, "node"))) {
                 this.amount += 1;
                 this.passwordExists = false;
             }

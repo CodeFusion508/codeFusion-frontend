@@ -41,7 +41,7 @@
 
             <div class="row mx-0 my-1">
               <div class="col-sm-4 mt-2">
-                <label class="w-100 d-block">Correo:&nbsp&nbsp</label>
+                <label class="w-100 d-block">Correo:&nbsp;&nbsp;</label>
               </div>
               <div class="col-sm-8 col-12 px-0">
                 <input
@@ -153,6 +153,7 @@ export default {
         let progress =  (passwordLength * 100) / this.objValidPassword.strong;
         let color = "";
         let type = "";
+
         if(passwordLength >= 1 && passwordLength < this.objValidPassword.min) {
             color = this.objValidPassword.colorsProgress.weak;
             type = "Débil";
@@ -164,12 +165,13 @@ export default {
             progress = this.objValidPassword.maxProgress;
             type = "Fuerte";
         }
+
         this.objValidPassword.colorProgress = color;
         this.objValidPassword.progressPasword = progress;
         this.objValidPassword.typePassword = type;
     },
     validEmail() {
-        const regEmail = new RegExp(/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/, "gi");
+        const regEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/gi;
         if (!regEmail.test(this.userObj.email)) {
             this.email.valid = false;
             this.messageErrorEmail = "El correo no cumple con las características";
