@@ -78,7 +78,6 @@ import { mapActions, mapState } from "pinia";
 
 import { useUserStore } from "@/store/user/userStore.js";
 import { useAuthStore } from "@/store/user/authStore.js";
-import {useAlertStore} from "@/store/alertStore.js";
 
 export default {
   data: () => {
@@ -115,19 +114,14 @@ export default {
   },
   computed: {
     ...mapState(useAuthStore, ["authToken"]),
-    ...mapState(useUserStore, ["userObj"]),
-    ...mapState(useAlertStore, ["amount", "passwordExists"])
+    ...mapState(useUserStore, ["userObj"])
   },
   mounted() {
     this.initialize();
-    if (this.authToken) {
-    this.verifyUser(this.userObj);
-    }
   },
   methods: {
     ...mapActions(useAuthStore, ["delAuthToken"]),
     ...mapActions(useUserStore, ["cleanUser", "findUser"]),
-    ...mapActions(useAlertStore, ["verifyUser"]),
     logout() {
       this.delAuthToken();
 
