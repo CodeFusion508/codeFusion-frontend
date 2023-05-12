@@ -9,6 +9,7 @@ import AboutUs from "@/pages/AboutUs.vue";
 import SignUp from "@/pages/SignUp.vue";
 import UserSettings from "@/pages/UserSettings.vue";
 import ArticlesPage from "@/pages/ArticlesPage.vue";
+import ViewConfirmAccount from "@/modules/Auth/ConfirmAccount.vue"
 
 // routes arrays
 const baseRoutes = [
@@ -16,6 +17,10 @@ const baseRoutes = [
     path      : "/",
     component : HomePage,
     meta      : { name: "initialize" }
+  },
+  {
+    path      : "/cuenta/:token/confirmacion",
+    component : ViewConfirmAccount
   },
   {
     path      : "/nosotros",

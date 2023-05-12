@@ -26,10 +26,14 @@ export const createGoogleUserReq = async ({
     idToken  : token
 }).Builder()).data;
 
-export const logInUserReq = async ({ email, password }) => (await request.post(`/`, { email, password }).Builder()).data;
+export const logInUserReq = async ({ email, password }) => (await request.post(`/login`, { email, password }).Builder()).data;
 
 export const updateUserReq = async (dataUser) => (await request.put(`/`, dataUser).Builder()).data;
 
 export const createRelation = async (dataRequest) => (await request.post(`/rel`, dataRequest).Builder()).data;
 
 export const verifyGUserReq = async (dataRequest) => (await requestGoogle.post("/ver", { idToken: dataRequest }).Builder()).data;
+
+export const watingConfirmAccount = async (user) =>  (await request.post('/confirm-account', user).Builder()).data
+
+export const ConfirmAccountUser = async (token) => (await request.get('/confirm-account-token/'+token).Builder()).data
