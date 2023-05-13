@@ -94,7 +94,8 @@ export const useUserStore = defineStore("user", {
         setAvatar(avatar) {
             this.userObj.avatar = avatar;
         }
-    }, state: () => {
+    },
+    state: () => {
         return {
             userObj: {
                 name     : "",
