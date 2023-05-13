@@ -240,7 +240,7 @@ export default {
       this.login = !this.login;
     },
     validEmail() {
-      const regEmail = /^\w+(?:[.\-_+]?\w+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,10}$/i;
+      const regEmail = /^\w+(?:[.\-_+]\w+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,10}$/i;
 
       if (!regEmail.test(this.email.text)) {
         this.email.valid = false;
@@ -273,9 +273,7 @@ export default {
 .invalid-input:focus {
   outline: none !important;
 }
-</style>
 
-<style scoped>
 .position-btn-google {
   /* width: 350px; */
   position: absolute;

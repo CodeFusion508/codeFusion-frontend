@@ -41,7 +41,10 @@
             aria-expanded="false"
           >
             <i class="bi bi-person-fill" />
-            <span v-if="verificationAlerts !== 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger">
+            <span
+              v-if="verificationAlerts !== 0"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger"
+            >
               {{ verificationAlerts }}
               <span class="visually-hidden">unread messages</span>
             </span>
@@ -109,7 +112,7 @@ export default {
           meta      : "articles"
         }
       ],
-        verificationAlerts: 0
+      verificationAlerts: 0
     };
   },
   computed: {
@@ -165,4 +168,3 @@ export default {
   background-color: var(--bs-primary);
 }
 </style>
-
