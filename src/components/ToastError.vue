@@ -9,13 +9,14 @@
         aria-atomic="true"
       >
         <div class="toast-header bg-danger">
-          <img src="../pages/assets/warning.png" width="32" class="rounded me-2">
+          <img src="../assets/warning.png" width="32" class="rounded me-2">
           <strong class="me-auto text-white">{{ title }}</strong>
           <button
             type="button"
             class="btn-close"
             data-bs-dismiss="toast"
             aria-label="Close"
+            @click="close"
           />
         </div>
         <div class="toast-body">
@@ -27,13 +28,16 @@
 </template>
 
 <script>
-import { mapState } from "pinia";
+import { mapState, mapActions } from "pinia";
 
 import { useToastStore } from "@/store/toastStore.js";
 
 export default {
   computed: {
     ...mapState(useToastStore, ["text", "title", "layout"])
+  },
+  methods: {
+    ...mapActions(useToastStore, ["close"])
   }
 };
 </script>

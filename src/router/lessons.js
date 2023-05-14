@@ -1,9 +1,10 @@
-import LessonsPage from "@/pages/LessonsPage.vue";
-import LearnText from "@/pages/sprints/LearnText.vue";
-import LearnVideo from "@/pages/sprints/LearnVideo.vue";
-import ProblemsPage from "@/pages/sprints/ProblemsPage.vue";
-import QuizPage from "@/pages/sprints/QuizPage.vue";
-import DaysPage from "@/pages/sprints/days/DayPage.vue";
+const LessonsPage = () => import( "@/pages/LessonsPage.vue");
+const DaysPage = () => import( "@/pages/lessons/DayPage.vue");
+const LearnText = () => import( "@/pages/lessons/content/LearnText.vue");
+const LearnVideo = () => import( "@/pages/lessons/content/LearnVideo.vue");
+const ProblemsPage = () => import( "@/pages/lessons/content/ProblemsPage.vue");
+const QuizPage = () => import( "@/pages/lessons/content/QuizPage.vue");
+
 
 export default [
     {

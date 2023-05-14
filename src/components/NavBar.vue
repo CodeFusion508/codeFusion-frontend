@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-md bg-dark-subtle">
     <div class="container-fluid">
       <a class="navbar-brand text-white" href="#">
-        <img src="../pages/assets/CodeFusion508.ico" alt="an icon of">
+        <img src="../assets/CodeFusion508.ico" alt="an icon of">
         CodeFusion508
       </a>
       <button
@@ -41,6 +41,13 @@
             aria-expanded="false"
           >
             <i class="bi bi-person-fill" />
+            <span
+              v-if="verificationAlerts !== 0"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger"
+            >
+              {{ verificationAlerts }}
+              <span class="visually-hidden">unread messages</span>
+            </span>
           </button>
           <ul class="dropdown-menu">
             <li>
@@ -104,7 +111,8 @@ export default {
           activated : false,
           meta      : "articles"
         }
-      ]
+      ],
+      verificationAlerts: 0
     };
   },
   computed: {
@@ -116,7 +124,7 @@ export default {
   },
   methods: {
     ...mapActions(useAuthStore, ["delAuthToken"]),
-    ...mapActions(useUserStore, ["cleanUser"]),
+    ...mapActions(useUserStore, ["cleanUser", "findUser"]),
     logout() {
       this.delAuthToken();
 

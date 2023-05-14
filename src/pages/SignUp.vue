@@ -20,7 +20,7 @@
                     <div class="mb-3">
                       <input
                         id="signup-5-Email"
-                        v-model="email"
+                        v-model="email.text"
                         type="email"
                         class="form-control text-white"
                         placeholder="Correo Electrónico"
@@ -49,7 +49,12 @@
                   <!-- Final Formulario de Iniciar Sesión -->
 
                   <!-- Inicio Formulario de Crear una Cuenta -->
-                  <form v-show="!login" class="py-3 pt-lg-3 w-100 md-mx-w-550" @submit.prevent="createAccount(false)">
+                  <form
+                    v-show="!login"
+                    novalidate
+                    class="py-3 pt-lg-3 w-100 md-mx-w-550 needs-validation"
+                    @submit.prevent="createAccount(false)"
+                  >
                     <div class="mb-3">
                       <input
                         id="signup-5-name"
@@ -64,12 +69,30 @@
                     <div class="mb-3">
                       <input
                         id="signup-5-Email"
-                        v-model="email"
+                        v-model="email.text"
                         type="email"
                         class="form-control text-white"
                         placeholder="Correo Electrónico"
                         required
+                        @keyup="validEmail"
                       >
+                      <div v-if="emailErrorMessage != ''" class="text-danger">
+                        {{ emailErrorMessage }}
+                      </div>
+                    </div>
+                    <div v-if="email.valid" class="mb-3">
+                      <input
+                        id="signup-5-Email"
+                        v-model="confirmEmail"
+                        type="email"
+                        class="form-control text-white"
+                        placeholder="Confirmar Correo Electrónico"
+                        required
+                        @keyup="validConfirmEmail"
+                      >
+                      <div v-if="emailConfirmError != ''" class="text-danger">
+                        {{ emailConfirmError }}
+                      </div>
                     </div>
                     <div class="mb-3">
                       <input
@@ -79,10 +102,24 @@
                         class="form-control text-white"
                         placeholder="Contraseña"
                         required
+                        @keyup="passwordChanged"
                       >
                     </div>
-                    <div v-if="gLogin && password === ''" class="alert alert-warning" role="alert">
-                      Introduzca su contraseña
+                    <password-progress ref="passProgress" :password="password" />
+
+                    <div class="mb-3">
+                      <input
+                        id="signup-5-Password"
+                        v-model="confirmPassword"
+                        type="password"
+                        class="form-control text-white"
+                        placeholder="Confirmar Contraseña"
+                        required
+                        @keyup="validPasswordConfirm"
+                      >
+                    </div>
+                    <div v-if="passwordConfirmError !== ''" class="text-danger">
+                      {{ passwordConfirmError }}
                     </div>
 
                     <button type="submit" class="btn btn-primary text-white w-100">
@@ -116,20 +153,32 @@ import { useUserStore } from "@/store/user/userStore.js";
 import { useAuthStore } from "@/store/user/authStore.js";
 
 import GLoginButton from "@/components/GLoginButton.vue";
+import PasswordProgress from "../components/PasswordProgress.vue";
 
 export default {
   components: {
-    "g-login": GLoginButton
+    "g-login"           : GLoginButton,
+    "password-progress" : PasswordProgress
   },
   data() {
     return {
-      login      : false,
-      userName   : "",
-      email      : "",
-      password   : "",
       gLogin     : false,
       credential : "",
-      titleForm  : "Crea una Cuenta"
+      titleForm  : "Crea una Cuenta",
+      login      : false,
+      // Input values
+      userName   : "",
+      email      : {
+        valid : false,
+        text  : ""
+      },
+      confirmEmail         : "",
+      password             : "",
+      confirmPassword      : "",
+      // Email and password error handling
+      emailErrorMessage    : "",
+      emailConfirmError    : "",
+      passwordConfirmError : ""
     };
   },
   methods: {
@@ -145,7 +194,7 @@ export default {
       if (this.credential) {
         let userData = decodeCredential(this.credential);
 
-        this.email = userData.email;
+        this.email.text = userData.email;
         this.userName = userData.email.split("@")[0];
 
         let verified = await this.verifyUser(this.credential);
@@ -158,8 +207,8 @@ export default {
       if (!google) {
         const userObj = {
           name     : this.userName,
-          email    : this.email,
-          password : this.password
+          email    : this.confirmEmail,
+          password : this.confirmPassword
         };
 
         const token = await this.createUser(userObj);
@@ -168,7 +217,7 @@ export default {
       } else {
         const userObj = {
           name  : this.userName,
-          email : this.email,
+          email : this.email.text,
           token : this.credential
         };
 
@@ -179,7 +228,7 @@ export default {
     },
     async logIn() {
       const userObj = {
-        email    : this.email,
+        email    : this.email.text,
         password : this.password
       };
 
@@ -189,12 +238,42 @@ export default {
     show(title = "") {
       this.titleForm = title;
       this.login = !this.login;
+    },
+    validEmail() {
+      const regEmail = /^[\w.-]+@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,10}$/i;
+
+      if (!regEmail.test(this.email.text)) {
+        this.email.valid = false;
+        this.emailErrorMessage = "El correo no cumple con las características";
+      } else {
+        this.email.valid = true;
+        this.emailErrorMessage = "";
+      }
+    },
+    validConfirmEmail() {
+      if (this.email.text !== this.confirmEmail) {
+        this.emailConfirmError = "El correo no coindice con el ingresado";
+      } else {
+        this.emailConfirmError = "";
+      }
+    },
+    passwordChanged() {
+      this.$refs.passProgress.checkPassword();
+    },
+    validPasswordConfirm() {
+      if (this.password !== this.confirmPassword) return this.passwordConfirmError = "Las contraseñas no coindicen";
+
+      this.passwordConfirmError = "";
     }
   }
 };
 </script>
 
 <style scoped>
+.invalid-input:focus {
+  outline: none !important;
+}
+
 .position-btn-google {
   /* width: 350px; */
   position: absolute;

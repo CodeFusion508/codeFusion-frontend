@@ -16,10 +16,13 @@ export const useToastStore = defineStore("toast", {
             }
 
             setTimeout(() => {
-                this.layout = false;
-                this.text = "";
-                this.title = "";
+                this.close();
             }, data.time);
+        },
+        close() {
+            this.layout = false;
+            this.text = "";
+            this.title = "";
         }
     },
     state: () => {

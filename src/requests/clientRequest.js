@@ -8,7 +8,7 @@ export const createUserReq = async ({
     name,
     email,
     password
-}) => (await request.post(``, {
+}) => (await request.post(`/`, {
     userName: name,
     email,
     password
@@ -26,7 +26,7 @@ export const createGoogleUserReq = async ({
     idToken  : token
 }).Builder()).data;
 
-export const logInUserReq = async ({ email, password }) => (await request.post(`/`, { email, password }).Builder()).data;
+export const logInUserReq = async ({ email, password }) => (await request.post(`/login`, { email, password }).Builder()).data;
 
 export const updateUserReq = async (dataUser) => (await request.put(`/`, dataUser).Builder()).data;
 

@@ -1,7 +1,7 @@
 <template>
   <nav-bar />
-  <div class="container-fluid my-3 d-flex justify-content-center" style="height: 50vh;">
-    <div class="card col-sm-3 col-sx-8 col-12 border-0">
+  <div class="container-fluid my-3 d-flex justify-content-center">
+    <div class="card col-12 col-sm-8 col-md-6 col-lg-7 col-xl-4 border-0">
       <div class="card-body " style="background-color: #17202A;">
         <h4 class="card-title text-center">
           Configuración de Perfil
@@ -24,19 +24,57 @@
             </div>
           </div>
 
-          <input
-            v-model="userObj.name"
-            type="text"
-            class="form-control mt-3"
-            placeholder="Nombre(s) Completo"
-          >
-          <input
-            v-model="userObj.email"
-            type="text"
-            class="form-control mt-3"
-            placeholder="Correo Electrónico"
-          >
-          <button class="btn btn-primary form-control mt-3" @click="updatedUser">
+          <div class="row mx-0">
+            <div class="row mx-0 my-1">
+              <div class="col-sm-4">
+                <label class="w-100 mt-2">Usuario:</label>
+              </div>
+              <div class="col-sm-8 col-12 px-0">
+                <input
+                  v-model="userObj.name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Nombre(s) Completo"
+                >
+              </div>
+            </div>
+
+            <div class="row mx-0 my-1">
+              <div class="col-sm-4 mt-2">
+                <label class="w-100 d-block">Correo:&nbsp;&nbsp;</label>
+              </div>
+              <div class="col-sm-8 col-12 px-0">
+                <input
+                  v-model="userObj.email"
+                  type="text"
+                  class="form-control"
+                  placeholder="Correo Electrónico"
+                  @keyup="validEmail"
+                >
+              </div>
+              <div v-if="messageErrorEmail != ''" class="text-danger">
+                {{ messageErrorEmail }}
+              </div>
+            </div>
+
+            <div class="row mx-0 my-1">
+              <div class="col-sm-4 mt-2">
+                <label class="w-100 d-block text-truncate">Contraseña:</label>
+              </div>
+              <div class="col-sm-8 col-12 px-0">
+                <input
+                  v-model="userObj.password"
+                  type="text"
+                  class="form-control d-block"
+                  placeholder="Contraseña"
+                  @keyup="passwordChanged"
+                >
+              </div>
+              <password-progress ref="passProgress" :password="userObj.password" />
+            </div>
+          </div>
+
+          <button class="btn btn-primary form-control mt-3" @click="updateUser">
             Guardar
           </button>
         </div>
@@ -46,12 +84,18 @@
   <nav-footer />
 </template>
 
-<script>
+<script lang="js">
 import { mapActions, mapWritableState } from "pinia";
 
 import { useUserStore } from "@/store/user/userStore.js";
+import { updateUserReq } from "@/requests/clientRequest.js";
+
+import PasswordProgress from "@/components/PasswordProgress.vue";
 
 export default {
+  components: {
+    "password-progress": PasswordProgress
+  },
   computed: {
     ...mapWritableState(useUserStore, ["userObj"])
   },
@@ -59,9 +103,10 @@ export default {
     await this.initialize();
   },
   methods: {
-    ...mapActions(useUserStore, ["findUser", "updatedUser", "setAvatar"]),
+    updateUserReq,
+    ...mapActions(useUserStore, ["findUser", "updateUser", "setAvatar"]),
     async initialize() {
-      this.userObj.avatar.image = this.userObj.avatar.image === "" ? "../src/pages/assets/profile.jpg" : this.userObj.avatar.image;
+      this.userObj.avatar.image = this.userObj.avatar.image === "" ? "../src/assets/profile.jpg" : this.userObj.avatar.image;
 
       await this.findUser();
     },
@@ -78,6 +123,9 @@ export default {
         that.userObj.avatar.image = this.result;
         that.userObj.avatar.file = file;
       };
+    },
+    passwordChanged() {
+      this.$refs.passProgress.checkPassword();
     }
   }
 };
