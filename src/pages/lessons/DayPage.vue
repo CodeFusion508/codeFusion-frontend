@@ -28,7 +28,6 @@
 <script>
 import { mapActions, mapState } from "pinia";
 
-import { useAuthStore } from "@/store/user/authStore.js";
 import { useDaysStore } from "@/store/lessons/daysStore.js";
 
 import TimeLine from "@/modules/DayPage/TimeLine.vue";
@@ -44,7 +43,6 @@ export default {
     };
   },
   computed: {
-    ...mapState(useAuthStore, ["authToken"]),
     ...mapState(useDaysStore, ["days", "result", "sprintUuid"])
   },
   async created() {

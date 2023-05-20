@@ -124,7 +124,7 @@ export default {
   },
   methods: {
     ...mapActions(useAuthStore, ["delAuthToken"]),
-    ...mapActions(useUserStore, ["cleanUser", "findUser"]),
+    ...mapActions(useUserStore, ["cleanUser"]),
     logout() {
       this.delAuthToken();
 
