@@ -11,6 +11,7 @@
                 <div
                   class="d-flex justify-center flex-column align-items-center bg-dark-subtle border-0 rounded p-5 bs_signup_content"
                 >
+                <div class="ma-0 pa-0" v-if="!cofirmAccountCard.layout" >
                   <p class="text-secondary h6 bs_fw-300 pb-3 text-white text-center">
                     {{ titleForm }}
                   </p>
@@ -131,7 +132,12 @@
                       <a class="text-decoration-none" @click.prevent="show('Iniciar Sesión')">Iniciar sesión</a>
                     </p>
                   </form>
-                  <!-- Final de Formulario de Crear una Cuenta -->
+
+                </div>
+                <div v-else>
+                    <p>Esperando Confirmación de cuenta</p>
+                    <b>{{ cofirmAccountCard.message }}</b>
+                </div>
                 </div>
               </div>
             </div>
@@ -145,7 +151,7 @@
 </template>
 
 <script>
-import { mapActions } from "pinia";
+import { mapActions, mapState } from "pinia";
 import { decodeCredential } from "vue3-google-login";
 
 
@@ -178,17 +184,22 @@ export default {
       // Email and password error handling
       emailErrorMessage    : "",
       emailConfirmError    : "",
-      passwordConfirmError : ""
+      passwordConfirmError : "",
+      confirmAccount: false
     };
+  },
+  computed: {
+    ...mapState(useUserStore, ["cofirmAccountCard"])
   },
   methods: {
     ...mapActions(useUserStore, [
       "createUser",
       "logInUser",
       "createGoogleUser",
-      "verifyUser"
+      "verifyUser",
+      "watingConfirmAccount"
     ]),
-    ...mapActions(useAuthStore, ["addAuthToken"]),
+    ...mapActions(useAuthStore, ["addAuthToken",]),
     async fillCredential(value) {
       this.credential = value;
       if (this.credential) {
@@ -206,14 +217,18 @@ export default {
     async createAccount(google) {
       if (!google) {
         const userObj = {
+          userName : this.userName,
+          email    : this.email,
+          password : this.password
+
           name     : this.userName,
           email    : this.confirmEmail,
           password : this.confirmPassword
         };
 
-        const token = await this.createUser(userObj);
+        await this.watingConfirmAccount(userObj);
 
-        this.addAuthToken(token);
+        // this.addAuthToken(token);
       } else {
         const userObj = {
           name  : this.userName,
