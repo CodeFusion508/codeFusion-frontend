@@ -102,8 +102,8 @@ export const useUserStore = defineStore("user", {
             this.cofirmAccountCard.message = data.data
             this.cofirmAccountCard.layout = true
         },
-        async confirmAccount(token, password) {
-            const data = await ConfirmAccountUser(password, token)
+        async confirmAccount(token) {
+            const data = await ConfirmAccountUser(token)
             this.cofirmAccountCard = { title: data.title, message: data.message }
         },
         async eventRecoveryAccount() {

@@ -185,7 +185,7 @@ export default {
       credential : "",
       titleForm  : "Crea una Cuenta",
       confirmAccount: false,
-      ... mapWritableState(useUserStore, ["recoveryAccount", "userObj"])
+      ... mapWritableState(useUserStore, ["recoveryAccount", "userObj"]),
       login      : false,
       // Input values
       userName   : "",
@@ -232,11 +232,9 @@ export default {
     async createAccount(google) {
       if (!google) {
         const userObj = {
-          userName     : this.userName,
+          userName : this.userName,
           email    : this.email,
-          password : this.password
-
-          name     : this.userName,
+          password : this.password,
           email    : this.confirmEmail,
           password : this.confirmPassword
         };
