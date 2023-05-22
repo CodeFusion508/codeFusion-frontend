@@ -10,7 +10,8 @@ import {
     updateUserReq,
     createRelation,
     ConfirmAccountUser,
-    watingConfirmAccount
+    watingConfirmAccount,
+    recoveryAccount
 } from "@/requests/clientRequest.js";
 
 
@@ -101,9 +102,13 @@ export const useUserStore = defineStore("user", {
             this.cofirmAccountCard.message = data.data
             this.cofirmAccountCard.layout = true
         },
-        async confirmAccount(token) {
-            const data = await ConfirmAccountUser(token)
+        async confirmAccount(token, password) {
+            const data = await ConfirmAccountUser(password, token)
             this.cofirmAccountCard = { title: data.title, message: data.message }
+        },
+        async eventRecoveryAccount() {
+            const data = await recoveryAccount(this.userObj.email)
+            this.recoveryAccount.message = data.message
         }
     },
     state: () => {
@@ -117,7 +122,8 @@ export const useUserStore = defineStore("user", {
                 password : ""
             },
             uuidContent: "",
-            cofirmAccountCard: { title: '', message: '', layout: false }
+            cofirmAccountCard: { title: '', message: '', layout: false },
+            recoveryAccount: { message: '', layout: false }
         };
     }
 });
