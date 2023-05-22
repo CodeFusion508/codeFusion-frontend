@@ -11,7 +11,7 @@
                 <div
                   class="d-flex justify-center flex-column align-items-center bg-dark-subtle border-0 rounded p-5 bs_signup_content"
                 >
-                <div class="ma-0 pa-0" v-if="!cofirmAccountCard.layout" >
+                <div class="ma-0 pa-0" v-if="!cofirmAccountCard.layout && !recoveryAccount.layout" >
                   <p class="text-secondary h6 bs_fw-300 pb-3 text-white text-center">
                     {{ titleForm }}
                   </p>
@@ -41,6 +41,7 @@
                     <button type="submit" class="btn btn-primary w-100 text-white">
                       Iniciar sesión
                     </button>
+                    <a class="py-3" @click.prevent="recoveryAccount.layout = true">¿Has olvidado tu contraseña?</a>
                     <g-login class="mt-3 w-100 d-inline-block" @credential="fillCredential" />
                     <p class="pt-3 small mb-0" style="color: lightgray">
                       No tienes una Cuenta?
@@ -89,6 +90,7 @@
                     <button type="submit" class="btn btn-primary text-white w-100">
                       Crear Cuenta
                     </button>
+
                     <g-login class="mt-3 w-100 d-inline-block" @credential="fillCredential" />
                     <p class="small" style="color: lightgray">
                       Ya tienes una cuenta?
@@ -97,9 +99,20 @@
                   </form>
 
                 </div>
-                <div v-else>
+                <div v-if="cofirmAccountCard.layout">
                     <p>Esperando Confirmación de cuenta</p>
                     <b>{{ cofirmAccountCard.message }}</b>
+                </div>
+                <div v-if="recoveryAccount.layout" >
+                {{ recoveryAccount.message }}
+                  <div v-if="recoveryAccount.message === ''" >
+                    <p>Ingresa el correo electronico de tu cuenta, posteriormente te enviaremos un mensaje para que puedas recuperar tu cuenta</p>
+                    <input v-model="userObj.email" type="text" class="form-control" placeholder="Correo electronico">
+                    <button class="btn btn-primary form-control mt-3" @click.prevent="eventRecoveryAccount" >Enviar</button>
+                  </div>
+                  <div v-else>
+                    <p>{{ recoveryAccount.message }}</p>
+                  </div>
                 </div>
                 </div>
               </div>
@@ -114,7 +127,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "pinia";
+import { mapActions, mapState, mapWritableState } from "pinia";
 import { decodeCredential } from "vue3-google-login";
 
 
@@ -136,7 +149,8 @@ export default {
       gLogin     : false,
       credential : "",
       titleForm  : "Crea una Cuenta",
-      confirmAccount: false
+      confirmAccount: false,
+      ... mapWritableState(useUserStore, ["recoveryAccount", "userObj"])
     };
   },
   computed: {
@@ -148,7 +162,8 @@ export default {
       "logInUser",
       "createGoogleUser",
       "verifyUser",
-      "watingConfirmAccount"
+      "watingConfirmAccount",
+      "eventRecoveryAccount"
     ]),
     ...mapActions(useAuthStore, ["addAuthToken",]),
     async fillCredential(value) {

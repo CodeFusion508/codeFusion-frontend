@@ -37,3 +37,7 @@ export const verifyGUserReq = async (dataRequest) => (await requestGoogle.post("
 export const watingConfirmAccount = async (user) =>  (await request.post('/confirm-account', user).Builder()).data
 
 export const ConfirmAccountUser = async (token) => (await request.get('/confirm-account-token/'+token).Builder()).data
+
+export const recoveryAccount = async (email) => (await request.post('/recovery/account', { email }).Builder()).data
+
+export const updatedPassword = async (password, token) => (await request.get('/recovery/'+token+'/account/'+password).Builder()).data

@@ -10,6 +10,7 @@ import SignUp from "@/pages/SignUp.vue";
 import UserSettings from "@/pages/UserSettings.vue";
 import ArticlesPage from "@/pages/ArticlesPage.vue";
 import ViewConfirmAccount from "@/modules/Auth/ConfirmAccount.vue"
+import ViewRecoveryAccount from "@/modules/Auth/Recovery.vue"
 
 // routes arrays
 const baseRoutes = [
@@ -21,6 +22,10 @@ const baseRoutes = [
   {
     path      : "/cuenta/:token/confirmacion",
     component : ViewConfirmAccount
+  },
+  {
+    path      : "/cuenta/:token/recuperar",
+    component : ViewRecoveryAccount
   },
   {
     path      : "/nosotros",
