@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 
 import router from "@/router/router.js";
-
 import {
     getUserReq,
     createUserReq,
@@ -42,6 +41,7 @@ export const useUserStore = defineStore("user", {
         },
         async verifyUser(token) {
             const data = await verifyGUserReq(token);
+
             return data;
         },
         async findUser() {
@@ -61,11 +61,12 @@ export const useUserStore = defineStore("user", {
 
             return token;
         },
-        async updatedUser() {
+        async updateUser() {
             await updateUserReq({
                 userName : this.userObj.name,
                 email    : this.userObj.email,
-                uuid     : this.userObj.uuid
+                uuid     : this.userObj.uuid,
+                password : this.userObj.password
             });
         },
         async createdRelation() {
@@ -113,11 +114,12 @@ export const useUserStore = defineStore("user", {
     state: () => {
         return {
             userObj: {
-                name   : "",
-                uuid   : localStorage.getItem("uuid") !== undefined || localStorage.getItem("uuid") !== null ? localStorage.getItem("uuid") : "",
-                email  : "",
-                avatar : { image: "", file: null },
-                tkn    : localStorage.getItem("tkn") !== undefined || localStorage.getItem("tkn") !== null ? localStorage.getItem("tkn") : ""
+                name     : "",
+                uuid     : localStorage.getItem("uuid") !== undefined || localStorage.getItem("uuid") !== null ? localStorage.getItem("uuid") : "",
+                email    : "",
+                avatar   : { image: "", file: null },
+                tkn      : localStorage.getItem("tkn") !== undefined || localStorage.getItem("tkn") !== null ? localStorage.getItem("tkn") : "",
+                password : ""
             },
             uuidContent: "",
             cofirmAccountCard: { title: '', message: '', layout: false },

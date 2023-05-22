@@ -122,7 +122,7 @@
 
 <style scoped>
 .background {
-  background-image: url('../../pages/assets/background.jpg');
+  background-image: url('../../assets/background.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

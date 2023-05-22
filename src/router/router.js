@@ -4,13 +4,13 @@ import { createRouter, createWebHistory } from "vue-router";
 import lessonsRoutes from "./lessons.js";
 
 // page imports
-import HomePage from "@/pages/HomePage.vue";
-import AboutUs from "@/pages/AboutUs.vue";
-import SignUp from "@/pages/SignUp.vue";
-import UserSettings from "@/pages/UserSettings.vue";
-import ArticlesPage from "@/pages/ArticlesPage.vue";
-import ViewConfirmAccount from "@/modules/Auth/ConfirmAccount.vue"
-import ViewRecoveryAccount from "@/modules/Auth/Recovery.vue"
+const HomePage = () => import("@/pages/HomePage.vue");
+const AboutUs = () => import("@/pages/AboutUs.vue");
+const SignUp = () => import("@/pages/SignUp.vue");
+const UserSettings = () => import("@/pages/UserSettings.vue");
+const ArticlesPage = () => import("@/pages/ArticlesPage.vue");
+const ViewConfirmAccount = () => import("@/modules/Auth/ConfirmAccount.vue");
+const ViewRecoveryAccount = () => import("@/modules/Auth/Recovery.vue");
 
 // routes arrays
 const baseRoutes = [
@@ -28,6 +28,7 @@ const baseRoutes = [
     component : ViewRecoveryAccount
   },
   {
+
     path      : "/nosotros",
     component : AboutUs,
     meta      : { name: "about" }
