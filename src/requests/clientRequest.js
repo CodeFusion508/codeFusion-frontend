@@ -8,7 +8,7 @@ export const createUserReq = async ({
     name,
     email,
     password
-}) => (await request.post(``, {
+}) => (await request.post(`/`, {
     userName: name,
     email,
     password

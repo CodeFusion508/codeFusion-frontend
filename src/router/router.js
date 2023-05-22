@@ -4,12 +4,12 @@ import { createRouter, createWebHistory } from "vue-router";
 import lessonsRoutes from "./lessons.js";
 
 // page imports
-import HomePage from "@/pages/HomePage.vue";
-import AboutUs from "@/pages/AboutUs.vue";
-import SignUp from "@/pages/SignUp.vue";
-import UserSettings from "@/pages/UserSettings.vue";
-import ArticlesPage from "@/pages/ArticlesPage.vue";
-import ViewConfirmAccount from "@/modules/Auth/ConfirmAccount.vue"
+const HomePage = () => import("@/pages/HomePage.vue");
+const AboutUs = () => import("@/pages/AboutUs.vue");
+const SignUp = () => import("@/pages/SignUp.vue");
+const UserSettings = () => import("@/pages/UserSettings.vue");
+const ArticlesPage = () => import("@/pages/ArticlesPage.vue");
+const ViewConfirmAccount = () => import("@/modules/Auth/ConfirmAccount.vue");
 
 // routes arrays
 const baseRoutes = [
