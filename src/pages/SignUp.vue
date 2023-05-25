@@ -10,8 +10,8 @@
               <div class="col-lg-12 mx-auto">
                 <div
                   class="d-flex justify-center flex-column align-items-center bg-dark-subtle border-0 rounded p-5 bs_signup_content"
-                >
-                <div class="ma-0 pa-0" v-if="!cofirmAccountCard.layout && !recoveryAccount.layout" >
+                />
+                <div v-if="!cofirmAccountCard.layout && !recoveryAccount.layout" class="ma-0 pa-0">
                   <p class="text-secondary h6 bs_fw-300 pb-3 text-white text-center">
                     {{ titleForm }}
                   </p>
@@ -134,23 +134,34 @@
                       <a class="text-decoration-none" @click.prevent="show('Iniciar Sesión')">Iniciar sesión</a>
                     </p>
                   </form>
-
                 </div>
                 <div v-if="cofirmAccountCard.layout">
-                    <p>Esperando Confirmación de cuenta</p>
-                    <b>{{ cofirmAccountCard.message }}</b>
+                  <p>Esperando Confirmación de cuenta</p>
+                  <b>{{ cofirmAccountCard.message }}</b>
                 </div>
-                <div v-if="recoveryAccount.layout" >
-                {{ recoveryAccount.message }}
-                  <div v-if="recoveryAccount.message === ''" >
-                    <p>Ingresa el correo electronico de tu cuenta, posteriormente te enviaremos un mensaje para que puedas recuperar tu cuenta</p>
-                    <input v-model="userObj.email" type="text" class="form-control" placeholder="Correo electronico">
-                    <button class="btn btn-primary form-control mt-3" @click.prevent="eventRecoveryAccount" >Enviar</button>
+                <div v-if="recoveryAccount.layout">
+                  {{ recoveryAccount.message }}
+                  <div v-if="recoveryAccount.message === ''">
+                    <p>
+                      Ingresa el correo electronico de tu cuenta, posteriormente te enviaremos un mensaje para que
+                      puedas recuperar tu cuenta
+                    </p>
+                    <input
+                      v-model="userObj.email"
+                      type="text"
+                      class="form-control"
+                      placeholder="Correo electronico"
+                    >
+                    <button
+                      class="btn btn-primary form-control mt-3"
+                      @click.prevent="eventRecoveryAccount"
+                    >
+                      Enviar
+                    </button>
                   </div>
                   <div v-else>
                     <p>{{ recoveryAccount.message }}</p>
                   </div>
-                </div>
                 </div>
               </div>
             </div>
@@ -164,7 +175,9 @@
 </template>
 
 <script>
-import { mapActions, mapState, mapWritableState } from "pinia";
+import {
+ mapActions, mapState, mapWritableState
+} from "pinia";
 import { decodeCredential } from "vue3-google-login";
 
 
@@ -181,15 +194,15 @@ export default {
   },
   data() {
     return {
-      gLogin     : false,
-      credential : "",
-      titleForm  : "Crea una Cuenta",
-      confirmAccount: false,
-      ... mapWritableState(useUserStore, ["recoveryAccount", "userObj"]),
-      login      : false,
+      gLogin         : false,
+      credential     : "",
+      titleForm      : "Crea una Cuenta",
+      confirmAccount : false,
+      ...mapWritableState(useUserStore, ["recoveryAccount", "userObj"]),
+      login          : false,
       // Input values
-      userName   : "",
-      email      : {
+      userName       : "",
+      email          : {
         valid : false,
         text  : ""
       },
@@ -199,7 +212,7 @@ export default {
       // Email and password error handling
       emailErrorMessage    : "",
       emailConfirmError    : "",
-      passwordConfirmError : "",
+      passwordConfirmError : ""
     };
   },
   computed: {
@@ -214,7 +227,7 @@ export default {
       "watingConfirmAccount",
       "eventRecoveryAccount"
     ]),
-    ...mapActions(useAuthStore, ["addAuthToken",]),
+    ...mapActions(useAuthStore, ["addAuthToken"]),
     async fillCredential(value) {
       this.credential = value;
       if (this.credential) {
@@ -234,9 +247,7 @@ export default {
         const userObj = {
           userName : this.userName,
           email    : this.email,
-          password : this.password,
-          email    : this.confirmEmail,
-          password : this.confirmPassword
+          password : this.password
         };
 
         await this.watingConfirmAccount(userObj);
