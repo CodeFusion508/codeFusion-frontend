@@ -146,7 +146,12 @@
                       Ingresa el correo electronico de tu cuenta, posteriormente te enviaremos un mensaje para que
                       puedas recuperar tu cuenta
                     </p>
-                    <input v-model="userObj.email" type="text" class="form-control" placeholder="Correo electronico">
+                    <input
+                      v-model="userObj.email"
+                      type="text"
+                      class="form-control"
+                      placeholder="Correo electronico"
+                    >
                     <button class="btn btn-primary form-control mt-3" @click.prevent="eventRecoveryAccount">
                       Enviar
                     </button>

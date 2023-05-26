@@ -60,7 +60,7 @@ module.exports = {
     ],
     "vue/max-attributes-per-line": ["error", {
       "singleline": {
-        "max": 4
+        "max": 3
       }
     }]
   }

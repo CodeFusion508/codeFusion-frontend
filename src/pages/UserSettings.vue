@@ -9,7 +9,12 @@
         <div class="row px-3">
           <div class="d-flex justify-content-center my-3">
             <div class="style-avatar shadow-lg" :style="{ 'background-image': 'url(' + userObj.avatar.image + ')' }">
-              <input ref="fileImageProfile" type="file" hidden @change="uploadImage">
+              <input
+                ref="fileImageProfile"
+                type="file"
+                hidden
+                @change="uploadImage"
+              >
               <div
                 class="content-save d-flex justify-content-center align-items-center shadow-lg rounded-circle"
                 @click="eventSelectedImage"
@@ -25,7 +30,12 @@
                 <label class="w-100 mt-2">Usuario:</label>
               </div>
               <div class="col-sm-8 col-12 px-0">
-                <input v-model="userObj.name" type="text" class="form-control" placeholder="Nombre(s) Completo">
+                <input
+                  v-model="userObj.name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Nombre(s) Completo"
+                >
               </div>
             </div>
 
