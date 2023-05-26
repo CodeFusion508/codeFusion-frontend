@@ -99,16 +99,16 @@ export const useUserStore = defineStore("user", {
         },
         async watingConfirmAccount(objUser) {
             const data = await watingConfirmAccount(objUser);
-            this.cofirmAccountCard.message = data.data
-            this.cofirmAccountCard.layout = true
+            this.cofirmAccountCard.message = data.data;
+            this.cofirmAccountCard.layout = true;
         },
         async confirmAccount(token) {
-            const data = await ConfirmAccountUser(token)
-            this.cofirmAccountCard = { title: data.title, message: data.message }
+            const data = await ConfirmAccountUser(token);
+            this.cofirmAccountCard = { title: data.title, message: data.message };
         },
         async eventRecoveryAccount() {
-            const data = await recoveryAccount(this.userObj.email)
-            this.recoveryAccount.message = data.message
+            const data = await recoveryAccount(this.userObj.email);
+            this.recoveryAccount.message = data.message;
         }
     },
     state: () => {
@@ -121,9 +121,9 @@ export const useUserStore = defineStore("user", {
                 tkn      : localStorage.getItem("tkn") !== undefined || localStorage.getItem("tkn") !== null ? localStorage.getItem("tkn") : "",
                 password : ""
             },
-            uuidContent: "",
-            cofirmAccountCard: { title: '', message: '', layout: false },
-            recoveryAccount: { message: '', layout: false }
+            uuidContent       : "",
+            cofirmAccountCard : { title: "", message: "", layout: false },
+            recoveryAccount   : { message: "", layout: false }
         };
     }
 });
