@@ -99,15 +99,18 @@ export const useUserStore = defineStore("user", {
         },
         async ConfirmAccountReq(objUser) {
             const data = await ConfirmAccountReq(objUser);
+
             this.confirmAccountCard.message = data.data;
             this.confirmAccountCard.layout = true;
         },
         async confirmAccount(token) {
             const data = await ConfirmAccountUser(token);
+
             this.confirmAccountCard = { title: data.title, message: data.message };
         },
         async eventRecoveryAccount() {
             const data = await recoveryAccount(this.userObj.email);
+
             this.recoveryAccount.message = data.message;
         }
     },

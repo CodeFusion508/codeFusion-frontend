@@ -173,7 +173,9 @@
 
 <script>
 import {
-  mapActions, mapState, mapWritableState
+  mapActions,
+  mapState,
+  mapWritableState
 } from "pinia";
 import { decodeCredential } from "vue3-google-login";
 
