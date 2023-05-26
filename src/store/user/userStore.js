@@ -99,12 +99,12 @@ export const useUserStore = defineStore("user", {
         },
         async watingConfirmAccount(objUser) {
             const data = await watingConfirmAccount(objUser);
-            this.cofirmAccountCard.message = data.data;
-            this.cofirmAccountCard.layout = true;
+            this.confirmAccountCard.message = data.data;
+            this.confirmAccountCard.layout = true;
         },
         async confirmAccount(token) {
             const data = await ConfirmAccountUser(token);
-            this.cofirmAccountCard = { title: data.title, message: data.message };
+            this.confirmAccountCard = { title: data.title, message: data.message };
         },
         async eventRecoveryAccount() {
             const data = await recoveryAccount(this.userObj.email);
@@ -122,7 +122,7 @@ export const useUserStore = defineStore("user", {
                 password : ""
             },
             uuidContent       : "",
-            cofirmAccountCard : { title: "", message: "", layout: false },
+            confirmAccountCard : { title: "", message: "", layout: false },
             recoveryAccount   : { message: "", layout: false }
         };
     }

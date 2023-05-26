@@ -5,12 +5,7 @@
         <img src="../assets/CodeFusion508.ico" alt="an icon of">
         CodeFusion508
       </a>
-      <button
-        type="button"
-        class="navbar-toggler"
-        data-bs-toggle="collapse"
-        data-bs-target="#header1navbarCollapse"
-      >
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#header1navbarCollapse">
         <span class="navbar-toggler-icon" />
       </button>
       <div id="header1navbarCollapse" class="collapse navbar-collapse justify-content-between">
@@ -34,12 +29,7 @@
         </div>
 
         <div v-else class="dropstart btn-group">
-          <button
-            class="btn btn-primary rounded-circle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+          <button class="btn btn-primary rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-person-fill" />
             <span
               v-if="verificationAlerts !== 0"

@@ -11,7 +11,7 @@
                 <div
                   class="d-flex justify-center flex-column align-items-center bg-dark-subtle border-0 rounded p-5 bs_signup_content"
                 />
-                <div v-if="!cofirmAccountCard.layout && !recoveryAccount.layout" class="ma-0 pa-0">
+                <div v-if="!confirmAccountCard.layout && !recoveryAccount.layout" class="ma-0 pa-0">
                   <p class="text-secondary h6 bs_fw-300 pb-3 text-white text-center">
                     {{ titleForm }}
                   </p>
@@ -135,9 +135,9 @@
                     </p>
                   </form>
                 </div>
-                <div v-if="cofirmAccountCard.layout">
+                <div v-if="confirmAccountCard.layout">
                   <p>Esperando Confirmación de cuenta</p>
-                  <b>{{ cofirmAccountCard.message }}</b>
+                  <b>{{ confirmAccountCard.message }}</b>
                 </div>
                 <div v-if="recoveryAccount.layout">
                   {{ recoveryAccount.message }}
@@ -146,16 +146,8 @@
                       Ingresa el correo electronico de tu cuenta, posteriormente te enviaremos un mensaje para que
                       puedas recuperar tu cuenta
                     </p>
-                    <input
-                      v-model="userObj.email"
-                      type="text"
-                      class="form-control"
-                      placeholder="Correo electronico"
-                    >
-                    <button
-                      class="btn btn-primary form-control mt-3"
-                      @click.prevent="eventRecoveryAccount"
-                    >
+                    <input v-model="userObj.email" type="text" class="form-control" placeholder="Correo electronico">
+                    <button class="btn btn-primary form-control mt-3" @click.prevent="eventRecoveryAccount">
                       Enviar
                     </button>
                   </div>
@@ -176,7 +168,7 @@
 
 <script>
 import {
- mapActions, mapState, mapWritableState
+  mapActions, mapState, mapWritableState
 } from "pinia";
 import { decodeCredential } from "vue3-google-login";
 
@@ -216,7 +208,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(useUserStore, ["cofirmAccountCard"])
+    ...mapState(useUserStore, ["confirmAccountCard"])
   },
   methods: {
     ...mapActions(useUserStore, [
