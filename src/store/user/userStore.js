@@ -10,7 +10,7 @@ import {
     updateUserReq,
     createRelation,
     ConfirmAccountUser,
-    watingConfirmAccount,
+    ConfirmAccountReq,
     recoveryAccount
 } from "@/requests/clientRequest.js";
 
@@ -97,8 +97,8 @@ export const useUserStore = defineStore("user", {
         setAvatar(avatar) {
             this.userObj.avatar = avatar;
         },
-        async watingConfirmAccount(objUser) {
-            const data = await watingConfirmAccount(objUser);
+        async ConfirmAccountReq(objUser) {
+            const data = await ConfirmAccountReq(objUser);
             this.confirmAccountCard.message = data.data;
             this.confirmAccountCard.layout = true;
         },
@@ -121,9 +121,9 @@ export const useUserStore = defineStore("user", {
                 tkn      : localStorage.getItem("tkn") !== undefined || localStorage.getItem("tkn") !== null ? localStorage.getItem("tkn") : "",
                 password : ""
             },
-            uuidContent       : "",
+            uuidContent        : "",
             confirmAccountCard : { title: "", message: "", layout: false },
-            recoveryAccount   : { message: "", layout: false }
+            recoveryAccount    : { message: "", layout: false }
         };
     }
 });

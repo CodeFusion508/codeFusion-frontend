@@ -34,7 +34,7 @@ export const createRelation = async (dataRequest) => (await request.post(`/rel`,
 
 export const verifyGUserReq = async (dataRequest) => (await requestGoogle.post("/ver", { idToken: dataRequest }).Builder()).data;
 
-export const watingConfirmAccount = async (user) =>  (await request.post("/confirm-account", user).Builder()).data;
+export const ConfirmAccountReq = async (user) =>  (await request.post("/confirm-account", user).Builder()).data;
 
 
 export const ConfirmAccountUser = async (token) => (await request.get("/confirm-account-token/"+token).Builder()).data;
