@@ -1,4 +1,4 @@
-import { createTestingPinia } from "@pinia/testing"
+import { createTestingPinia } from "@pinia/testing";
 
 import{
 describe, it, expect
