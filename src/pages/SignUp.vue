@@ -10,7 +10,8 @@
               <div class="col-lg-12 mx-auto">
                 <div
                   class="d-flex justify-center flex-column align-items-center bg-dark-subtle border-0 rounded p-5 bs_signup_content"
-                >
+                />
+                <div v-if="!confirmAccountCard.layout && !recoveryAccount.layout" class="ma-0 pa-0">
                   <p class="text-secondary h6 bs_fw-300 pb-3 text-white text-center">
                     {{ titleForm }}
                   </p>
@@ -40,6 +41,7 @@
                     <button type="submit" class="btn btn-primary w-100 text-white">
                       Iniciar sesión
                     </button>
+                    <a class="py-3" @click.prevent="recoveryAccount.layout = true">¿Has olvidado tu contraseña?</a>
                     <g-login class="mt-3 w-100 d-inline-block" @credential="fillCredential" />
                     <p class="pt-3 small mb-0" style="color: lightgray">
                       No tienes una Cuenta?
@@ -125,13 +127,38 @@
                     <button type="submit" class="btn btn-primary text-white w-100">
                       Crear Cuenta
                     </button>
+
                     <g-login class="mt-3 w-100 d-inline-block" @credential="fillCredential" />
                     <p class="small" style="color: lightgray">
                       Ya tienes una cuenta?
                       <a class="text-decoration-none" @click.prevent="show('Iniciar Sesión')">Iniciar sesión</a>
                     </p>
                   </form>
-                  <!-- Final de Formulario de Crear una Cuenta -->
+                </div>
+                <div v-if="confirmAccountCard.layout">
+                  <p>Esperando Confirmación de cuenta</p>
+                  <b>{{ confirmAccountCard.message }}</b>
+                </div>
+                <div v-if="recoveryAccount.layout">
+                  {{ recoveryAccount.message }}
+                  <div v-if="recoveryAccount.message === ''">
+                    <p>
+                      Ingresa el correo electronico de tu cuenta, posteriormente te enviaremos un mensaje para que
+                      puedas recuperar tu cuenta
+                    </p>
+                    <input
+                      v-model="userObj.email"
+                      type="text"
+                      class="form-control"
+                      placeholder="Correo electronico"
+                    >
+                    <button class="btn btn-primary form-control mt-3" @click.prevent="eventRecoveryAccount">
+                      Enviar
+                    </button>
+                  </div>
+                  <div v-else>
+                    <p>{{ recoveryAccount.message }}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -145,7 +172,11 @@
 </template>
 
 <script>
-import { mapActions } from "pinia";
+import {
+  mapActions,
+  mapState,
+  mapWritableState
+} from "pinia";
 import { decodeCredential } from "vue3-google-login";
 
 
@@ -162,13 +193,15 @@ export default {
   },
   data() {
     return {
-      gLogin     : false,
-      credential : "",
-      titleForm  : "Crea una Cuenta",
-      login      : false,
+      gLogin         : false,
+      credential     : "",
+      titleForm      : "Crea una Cuenta",
+      confirmAccount : false,
+      ...mapWritableState(useUserStore, ["recoveryAccount", "userObj"]),
+      login          : false,
       // Input values
-      userName   : "",
-      email      : {
+      userName       : "",
+      email          : {
         valid : false,
         text  : ""
       },
@@ -181,12 +214,17 @@ export default {
       passwordConfirmError : ""
     };
   },
+  computed: {
+    ...mapState(useUserStore, ["confirmAccountCard"])
+  },
   methods: {
     ...mapActions(useUserStore, [
       "createUser",
       "logInUser",
       "createGoogleUser",
-      "verifyUser"
+      "verifyUser",
+      "confirmAccountReq",
+      "eventRecoveryAccount"
     ]),
     ...mapActions(useAuthStore, ["addAuthToken"]),
     async fillCredential(value) {
@@ -206,14 +244,12 @@ export default {
     async createAccount(google) {
       if (!google) {
         const userObj = {
-          name     : this.userName,
-          email    : this.confirmEmail,
-          password : this.confirmPassword
+          userName : this.userName,
+          email    : this.email,
+          password : this.password
         };
 
-        const token = await this.createUser(userObj);
-
-        this.addAuthToken(token);
+        await this.confirmAccountReq(userObj);
       } else {
         const userObj = {
           name  : this.userName,

@@ -1,7 +1,7 @@
 <template>
   <div v-if="password.length >= 1" class="progress mt-1" style="height: 5px;">
     <div
-      :class="['progress-bar', passObj.colorProgress]"
+      :class="['progress-bar', passObj.color]"
       role="progressbar"
       :style="{ 'width': passObj.passProgress + '%' }"
       aria-valuemin="0"
