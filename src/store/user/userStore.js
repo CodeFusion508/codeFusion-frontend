@@ -9,8 +9,8 @@ import {
     logInUserReq,
     updateUserReq,
     createRelation,
-    ConfirmAccountUser,
-    ConfirmAccountReq,
+    confirmAccountUser,
+    confirmAccountReq,
     recoveryAccount
 } from "@/requests/clientRequest.js";
 
@@ -97,14 +97,14 @@ export const useUserStore = defineStore("user", {
         setAvatar(avatar) {
             this.userObj.avatar = avatar;
         },
-        async ConfirmAccountReq(objUser) {
-            const data = await ConfirmAccountReq(objUser);
+        async confirmAccountReq(objUser) {
+            const data = await confirmAccountReq(objUser);
 
             this.confirmAccountCard.message = data.data;
             this.confirmAccountCard.layout = true;
         },
         async confirmAccount(token) {
-            const data = await ConfirmAccountUser(token);
+            const data = await confirmAccountUser(token);
 
             this.confirmAccountCard = { title: data.title, message: data.message };
         },

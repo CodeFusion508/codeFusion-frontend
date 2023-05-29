@@ -223,7 +223,7 @@ export default {
       "logInUser",
       "createGoogleUser",
       "verifyUser",
-      "ConfirmAccountReq",
+      "confirmAccountReq",
       "eventRecoveryAccount"
     ]),
     ...mapActions(useAuthStore, ["addAuthToken"]),
@@ -249,9 +249,7 @@ export default {
           password : this.password
         };
 
-        await this.ConfirmAccountReq(userObj);
-
-        // this.addAuthToken(token);
+        await this.confirmAccountReq(userObj);
       } else {
         const userObj = {
           name  : this.userName,
