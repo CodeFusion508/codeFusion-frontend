@@ -5,9 +5,6 @@
 </template>
 
 <script>
-import { mapActions } from "pinia";
-
-import { useUserStore } from "@/store/user/userStore.js";
 
 export default {
     emits: ["credential"],
@@ -20,7 +17,6 @@ export default {
         };
     },
     methods: {
-        ...mapActions(useUserStore, ["setAvatar"]),
         callback(response) {
             this.$emit("credential", response.credential);
         }
