@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 // route imports
 import lessonsRoutes from "./lessons.js";
+import InstructorRoutes from './instructor.js'
 
 // page imports
 const HomePage = () => import("@/pages/HomePage.vue");
@@ -66,7 +67,7 @@ const routes = baseRoutes.concat(lessonsRoutes);
 // router object
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes: routes.concat(InstructorRoutes)
 });
 
 export default router;
