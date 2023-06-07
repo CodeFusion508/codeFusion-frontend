@@ -8,156 +8,155 @@
           <div class="bs_create_account_layout5 position-relative">
             <div class="container-fluid px-0">
               <div class="col-lg-12 mx-auto">
-                <div
-                  class="d-flex justify-center flex-column align-items-center bg-dark-subtle border-0 rounded p-5 bs_signup_content"
-                />
-                <div v-if="!confirmAccountCard.layout && !recoveryAccount.layout" class="ma-0 pa-0">
-                  <p class="text-secondary h6 bs_fw-300 pb-3 text-white text-center">
-                    {{ titleForm }}
-                  </p>
-
-                  <!-- Inicio Formulario de Iniciar Sesión -->
-                  <form v-show="login" class="py-3 pt-lg-3 w-100 md-mx-w-550" @submit.prevent="logIn">
-                    <div class="mb-3">
-                      <input
-                        id="signup-5-Email"
-                        v-model="email.text"
-                        type="email"
-                        class="form-control text-white"
-                        placeholder="Correo Electrónico"
-                        required
-                      >
-                    </div>
-                    <div class="mb-3">
-                      <input
-                        id="signup-5-Password"
-                        v-model="password"
-                        type="password"
-                        class="form-control text-white"
-                        placeholder="Contraseña"
-                        required
-                      >
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100 text-white">
-                      Iniciar sesión
-                    </button>
-                    <a class="py-3" @click.prevent="recoveryAccount.layout = true">¿Has olvidado tu contraseña?</a>
-                    <g-login class="mt-3 w-100 d-inline-block" @credential="fillCredential" />
-                    <p class="pt-3 small mb-0" style="color: lightgray">
-                      No tienes una Cuenta?
-                      <a class="text-decoration-none" @click.prevent="show('Crea una Cuenta')">Crea una Cuenta</a>
+                <div class="d-flex justify-center flex-column align-items-center bg-dark-subtle border-0 rounded p-5 bs_signup_content">
+                  <div v-if="!confirmAccountCard.layout && !recoveryAccount.layout" class="ma-0 pa-0">
+                    <p class="text-secondary h6 bs_fw-300 pb-3 text-white text-center">
+                      {{ titleForm }}
                     </p>
-                  </form>
-                  <!-- Final Formulario de Iniciar Sesión -->
 
-                  <!-- Inicio Formulario de Crear una Cuenta -->
-                  <form
-                    v-show="!login"
-                    novalidate
-                    class="py-3 pt-lg-3 w-100 md-mx-w-550 needs-validation"
-                    @submit.prevent="createAccount(false)"
-                  >
-                    <div class="mb-3">
-                      <input
-                        id="signup-5-name"
-                        v-model="userName"
-                        type="text"
-                        class="form-control text-white"
-                        placeholder="Nombre"
-                        aria-describedby="infotext"
-                        required
-                      >
-                    </div>
-                    <div class="mb-3">
-                      <input
-                        id="signup-5-Email"
-                        v-model="email.text"
-                        type="email"
-                        class="form-control text-white"
-                        placeholder="Correo Electrónico"
-                        required
-                        @keyup="validEmail"
-                      >
-                      <div v-if="emailErrorMessage != ''" class="text-danger">
-                        {{ emailErrorMessage }}
+                    <!-- Inicio Formulario de Iniciar Sesión -->
+                    <form v-show="login" class="py-3 pt-lg-3 w-100 md-mx-w-550" @submit.prevent="logIn">
+                      <div class="mb-3">
+                        <input
+                          id="signup-5-Email"
+                          v-model="email.text"
+                          type="email"
+                          class="form-control text-white"
+                          placeholder="Correo Electrónico"
+                          required
+                        >
                       </div>
-                    </div>
-                    <div v-if="email.valid" class="mb-3">
-                      <input
-                        id="signup-5-Email"
-                        v-model="confirmEmail"
-                        type="email"
-                        class="form-control text-white"
-                        placeholder="Confirmar Correo Electrónico"
-                        required
-                        @keyup="validConfirmEmail"
-                      >
-                      <div v-if="emailConfirmError != ''" class="text-danger">
-                        {{ emailConfirmError }}
+                      <div class="mb-3">
+                        <input
+                          id="signup-5-Password"
+                          v-model="password"
+                          type="password"
+                          class="form-control text-white"
+                          placeholder="Contraseña"
+                          required
+                        >
                       </div>
-                    </div>
-                    <div class="mb-3">
-                      <input
-                        id="signup-5-Password"
-                        v-model="password"
-                        type="password"
-                        class="form-control text-white"
-                        placeholder="Contraseña"
-                        required
-                        @keyup="passwordChanged"
-                      >
-                    </div>
-                    <password-progress ref="passProgress" :password="password" />
+                      <button type="submit" class="btn btn-primary w-100 text-white">
+                        Iniciar sesión
+                      </button>
+                      <a class="py-3" @click.prevent="recoveryAccount.layout = true">¿Has olvidado tu contraseña?</a>
+                      <g-login class="mt-3 w-100 d-inline-block" @credential="fillCredential" />
+                      <p class="pt-3 small mb-0" style="color: lightgray">
+                        No tienes una Cuenta?
+                        <a class="text-decoration-none" @click.prevent="show('Crea una Cuenta')">Crea una Cuenta</a>
+                      </p>
+                    </form>
+                    <!-- Final Formulario de Iniciar Sesión -->
 
-                    <div class="mb-3">
-                      <input
-                        id="signup-5-Password"
-                        v-model="confirmPassword"
-                        type="password"
-                        class="form-control text-white"
-                        placeholder="Confirmar Contraseña"
-                        required
-                        @keyup="validPasswordConfirm"
-                      >
-                    </div>
-                    <div v-if="passwordConfirmError !== ''" class="text-danger">
-                      {{ passwordConfirmError }}
-                    </div>
-
-                    <button type="submit" class="btn btn-primary text-white w-100">
-                      Crear Cuenta
-                    </button>
-
-                    <g-login class="mt-3 w-100 d-inline-block" @credential="fillCredential" />
-                    <p class="small" style="color: lightgray">
-                      Ya tienes una cuenta?
-                      <a class="text-decoration-none" @click.prevent="show('Iniciar Sesión')">Iniciar sesión</a>
-                    </p>
-                  </form>
-                </div>
-                <div v-if="confirmAccountCard.layout">
-                  <p>Esperando Confirmación de cuenta</p>
-                  <b>{{ confirmAccountCard.message }}</b>
-                </div>
-                <div v-if="recoveryAccount.layout">
-                  {{ recoveryAccount.message }}
-                  <div v-if="recoveryAccount.message === ''">
-                    <p>
-                      Ingresa el correo electronico de tu cuenta, posteriormente te enviaremos un mensaje para que
-                      puedas recuperar tu cuenta
-                    </p>
-                    <input
-                      v-model="userObj.email"
-                      type="text"
-                      class="form-control"
-                      placeholder="Correo electronico"
+                    <!-- Inicio Formulario de Crear una Cuenta -->
+                    <form
+                      v-show="!login"
+                      novalidate
+                      class="py-3 pt-lg-3 w-100 md-mx-w-550 needs-validation"
+                      @submit.prevent="createAccount(false)"
                     >
-                    <button class="btn btn-primary form-control mt-3" @click.prevent="eventRecoveryAccount">
-                      Enviar
-                    </button>
+                      <div class="mb-3">
+                        <input
+                          id="signup-5-name"
+                          v-model="userName"
+                          type="text"
+                          class="form-control text-white"
+                          placeholder="Nombre"
+                          aria-describedby="infotext"
+                          required
+                        >
+                      </div>
+                      <div class="mb-3">
+                        <input
+                          id="signup-5-Email"
+                          v-model="email.text"
+                          type="email"
+                          class="form-control text-white"
+                          placeholder="Correo Electrónico"
+                          required
+                          @keyup="validEmail"
+                        >
+                        <div v-if="emailErrorMessage != ''" class="text-danger">
+                          {{ emailErrorMessage }}
+                        </div>
+                      </div>
+                      <div v-if="email.valid" class="mb-3">
+                        <input
+                          id="signup-5-Email"
+                          v-model="confirmEmail"
+                          type="email"
+                          class="form-control text-white"
+                          placeholder="Confirmar Correo Electrónico"
+                          required
+                          @keyup="validConfirmEmail"
+                        >
+                        <div v-if="emailConfirmError != ''" class="text-danger">
+                          {{ emailConfirmError }}
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <input
+                          id="signup-5-Password"
+                          v-model="password"
+                          type="password"
+                          class="form-control text-white"
+                          placeholder="Contraseña"
+                          required
+                          @keyup="passwordChanged"
+                        >
+                      </div>
+                      <password-progress ref="passProgress" :password="password" />
+
+                      <div class="mb-3">
+                        <input
+                          id="signup-5-Password"
+                          v-model="confirmPassword"
+                          type="password"
+                          class="form-control text-white"
+                          placeholder="Confirmar Contraseña"
+                          required
+                          @keyup="validPasswordConfirm"
+                        >
+                      </div>
+                      <div v-if="passwordConfirmError !== ''" class="text-danger">
+                        {{ passwordConfirmError }}
+                      </div>
+
+                      <button type="submit" class="btn btn-primary text-white w-100">
+                        Crear Cuenta
+                      </button>
+
+                      <g-login class="mt-3 w-100 d-inline-block" @credential="fillCredential" />
+                      <p class="small" style="color: lightgray">
+                        Ya tienes una cuenta?
+                        <a class="text-decoration-none" @click.prevent="show('Iniciar Sesión')">Iniciar sesión</a>
+                      </p>
+                    </form>
                   </div>
-                  <div v-else>
-                    <p>{{ recoveryAccount.message }}</p>
+                  <div v-if="confirmAccountCard.layout">
+                    <p>Esperando Confirmación de cuenta</p>
+                    <b>{{ confirmAccountCard.message }}</b>
+                  </div>
+                  <div v-if="recoveryAccount.layout">
+                    {{ recoveryAccount.message }}
+                    <div v-if="recoveryAccount.message === ''">
+                      <p>
+                        Ingresa el correo electronico de tu cuenta, posteriormente te enviaremos un mensaje para que
+                        puedas recuperar tu cuenta
+                      </p>
+                      <input
+                        v-model="userObj.email"
+                        type="text"
+                        class="form-control"
+                        placeholder="Correo electronico"
+                      >
+                      <button class="btn btn-primary form-control mt-3" @click.prevent="eventRecoveryAccount">
+                        Enviar
+                      </button>
+                    </div>
+                    <div v-else>
+                      <p>{{ recoveryAccount.message }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
