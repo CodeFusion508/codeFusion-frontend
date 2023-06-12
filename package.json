@@ -11,16 +11,16 @@
   "dependencies": {
     "@guolao/vue-monaco-editor": "^1.1.3",
     "axios": "^1.4.0",
-    "pinia": "^2.0.35",
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6",
+    "pinia": "^2.1.3",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.2",
     "vue3-google-login": "^2.0.15",
-    "vue3-google-signin": "^1.3.0"
+    "vue3-google-signin": "^1.3.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.1",
-    "eslint": "^8.40.0",
-    "eslint-plugin-vue": "^9.11.0",
-    "vite": "^4.3.5"
+    "@vitejs/plugin-vue": "^4.2.3",
+    "eslint": "^8.42.0",
+    "eslint-plugin-vue": "^9.14.1",
+    "vite": "^4.3.9"
   }
 }
