@@ -1,1 +1,0 @@
-import{H as e,z as s}from"./index-b701a59a.js";const n=new e("Archivos","static"),o=async t=>(await n.get(`/${t}`).Builder()).data,i=s("content",{actions:{async getText(t){return this.lesson=await o(t),this.lesson},setUuid(t){this.uuid=t}},state:()=>({lesson:"",contIndex:0,uuid:""})});export{i as u};
