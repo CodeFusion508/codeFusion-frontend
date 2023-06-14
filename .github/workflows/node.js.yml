@@ -25,3 +25,6 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm run build
+      - run: sudo rm -rf /var/www/dist/
+      - run: sudo mv /home/ubuntu/actions-runner/_work/codeFusion-frontend/codeFusion-frontend/dist /var/www
+      - run: sudo systemctl restart nginx
