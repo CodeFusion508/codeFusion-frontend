@@ -25,7 +25,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: ls -a
+      - run: |
+          touch .env.production	
+          printf "VITE_SERVER=\"http://localhost:8080/\"" >> .env.production
+          cat .env.production
       - run: npm ci
       - run: npm run build
       - run: sudo rm -rf /var/www/dist/
