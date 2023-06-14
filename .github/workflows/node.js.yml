@@ -23,8 +23,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - name: Make .env
-        uses: SpicyPizza/create-envfile@v1.3
+      - name: Create .env file
+        uses: SpicyPizza/create-envfile@v1.3.0
         with:
           envkey_VITE_SERVER: ${{ secrets.VITE_SERVER }}
           envkey_VITE_GOOGLE_API: ${{ secrets.VITE_GOOGLE_API }}
