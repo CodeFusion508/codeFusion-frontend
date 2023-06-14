@@ -23,5 +23,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+      - name: Make .env
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_VITE_SERVER: ${{ secrets.VITE_SERVER }}
+          envkey_VITE_GOOGLE_API: ${{ secrets.VITE_GOOGLE_API }}
+          file_name: .env.production
+          fail_on_empty: false
+      - run: ls -a
       - run: npm ci
       - run: npm run build
+      - run: sudo rm -rf /var/www/dist/
+      - run: sudo mv /home/ubuntu/actions-runner/_work/codeFusion-frontend/codeFusion-frontend/dist /var/www
+      - run: sudo systemctl restart nginx
