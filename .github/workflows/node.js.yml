@@ -1,6 +1,3 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
 name: Node.js CI
 
 on:
@@ -14,7 +11,6 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
       - uses: actions/checkout@v3
@@ -23,16 +19,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - name: Make .env
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          envkey_VITE_SERVER: ${{ secrets.VITE_SERVER }}
-          envkey_VITE_GOOGLE_API: ${{ secrets.VITE_GOOGLE_API }}
-          file_name: .env.production
-          fail_on_empty: false
-      - run: ls -a
-      - run: npm ci
-      - run: npm run build
-      - run: sudo rm -rf /var/www/dist/
-      - run: sudo mv /home/ubuntu/actions-runner/_work/codeFusion-frontend/codeFusion-frontend/dist /var/www
-      - run: sudo systemctl restart nginx
+      - name: Create env file
+        run: |
+          touch .env.production	
+          printf "VITE_SERVER=\"${{ secrets.VITE_SERVER }}\"\n" >> .env.production
+          printf "VITE_GOOGLE_API=\"${{ secrets.VITE_GOOGLE_API }}\"" >> .env.production
+      - name: Install and build
+        run: |
+          npm ci
+          npm run build
+      - name: Replace dist and restart nginx
+        run: |
+          sudo rm -rf /var/www/dist/
+          sudo mv /home/ubuntu/actions-runner/_work/codeFusion-frontend/codeFusion-frontend/dist /var/www
+          sudo systemctl restart nginx
