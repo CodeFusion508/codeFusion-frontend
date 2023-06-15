@@ -24,8 +24,8 @@ jobs:
       - name: Create env file
         run: |
           touch .env.production	
-          printf "VITE_SERVER=\"http://localhost:8080/\"" >> .env.production
-          printf "VITE_GOOGLE_API=${{ secrets.VITE_GOOGLE_API }}" >> .env.production
+          printf "VITE_SERVER=\"${{ secrets.VITE_SERVER }}\"\n" >> .env.production
+          printf "VITE_GOOGLE_API=\"${{ secrets.VITE_GOOGLE_API }}\"" >> .env.production
           cat .env.production
           ls -a
       - name: Install and build
