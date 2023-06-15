@@ -26,8 +26,6 @@ jobs:
           touch .env.production	
           printf "VITE_SERVER=\"${{ secrets.VITE_SERVER }}\"\n" >> .env.production
           printf "VITE_GOOGLE_API=\"${{ secrets.VITE_GOOGLE_API }}\"" >> .env.production
-          cat .env.production
-          ls -a
       - name: Install and build
         run: |
           npm ci
