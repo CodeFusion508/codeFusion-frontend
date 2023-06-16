@@ -1,9 +1,10 @@
-import { Http } from "./http.js";
+import HTTP from "./http.js";
 
-const request = new Http("Sprint", "sprints");
+const request = HTTP("Sprint", "sprints");
+
 
 export const getAllSprints = async () => {
-    const { data } = await request.get("/").Builder();
+    let data = await request("GET", "/");
 
     // Sorting and cleaning data
     data.node = data.node.map(value => {
@@ -38,4 +39,4 @@ export const getAllSprints = async () => {
     return data.node;
 };
 
-export const getSprintByUuid = async (uuid) => (await request.get(`/${uuid}/rel`).Builder()).data;
+export const getSprintByUuid = async (uuid) => (await request("GET", `/${uuid}/rel`));

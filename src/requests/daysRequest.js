@@ -1,11 +1,11 @@
-import { Http } from "./http.js";
+import HTTP from "./http.js";
 
-const request = new Http("Days", "days");
+const request = HTTP("Days", "days");
 
-export const getDaysRequest = async () => (await request.get("/").Builder()).data;
+export const getDaysRequest = async () => (await request("GET", "/"));
 
 export const getContentsRelationByDays = async (uuid) => {
-    const { data } = await request.get(`/${uuid}/rel`).Builder();
+    let data = await request("GET", `/${uuid}/rel`);
 
     data.node = data.node.sort((valueA, valueB) => {
         const nodeA = valueA.rels.properties.contentNo;

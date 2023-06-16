@@ -3,13 +3,13 @@ import axios from "axios";
 import { useAuthStore } from "@/store/user/authStore.js";
 import { useToastStore } from "@/store/toastStore.js";
 
-const HTTP = async (title, path) => async (type, subPath, body = null) => {
-    const router = `${import.meta.env.VITE_SERVER}`;
+const HTTP = (title, path) => async (type, subPath, body = null) => {
+    const route = `${import.meta.env.VITE_SERVER}`;
 
     try {
-        const data = await axios({
+        const { data } = await axios({
             method  : type,
-            url     : `${router}${path}${subPath}`,
+            url     : `${route}${path}${subPath}`,
             data    : body,
             headers : {
                 authorization: `Bearer ${useAuthStore().authToken}`
