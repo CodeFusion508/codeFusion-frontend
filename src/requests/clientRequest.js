@@ -1,42 +1,38 @@
-import { Http } from "./http.js";
+import HTTP from "./request.js";
 
-const request = new Http("Usuarios", "users");
+const request = HTTP("Usuarios", "students");
 
-export const getUserReq = async (uuid) => (await request.get(`/${uuid}`).Builder()).data;
+// Student Requests
+export const createUserReq = async ({ name, email, password }) => (await request("POST", `/`, { userName: name, email, password })).data;
 
-export const createUserReq = async ({
-    name,
-    email,
-    password
-}) => (await request.post(`/`, {
-    userName: name,
-    email,
-    password
-}).Builder()).data;
+export const getUserReq = async (uuid) => (await request("GET", `/${uuid}`)).data;
 
-const requestGoogle = new Http("Google", "google");
+export const logInUserReq = async ({ email, password }) => (await request("POST", `/login`, { email, password })).data;
 
-export const createGoogleUserReq = async ({
-    name,
-    email,
-    token
-}) => (await requestGoogle.post(``, {
-    userName : name,
-    email,
-    idToken  : token
-}).Builder()).data;
+export const updateUserReq = async (dataUser) => (await request("PUT", `/`, dataUser)).data;
 
-export const logInUserReq = async ({ email, password }) => (await request.post(`/login`, { email, password }).Builder()).data;
-
-export const updateUserReq = async (dataUser) => (await request.put(`/`, dataUser).Builder()).data;
-
-export const createRelation = async (dataRequest) => (await request.post(`/rel`, dataRequest).Builder()).data;
-
-export const verifyGUserReq = async (dataRequest) => (await requestGoogle.post("/ver", { idToken: dataRequest }).Builder()).data;
+export const createRelation = async (dataRequest) => (await request("POST", `/rel`, dataRequest)).data;
 
 
-export const confirmAccountReq = async (user) =>  (await request.post("/confirm-account", user).Builder()).data;
 
-export const confirmAccountUser = async (token) => (await request.get("/confirm-account-token/"+token).Builder()).data;
+
+export const confirmAccountReq = async (user) => (await request("POST", "/confirm-account", user)).data;
+
+export const confirmAccountUser = async (token) => (await request("we", "/confirm-account-token/" + token)).data;
+
+export const recoveryAccount = async (email) => (await request("/recovery/account", { email })).data;
+
+// Google User Requests
+const requestGoogle = HTTP("Google", "google");
+
+export const createGoogleUserReq = async ({ name, email, token }) => (await requestGoogle("POST", ``, { userName: name, email, idToken: token })).data;
+
+export const verifyGUserReq = async (dataRequest) => (await requestGoogle("POST", "/ver", { idToken: dataRequest })).data;
+
+
+
+
+
+export const confirmAccountUser = async (token) => (await request.get("/confirm-account-token/" + token).Builder()).data;
 
 export const recoveryAccount = async (email) => (await request.post("/recovery/account", { email }).Builder()).data;
