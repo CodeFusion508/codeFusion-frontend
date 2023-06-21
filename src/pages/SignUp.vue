@@ -36,7 +36,7 @@
                           required
                         >
                       </div>
-                      <button type="submit" class="btn btn-primary w-100 text-white">
+                      <button type="submit" class="btn btn-primary w-100 text-white mb-3">
                         Iniciar sesión
                       </button>
                       <a class="py-3" @click.prevent="recoveryAccount.layout = true">¿Has olvidado tu contraseña?</a>
@@ -52,7 +52,7 @@
                     <form
                       v-show="!login"
                       novalidate
-                      class="py-3 pt-lg-3 w-100 md-mx-w-550 needs-validation"
+                      class="py-3 pt-lg-3 w-100"
                       @submit.prevent="createAccount(false)"
                     >
                       <div class="mb-3">
