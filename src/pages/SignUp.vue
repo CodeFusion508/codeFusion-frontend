@@ -10,12 +10,12 @@
               <div class="col-lg-12">
                 <div class="d-flex flex-column align-items-center bg-dark-subtle border-0 p-5 rounded">
                   <div v-if="!confirmAccountCard.layout && !recoveryAccount.layout" class="ma-0 pa-0">
-                    <p class="text-secondary h6 bs_fw-300 pb-3 text-white text-center">
+                    <p class="text-secondary h6 pb-3 text-white text-center">
                       {{ titleForm }}
                     </p>
 
                     <!-- Inicio Formulario de Iniciar Sesión -->
-                    <form v-show="login" class="py-3 pt-lg-3 w-100 md-mx-w-550" @submit.prevent="logIn">
+                    <form v-show="login" class="py-3 pt-lg-3" @submit.prevent="logIn">
                       <div class="mb-3">
                         <input
                           id="signup-5-Email"
@@ -52,7 +52,7 @@
                     <form
                       v-show="!login"
                       novalidate
-                      class="py-3 pt-lg-3 w-100"
+                      class="py-3 pt-lg-3"
                       @submit.prevent="createAccount(false)"
                     >
                       <div class="mb-3">

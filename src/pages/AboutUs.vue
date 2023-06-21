@@ -11,8 +11,8 @@
         <div class="row no-gutters">
           <div class="col-auto m-2">
             <img
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-              alt="una imagen de una persona"
+              src="https://avatars.githubusercontent.com/u/61888719?v=4"
+              alt="Una imagen de Alfredo"
               class="rounded"
               width="200"
               height="200"
@@ -22,17 +22,25 @@
           <div class="col">
             <div class="card-block px-2 mt-3 pb-3">
               <h5 class="card-title text-white">
-                Developer 1
+                Alfredo R <i>- Lead Developer</i>
               </h5>
               <hr>
               <p class="card-text text-white">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque dolorum, deleniti nulla earum delectus
-                eaque? Et, nam reprehenderit maiores quae numquam,
-                ipsa ducimus debitis consectetur, similique eveniet officiis suscipit ad.o
+                Soy Alfredo, el desarrollador principal de CodeFusion508. Con más de un año y dos meses de experiencia en
+                desarrollo web Full-Stack,
+                he diseñado por completo este sitio web, abarcando el frontend, backend, la base de datos y las instancias
+                de AWS.
+                ¡Échale un vistazo a mis otros proyectos en GitHub!
               </p>
-              <a href="#" class="btn me-4 gradient-purple text-white"> <i class="bi bi-github" style="color: white;" />
+              <a href="https://github.com/Alfredo3232" class="btn me-4 gradient-purple text-white"> <i
+                class="bi bi-github"
+                style="color: white;"
+              />
                 GitHub</a>
-              <a href="#" class="btn gradient-purple text-white"> <i class="bi bi-linkedin" style="color: white;" />
+              <a href="https://www.linkedin.com/in/alfredor1/" class="btn gradient-purple text-white"> <i
+                class="bi bi-linkedin"
+                style="color: white;"
+              />
                 LinkedIn</a>
             </div>
           </div>
