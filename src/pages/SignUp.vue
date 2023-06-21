@@ -5,10 +5,10 @@
     <div class="col-sm-4 col-12">
       <div class="row">
         <div class="col-sm-12">
-          <div class="bs_create_account_layout5 position-relative">
-            <div class="container-fluid px-0">
-              <div class="col-lg-12 mx-auto">
-                <div class="d-flex justify-center flex-column align-items-center bg-dark-subtle border-0 rounded p-5 bs_signup_content">
+          <div class="position-relative">
+            <div class="container-fluid">
+              <div class="col-lg-12">
+                <div class="d-flex flex-column align-items-center bg-dark-subtle border-0 p-5 rounded">
                   <div v-if="!confirmAccountCard.layout && !recoveryAccount.layout" class="ma-0 pa-0">
                     <p class="text-secondary h6 bs_fw-300 pb-3 text-white text-center">
                       {{ titleForm }}

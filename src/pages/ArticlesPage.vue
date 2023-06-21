@@ -3,7 +3,6 @@
   <h3 class="text-center mt-3 fw-light fst-italic text-white">
     Artículos
   </h3>
-  <hr>
 
   <div class="align-self-start m-3">
     <div class="container rounded bg-dark-subtle shadow-sm">

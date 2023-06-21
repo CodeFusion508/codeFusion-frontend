@@ -1,8 +1,8 @@
 <template>
   <nav-bar />
 
-  <div v-for="(item, index) in sprints" :key="index">
-    <h3 class="text-center mt-3 fw-light fst-italic text-white">
+  <div v-for="(_, index) in sprints" :key="index">
+    <h3 class="text-center mt-3 fst-italic">
       Sección {{ index.split('_')[1] }}
     </h3>
 
@@ -12,7 +12,7 @@
         :key="i"
         :class="['col-12 px-2 my-3', sprints.length <= 3 ? 'col-sm' : 'col-sm-3']"
       >
-        <div class="card bg-dark-subtle border-0 shadow-sm">
+        <div class="card bg-dark-subtle border-0">
           <div class="card-body">
             <h5 class="card-title text-white">
               {{ sprint.title }}
