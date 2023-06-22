@@ -10,7 +10,7 @@
               <div class="col-lg-12">
                 <div class="d-flex flex-column align-items-center bg-dark-subtle border-0 p-5 rounded">
                   <div v-if="!confirmAccountCard.layout && !recoveryAccount.layout" class="ma-0 pa-0">
-                    <p class="text-secondary h6 pb-3 text-white text-center">
+                    <p class="text-secondary h6 text-white text-center">
                       {{ titleForm }}
                     </p>
 
@@ -296,7 +296,7 @@ export default {
       this.$refs.passProgress.checkPassword();
     },
     validPasswordConfirm() {
-      if (this.password !== this.confirmPassword) return this.passwordConfirmError = "Las contraseñas no coindicen";
+      if (this.password !== this.confirmPassword) return this.passwordConfirmError = "Las contraseñas no coinciden";
 
       this.passwordConfirmError = "";
     }
