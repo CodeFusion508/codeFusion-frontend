@@ -141,14 +141,14 @@
                     {{ recoveryAccount.message }}
                     <div v-if="recoveryAccount.message === ''">
                       <p>
-                        Ingresa el correo electronico de tu cuenta, posteriormente te enviaremos un mensaje para que
+                        Ingresa el correo electrónico de tu cuenta, posteriormente te enviaremos un mensaje para que
                         puedas recuperar tu cuenta
                       </p>
                       <input
                         v-model="userObj.email"
                         type="text"
                         class="form-control"
-                        placeholder="Correo electronico"
+                        placeholder="Correo electrónico"
                       >
                       <button class="btn btn-primary form-control mt-3" @click.prevent="eventRecoveryAccount">
                         Enviar
@@ -287,7 +287,7 @@ export default {
     },
     validConfirmEmail() {
       if (this.email.text !== this.confirmEmail) {
-        this.emailConfirmError = "El correo no coindice con el ingresado";
+        this.emailConfirmError = "El correo no coincide con el ingresado";
       } else {
         this.emailConfirmError = "";
       }
