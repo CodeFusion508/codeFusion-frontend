@@ -12,7 +12,7 @@
         :key="i"
         :class="['col-12 px-2 my-3', sprints.length <= 3 ? 'col-sm' : 'col-sm-3']"
       >
-        <div class="card bg-dark-subtle border-0">
+        <div class="card bg-dark-subtle border-0 shadow-dark">
           <div class="card-body">
             <h5 class="card-title text-white">
               {{ sprint.title }}
@@ -29,6 +29,7 @@
       </div>
     </div>
   </div>
+  <div class="mb-5" />
 
   <nav-footer />
 </template>

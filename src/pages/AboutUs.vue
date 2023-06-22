@@ -7,13 +7,13 @@
 
   <div class="container mt-4">
     <div class="container-fluid">
-      <div class="card mb-4 bg-dark-subtle border-0">
+      <div class="card mb-4 bg-dark-subtle border-0 shadow-dark">
         <div class="row no-gutters">
           <div class="col-auto m-2">
             <img
               src="https://avatars.githubusercontent.com/u/61888719?v=4"
               alt="Una imagen de Alfredo"
-              class="rounded"
+              class="rounded-lg"
               width="200"
               height="200"
             >
@@ -56,13 +56,13 @@
 
   <div class="container mt-4">
     <div class="container-fluid">
-      <div class="card mb-5 bg-dark-subtle border-0">
+      <div class="card mb-5 bg-dark-subtle border-0 shadow-dark">
         <div class="row no-gutters">
           <div class="col-auto m-2">
             <img
               src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
               alt="una imagen de una persona"
-              class="rounded"
+              class="rounded-lg"
               width="200"
               height="200"
             >

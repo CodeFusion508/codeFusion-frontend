@@ -5,14 +5,14 @@
   </h3>
 
   <div class="align-self-center m-3">
-    <div class="container rounded bg-dark-subtle">
+    <div class="container rounded-lg bg-dark-subtle shadow-dark">
       <div class="container-fluid">
         <br>
         <div class="row">
           <div class="col-lg-12 col-sm-12 col-12">
             <div class="row">
               <div class="col-lg-2 col-sm-2 col-5">
-                <img src="https://dummyimage.com/150x150/5a5a5a/ffffff" class="rounded" width="150px">
+                <img src="https://dummyimage.com/150x150/5a5a5a/ffffff" class="rounded-lg" width="150px">
               </div>
               <div class="col-lg-9 col-sm-10 text-white">
                 <h4 class="text-primary">
@@ -60,7 +60,7 @@
           <div class="col-lg-12 col-sm-12 col-12">
             <div class="row">
               <div class="col-lg-2 col-sm-2 col-5">
-                <img src="https://dummyimage.com/150x150/5a5a5a/ffffff" class="rounded" width="150px">
+                <img src="https://dummyimage.com/150x150/5a5a5a/ffffff" class="rounded-lg" width="150px">
               </div>
               <div class="col-lg-10 col-sm-10 col-7 text-white">
                 <h4 class="text-primary">
@@ -108,7 +108,7 @@
           <div class="col-lg-12 col-sm-12 col-12">
             <div class="row">
               <div class="col-lg-2 col-sm-2 col-5">
-                <img src="https://dummyimage.com/150x150/5a5a5a/ffffff" class="rounded" width="150px">
+                <img src="https://dummyimage.com/150x150/5a5a5a/ffffff" class="rounded-lg" width="150px">
               </div>
               <div class="col-lg-10 col-sm-10 col-7 text-white">
                 <h4 class="text-primary">

@@ -26,7 +26,7 @@
           <div class="bs_header_btn_wrapper bs_signup_btn_blk ms-3">
             <router-link
               to="/session"
-              class="nav-item nav-link bg-primary text-white bs_signup_btn rounded gradient-purple"
+              class="nav-item nav-link bg-primary text-white bs_signup_btn rounded-lg gradient-purple"
             >
               Regístrate
             </router-link>
