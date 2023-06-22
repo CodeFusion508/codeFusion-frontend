@@ -9,7 +9,7 @@
             <div class="container-fluid">
               <div class="col-lg-12">
                 <div class="d-flex flex-column align-items-center bg-dark-subtle border-0 p-5 rounded">
-                  <div v-if="!confirmAccountCard.layout && !recoveryAccount.layout" class="ma-0 pa-0">
+                  <div v-if="!confirmAccountCard.layout && !recoveryAccount.layout">
                     <p class="text-secondary h6 text-white text-center">
                       {{ titleForm }}
                     </p>
