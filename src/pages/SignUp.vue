@@ -2,7 +2,7 @@
   <nav-bar />
 
   <div class="d-flex justify-content-center mt-5">
-    <div class="col-sm-4 col-12">
+    <div class="col-sm-3 col-12">
       <div class="row">
         <div class="col-sm-12">
           <div class="position-relative">
