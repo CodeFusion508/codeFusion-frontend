@@ -12,13 +12,13 @@
         :key="i"
         :class="['col-12 px-2 my-3', sprints.length <= 3 ? 'col-sm' : 'col-sm-3']"
       >
-        <div class="card bg-dark-subtle border-0 shadow-dark">
+        <div class="card card grow-on-hover bg-dark-subtle border-0 shadow-dark">
           <div class="card-body">
-            <h5 class="card-title text-white">
+            <h5 class="card-title text-white" @click="changeRouteLessons(sprint.uuid)">
               {{ sprint.title }}
             </h5>
             <hr>
-            <p class="card-text text-white truncate-text-line">
+            <p class="card-text text-white">
               {{ sprint.desc }}
             </p>
             <button class="btn gradient-purple text-white" @click="changeRouteLessons(sprint.uuid)">
@@ -60,12 +60,9 @@ export default {
 </script>
 
 <style scoped>
-.truncate-text-line {
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
+.card.grow-on-hover:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s;
+  z-index: 2;
 }
 </style>

@@ -4,7 +4,7 @@
     Artículos
   </h3>
 
-  <div class="align-self-center m-3">
+  <div class="align-self-center m-3 mb-5">
     <div class="container rounded-lg bg-dark-subtle shadow-dark">
       <div class="container-fluid">
         <br>

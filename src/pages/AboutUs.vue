@@ -21,7 +21,7 @@
 
           <div class="col">
             <div class="card-block px-2 mt-3 pb-3">
-              <h5 class="card-title text-white">
+              <h5 class="card-title text-white animated-underline">
                 Alfredo R <i>- Lead Developer</i>
               </h5>
               <hr>
@@ -91,3 +91,28 @@
   </div>
   <nav-footer />
 </template>
+
+<style>
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: #00ffea;
+  transform-origin: bottom left;
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.animated-underline:hover::after {
+  transform: scaleX(1);
+}
+
+</style>

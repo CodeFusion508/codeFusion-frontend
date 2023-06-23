@@ -4,7 +4,7 @@
       <div class="mb-4 display-4">
         <i class="bi bi-code-slash" style="color: white;" />
       </div>
-      <h1 class="display-5 fw-bold text-white">
+      <h1 class="display-5 fw-bold text-white neon-text">
         CodeFusion508
       </h1>
       <div class="col-lg-6 mx-auto text-white">
@@ -125,5 +125,10 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+}
+
+.neon-text {
+  color: #00d9ff;
+  text-shadow: 0 0 10px #00d9ff, 0 0 20px #00d9ff, 0 0 30px #00d9ff;
 }
 </style>
