@@ -1,26 +1,24 @@
 <template>
   <div class="bg-image background">
-    <div class="bs_hero-container bs_hero_layout_1">
-      <div class="px-4 py-5 my-5 text-center">
-        <div class="d-block mx-auto mb-4 display-4">
-          <i class="bi bi-code-slash" style="color: white;" />
-        </div>
-        <h1 class="display-5 fw-bold text-white">
-          CodeFusion508
-        </h1>
-        <div class="col-lg-6 mx-auto text-white">
-          <p class="lead">
-            Descubre nuestra escuela de desarrollo web. Aprende CSS, HTML, Javascript, NodeJS y más. Crea tus
-            propios sitios y servidores con la guía de expertos.
-          </p>
-          <pre class="lead mb-4 fw-light fst-italic">Únete hoy para impulsar tu carrera!</pre>
-          <div class="d-grid gap-2 d-flex justify-content-center">
-            <router-link to="/session">
-              <button type="button" class="btn btn-lg px-4 gradient-purple text-white">
-                Regístrate
-              </button>
-            </router-link>
-          </div>
+    <div class="px-4 py-5 my-5 text-center">
+      <div class="mb-4 display-4">
+        <i class="bi bi-code-slash" style="color: white;" />
+      </div>
+      <h1 class="display-5 fw-bold text-white neon-text">
+        CodeFusion508
+      </h1>
+      <div class="col-lg-6 mx-auto text-white">
+        <p class="lead">
+          Descubre nuestra escuela de desarrollo web. Aprende CSS, HTML, Javascript, NodeJS y más. Crea tus
+          propios sitios y servidores con la guía de expertos.
+        </p>
+        <pre class="lead mb-4 fw-light fst-italic">Únete hoy para impulsar tu carrera!</pre>
+        <div class="d-grid gap-2 d-flex justify-content-center">
+          <router-link to="/session">
+            <button type="button" class="btn btn-lg px-4 gradient-purple text-white">
+              Regístrate
+            </button>
+          </router-link>
         </div>
       </div>
     </div>
@@ -127,5 +125,10 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+}
+
+.neon-text {
+  color: #00d9ff;
+  text-shadow: 0 0 10px #00d9ff, 0 0 20px #00d9ff, 0 0 30px #00d9ff;
 }
 </style>
