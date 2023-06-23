@@ -13,7 +13,7 @@
             <img
               src="https://avatars.githubusercontent.com/u/61888719?v=4"
               alt="Una imagen de Alfredo"
-              class="rounded-lg"
+              class="rounded-lg mt-1 ms-1"
               width="200"
               height="200"
             >
@@ -62,7 +62,7 @@
             <img
               src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
               alt="una imagen de una persona"
-              class="rounded-lg"
+              class="rounded-lg mt-1  ms-1"
               width="200"
               height="200"
             >

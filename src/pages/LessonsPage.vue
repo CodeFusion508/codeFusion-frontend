@@ -6,13 +6,13 @@
       Sección {{ index.split('_')[1] }}
     </h3>
 
-    <div class="row g-0 text-center">
+    <div class="row g-0 text-center mx-3">
       <div
         v-for="(sprint, i) in sprints[index]"
         :key="i"
         :class="['col-12 px-2 my-3', sprints.length <= 3 ? 'col-sm' : 'col-sm-3']"
       >
-        <div class="card card grow-on-hover bg-dark-subtle border-0 shadow-dark">
+        <div class="card card grow-on-hover bg-dark-subtle border-0 shadow-dark rounded-lg">
           <div class="card-body">
             <h5 class="card-title text-white" @click="changeRouteLessons(sprint.uuid)">
               {{ sprint.title }}
