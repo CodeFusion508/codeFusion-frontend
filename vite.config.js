@@ -8,7 +8,8 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
   test: {
     // …
-    environment: "happy-dom"
+    environment : "happy-dom",
+    globals     : true
   },
   plugins : [vue(), basicSsl()],
   resolve : {
