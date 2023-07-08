@@ -223,17 +223,21 @@ export default {
     ]),
     ...mapActions(useAuthStore, ["addAuthToken"]),
     async fillCredential(value) {
-      this.credential = value;
-      if (this.credential) {
-        let userData = decodeCredential(this.credential);
+      try {
+          this.credential = value;
+          if (this.credential) {
+              let userData = decodeCredential(this.credential);
 
-        this.email.text = userData.email;
-        this.userName = userData.email.split("@")[0];
+              this.email.text = userData.email;
+              this.userName = userData.email.split("@")[0];
 
-        let verified = await this.verifyUser(this.credential);
-        if (verified) await this.createAccount(true);
-      } else {
-        throw new Error("No se pudo verificar el usuario");
+              let verified = await this.verifyUser(this.credential);
+              if (verified) await this.createAccount(true);
+          } else {
+              throw new Error("No se pudo verificar el usuario");
+          }
+      } catch (error) {
+          console.log(error);
       }
     },
     async createAccount(google) {

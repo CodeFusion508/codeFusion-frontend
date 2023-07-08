@@ -17,8 +17,13 @@ describe("PasswordProgress", () => {
     it("should render PasswordProgress view", () => {
         expect(wrapper.exists()).toBe(true);
     });
-    it("should change font color to red if password size less than 8", () => {
-        expect(wrapper.find(".bg-danger").exists()).toBe(true);
+    it("should change font color to red if password size less than 8", async () => {
+        await wrapper.setProps({ password: password });
+        await wrapper.vm.$nextTick().then(() => {
+            expect(wrapper.html().toString()).toContain("bg-danger");
+        });
+        console.log(wrapper.html().toString(), "wrapper.html().toString()*******************************************************************************************");
+        console.log(wrapper.props().password, "wrapper.props().password*******************************************************************************************");
     });
     it("should change font color to yellow if password size less than 15", () => {
         password = "123456789";

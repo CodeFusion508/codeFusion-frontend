@@ -17,7 +17,13 @@ export default {
     },
     methods: {
         callback(response) {
-            this.$emit("credential", response.credential);
+            try {
+                this.$emit("credential", response.credential);
+            }
+            catch (error) {
+                this.$emit("credential", "no credential bruhhhh");
+                console.log(error);
+            }
         }
     }
 };
