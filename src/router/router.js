@@ -9,6 +9,8 @@ const AboutUs = () => import("@/pages/AboutUs.vue");
 const SignUp = () => import("@/pages/SignUp.vue");
 const UserSettings = () => import("@/pages/UserSettings.vue");
 const ArticlesPage = () => import("@/pages/ArticlesPage.vue");
+const ViewConfirmAccount = () => import("@/modules/Auth/ConfirmAccount.vue");
+const ViewRecoveryAccount = () => import("@/modules/Auth/RecoveryAccount.vue");
 
 // routes arrays
 const baseRoutes = [
@@ -18,6 +20,15 @@ const baseRoutes = [
     meta      : { name: "initialize" }
   },
   {
+    path      : "/cuenta/:token/confirmacion",
+    component : ViewConfirmAccount
+  },
+  {
+    path      : "/cuenta/:token/recuperar",
+    component : ViewRecoveryAccount
+  },
+  {
+
     path      : "/nosotros",
     component : AboutUs,
     meta      : { name: "about" }
@@ -30,7 +41,7 @@ const baseRoutes = [
   {
     path        : "/ajustes",
     component   : UserSettings,
-    beforeEnter : (from, to, next) => {
+    beforeEnter : (_, __, next) => {
       if (localStorage.getItem("tkn") !== undefined) {
         next();
       } else {

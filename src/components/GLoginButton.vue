@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 export default {
     emits: ["credential"],
     data() {

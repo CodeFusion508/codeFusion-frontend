@@ -8,7 +8,10 @@ import {
     verifyGUserReq,
     logInUserReq,
     updateUserReq,
-    createRelation
+    createRelation,
+    confirmAccountUser,
+    confirmAccountReq,
+    recoveryAccount
 } from "@/requests/clientRequest.js";
 
 
@@ -93,6 +96,22 @@ export const useUserStore = defineStore("user", {
         },
         setAvatar(avatar) {
             this.userObj.avatar = avatar;
+        },
+        async confirmAccountReq(objUser) {
+            const data = await confirmAccountReq(objUser);
+
+            this.confirmAccountCard.message = data.data;
+            this.confirmAccountCard.layout = true;
+        },
+        async confirmAccount(token) {
+            const data = await confirmAccountUser(token);
+
+            this.confirmAccountCard = { title: data.title, message: data.message };
+        },
+        async eventRecoveryAccount() {
+            const data = await recoveryAccount(this.userObj.email);
+
+            this.recoveryAccount.message = data.message;
         }
     },
     state: () => {
@@ -105,7 +124,9 @@ export const useUserStore = defineStore("user", {
                 tkn      : localStorage.getItem("tkn") !== undefined || localStorage.getItem("tkn") !== null ? localStorage.getItem("tkn") : "",
                 password : ""
             },
-            uuidContent: ""
+            uuidContent        : "",
+            confirmAccountCard : { title: "", message: "", layout: false },
+            recoveryAccount    : { message: "", layout: false }
         };
     }
 });

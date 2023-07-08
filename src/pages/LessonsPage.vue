@@ -1,24 +1,24 @@
 <template>
   <nav-bar />
 
-  <div v-for="(item, index) in sprints" :key="index">
-    <h3 class="text-center mt-3 fw-light fst-italic text-white">
+  <div v-for="(_, index) in sprints" :key="index">
+    <h3 class="text-center mt-3 fst-italic">
       Sección {{ index.split('_')[1] }}
     </h3>
 
-    <div class="row g-0 text-center">
+    <div class="row g-0 text-center mx-3">
       <div
         v-for="(sprint, i) in sprints[index]"
         :key="i"
         :class="['col-12 px-2 my-3', sprints.length <= 3 ? 'col-sm' : 'col-sm-3']"
       >
-        <div class="card bg-dark-subtle border-0 shadow-sm">
+        <div class="card card grow-on-hover bg-dark-subtle border-0 shadow-dark rounded-lg">
           <div class="card-body">
-            <h5 class="card-title text-white">
+            <h5 class="card-title text-white" @click="changeRouteLessons(sprint.uuid)">
               {{ sprint.title }}
             </h5>
             <hr>
-            <p class="card-text text-white truncate-text-line">
+            <p class="card-text text-white">
               {{ sprint.desc }}
             </p>
             <button class="btn gradient-purple text-white" @click="changeRouteLessons(sprint.uuid)">
@@ -29,6 +29,7 @@
       </div>
     </div>
   </div>
+  <div class="mb-5" />
 
   <nav-footer />
 </template>
@@ -59,12 +60,9 @@ export default {
 </script>
 
 <style scoped>
-.truncate-text-line {
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
+.card.grow-on-hover:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s;
+  z-index: 2;
 }
 </style>

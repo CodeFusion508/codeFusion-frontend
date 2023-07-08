@@ -88,7 +88,6 @@
 import { mapActions, mapWritableState } from "pinia";
 
 import { useUserStore } from "@/store/user/userStore.js";
-import { updateUserReq } from "@/requests/clientRequest.js";
 
 import PasswordProgress from "@/components/PasswordProgress.vue";
 
@@ -103,8 +102,7 @@ export default {
     await this.initialize();
   },
   methods: {
-    updateUserReq,
-    ...mapActions(useUserStore, ["findUser", "updateUser", "setAvatar"]),
+    ...mapActions(useUserStore, ["findUser", "updateUser"]),
     async initialize() {
       this.userObj.avatar.image = this.userObj.avatar.image === "" ? "../src/assets/profile.jpg" : this.userObj.avatar.image;
 

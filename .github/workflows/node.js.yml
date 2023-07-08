@@ -1,0 +1,35 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - name: Create env file
+        run: |
+          touch .env.production	
+          printf "VITE_SERVER=\"${{ secrets.VITE_SERVER }}\"\n" >> .env.production
+          printf "VITE_GOOGLE_API=\"${{ secrets.VITE_GOOGLE_API }}\"" >> .env.production
+      - name: Install and build
+        run: |
+          npm ci
+          npm run build
+      - name: Replace dist and restart nginx
+        run: |
+          sudo rm -rf /var/www/dist/
+          sudo mv /home/ubuntu/actions-runner/_work/codeFusion-frontend/codeFusion-frontend/dist /var/www
+          sudo systemctl restart nginx

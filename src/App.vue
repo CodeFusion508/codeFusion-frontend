@@ -15,4 +15,12 @@
 .text-white {
   color: ghostwhite !important;
 }
+
+.shadow-dark {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
 </style>
