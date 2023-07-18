@@ -35,8 +35,11 @@ describe("Logged In", () => {
             tkn      : "",
             password : ""
         };
+        userStore.userObj = userObj;
         const spy = vi.spyOn(wrapper.vm, "createAccount").mockImplementation(() => userObj);
-
+        let form = wrapper.findAll("form").at(1);
+        console.log(form);
+        await form.trigger("submit.prevent");
         expect(spy).toHaveBeenCalled();
     });
 });
