@@ -26,40 +26,17 @@ describe("Logged In", () => {
         expect(wrapper.findAllComponents({name: "password-progress"}).length).toBe(1);
     });
     it("should create a new mocked user", async () => {
-        const authStore = useAuthStore();
-        const userStore = useUserStore();
+        let userStore = useUserStore();
         let userObj = {
-            name     : "Ask",
-            uuid     : "asdasdasa",
-            email    : "asd@asd/com",
-            avatar   : "",
+            name     : "test",
+            uuid     : "",
+            email    : "",
+            avatar   : null,
             tkn      : "",
-            password : "asd"
+            password : ""
         };
-        authStore.authToken = "dasdasd";
-        userStore.userObj = userObj;
-        const createUser = fn();
-        const createUserReq = fn();
-        const createUserMock = fn();
-        const createUserReqMock = fn();
-        createUserReqMock.mockResolvedValue({
-            data: {
-                node: userStore.userObj
-            },
-            token: authStore.authToken
-        });
-        createUser.mockResolvedValue(createUserReqMock);
-        createUserReq.mockReturnValue(createUserReqMock);
-        await createUser(userStore.userObj).then((data) => {
-            console.log(data.mockResolvedValue( userObj ), "data");
-        });
-        //console.log(wrapper.findAll("button").at(1),  "button 2");
-        await wrapper.findAll("button").at(1).trigger("click");
-        expect(createUserReqMock).toHaveBeenCalled();
-        expect(createUserReqMock).toHaveBeenCalledWith({
-            name     : "Ask",
-            email    : "asd@asd/com",
-            password : "asd"
-        });
+        const spy = vi.spyOn(wrapper.vm, "createAccount").mockImplementation(() => userObj);
+
+        expect(spy).toHaveBeenCalled();
     });
 });
