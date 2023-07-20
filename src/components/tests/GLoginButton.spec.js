@@ -1,18 +1,29 @@
-import{
-    describe, it, expect
+import {
+    describe,
+    it,
+    expect,
+    beforeAll
 } from "vitest";
-import LoggedIn from "@/modules/HomePage/LoggedIn.vue";
 import { mount } from "@vue/test-utils";
 
-const wrapper = mount(LoggedIn, {});
-wrapper.vm.$emit("credential", {message: "I am a credential"});
-describe("LoggedIn", () => {
-    it("should render google login button", () => {
+import LoggedIn from "@/modules/HomePage/LoggedIn.vue";
+
+
+describe("Google Button Component Tests", () => {
+    let wrapper;
+
+    beforeAll(() => {
+        wrapper = mount(LoggedIn, {});
+        wrapper.vm.$emit("credential", { message: "I am a credential" });
+    });
+
+    it("Should render google login button", () => {
         expect(wrapper.exists()).toBe(true);
     });
-    it("should emit credential to parent",  () => {
+
+    it("Should emit credential to parent", () => {
         expect(wrapper.emitted().credential).toBeTruthy();
-        expect(wrapper.emitted().credential[0]).toEqual([{message: "I am a credential"}]);
+        expect(wrapper.emitted().credential[0]).toEqual([{ message: "I am a credential" }]);
     });
 });
 
