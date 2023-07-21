@@ -113,14 +113,13 @@ describe("SignUp", () => {
             expect(wrapper.html().toString()).toContain("Pistachos");
         });
     });
-    it("should call pass recovery function when button pressed", async function () {
+    it("should call pass recovery function when button pressed", function () {
         let recoveryAccount = { message: "", layout: true };
         let userStore = useUserStore();
         userStore.recoveryAccount = recoveryAccount;
         console.log(wrapper.vm.recoveryAccount.get(), "recoveryAccount");
         wrapper.vm.$nextTick(async () => {
             let spy = vi.spyOn(wrapper.vm, "eventRecoveryAccount").mockImplementation(() => recoveryAccount);
-            let btn = wrapper.findAll("button").at(1);
             await btn.trigger("click");
             expect(spy).toHaveBeenCalled();
         });
