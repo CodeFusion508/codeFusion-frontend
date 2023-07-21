@@ -117,10 +117,12 @@ describe("SignUp", () => {
         let recoveryAccount = { message: "", layout: true };
         let userStore = useUserStore();
         userStore.recoveryAccount = recoveryAccount;
-        console.log(wrapper.vm.recoveryAccount.get(), "recoveryAccount");
+        wrapper.vm.recoveryAccount = recoveryAccount;
+
         wrapper.vm.$nextTick(async () => {
+            console.log(wrapper.html());
             let spy = vi.spyOn(wrapper.vm, "eventRecoveryAccount").mockImplementation(() => recoveryAccount);
-            let btn = wrapper.findAll("button").at(1);
+            let btn = wrapper.findAll("button").at(0);
             await btn.trigger("click");
             expect(spy).toHaveBeenCalled();
         });
