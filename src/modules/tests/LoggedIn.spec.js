@@ -1,7 +1,8 @@
 import {
     describe,
     it,
-    expect
+    expect,
+    beforeAll
 } from "vitest";
 import { mount } from "@vue/test-utils";
 
