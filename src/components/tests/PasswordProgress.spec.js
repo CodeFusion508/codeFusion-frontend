@@ -75,7 +75,9 @@ describe("PasswordProgress Password Length Tests", () => {
                 password: password
             }
         });
+
         wrapper.vm.checkPassword();
+
         expect(wrapper.vm.passObj.color).toBe("bg-danger");
     });
 
@@ -86,7 +88,9 @@ describe("PasswordProgress Password Length Tests", () => {
                 password: password
             }
         });
+
         wrapper.vm.checkPassword();
+
         expect(wrapper.vm.passObj.color).toBe("bg-warning");
     });
 
@@ -97,7 +101,9 @@ describe("PasswordProgress Password Length Tests", () => {
                 password: password
             }
         });
+
         wrapper.vm.checkPassword();
+
         expect(wrapper.vm.passObj.color).toBe("bg-success");
     });
 });
