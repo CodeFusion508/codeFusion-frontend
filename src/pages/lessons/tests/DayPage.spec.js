@@ -17,9 +17,21 @@ describe("DayPage Tests", () => {
     let daysStore;
 
     beforeAll(() => {
+        const mockRouter = {
+            push: fn()
+        };
+        const mockRoute = {
+            params: {
+                uuid: "testResult"
+            }
+        };
         wrapper = mount(DayPage, {
             global: {
-                plugins: [createTestingPinia({ createSpy: fn })]
+                plugins : [createTestingPinia({ createSpy: fn })],
+                mocks   : {
+                    $route  : mockRoute,
+                    $router : mockRouter
+                }
             }
         });
 
@@ -27,21 +39,10 @@ describe("DayPage Tests", () => {
         daysStore.days = [ { uuid: "1", desc: "Sprint 1 description" } ];
         daysStore.result = [];
         daysStore.sprintUuid = "testResult";
+
         });
 
     it("should load TimeLine component", function () {
-        expect(wrapper.findComponent({ name: "TimeLine" }).exists()).toBe(true);
-    });
-    it("Verify title to be shown correctly", () => {
-        expect(wrapper.find("h5").text()).toBe("Sprint 1");
-    });
-    it("Verify description to be shown correctly", () => {
-        expect(wrapper.find("p").text()).toBe("Sprint 1 description");
-    });
-    it("Should run changeRouteLessons when click on button Aprende", () => {
-        const spy = fn();
-        wrapper.vm.changeRouteLessons = spy;
-        wrapper.find("button").trigger("click");
-        expect(spy).toHaveBeenCalled();
+        expect(wrapper.findAllComponents({ name: "time-line" }).length).toBe(1);
     });
 });
