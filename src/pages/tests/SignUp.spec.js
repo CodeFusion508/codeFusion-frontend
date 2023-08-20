@@ -120,10 +120,10 @@ describe("SignUp", () => {
         wrapper.vm.recoveryAccount = recoveryAccount;
 
         wrapper.vm.$nextTick(async () => {
-            console.log(wrapper.html());
             let spy = vi.spyOn(wrapper.vm, "eventRecoveryAccount").mockImplementation(() => recoveryAccount);
             let btn = wrapper.findAll("button").at(0);
             await btn.trigger("click");
+
             expect(spy).toHaveBeenCalled();
         });
     });

@@ -22,15 +22,14 @@ import { mapActions, mapState } from "pinia";
 import { useUserStore } from "@/store/user/userStore";
 
 export default {
-    computed: {
-        ...mapState(useUserStore, ["confirmAccountCard"])
-    },
-    async mounted() {
-        await this.confirmAccount(this.$route.params.token);
-    },
-    methods: {
-        ...mapActions(useUserStore, ["confirmAccount"])
-    }
-
+  computed: {
+    ...mapState(useUserStore, ["confirmAccountCard"])
+  },
+  async mounted() {
+    await this.confirmAccount(this.$route.params.token);
+  },
+  methods: {
+    ...mapActions(useUserStore, ["confirmAccount"])
+  }
 };
 </script>
