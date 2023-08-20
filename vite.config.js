@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from "node:url";
-import basicSsl from "@vitejs/plugin-basic-ssl";
 
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -11,7 +10,7 @@ export default defineConfig({
     environment : "happy-dom",
     globals     : true
   },
-  plugins : [vue(), basicSsl()],
+  plugins : [vue()],
   resolve : {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url))
