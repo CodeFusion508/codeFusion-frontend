@@ -1,6 +1,8 @@
 <template>
-  <router-view />
-  <toast-error />
+   <div :class="[classMenu ? 'movid-position-menu':'']">
+    <router-view />
+    <toast-error />
+  </div>
 </template>
 
 <style>
@@ -23,4 +25,21 @@
 .rounded-lg {
   border-radius: 0.5rem;
 }
+
+.movid-position-menu {
+  position: relative;
+  left: 275px;
+  top: 0px !important;
+}
 </style>
+
+<script>
+import { useMenu } from '@/store/MenuStore'
+import { mapState } from 'pinia'
+
+export default {
+  computed: {
+    ...mapState(useMenu, ["classMenu"])
+  }
+}
+</script>

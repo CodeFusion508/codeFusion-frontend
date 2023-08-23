@@ -1,6 +1,7 @@
 <template>
+  
   <div class="bg-image background">
-    <div class="px-4 py-5 my-5 text-center">
+    <div class="px-4 text-center">
       <div class="mb-4 display-4">
         <i class="bi bi-code-slash" style="color: white;" />
       </div>
@@ -13,17 +14,28 @@
           propios sitios y servidores con la guía de expertos.
         </p>
         <pre class="lead mb-4 fw-light fst-italic">Únete hoy para impulsar tu carrera!</pre>
+
         <div class="d-grid gap-2 d-flex justify-content-center">
-          <router-link to="/session">
-            <button type="button" class="btn btn-lg px-4 gradient-purple text-white">
-              Regístrate
-            </button>
-          </router-link>
+          <div class="col-xl-4 col-12" >
+            <div class="col-sm-12 bs-primary-navbar rounded-1 mb-4 display-movil">
+              <router-link to="/session">
+                <button type="button" class="btn py-2  text-white">
+                  Ingresar
+                </button>
+              </router-link>
+            </div>
+            <div class="col-sm-12 gradient-purple rounded-1">
+              <router-link to="/session">
+                <button type="button" class="btn py-2  text-white">
+                  Regístrate
+                </button>
+              </router-link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
 
   <div class="bs_faq_container bs_faq_layout3">
     <div class="container py-5">
