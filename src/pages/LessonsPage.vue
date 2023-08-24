@@ -46,7 +46,6 @@ export default {
   },
   async created() {
     await this.getSprints();
-    console.log("Sprints created --------------------------------", this.sprints);
   },
   methods: {
     ...mapActions(useDaysStore, ["setDaysBySprintUuid"]),
