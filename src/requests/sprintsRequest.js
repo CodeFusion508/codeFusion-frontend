@@ -7,34 +7,24 @@ export const getAllSprints = async () => {
     let data = await request("GET", "/");
 
     // Sorting and cleaning data
-    data.node = data.node.map(value => {
-        if (value.labels[1] === undefined) {
-            value.labels.push("Section_1");
-        }
+    data.node = data.node
+        .sort((nodeA, nodeB) => {
+            const sprintNoA = nodeA.sprintNo;
+            const sprintNoB = nodeB.sprintNo;
 
-        return value;
-    }).sort((valueA, valueB) => {
-        const numberSectionA = parseInt(valueA.labels[1].split("_")[1]);
-        const numberSectionB = parseInt(valueB.labels[1].split("_")[1]);
+            return sprintNoA - sprintNoB;
+        })
+        .reduce((accumulator, value) => {
+            const { sprintNo } = value;
 
-        return numberSectionA - numberSectionB;
-    }).reduce((accumulator, value, _, values) => {
-        const labelMain = value.labels[1];
+            if (!accumulator[sprintNo]) {
+                accumulator[sprintNo] = [];
+            }
 
-        if (accumulator[labelMain] === undefined) {
-            accumulator[labelMain] = [];
+            accumulator[sprintNo].push(value);
 
-            const valuesTemp = values.filter(valueFilter => {
-                const label = valueFilter.labels[1];
-
-                if (label === labelMain) return valueFilter;
-            });
-
-            accumulator[labelMain] = valuesTemp;
-        }
-
-        return accumulator;
-    }, {});
+            return accumulator;
+        }, {});
 
     return data.node;
 };
