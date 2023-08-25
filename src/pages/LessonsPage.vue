@@ -3,7 +3,7 @@
 
   <div v-for="(_, index) in sprints" :key="index">
     <h3 class="text-center mt-3 fst-italic">
-      Sección {{ index.split('_')[1] }}
+      Sección {{ index }}
     </h3>
 
     <div class="row g-0 text-center mx-3">
