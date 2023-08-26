@@ -1,17 +1,20 @@
 <template>
-  <footer class="bg-body-tertiary bg-dark-subtle mt-auto">
+  <footer class="bg-body-tertiary bg-dark-subtle mt-auto footer-movil">
     <div class="container pt-4">
       
       <div class="row" >
 
-        <div class="col-xl-3 content-left-footer" >
-          <b style="font-size: 24px;" >CodeFusion508</b>
-          <div class="col-12 py-3" >
+        <div class="col-xl-3 col-12 content-left-footer" >
+          <div class="title-responsive" >
+            <b style="font-size: 24px;" >CodeFusion508</b>
+          </div>
+          <div class="col-12 py-3 content-description-movil" >
             <span style="font-size: 12px;">Descubre nuestra escuela de desarrollo web. Aprende CSS, HTML, Javascript, NodeJS y más. Crea tus propios sitios y servidores con la guía de expertos.</span>
           </div>
+          <hr class="display-movil" >
           <div class="row justify-space-center" >
-            <div class="col-12" ><b style="font-size: 12px;">Redes Sociales</b></div>
-            <div class="col-xl-6" >
+            <div class="col-12 display-desktop" ><b style="font-size: 12px;">Redes Sociales</b></div>
+            <div class="col-xl-6 content-netsocial" >
               <b  style="font-size: 24px;"><i class="fa-brands fa-github"></i></b>
               <b class="px-2" style="font-size: 24px;"><i class="fa-brands fa-facebook"></i></b>
               <b class="px-1" style="font-size: 24px;"><i class="fa-brands fa-youtube"></i></b>
@@ -19,27 +22,30 @@
           </div>
         </div>
 
-        <div class="col-xl-3 content-menu-center" >
-          <ul id="FirtsMenu">
-            <li v-for="(item, index) in listMenu" 
-            @mouseover="effectHoverInMenu('listMenu', index)" @mouseout="noneEffectHoverInMenu('listMenu', index)"
-            :style="{'border-left': 'solid 4px '+item.color,
-            'background-color': item.actived ? item.color:'transparent',
-            'color': item.actived ? 'white':''
-            }">{{ item.text }}</li>
-          </ul> 
-        </div>
-        <div class="col-xl-3 content-menu-center" >
-          <ul id="SecondMenu">
-            <li v-for="(item, index) in listContent" 
-            @mouseover="effectHoverInMenu('listContent', index)" @mouseout="noneEffectHoverInMenu('listContent', index)"
-            :style="{
-              'border-left': 'solid 4px '+item.color,
+        <div class="content-menu-options-movil col-xl-6" >
+          <div class="col-xl-6 col-5 content-menu-center" >
+            <ul id="FirtsMenu">
+              <li v-for="(item, index) in listMenu" 
+              @mouseover="effectHoverInMenu('listMenu', index)" @mouseout="noneEffectHoverInMenu('listMenu', index)"
+              :style="{'border-left': 'solid 4px '+item.color,
               'background-color': item.actived ? item.color:'transparent',
               'color': item.actived ? 'white':''
-            }">{{ item.text }}</li>
-          </ul> 
+              }">{{ item.text }}</li>
+            </ul> 
+          </div>
+          <div class="col-xl-6 col-7 content-menu-center" >
+            <ul id="SecondMenu">
+              <li v-for="(item, index) in listContent" 
+              @mouseover="effectHoverInMenu('listContent', index)" @mouseout="noneEffectHoverInMenu('listContent', index)"
+              :style="{
+                'border-left': 'solid 4px '+item.color,
+                'background-color': item.actived ? item.color:'transparent',
+                'color': item.actived ? 'white':''
+              }">{{ item.text }}</li>
+            </ul> 
+          </div>
         </div>
+
         <div class="col-xl-3" >
           <div class="col-12" ><b style="font-size: 14px; color: white;" >Suscribete</b></div>
           <div class="col-12 my-2" ><span style="font-size: 12px; color: white;">Recibe nuestra notificaciones de novedades</span></div>
@@ -135,6 +141,9 @@ export default {
   color: white;
 }
 
+.footer-movil {
+  display: flex;
+}
 .content-menu-center ul li {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -143,7 +152,9 @@ export default {
   cursor: pointer;
   list-style: none;
 }
-
+.content-menu-options-movil {
+  display: flex;
+}
 .input-group-suscribe {
   display: flex;
 }
@@ -167,5 +178,31 @@ export default {
 
 .input-group-suscribe button:focus {
   outline: none !important;
+}
+
+@media (max-width: 767px) {
+  .title-responsive {
+    text-align: center !important;
+  }
+
+  .content-netsocial {
+    text-align: center !important;
+  }
+
+  .content-description-movil {
+    text-align: justify;
+  }
+
+  .content-menu-options-movil {
+    display: flex;
+    padding-top: 25px;
+  }
+
+  .footer-movil {
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+  }
+
 }
 </style>
