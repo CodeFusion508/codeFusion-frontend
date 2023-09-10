@@ -25,3 +25,7 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# lock files
+pnpm-lock.yaml
+package-lock.json
