@@ -52,9 +52,6 @@
                   @keyup="validEmail"
                 >
               </div>
-              <div v-if="messageErrorEmail != ''" class="text-danger">
-                {{ messageErrorEmail }}
-              </div>
             </div>
 
             <div class="row mx-0 my-1">

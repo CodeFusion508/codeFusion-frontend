@@ -1,12 +1,22 @@
+// Configurations
+import { mount, config } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
+
+import NavBar from "@/components/NavBar.vue";
+import NavFooter from "@/components/NavFooter.vue";
+import router from "@/router/router.js";
+
+config.global.components["nav-bar"] = NavBar;
+config.global.components["nav-footer"] = NavFooter;
+config.global.plugins.push(router);
+
+// Test
 import {
     describe,
     it,
     expect,
     beforeAll
 } from "vitest";
-import { fn } from "@vitest/spy";
-import { mount } from "@vue/test-utils";
 
 import DayPage from "@/pages/lessons/DayPage.vue";
 import { useDaysStore } from "@/store/lessons/daysStore.js";
@@ -17,21 +27,9 @@ describe("DayPage Tests", () => {
     let daysStore;
 
     beforeAll(() => {
-        const mockRouter = {
-            push: fn()
-        };
-        const mockRoute = {
-            params: {
-                uuid: "testResult"
-            }
-        };
         wrapper = mount(DayPage, {
             global: {
-                plugins : [createTestingPinia({ createSpy: fn })],
-                mocks   : {
-                    $route  : mockRoute,
-                    $router : mockRouter
-                }
+                plugins: [createTestingPinia()]
             }
         });
 

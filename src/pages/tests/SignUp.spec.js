@@ -1,3 +1,17 @@
+// Configurations
+import { shallowMount, config } from "@vue/test-utils";
+import { createTestingPinia } from "@pinia/testing";
+
+
+import NavBar from "@/components/NavBar.vue";
+import NavFooter from "@/components/NavFooter.vue";
+import router from "@/router/router.js";
+
+config.global.components["nav-bar"] = NavBar;
+config.global.components["nav-footer"] = NavFooter;
+config.global.plugins.push(router);
+
+// Test
 import {
     describe,
     it,
@@ -5,9 +19,6 @@ import {
     beforeEach,
     vi
 } from "vitest";
-import { fn } from "@vitest/spy";
-import { mount } from "@vue/test-utils";
-import { createTestingPinia } from "@pinia/testing";
 
 import { useUserStore } from "@/store/user/userStore.js";
 import SignUp from "../SignUp.vue";
@@ -17,9 +28,9 @@ describe("SignUp", () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = mount(SignUp, {
+        wrapper = shallowMount(SignUp, {
             global: {
-                plugins: [createTestingPinia({ createSpy: fn })]
+                plugins: [createTestingPinia()]
             }
         });
     });

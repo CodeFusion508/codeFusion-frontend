@@ -1,12 +1,22 @@
+// Configurations
+import { mount, config } from "@vue/test-utils";
+import { createTestingPinia } from "@pinia/testing";
+
+import NavBar from "@/components/NavBar.vue";
+import NavFooter from "@/components/NavFooter.vue";
+import router from "@/router/router.js";
+
+config.global.components["nav-bar"] = NavBar;
+config.global.components["nav-footer"] = NavFooter;
+config.global.plugins.push(router);
+
+// Test
 import {
     describe,
     it,
     expect,
     beforeEach
 } from "vitest";
-import { fn } from "@vitest/spy";
-import { mount } from "@vue/test-utils";
-import { createTestingPinia } from "@pinia/testing";
 
 import { useAuthStore } from "@/store/user/authStore.js";
 import HomePage from "@/pages/HomePage.vue";
@@ -18,7 +28,7 @@ describe("Logged In Tests", () => {
     beforeEach(() => {
         wrapper = mount(HomePage, {
             global: {
-                plugins: [createTestingPinia({ createSpy: fn })]
+                plugins: [createTestingPinia()]
             }
         });
 
@@ -38,7 +48,7 @@ describe("Logged Out Tests", () => {
     beforeEach(() => {
         wrapper = mount(HomePage, {
             global: {
-                plugins: [createTestingPinia({ createSpy: fn })]
+                plugins: [createTestingPinia()]
             }
         });
 
