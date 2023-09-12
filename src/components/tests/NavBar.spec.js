@@ -32,21 +32,21 @@ describe("NavBar", () => {
         const authStore = useAuthStore();
 
         userStore.userObj = {
-            name     : "Juan",
-            uuid     : "juanito",
-            email    : "juan@juan.com",
-            avatar   : { image: "fotDeJuan", file: null },
+            name     : "Async Researcher",
+            uuid     : "735c4bff-42a8-4302-a9be-feb377b383c0",
+            email    : "AsyncResearch@mail.gov",
+            avatar   : { image: "Async Logo", file: null },
             tkn      : "someToken",
-            password : "soyJuan"
+            password : "password"
         };
         authStore.authToken = "someToken";
     });
 
-    it("should render navbar component", () => {
+    it("Should have navigation text buttons", () => {
         expect(wrapper.text()).toContain("Inicio");
         expect(wrapper.text()).toContain("De nosotros");
         expect(wrapper.text()).toContain("Lecciones");
         expect(wrapper.text()).toContain("Artículos");
-        expect(wrapper.html().toString()).toContain("navbar");
+        expect(wrapper.text()).toContain("Async Researcher");
     });
 });

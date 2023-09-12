@@ -18,7 +18,6 @@ app.use(vue3GoogleLogin, {
     clientId : import.meta.env.VITE_GOOGLE_CLIENT_ID || "no ID for now",
     scope    : "profile email openid"
 });
-console.log(app);
 
 // Global components
 import NavBar from "./components/NavBar.vue";

@@ -21,12 +21,9 @@ export default {
                 this.$emit("credential", response.credential);
             }
             catch (error) {
-                this.$emit("credential", "no credential bruhhhh");
-                console.log(error);
+                this.$emit("credential", "No tiene la correcta credenciales");
             }
         }
     }
 };
 </script>
-
-<style scoped></style>
