@@ -5,7 +5,6 @@ import {
     expect,
     beforeAll
 } from "vitest";
-import { fn } from "@vitest/spy";
 import { mount } from "@vue/test-utils";
 
 import ToastError from "@/components/ToastError.vue";
@@ -19,7 +18,7 @@ describe("ToastError Tests", () => {
     beforeAll(() => {
         wrapper = mount(ToastError, {
             global: {
-                plugins: [createTestingPinia({ initialState: { ToastError: { title: "Error" } }, createSpy: fn })]
+                plugins: [createTestingPinia({ initialState: { ToastError: { title: "Error" } }})]
             },
             props: {
                 error: "Error"
