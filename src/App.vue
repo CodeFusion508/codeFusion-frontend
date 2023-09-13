@@ -1,9 +1,20 @@
 <template>
-   <div :class="[classMenu ? 'movid-position-menu':'']">
+  <div :class="[classMenu ? 'movid-position-menu':'']">
     <router-view />
     <toast-error />
   </div>
 </template>
+
+<script>
+import { useMenu } from "@/store/MenuStore";
+import { mapState } from "pinia";
+
+export default {
+  computed: {
+    ...mapState(useMenu, ["classMenu"])
+  }
+};
+</script>
 
 <style>
 .gradient-purple {
@@ -32,14 +43,3 @@
   top: 0px !important;
 }
 </style>
-
-<script>
-import { useMenu } from '@/store/MenuStore'
-import { mapState } from 'pinia'
-
-export default {
-  computed: {
-    ...mapState(useMenu, ["classMenu"])
-  }
-}
-</script>

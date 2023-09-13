@@ -1,15 +1,11 @@
 <template>
- 
-    <nav-bar />
-  
-    <logged-in v-if="authToken" />
-    <logged-out v-else />
-  
-    <nav-footer />
+  <nav-bar />
 
+  <logged-in v-if="authToken" />
+  <logged-out v-else />
+
+  <nav-footer />
 </template>
-
-
 
 <script>
 import { mapState } from "pinia";

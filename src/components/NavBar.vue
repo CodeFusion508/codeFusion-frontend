@@ -1,90 +1,93 @@
 <template>
   <nav class="navbar navbar-expand-md bg-dark-subtle">
-
     <div class="container-fluid">
-        
-        <a class="navbar-brand text-white col-xl-1 display-desktop mx-0" href="#">
-          <img src="../assets/CodeFusion508.ico" alt="an icon of">
-          CodeFusion508
-        </a>
-  
-        <button type="button" class="btn text-white display-movil" @click="changeHomePage">
-          <i class="fa-solid fa-bars-staggered"></i>
-        </button>
-        
-        <div
-        :class="['d-flex justify-content-between content-menu-deslizable col-xl-11 mx-0 px-0', classMenu ? 'menu-actived':'']">
-  
-          <div class="border-bottom col-sm-12 p-2 display-movil" >
-            <a class="navbar-brand text-white" href="#">
-              <img src="../assets/CodeFusion508.ico" alt="an icon of">
-              CodeFusion508
-            </a>
+      <a class="navbar-brand text-white col-xl-1 display-desktop mx-0" href="#">
+        <img src="../assets/CodeFusion508.ico" alt="an icon of">
+        CodeFusion508
+      </a>
+
+      <button type="button" class="btn text-white display-movil" @click="changeHomePage">
+        <i class="fa-solid fa-bars-staggered" />
+      </button>
+
+      <div
+        :class="['d-flex justify-content-between content-menu-deslizable col-xl-11 mx-0 px-0', classMenu ? 'menu-actived':'']"
+      >
+        <div class="border-bottom col-sm-12 p-2 display-movil">
+          <a class="navbar-brand text-white" href="#">
+            <img src="../assets/CodeFusion508.ico" alt="an icon of">
+            CodeFusion508
+          </a>
+        </div>
+
+        <ul class="nav nav-pills flex-grow-1 menu-movil">
+          <li
+            v-for="(item, index) in routes"
+            :key="index"
+            :class="['nav-item', item.activated ? 'activated activated-btn-menu' : '']"
+          >
+            <router-link :to="item.path" :class="['text-white nav-link']">
+              {{ item.title }}
+            </router-link>
+          </li>
+        </ul>
+
+        <div class="content-logIn propierty-logIn col-xl-3 col-12">
+          <div v-if="!authToken" class="navbar-nav d-flex align-items-center justify-space-center mx-0">
+            <div class="col-xl-5 col-10 bs-primary-navbar rounded-lg text-center">
+              <router-link to="/session" class="nav-link text-white px-3">
+                Ingresar
+              </router-link>
+            </div>
+            <div class="text-center col-xl-2 col-12 px-0">
+              <b>O</b>
+            </div>
+            <div class="bs_header_btn_wrapper bs_signup_btn_blk col-xl-5 col-10 gradient-purple rounded-lg text-center">
+              <router-link to="/session" class="text-white nav-link bs_signup_btn">
+                Regístrate
+              </router-link>
+            </div>
           </div>
-          
-          <ul class="nav nav-pills flex-grow-1 menu-movil">
-            <li v-for="(item, index) in routes" 
-            :key="index" :class="['nav-item', item.activated ? 'activated activated-btn-menu' : '']">
-              <router-link :to="item.path" :class="['text-white nav-link']">
-                  {{ item.title }}
-                </router-link>
-            </li>
-          </ul>
-  
-          <div class="content-logIn propierty-logIn col-xl-3 col-12" >
-  
-              <div v-if="!authToken" class="navbar-nav d-flex align-items-center justify-space-center mx-0">
-                  <div class="col-xl-5 col-10 bs-primary-navbar rounded-lg text-center">
-                    <router-link to="/session" class="nav-link text-white px-3">Ingresar</router-link>
-                  </div>
-                  <div class="text-center col-xl-2 col-12 px-0"><b>O</b></div>
-                  <div class="bs_header_btn_wrapper bs_signup_btn_blk col-xl-5 col-10 gradient-purple rounded-lg text-center" >
-                    <router-link to="/session" class="text-white nav-link bs_signup_btn">Regístrate</router-link>
-                  </div>
-              </div>
-              <div v-else class="dropstart btn-group">
-                <button
-                  class="btn btn-primary rounded-circle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="bi bi-person-fill" />
-                  <span
-                    v-if="verificationAlerts !== 0"
-                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger"
-                  >
-                    {{ verificationAlerts }}
-                    <span class="visually-hidden">unread messages</span>
-                  </span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">
-                        {{ userObj.name }}
-                      </li>
-                    </ul>
+          <div v-else class="dropstart btn-group">
+            <button
+              class="btn btn-primary rounded-circle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-person-fill" />
+              <span
+                v-if="verificationAlerts !== 0"
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger"
+              >
+                {{ verificationAlerts }}
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    {{ userObj.name }}
                   </li>
-                  <li>
-                    <router-link to="/" class="dropdown-item">
-                      Mi perfil
-                    </router-link>
-                  </li>
-      
-                  <li>
-                    <router-link to="ajustes" class="dropdown-item">
-                      Ajustes
-                    </router-link>
-                  </li>
-                  <li><a class="dropdown-item" href="#" @click="logout()">Salir</a></li>
                 </ul>
-              </div>
+              </li>
+              <li>
+                <router-link to="/" class="dropdown-item">
+                  Mi perfil
+                </router-link>
+              </li>
 
+              <li>
+                <router-link to="ajustes" class="dropdown-item">
+                  Ajustes
+                </router-link>
+              </li>
+              <li><a class="dropdown-item" href="#" @click="logout()">Salir</a></li>
+            </ul>
           </div>
-
+        </div>
       </div>
-
     </div>
   </nav>
 </template>
@@ -94,7 +97,7 @@ import { mapActions, mapState } from "pinia";
 
 import { useUserStore } from "@/store/user/userStore.js";
 import { useAuthStore } from "@/store/user/authStore.js";
-import { useMenu } from '@/store/MenuStore'
+import { useMenu } from "@/store/MenuStore";
 
 export default {
   data: () => {
@@ -132,7 +135,7 @@ export default {
   computed: {
     ...mapState(useAuthStore, ["authToken"]),
     ...mapState(useUserStore, ["userObj"]),
-    ...mapState(useMenu, ["classMenu"]),
+    ...mapState(useMenu, ["classMenu"])
   },
   mounted() {
     this.initialize();
@@ -246,7 +249,7 @@ export default {
     padding-top: 10px;
     padding-bottom: 10px;
   }
-  
+
 
 }
 </style>

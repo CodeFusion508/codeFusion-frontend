@@ -1,5 +1,4 @@
 <template>
-  
   <div class="bg-image background">
     <div class="px-4 text-center">
       <div class="mb-4 display-4">
@@ -16,7 +15,7 @@
         <pre class="lead mb-4 fw-light fst-italic">Únete hoy para impulsar tu carrera!</pre>
 
         <div class="d-grid gap-2 d-flex justify-content-center">
-          <div class="col-xl-4 col-12" >
+          <div class="col-xl-4 col-12">
             <div class="col-sm-12 bs-primary-navbar rounded-1 mb-4 display-movil">
               <router-link to="/session">
                 <button type="button" class="btn py-2  text-white">
