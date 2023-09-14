@@ -6,21 +6,21 @@
         CodeFusion508
       </a>
 
-      <button type="button" class="btn text-white display-movil" @click="changeHomePage">
+      <button type="button" class="btn text-white display-mobile" @click="changeHomePage">
         <i class="fa-solid fa-bars-staggered" />
       </button>
 
       <div
-        :class="['d-flex justify-content-between content-menu-deslizable col-xl-11 mx-0 px-0', classMenu ? 'menu-actived':'']"
+        :class="['d-flex justify-content-between content-menu-deslizable col-xl-11 mx-0 px-0', classMenu ? 'menu-activated':'']"
       >
-        <div class="border-bottom col-sm-12 p-2 display-movil">
+        <div class="border-bottom col-sm-12 p-2 display-mobile">
           <a class="navbar-brand text-white" href="#">
             <img src="../assets/CodeFusion508.ico" alt="an icon of">
             CodeFusion508
           </a>
         </div>
 
-        <ul class="nav nav-pills flex-grow-1 menu-movil">
+        <ul class="nav nav-pills flex-grow-1 menu-mobile">
           <li
             v-for="(item, index) in routes"
             :key="index"
@@ -32,7 +32,7 @@
           </li>
         </ul>
 
-        <div class="content-logIn propierty-logIn col-xl-3 col-12">
+        <div class="content-logIn property-logIn col-xl-3 col-12">
           <div v-if="!authToken" class="navbar-nav d-flex align-items-center justify-space-center mx-0">
             <div class="col-xl-5 col-10 bs-primary-navbar rounded-lg text-center">
               <router-link to="/session" class="nav-link text-white px-3">
@@ -197,7 +197,7 @@ export default {
   position: relative;
 }
 
-.menu-movil {
+.menu-mobile {
   width: 50%;
 }
 
@@ -213,16 +213,16 @@ export default {
     z-index: 120;
   }
 
-  .menu-actived {
+  .menu-activated {
     left: 0px;
   }
 
-  .menu-movil {
+  .menu-mobile {
     width: 100%;
     margin: 0px !important;
   }
 
-  .menu-movil li {
+  .menu-mobile li {
     width: 100%;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -240,12 +240,12 @@ export default {
     background: linear-gradient(#6878E2,#7352AB) !important;
   }
 
-  .propierty-logIn {
+  .property-logIn {
     border-top: 0.5px solid white;
     padding-top: 15px;
   }
 
-  .propierty-logIn div:nth-child(2) {
+  .property-logIn div:nth-child(2) {
     padding-top: 10px;
     padding-bottom: 10px;
   }

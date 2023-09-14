@@ -1,15 +1,16 @@
 <template>
-  <footer class="bg-body-tertiary bg-dark-subtle mt-auto footer-movil">
+  <footer class="bg-body-tertiary bg-dark-subtle mt-auto footer-mobile">
     <div class="container pt-4">
       <div class="row">
         <div class="col-xl-3 col-12 content-left-footer">
           <div class="title-responsive">
             <b style="font-size: 24px;">CodeFusion508</b>
           </div>
-          <div class="col-12 py-3 content-description-movil">
-            <span style="font-size: 12px;">Descubre nuestra escuela de desarrollo web. Aprende CSS, HTML, Javascript, NodeJS y más. Crea tus propios sitios y servidores con la guía de expertos.</span>
+          <div class="col-12 py-3 content-description-mobile">
+            <span style="font-size: 12px;">Descubre nuestra escuela de desarrollo web. Aprende CSS, HTML, Javascript,
+              NodeJS y más. Crea tus propios sitios y servidores con la guía de expertos.</span>
           </div>
-          <hr class="display-movil">
+          <hr class="display-mobile">
           <div class="row justify-space-center">
             <div class="col-12 display-desktop">
               <b style="font-size: 12px;">Redes Sociales</b>
@@ -22,14 +23,16 @@
           </div>
         </div>
 
-        <div class="content-menu-options-movil col-xl-6">
+        <div class="content-menu-options-mobile col-xl-6">
           <div class="col-xl-6 col-5 content-menu-center">
             <ul id="FirtsMenu">
               <li
                 v-for="(item, index) in listMenu"
-                :style="{'border-left': 'solid 4px '+item.color,
-                         'background-color': item.actived ? item.color:'transparent',
-                         'color': item.actived ? 'white':''
+                :key="item"
+                :style="{
+                  'border-left': 'solid 4px ' + item.color,
+                  'background-color': item.activated ? item.color : 'transparent',
+                  'color': item.activated ? 'white' : ''
                 }"
                 @mouseover="effectHoverInMenu('listMenu', index)"
                 @mouseout="noneEffectHoverInMenu('listMenu', index)"
@@ -42,10 +45,11 @@
             <ul id="SecondMenu">
               <li
                 v-for="(item, index) in listContent"
+                :key="item"
                 :style="{
-                  'border-left': 'solid 4px '+item.color,
-                  'background-color': item.actived ? item.color:'transparent',
-                  'color': item.actived ? 'white':''
+                  'border-left': 'solid 4px ' + item.color,
+                  'background-color': item.activated ? item.color : 'transparent',
+                  'color': item.activated ? 'white' : ''
                 }"
                 @mouseover="effectHoverInMenu('listContent', index)"
                 @mouseout="noneEffectHoverInMenu('listContent', index)"
@@ -64,7 +68,7 @@
             <span style="font-size: 12px; color: white;">Recibe nuestra notificaciones de novedades</span>
           </div>
           <div class="col-12 input-group-suscribe">
-            <input type="text" placeholder="Correo electronico">
+            <input type="text" placeholder="Correo electrónico">
             <button><i class="fa-solid fa-paper-plane" /></button>
           </div>
         </div>
@@ -73,90 +77,52 @@
       <hr>
 
       <div class="col-12 text-center py-1 pb-3">
-        <span>CodeFusion508  @Copyrigth 2023</span>
+        <span>CodeFusion508</span>
       </div>
-      <!--
-      <div class="d-flex bd-highlight mb-3 mt-2">
-        <div class="bd-highlight text-white">
-          <img src="../assets/CodeFusion508.ico" alt="an icon of" class="bs_footer_logo">
-          CodeFusion508
-        </div>
-      </div>
-
-      <hr>
-      <div class="d-flex row justify-content-center py-4 bs_footer_row">
-        <div class="col-xs-6  col-sm bs_footer_col">
-          <h4 class="bs_footer_widget_title text-white">
-            Otros Productos
-          </h4>
-          <ul class="bs_footer_widget_links">
-            <li><a href="#" target="_blank" class="text-decoration-none text-reset"><span>Backend API</span></a></li>
-          </ul>
-        </div>
-
-        <div class="col-xs-6  col-sm bs_footer_col">
-          <h4 class="bs_footer_widget_title text-white">
-            Necesitas Ayuda?
-          </h4>
-          <ul class="bs_footer_widget_links">
-            <li><a href="#" target="_blank" class="text-decoration-none text-reset"><span>Articulo 1</span></a></li>
-            <li><a href="#" target="_blank" class="text-decoration-none text-reset"><span>Articulo 2</span></a></li>
-          </ul>
-        </div>
-
-        <div class="col-xs-6  col-sm bs_footer_col">
-          <h4 class="bs_footer_widget_title text-white">
-            Elances
-          </h4>
-          <ul class="bs_footer_widget_links">
-            <li><a href="#" target="_blank" class="text-decoration-none text-reset"><span>Documentación</span></a></li>
-            <li>
-              <a href="#" target="_blank" class="text-decoration-none text-reset"><span>GitHub</span></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <hr> -->
     </div>
   </footer>
 </template>
 
 <script>
 export default {
-  data: () =>{return {
-    listMenu: [
-      { text: "Inicio", color: "#6878E2", actived: false },
-      { text: "Acerca de", color: "#7352AB", actived: false  },
-      { text: "Lecciones", color: "#A0616A", actived: false  },
-      { text: "Articulos", color: "#FF6584", actived: false  }
-    ],
-    listContent: [
-      { text: "Aprende HTML", color: "#FF6584", actived: false },
-      { text: "Aprende Css", color: "#A0616A", actived: false },
-      { text: "Aprende Javascript", color: "#FFFFFF", actived: false },
-      { text: "Aprende Vuejs", color: "#7352AB", actived: false },
-      { text: "Aprende Reactjs", color: "#6878E2", actived: false }
-    ]
-  };},
+  data: () => {
+    return {
+      listMenu: [
+        { text: "Inicio", color: "#6878E2", activated: false },
+        { text: "Acerca de", color: "#7352AB", activated: false },
+        { text: "Lecciones", color: "#A0616A", activated: false },
+        { text: "Articulos", color: "#FF6584", activated: false }
+      ],
+      listContent: [
+        { text: "Aprende HTML", color: "#FF6584", activated: false },
+        { text: "Aprende Css", color: "#A0616A", activated: false },
+        { text: "Aprende Javascript", color: "#00FF00", activated: false },
+        { text: "Aprende Vuejs", color: "#7352AB", activated: false },
+        { text: "Aprende Reactjs", color: "#6878E2", activated: false }
+      ]
+    };
+  },
   methods: {
-    effectHoverInMenu(propied = "", index = 0) {
-      this[propied][index].actived = true;
+    effectHoverInMenu(property = "", index = 0) {
+      this[property][index].activated = true;
     },
-    noneEffectHoverInMenu(propied = "", index = 0) {
-      this[propied][index].actived = false;
+    noneEffectHoverInMenu(property = "", index = 0) {
+      this[property][index].activated = false;
     }
   }
 };
 </script>
 
 <style scoped>
-.content-left-footer b, span {
+.content-left-footer b,
+span {
   color: white;
 }
 
-.footer-movil {
+.footer-mobile {
   display: flex;
 }
+
 .content-menu-center ul li {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -165,12 +131,15 @@ export default {
   cursor: pointer;
   list-style: none;
 }
-.content-menu-options-movil {
+
+.content-menu-options-mobile {
   display: flex;
 }
+
 .input-group-suscribe {
   display: flex;
 }
+
 .input-group-suscribe input {
   width: 80%;
   height: 40px;
@@ -202,16 +171,16 @@ export default {
     text-align: center !important;
   }
 
-  .content-description-movil {
+  .content-description-mobile {
     text-align: justify;
   }
 
-  .content-menu-options-movil {
+  .content-menu-options-mobile {
     display: flex;
     padding-top: 25px;
   }
 
-  .footer-movil {
+  .footer-mobile {
     padding-left: 10px;
     padding-right: 10px;
     display: block;

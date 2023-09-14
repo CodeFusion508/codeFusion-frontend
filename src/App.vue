@@ -1,5 +1,5 @@
 <template>
-  <div :class="[classMenu ? 'movid-position-menu':'']">
+  <div :class="[classMenu ? 'move-position-menu':'']">
     <router-view />
     <toast-error />
   </div>
@@ -37,9 +37,34 @@ export default {
   border-radius: 0.5rem;
 }
 
-.movid-position-menu {
+.move-position-menu {
   position: relative;
   left: 275px;
   top: 0px !important;
 }
+
+:root {
+    --bs-primary-navbar: #212529;
+}
+
+.bs-primary-navbar {
+    background-color: var(--bs-primary-navbar);
+}
+
+.display-mobile {
+    display: none;
+}
+
+.display-desktop {
+    display: flex;
+}
+
+@media (max-width: 767px) {
+    .display-mobile {
+        display: block !important;
+    }
+    .display-desktop {
+        display: none;
+    }
+  }
 </style>
