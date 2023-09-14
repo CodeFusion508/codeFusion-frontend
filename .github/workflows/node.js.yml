@@ -18,7 +18,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
       - name: Create env file
         run: |
           touch .env.production	
@@ -26,7 +25,7 @@ jobs:
           printf "VITE_GOOGLE_API=\"${{ secrets.VITE_GOOGLE_API }}\"" >> .env.production
       - name: Install and build
         run: |
-          npm ci
+          npm i
           npm run build
       - name: Replace dist and restart nginx
         run: |

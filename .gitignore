@@ -26,6 +26,6 @@ coverage
 *.sln
 *.sw?
 
-# lock files
+# Lock Files
 pnpm-lock.yaml
 package-lock.json
