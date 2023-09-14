@@ -97,7 +97,7 @@ import { mapActions, mapState } from "pinia";
 
 import { useUserStore } from "@/store/user/userStore.js";
 import { useAuthStore } from "@/store/user/authStore.js";
-import { useMenu } from "@/store/MenuStore";
+import { useMenuStore } from "@/store/MenuStore.js";
 
 export default {
   data: () => {
@@ -135,7 +135,7 @@ export default {
   computed: {
     ...mapState(useAuthStore, ["authToken"]),
     ...mapState(useUserStore, ["userObj"]),
-    ...mapState(useMenu, ["classMenu"])
+    ...mapState(useMenuStore, ["classMenu"])
   },
   mounted() {
     this.initialize();
@@ -143,7 +143,7 @@ export default {
   methods: {
     ...mapActions(useAuthStore, ["delAuthToken"]),
     ...mapActions(useUserStore, ["cleanUser"]),
-    ...mapActions(useMenu, ["changeHomePage"]),
+    ...mapActions(useMenuStore, ["changeHomePage"]),
     logout() {
       this.delAuthToken();
 
