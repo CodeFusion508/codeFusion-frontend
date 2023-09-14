@@ -1,7 +1,20 @@
 <template>
-  <router-view />
-  <toast-error />
+  <div :class="[classMenu ? 'move-position-menu':'']">
+    <router-view />
+    <toast-error />
+  </div>
 </template>
+
+<script>
+import { useMenuStore } from "@/store/MenuStore";
+import { mapState } from "pinia";
+
+export default {
+  computed: {
+    ...mapState(useMenuStore, ["classMenu"])
+  }
+};
+</script>
 
 <style>
 .gradient-purple {
@@ -23,4 +36,35 @@
 .rounded-lg {
   border-radius: 0.5rem;
 }
+
+.move-position-menu {
+  position: relative;
+  left: 275px;
+  top: 0px !important;
+}
+
+:root {
+    --bs-primary-navbar: #212529;
+}
+
+.bs-primary-navbar {
+    background-color: var(--bs-primary-navbar);
+}
+
+.display-mobile {
+    display: none;
+}
+
+.display-desktop {
+    display: flex;
+}
+
+@media (max-width: 767px) {
+    .display-mobile {
+        display: block !important;
+    }
+    .display-desktop {
+        display: none;
+    }
+  }
 </style>
