@@ -1,17 +1,14 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
 
-export const useMenu = defineStore("menu", () => {
-
-    const classMenu = ref(false);
-
-    const changeHomePage = () => {
-        classMenu.value = !classMenu.value;
-    };
-
-    return {
-        classMenu,
-
-        changeHomePage
-    };
+export const useMenuStore = defineStore("MenuStore", {
+    actions: {
+        changeHomePage () {
+            this.classMenu = !this.classMenu;
+        }
+    },
+    state: () => {
+        return {
+            classMenu: false
+        };
+    }
 });

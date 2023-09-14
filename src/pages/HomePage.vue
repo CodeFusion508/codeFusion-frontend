@@ -15,7 +15,6 @@ import LoggedIn from "@/modules/HomePage/LoggedIn.vue";
 
 import { useAuthStore } from "@/store/user/authStore.js";
 
-
 export default {
   components: {
     "logged-out" : LoggedOut,

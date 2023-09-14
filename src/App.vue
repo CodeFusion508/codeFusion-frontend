@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import { useMenu } from "@/store/MenuStore";
+import { useMenuStore } from "@/store/MenuStore";
 import { mapState } from "pinia";
 
 export default {
   computed: {
-    ...mapState(useMenu, ["classMenu"])
+    ...mapState(useMenuStore, ["classMenu"])
   }
 };
 </script>
