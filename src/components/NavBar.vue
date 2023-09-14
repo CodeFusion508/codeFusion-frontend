@@ -7,7 +7,7 @@
       </a>
 
       <button type="button" class="btn text-white display-mobile" @click="changeHomePage">
-        <i class="fa-solid fa-bars-staggered" />
+        <i class="navbar-toggler-icon" />
       </button>
 
       <div
