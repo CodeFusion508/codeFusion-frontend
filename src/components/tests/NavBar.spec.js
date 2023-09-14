@@ -42,6 +42,10 @@ describe("NavBar", () => {
         authStore.authToken = "someToken";
     });
 
+    it("should render NavBar component", () => {
+        expect(wrapper.exists()).toBe(true);
+    });
+
     it("Should have navigation text buttons", () => {
         expect(wrapper.text()).toContain("Inicio");
         expect(wrapper.text()).toContain("De nosotros");

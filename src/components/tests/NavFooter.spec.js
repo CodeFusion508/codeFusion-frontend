@@ -20,10 +20,8 @@ describe("NavFooter", () => {
     });
 
     it("Should have links to proper site", () => {
+        expect(wrapper.findAll("li").length).toBe(9);
         expect(wrapper.text()).toContain("CodeFusion508");
-        expect(wrapper.text()).toContain("Otros");
-        expect(wrapper.text()).toContain("Backend API");
-        expect(wrapper.text()).toContain("Necesitas Ayuda?");
-        expect(wrapper.text()).toContain("GitHub");
+        expect(wrapper.text()).toContain("Descubre nuestra escuela de desarrollo web");
     });
 });

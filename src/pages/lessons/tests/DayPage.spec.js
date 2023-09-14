@@ -40,6 +40,7 @@ describe("DayPage Tests", () => {
     });
 
     it("should load TimeLine component", function () {
+        expect(wrapper.exists()).toBe(true);
         expect(wrapper.findAllComponents({ name: "time-line" }).length).toBe(1);
     });
 });

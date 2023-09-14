@@ -31,6 +31,10 @@ describe("ToastError Tests", () => {
         store.layout = true;
     });
 
+    it("Should render ToastError component", () => {
+        expect(wrapper.exists()).toBe(true);
+    });
+
     it("Should render error toast", () => {
         expect(wrapper.text()).toContain("Error");
         expect(wrapper.text()).toContain("There has been an error.");

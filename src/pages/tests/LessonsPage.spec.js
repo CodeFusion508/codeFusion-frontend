@@ -50,6 +50,10 @@ describe("LessonsPage Tests", () => {
         daysStore.result = ["result1", "result2", "result3"];
     });
 
+    it("Should render LessonsPage component", () => {
+        expect(wrapper.exists()).toBe(true);
+    });
+
     it("Verify title to be shown correctly", () => {
         expect(wrapper.find("h5").text()).toBe("Sprint 1");
     });

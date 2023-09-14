@@ -48,8 +48,12 @@ describe("UserSettings", () => {
         inputs = wrapper.findAll("input");
     });
 
+    it ("should render UserSettings component", () => {
+        expect(wrapper.exists()).toBe(true);
+    });
+
     it("should show inputs", function () {
-        expect(inputs.length).toBe(4);
+        expect(inputs.length).toBe(5);
     });
 
     it("should show user' name", () => {

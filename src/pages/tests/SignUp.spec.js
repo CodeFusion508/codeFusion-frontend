@@ -36,10 +36,12 @@ describe("SignUp", () => {
     });
 
     it("Should render both GLoginButton", () => {
+        expect(wrapper.exists()).toBe(true);
         expect(wrapper.findAllComponents({ name: "g-login" }).length).toBe(2);
     });
 
     it("Should render passwordProgress component", function () {
+        expect(wrapper.exists()).toBe(true);
         expect(wrapper.findAllComponents({ name: "password-progress" }).length).toBe(1);
     });
 

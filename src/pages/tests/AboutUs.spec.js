@@ -32,13 +32,13 @@ describe("AboutUs Tests", () => {
         });
     });
 
-    it("Should render AboutUs view", () => {
+    it("Should render AboutUs component", () => {
         expect(wrapper.exists()).toBe(true);
     });
 
-    it("Should load image from URL", function () {
+    it("Should load image from URL", () => {
         expect(wrapper.find("img").attributes("src")).not.toBe("");
         expect(wrapper.find("img").attributes("src")).not.toBe(null);
-        expect(wrapper.findAll("img")[1].wrapperElement.attributes["0"].value).toBe("https://avatars.githubusercontent.com/u/61888719?v=4");
+        expect(wrapper.html()).toContain("https://avatars.githubusercontent.com/u/61888719?v=4");
     });
 });

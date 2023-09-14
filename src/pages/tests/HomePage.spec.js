@@ -33,10 +33,11 @@ describe("Logged In Tests", () => {
         });
 
         const store = useAuthStore();
-        store.authToken = "dasdasd";
+        store.authToken = "Super Secret Token";
     });
 
     it("Should render logged in component", () => {
+        expect(wrapper.exists()).toBe(true);
         expect(wrapper.findAllComponents({ name: "logged-in" }).length).toBe(1);
         expect(wrapper.findAllComponents({ name: "logged-out" }).length).toBe(0);
     });
@@ -57,6 +58,7 @@ describe("Logged Out Tests", () => {
     });
 
     it("Should render logged out component", () => {
+        expect(wrapper.exists()).toBe(true);
         expect(wrapper.findAllComponents({ name: "logged-out" }).length).toBe(1);
         expect(wrapper.findAllComponents({ name: "logged-in" }).length).toBe(0);
     });
