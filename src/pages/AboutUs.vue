@@ -114,5 +114,4 @@
 .animated-underline:hover::after {
   transform: scaleX(1);
 }
-
 </style>

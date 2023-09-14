@@ -174,7 +174,6 @@ import {
 } from "pinia";
 import { decodeCredential } from "vue3-google-login";
 
-
 import { useUserStore } from "@/store/user/userStore.js";
 import { useAuthStore } from "@/store/user/authStore.js";
 
@@ -223,18 +222,19 @@ export default {
     ]),
     ...mapActions(useAuthStore, ["addAuthToken"]),
     async fillCredential(value) {
-      this.credential = value;
-      if (this.credential) {
-        let userData = decodeCredential(this.credential);
+        this.credential = value;
 
-        this.email.text = userData.email;
-        this.userName = userData.email.split("@")[0];
+        if (this.credential) {
+          let userData = decodeCredential(this.credential);
 
-        let verified = await this.verifyUser(this.credential);
-        if (verified) await this.createAccount(true);
-      } else {
-        throw new Error("No se pudo verificar el usuario");
-      }
+          this.email.text = userData.email;
+          this.userName = userData.email.split("@")[0];
+
+          let verified = await this.verifyUser(this.credential);
+          if (verified) await this.createAccount(true);
+        } else {
+          throw new Error("No se pudo verificar el usuario");
+        }
     },
     async createAccount(google) {
       if (!google) {

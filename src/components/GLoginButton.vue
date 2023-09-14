@@ -17,10 +17,13 @@ export default {
     },
     methods: {
         callback(response) {
-            this.$emit("credential", response.credential);
+            try {
+                this.$emit("credential", response.credential);
+            }
+            catch (error) {
+                this.$emit("credential", "No tiene la correcta credenciales");
+            }
         }
     }
 };
 </script>
-
-<style scoped></style>

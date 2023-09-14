@@ -119,7 +119,7 @@
                 <code>Chrome</code> o <code>Firefox</code> cualquier navegador moderno. <code>NodeJS</code>
                 para correr Javascript en tu computadora. <code>VSCode</code>
                 o <code>VSCodium</code> para tener herramientas que ta ayudan cuando andas programando.
-                <code>Git</code> para aguardar tus proyectos, y tengan un terminal.
+                <code>Git</code> para guardar tus proyectos, y tengan un terminal.
               </div>
             </div>
           </div>
