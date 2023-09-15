@@ -2,8 +2,13 @@
 <template>
   <nav-bar />
 
-  <div class="container-md">
-    <md-block :mdContent="lesson" />
+
+  <div class="container pt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <md-block :mdContent="lesson" class="md-block-height" />
+      </div>
+    </div>
   </div>
 
   <nav-footer />
@@ -29,10 +34,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 md-block {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.md-block-height {
+  height: 60vh;
 }
 </style>

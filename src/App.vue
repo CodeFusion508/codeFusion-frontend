@@ -1,5 +1,5 @@
 <template>
-  <div :class="[classMenu ? 'move-position-menu':'']">
+  <div :class="[classMenu ? 'move-position-menu' : '']">
     <router-view />
     <toast-error />
   </div>
@@ -44,27 +44,34 @@ export default {
 }
 
 :root {
-    --bs-primary-navbar: #212529;
+  --bs-primary-navbar: #212529;
 }
 
 .bs-primary-navbar {
-    background-color: var(--bs-primary-navbar);
+  background-color: var(--bs-primary-navbar);
 }
 
 .display-mobile {
-    display: none;
+  display: none;
 }
 
 .display-desktop {
-    display: flex;
+  display: flex;
 }
 
 @media (max-width: 767px) {
-    .display-mobile {
-        display: block !important;
-    }
-    .display-desktop {
-        display: none;
-    }
+  .display-mobile {
+    display: block !important;
   }
+
+  .display-desktop {
+    display: none;
+  }
+}
+
+.container.flex-grow-1 {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 </style>

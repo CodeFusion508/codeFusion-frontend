@@ -93,6 +93,13 @@
 </template>
 
 <style>
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* This ensures the page takes up at least the full viewport height. */
+    margin: 0;
+}
+
 .animated-underline {
   position: relative;
   display: inline-block;
