@@ -1,7 +1,7 @@
 <template>
   <nav-bar />
 
-  <div class="container">
+  <div class="container flex-grow-1">
     <div class="container mt-3 mb-3 text-center">
       <h1 class="fw-lighter fs-3">
         <b>{{ text }}</b>
@@ -45,3 +45,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.container.flex-grow-1 {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+</style>

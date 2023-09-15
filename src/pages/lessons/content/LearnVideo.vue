@@ -1,6 +1,6 @@
 <template>
   <nav-bar />
-  <div style="position: fit-content; overflow: hidden; width: 80%;" class="mx-auto">
+  <div style="position: fit-content; overflow: hidden; width: 90%;" class="mx-auto pt-3">
     <iframe
       class="vw-100 vh-100"
       :src="result[contIndex].link"
@@ -11,22 +11,13 @@
     />
   </div>
 
-  <div class="rounded bg-body-tertiary vw-100 mb-3 p-2 text-white fs-6 font-monospace">
-    <img
-      src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-      class="rounded float-start me-3 mb-2"
-      style="width: 200px; height: 200px;"
-      alt="a filler image"
-    >
+  <div class="rounded bg-body-tertiary mb-5 p-3 text-white fs-6 font-monospace">
     <p>
       {{ result[contIndex].desc }}
     </p>
-    <p>
-      Here goes the info that we get from the MD
-    </p>
   </div>
 
-  <nav-footer />
+  <nav-footer class="pt-4" style="width: 100%" />
 </template>
 <script>
 import { mapState } from "pinia";
