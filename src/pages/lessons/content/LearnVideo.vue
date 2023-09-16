@@ -19,6 +19,7 @@
 
   <nav-footer class="pt-4" style="width: 100%" />
 </template>
+
 <script>
 import { mapState } from "pinia";
 

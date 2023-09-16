@@ -11,7 +11,7 @@
 
     <vue-monaco-editor
       v-model:value="code"
-      language="html"
+      :language="result[contIndex].language || 'Javascript'"
       theme="vs-dark"
       height="400px"
     />
@@ -29,9 +29,11 @@
 </template>
 
 <script>
-import { mapActions } from "pinia";
+import { mapActions, mapState } from "pinia";
 
 import { useUserStore } from "@/store/user/userStore.js";
+import { useDaysStore } from "@/store/lessons/daysStore.js";
+import { useContentStore } from "@/store/lessons/contentStore.js";
 
 export default {
   data() {
@@ -39,6 +41,10 @@ export default {
       text : "Hola, en esta problema necesitan crear párrafo con una imagen",
       code : ""
     };
+  },
+  computed: {
+    ...mapState(useContentStore, "contIndex"),
+    ...mapState(useDaysStore, ["result"])
   },
   methods: {
     ...mapActions(useUserStore, ["createdRelation"])
