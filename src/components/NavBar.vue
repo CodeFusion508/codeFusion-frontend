@@ -20,7 +20,7 @@
           </a>
         </div>
 
-        <ul class="nav nav-pills flex-grow-1 menu-mobile">
+        <ul class="nav nav-pills flex-grow-1 menu-mobile ms-5">
           <li
             v-for="(item, index) in routes"
             :key="index"
