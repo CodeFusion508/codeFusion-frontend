@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-body-tertiary bg-dark-subtle mt-auto footer-mobile">
+  <footer class="bg-body-tertiary bg-dark-subtle mt-auto footer-mobile bottom-0 w-100">
     <div class="container pt-4">
       <div class="row">
         <div class="col-xl-3 col-12 content-left-footer">
