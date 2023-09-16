@@ -11,7 +11,7 @@
     />
   </div>
 
-  <div class="rounded bg-body-tertiary mb-5 p-3 text-white fs-6 font-monospace">
+  <div class="rounded bg-body-tertiary mb-5 p-3 text-white fs-6 font-monospace me-5 ms-5 mt-3 mx-auto">
     <p>
       {{ result[contIndex].desc }}
     </p>

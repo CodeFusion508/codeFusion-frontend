@@ -1,6 +1,6 @@
 <template>
   <div class="bg-image background">
-    <div class="px-4 text-center">
+    <div class="px-4 text-center pt-5">
       <div class="mb-4 display-4">
         <i class="bi bi-code-slash" style="color: white;" />
       </div>
