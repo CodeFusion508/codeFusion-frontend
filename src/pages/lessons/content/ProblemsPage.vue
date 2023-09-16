@@ -11,7 +11,7 @@
 
     <vue-monaco-editor
       v-model:value="code"
-      :language="result[contIndex].language || 'Javascript'"
+      :language="this.result[this.contIndex].language || 'javascript'"
       theme="vs-dark"
       height="400px"
     />
@@ -43,7 +43,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(useContentStore, "contIndex"),
+    ...mapState(useContentStore, ["contIndex"]),
     ...mapState(useDaysStore, ["result"])
   },
   methods: {
