@@ -11,7 +11,7 @@
 
     <vue-monaco-editor
       v-model:value="code"
-      :language="this.result[this.contIndex].language || 'javascript'"
+      :language="result[contIndex].language || 'javascript'"
       theme="vs-dark"
       height="400px"
     />
