@@ -12,7 +12,7 @@ const HTTP = (title, path) => async (type, subPath, body = null) => {
             url     : `${route}${path}${subPath}`,
             data    : body,
             headers : {
-                authorization: `Bearer ${useAuthStore().authToken}`
+                authorization: `${useAuthStore().authToken}`
             }
         });
 
