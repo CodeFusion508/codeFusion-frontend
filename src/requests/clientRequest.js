@@ -11,8 +11,7 @@ export const logInUserReq = async ({ email, password }) => (await request("POST"
 
 export const updateUserReq = async (dataUser) => (await request("PUT", `/`, dataUser));
 
-
-export const createRelation = async (dataRequest) => (await request("POST", `/rel`, dataRequest));
+export const createRelation = async (dataRequest) => (await request("POST", `/node/rels`, dataRequest));
 
 
 export const confirmAccountReq = async (user) => (await request("POST", "/confirm-account", user));
