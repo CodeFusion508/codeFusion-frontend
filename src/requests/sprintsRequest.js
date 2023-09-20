@@ -29,4 +29,4 @@ export const getAllSprints = async () => {
     return data.node;
 };
 
-export const getSprintByUuid = async (uuid) => (await request("GET", `/node/relationships/${uuid}`));
+export const getSprintByUuid = async (uuid) => (await request("GET", `/node/rels/${uuid}`));
