@@ -1,7 +1,7 @@
 <template>
   <nav-bar />
 
-  <div class="container">
+  <div class="container flex-grow-1">
     <div class="container mt-3 mb-3 text-center">
       <h1 class="fw-lighter fs-3">
         <b>{{ text }}</b>
@@ -11,7 +11,7 @@
 
     <vue-monaco-editor
       v-model:value="code"
-      language="html"
+      :language="result[contIndex].language || 'javascript'"
       theme="vs-dark"
       height="400px"
     />
@@ -29,9 +29,11 @@
 </template>
 
 <script>
-import { mapActions } from "pinia";
+import { mapActions, mapState } from "pinia";
 
 import { useUserStore } from "@/store/user/userStore.js";
+import { useDaysStore } from "@/store/lessons/daysStore.js";
+import { useContentStore } from "@/store/lessons/contentStore.js";
 
 export default {
   data() {
@@ -40,8 +42,20 @@ export default {
       code : ""
     };
   },
+  computed: {
+    ...mapState(useContentStore, ["contIndex"]),
+    ...mapState(useDaysStore, ["result"])
+  },
   methods: {
     ...mapActions(useUserStore, ["createdRelation"])
   }
 };
 </script>
+
+<style scoped>
+.container.flex-grow-1 {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+</style>

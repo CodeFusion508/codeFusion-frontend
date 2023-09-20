@@ -5,7 +5,7 @@ const request = HTTP("Days", "days");
 export const getDaysRequest = async () => (await request("GET", "/"));
 
 export const getContentsRelationByDays = async (uuid) => {
-    let data = await request("GET", `/${uuid}/rel`);
+    let data = await request("GET", `/node/rels/${uuid}`);
 
     data.node = data.node.sort((valueA, valueB) => {
         const nodeA = valueA.rels.properties.contentNo;

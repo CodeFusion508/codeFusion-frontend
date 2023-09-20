@@ -20,11 +20,11 @@
           </a>
         </div>
 
-        <ul class="nav nav-pills flex-grow-1 menu-mobile">
+        <ul class="nav nav-pills flex-grow-1 menu-mobile ms-5">
           <li
             v-for="(item, index) in routes"
             :key="index"
-            :class="['nav-item', item.activated ? 'activated activated-btn-menu' : '']"
+            :class="['nav-item', item.activated ? 'activated activated-btn-menu rounded' : '']"
           >
             <router-link :to="item.path" :class="['text-white nav-link']">
               {{ item.title }}
@@ -184,7 +184,7 @@ export default {
 }
 
 .activated {
-  /* background-color: var(--bs-primary); */
+  background-color: var(--bs-primary);
 }
 
 .nav-item {

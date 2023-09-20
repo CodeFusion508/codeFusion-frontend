@@ -11,13 +11,12 @@ export const logInUserReq = async ({ email, password }) => (await request("POST"
 
 export const updateUserReq = async (dataUser) => (await request("PUT", `/`, dataUser));
 
-
-export const createRelation = async (dataRequest) => (await request("POST", `/create/rel`, dataRequest));
+export const createRelation = async (dataRequest) => (await request("POST", `/node/rels`, dataRequest));
 
 
 export const confirmAccountReq = async (user) => (await request("POST", "/confirm-account", user));
 
-export const confirmAccountUser = async (token) => (await request("GET", "/confirm-account-token/" + token));
+export const confirmAccountUser = async (token) => (await request("GET", "/confirm-account/" + token));
 
 export const recoveryAccount = async (email) => (await request("POST", "/recovery/account", { email }));
 

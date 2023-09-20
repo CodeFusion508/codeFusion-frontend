@@ -163,7 +163,7 @@
     </div>
   </div>
 
-  <nav-footer />
+  <nav-footer class="position-absolute" />
 </template>
 
 <script>
