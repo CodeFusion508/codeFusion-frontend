@@ -51,8 +51,8 @@ export default {
     ...mapActions(useDaysStore, ["setDaysBySprintUuid"]),
     ...mapActions(useSprintsStore, ["getSprints"]),
     changeRouteLessons(uuid) {
+      console.log(uuid)
       this.setDaysBySprintUuid(uuid);
-
       this.$router.push({ name: "lessons-day" });
     }
   }

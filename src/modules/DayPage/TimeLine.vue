@@ -1,6 +1,60 @@
 <template>
   <main>
-    <div class="card border-0 shadow-sm">
+    <div class="row justify-content-center" >
+      <div class="col-sm-9" >
+        <div class="row" >
+          <div class="col-sm-5" >
+
+            <div class="d-flex align-center align-items-center content-line px-3 py-3 position-relative"
+            v-for="item in listTask" @click="selectedTask(item)" role="button"
+            >
+              <div class="item-line col-sm-12 px-3 py-2" >
+                <div class="col-sm-12" >
+                  <small>Tiempo Estimado: 1 Hora</small>
+                </div>
+                <div class="col-sm-12" >
+                  <b>{{ item.title }}</b>
+                </div>
+              </div>
+              <div class="item-circle" ></div>
+              <button class="btn-play" @click="changeRouter(getRouterPath(item.labels), dataTask.uuid)"  style="z-index: 100;">
+                <i class="fa-solid fa-play"></i>
+              </button>
+            </div>
+
+          </div>
+
+          <div class="col-sm-7" >
+
+            <div v-if="dataTask != null" class="col-sm-12 px-3 py-2 text-white position-relative" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);background-color: #1A1D20;" >
+              <div>
+                <b>{{ dataTask.title }}</b>
+              </div>
+              <div class="col-sm-12" >
+                <span style="font-size: 12px;">{{ dataTask.desc }}</span>
+              </div>
+
+              <div class="row" >
+                <div class="col-6" >
+                  <span style="font-size: 12px;">Tiempo Estimado de Actividad: <b>1 Hora</b></span>
+                </div>
+                <div class="col-6" >
+                  <span style="font-size: 12px;">Experencia 30 puntos</span>
+                </div>
+                
+              </div>
+
+               <button @click="changeRouter(getRouterPath(dataTask.labels), dataTask.uuid)" class="btn-play" style="left: 92.5% !important;top: 50% !important; z-index: 100;" >
+                <i class="fa-solid fa-play"></i>
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="card border-0 shadow-sm">
       <div class="card-body">
         <h6 class="card-title text-center py-3">
           <h4>Día {{ index + 1 }}</h4>
@@ -32,7 +86,7 @@
           </ul>
         </div>
       </div>
-    </div>
+    </div> -->
   </main>
 </template>
 
@@ -56,6 +110,9 @@ export default {
       default : () => { return {}; }
     }
   },
+  data: () => ({
+    dataTask: null
+  }),  
   methods: {
     ...mapActions(useUserStore, ["setUuidContent"]),
     changeRouter(router = "", uuid = "") {
@@ -63,7 +120,11 @@ export default {
 
       this.$router.push({ name: router });
     },
+    selectedTask(item) {
+      this.dataTask = item
+    },
     getRouterPath(labels = []) {
+      
       const secondLabels = labels[1];
 
       switch (secondLabels) {
@@ -79,12 +140,47 @@ export default {
           throw ({ message: "The label not found" });
       }
     }
+  },
+  mounted() {
+    setTimeout(() => {
+        if(this.listTask != undefined) {
+          this.dataTask = this.listTask[0]
+        }
+      }, 100)
   }
 };
 </script>
 
 <style scoped>
-body {
+.content-line {
+  border-left: solid 5px #6878E2;
+  width: 100%;
+}
+.item-line {
+  background-color: #1A1D20;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.item-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #7352AB;
+  position: absolute;
+  left: -3%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btn-play {
+  border: none !important;
+  border-radius: 50%;
+  background-color: #6878E2;
+  font-size: 12px;
+  text-align: center;
+  position: absolute;
+  left: 85%;
+
+}
+/* body {
   margin-top: 20px;
 }
 
@@ -201,5 +297,5 @@ body {
 .rtl .timeline .event::after {
   left: 0;
   right: -55.8px;
-}
+} */
 </style>
