@@ -2,9 +2,28 @@
   <nav-bar />
   <div class="container mt-5">
     <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-12 col-12 pb-3">
+      <div class="col-sm-12 "  v-for="(item, index) in days" >
+        <div class="col-sm-12 text-center text-white py-3 my-3 position-relative" style="background-color: #1A1D20;" >
+          <b>Día {{ index + 1 }}</b>
+          <br>
+          <b>{{ item.desc }}</b>
+          <div class="text-white style-dropdown-arrows" @click="getByContent(index)">
+            <i  v-if="item.layout" class="fa-solid fa-angle-up"  role="button"></i>
+            <i v-else class="fa-solid fa-angle-down" role="button"></i>
+          </div>
+        </div>
+        <time-line v-if="item.layout" :index="index" :list-task="item.result" :day="days[index]" />
+      </div>
+      
+
+      <!-- <div class="col-sm-12 col-md-12 col-lg-12 col-12 pb-3">
+        <div class="col-sm-12" >
+          <div class="text-center col-sm-12" >
+            <b></b>
+          </div>
+        </div>
         <div class="row justify-content-between">
-          <div v-for="(item, index) in days" :key="index" class="col-sm px-3">
+          <div :key="index" class="col-sm px-3">
             <div
               :class="[
                 'content-item-day d-flex justify-content-center align-items-center',
@@ -16,15 +35,11 @@
             </div>
           </div>
         </div>
-      </div>
-      <div v-if="layoutTimeLine" class="col-md-12 col-sm-12 col-lg-12 col-12">
-        <time-line :index="indexContent" :list-task="result" :day="days[indexContent]" />
-      </div>
+      </div> -->
     </div>
   </div>
   <nav-footer />
 </template>
-
 <script>
 import { mapActions, mapState } from "pinia";
 
@@ -66,7 +81,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .content-item-day {
   height: 55px;
   border-bottom: 1px solid #727cf5;
@@ -79,5 +94,13 @@ export default {
 
 .content-activated {
   background-color: rgba(114, 124, 245, 0.09);
+}
+
+
+.style-dropdown-arrows {
+  position: absolute;
+  left: 95%;
+  top: 50%;
+  transform: translate(-95%, -50%);
 }
 </style>
