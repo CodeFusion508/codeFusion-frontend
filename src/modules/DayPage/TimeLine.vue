@@ -12,16 +12,17 @@
 
         <div>
           <ul class="timeline">
-            <li v-for="(obj, ind) in listTask" :key="ind" class="event">
+            <li v-for="(obj) in listTask" :key="obj" class="event">
+              {{ console.log(obj) }}
               <div>
-                <h3>{{ obj.title }}</h3>
-                <p>{{ obj.desc }}</p>
+                <h3>{{ obj.node.title }}</h3>
+                <p>{{ obj.node.desc }}</p>
                 <label>Earn {{ obj.exp }} experience</label>
                 <div class="d-flex justify-content-end">
                   <div class="col-sm-4 col-12">
                     <button
                       class="btn btn-primary form-control"
-                      @click="changeRouter(getRouterPath(obj.labels), obj.uuid)"
+                      @click="changeRouter(getRouterPath(obj.node.labels), obj.node.uuid)"
                     >
                       Ver selección
                     </button>
