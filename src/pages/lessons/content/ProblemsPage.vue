@@ -4,7 +4,7 @@
   <div class="container flex-grow-1">
     <div class="container mt-3 mb-3 text-center">
       <h1 class="fw-lighter fs-3">
-        <b>{{ text }}</b>
+        <b>{{ result[contIndex].desc }}</b>
       </h1>
     </div>
     <hr>
@@ -32,7 +32,6 @@
 import { mapActions, mapState } from "pinia";
 
 import { useUserStore } from "@/store/user/userStore.js";
-import { useDaysStore } from "@/store/lessons/daysStore.js";
 import { useContentStore } from "@/store/lessons/contentStore.js";
 
 export default {
@@ -43,8 +42,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(useContentStore, ["contIndex"]),
-    ...mapState(useDaysStore, ["result"])
+    ...mapState(useContentStore, ["contIndex", "result"])
   },
   methods: {
     ...mapActions(useUserStore, ["createdRelation"])

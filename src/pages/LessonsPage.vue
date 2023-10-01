@@ -8,8 +8,8 @@
 
     <div class="row g-0 text-center mx-3">
       <div
-        v-for="(sprint, i) in sprints[index]"
-        :key="i"
+        v-for="(sprint) in sprints[index]"
+        :key="sprint"
         :class="['col-12 px-2 my-3', sprints.length <= 3 ? 'col-sm' : 'col-sm-3']"
       >
         <div class="card card grow-on-hover bg-dark-subtle border-0 shadow-dark rounded-lg">
@@ -37,7 +37,6 @@
 <script>
 import { mapActions, mapState } from "pinia";
 
-import { useDaysStore } from "@/store/lessons/daysStore.js";
 import { useSprintsStore } from "@/store/lessons/sprintsStore.js";
 
 export default {
@@ -48,8 +47,7 @@ export default {
     await this.getSprints();
   },
   methods: {
-    ...mapActions(useDaysStore, ["setDaysBySprintUuid"]),
-    ...mapActions(useSprintsStore, ["getSprints"]),
+    ...mapActions(useSprintsStore, ["getSprints", "setDaysBySprintUuid"]),
     changeRouteLessons(uuid) {
       this.setDaysBySprintUuid(uuid);
 

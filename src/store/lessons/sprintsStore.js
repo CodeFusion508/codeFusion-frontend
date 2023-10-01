@@ -5,13 +5,16 @@ import { getAllSprints } from "@/requests/sprintsRequest.js";
 export const useSprintsStore = defineStore("sprints", {
     actions: {
         async getSprints() {
-            const response = await getAllSprints();
-            this.sprints = response;
+            this.sprints = await getAllSprints();
+        },
+        setDaysBySprintUuid(uuid) {
+            this.sprintUuid = uuid;
         }
     },
     state: () => {
         return {
-            sprints: []
+            sprints    : [],
+            sprintUuid : ""
         };
     }
 });

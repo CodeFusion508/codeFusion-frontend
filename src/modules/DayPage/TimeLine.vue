@@ -12,16 +12,16 @@
 
         <div>
           <ul class="timeline">
-            <li v-for="(obj, ind) in listTask" :key="ind" class="event">
+            <li v-for="(obj, ind) in listTask" :key="obj" class="event">
               <div>
-                <h3>{{ obj.title }}</h3>
-                <p>{{ obj.desc }}</p>
-                <label>Earn {{ obj.exp }} experience</label>
+                <h3>{{ obj.node.title }}</h3>
+                <p>{{ obj.node.desc }}</p>
+                <label>Earn {{ obj.node.exp }} experience</label>
                 <div class="d-flex justify-content-end">
                   <div class="col-sm-4 col-12">
                     <button
                       class="btn btn-primary form-control"
-                      @click="changeRouter(getRouterPath(obj.labels), obj.uuid)"
+                      @click="changeRouter(getRouterPath(obj.node.labels), ind)"
                     >
                       Ver selección
                     </button>
@@ -37,9 +37,9 @@
 </template>
 
 <script>
-import { mapActions } from "pinia";
+import { mapWritableState } from "pinia";
 
-import { useUserStore } from "@/store/user/userStore.js";
+import { useContentStore } from "../../store/lessons/contentStore.js";
 
 export default {
   props: {
@@ -56,10 +56,12 @@ export default {
       default : () => { return {}; }
     }
   },
+  computed: {
+    ...mapWritableState(useContentStore, ["contIndex"])
+  },
   methods: {
-    ...mapActions(useUserStore, ["setUuidContent"]),
-    changeRouter(router = "", uuid = "") {
-      this.setUuidContent(uuid);
+    changeRouter(router = "lessons", ind) {
+      this.contIndex = ind;
 
       this.$router.push({ name: router });
     },
