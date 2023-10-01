@@ -71,13 +71,11 @@
           <div class="col">
             <div class="card-block px-2 mt-3 pb-3">
               <h5 class="card-title text-white">
-                Contributor 1
+                Jose Maria Diagas
               </h5>
               <hr>
               <p class="card-text text-white">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque dolorum, deleniti nulla earum delectus
-                eaque? Et, nam reprehenderit maiores quae numquam,
-                ipsa ducimus debitis consectetur, similique eveniet officiis suscipit ad.o
+                Estudiante de la UPPUE.
               </p>
               <a href="#" class="btn me-4 gradient-purple text-white"> <i class="bi bi-github" style="color: white;" />
                 GitHub</a>
@@ -89,6 +87,7 @@
       </div>
     </div>
   </div>
+
   <nav-footer />
 </template>
 
