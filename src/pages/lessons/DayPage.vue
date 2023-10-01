@@ -10,7 +10,7 @@
                 'content-item-day d-flex justify-content-center align-items-center',
                 indexContent === index ? 'content-activated' : ''
               ]"
-              @click="getContent(item.uuid, index)"
+              @click="getContent(index, item.uuid)"
             >
               <h6>Día {{ index + 1 }}</h6>
             </div>
@@ -28,7 +28,9 @@
 <script>
 import { mapActions, mapState } from "pinia";
 
-import { useDaysStore } from "@/store/lessons/daysStore.js";
+import { useDaysStore } from "../../store/lessons/daysStore.js";
+import { useSprintsStore } from "../../store/lessons/sprintsStore.js";
+import { useContentStore } from "../../store/lessons/contentStore.js";
 
 import TimeLine from "@/modules/DayPage/TimeLine.vue";
 
@@ -43,18 +45,21 @@ export default {
     };
   },
   computed: {
-    ...mapState(useDaysStore, ["days", "result", "sprintUuid"])
+    ...mapState(useDaysStore, ["days"]),
+    ...mapState(useSprintsStore, ["sprintUuid"]),
+    ...mapState(useContentStore, ["result"])
   },
   async created() {
     if (this.sprintUuid === "") this.$router.push({ name: "lessons" });
 
     await this.getDaysByModule();
 
-    if (this.days.length >= 1) await this.getContent(this.days[this.indexContent].uuid, 0);
+    if (this.days.length >= 1) await this.getContent(0);
   },
   methods: {
-    ...mapActions(useDaysStore, ["getDaysByModule", "getByContent"]),
-    async getContent(uuid, index) {
+    ...mapActions(useDaysStore, ["getDaysByModule"]),
+    ...mapActions(useContentStore, ["getByContent"]),
+    async getContent(index, uuid) {
       this.layoutTimeLine = false;
       this.indexContent = index;
 
@@ -66,7 +71,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .content-item-day {
   height: 55px;
   border-bottom: 1px solid #727cf5;

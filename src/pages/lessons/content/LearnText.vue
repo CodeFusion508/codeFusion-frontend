@@ -18,15 +18,13 @@
 import { mapState, mapActions } from "pinia";
 
 import { useContentStore } from "@/store/lessons/contentStore.js";
-import { useDaysStore } from "@/store/lessons/daysStore.js";
 
 export default {
   computed: {
-    ...mapState(useContentStore, ["lesson", "contIndex"]),
-    ...mapState(useDaysStore, ["result"])
+    ...mapState(useContentStore, ["lesson", "contIndex", "result"])
   },
-  created() {
-    this.getText(this.result[this.contIndex].path);
+  async created() {
+    await this.getText(this.result[this.contIndex].node.path);
   },
   methods: {
     ...mapActions(useContentStore, ["getText"])
