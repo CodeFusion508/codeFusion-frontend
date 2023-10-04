@@ -5,7 +5,6 @@ import {
     getUserReq,
     createUserReq,
     createGoogleUserReq,
-    verifyGUserReq,
     logInUserReq,
     updateUserReq,
     createRelation,
@@ -35,14 +34,8 @@ export const useUserStore = defineStore("user", {
             this.userObj.tkn = token;
 
             localStorage.setItem("uuid", this.userObj.uuid);
-            localStorage.setItem("tkn", token);
 
             return token;
-        },
-        async verifyUser(token) {
-            const data = await verifyGUserReq(token);
-
-            return data;
         },
         async findUser() {
             const data = await getUserReq(this.userObj.uuid);

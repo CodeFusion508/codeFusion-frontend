@@ -38,7 +38,7 @@
                     Iniciar sesión
                   </button>
                   <a class="py-3" @click.prevent="recoveryAccount.layout = true">¿Has olvidado tu contraseña?</a>
-                  <g-login class="mt-3 w-100 d-inline-block" @credential="fillCredential" />
+                  <g-login class="mt-3 w-100 d-inline-block" @credential="createAccount(true)" />
                   <p class="pt-3 small mb-0" style="color: lightgray">
                     No tienes una Cuenta?
                     <a class="text-decoration-none" @click.prevent="show('Crea una Cuenta')">Crea una Cuenta</a>
@@ -124,7 +124,7 @@
                     Crear Cuenta
                   </button>
 
-                  <g-login class="mt-3 w-100 d-inline-block" @credential="fillCredential" />
+                  <g-login class="mt-3 w-100 d-inline-block" @credential="createAccount(true)" />
                   <p class="small" style="color: lightgray">
                     Ya tienes una cuenta?
                     <a class="text-decoration-none" @click.prevent="show('Iniciar Sesión')">Iniciar sesión</a>
@@ -216,26 +216,10 @@ export default {
       "createUser",
       "logInUser",
       "createGoogleUser",
-      "verifyUser",
       "confirmAccountReq",
       "eventRecoveryAccount"
     ]),
     ...mapActions(useAuthStore, ["addAuthToken"]),
-    async fillCredential(value) {
-        this.credential = value;
-
-        if (this.credential) {
-          let userData = decodeCredential(this.credential);
-
-          this.email.text = userData.email;
-          this.userName = userData.email.split("@")[0];
-
-          let verified = await this.verifyUser(this.credential);
-          if (verified) await this.createAccount(true);
-        } else {
-          throw new Error("No se pudo verificar el usuario");
-        }
-    },
     async createAccount(google) {
       if (!google) {
         const userObj = {
@@ -246,6 +230,10 @@ export default {
 
         await this.confirmAccountReq(userObj);
       } else {
+        let userData = decodeCredential(this.credential);
+        this.email.text = userData.email;
+        this.userName = userData.email.split("@")[0];
+
         const userObj = {
           name  : this.userName,
           email : this.email.text,
