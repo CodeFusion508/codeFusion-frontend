@@ -15,8 +15,7 @@ app.use(createPinia());
 app.use(router);
 app.use(install);
 app.use(vue3GoogleLogin, {
-    clientId : import.meta.env.VITE_GOOGLE_CLIENT_ID || "no ID for now",
-    scope    : "profile email openid"
+    clientId: import.meta.env.VITE_GOOGLE_API
 });
 
 // Global components
