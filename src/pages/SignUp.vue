@@ -38,7 +38,7 @@
                     Iniciar sesión
                   </button>
                   <a class="py-3" @click.prevent="recoveryAccount.layout = true">¿Has olvidado tu contraseña?</a>
-                  <g-login class="mt-3 w-100 d-inline-block" @credential="fillCredential" />
+                  <g-login class="mt-3 w-100 d-inline-block" @credential="googleAuth" />
                   <p class="pt-3 small mb-0" style="color: lightgray">
                     No tienes una Cuenta?
                     <a class="text-decoration-none" @click.prevent="show('Crea una Cuenta')">Crea una Cuenta</a>
@@ -51,7 +51,7 @@
                   v-show="!login"
                   novalidate
                   class="py-3 pt-lg-3"
-                  @submit.prevent="createAccount(false)"
+                  @submit.prevent="createAccount()"
                 >
                   <div class="mb-3">
                     <input
@@ -124,7 +124,7 @@
                     Crear Cuenta
                   </button>
 
-                  <g-login class="mt-3 w-100 d-inline-block" @credential="fillCredential" />
+                  <g-login class="mt-3 w-100 d-inline-block" @credential="googleAuth" />
                   <p class="small" style="color: lightgray">
                     Ya tienes una cuenta?
                     <a class="text-decoration-none" @click.prevent="show('Iniciar Sesión')">Iniciar sesión</a>
@@ -187,8 +187,6 @@ export default {
   },
   data() {
     return {
-      gLogin         : false,
-      credential     : "",
       titleForm      : "Crea una Cuenta",
       confirmAccount : false,
       ...mapWritableState(useUserStore, ["recoveryAccount", "userObj"]),
@@ -216,46 +214,33 @@ export default {
       "createUser",
       "logInUser",
       "createGoogleUser",
-      "verifyUser",
       "confirmAccountReq",
       "eventRecoveryAccount"
     ]),
     ...mapActions(useAuthStore, ["addAuthToken"]),
-    async fillCredential(value) {
-        this.credential = value;
+    async createAccount() {
+      const userObj = {
+        userName : this.userName,
+        email    : this.email,
+        password : this.password
+      };
 
-        if (this.credential) {
-          let userData = decodeCredential(this.credential);
-
-          this.email.text = userData.email;
-          this.userName = userData.email.split("@")[0];
-
-          let verified = await this.verifyUser(this.credential);
-          if (verified) await this.createAccount(true);
-        } else {
-          throw new Error("No se pudo verificar el usuario");
-        }
+      await this.confirmAccountReq(userObj);
     },
-    async createAccount(google) {
-      if (!google) {
-        const userObj = {
-          userName : this.userName,
-          email    : this.email,
-          password : this.password
-        };
+    async googleAuth(credential) {
+      let userData = decodeCredential(credential);
+      this.email.text = userData.email;
+      this.userName = userData.email.split("@")[0];
 
-        await this.confirmAccountReq(userObj);
-      } else {
-        const userObj = {
-          name  : this.userName,
-          email : this.email.text,
-          token : this.credential
-        };
+      const userObj = {
+        name  : this.userName,
+        email : this.email.text,
+        token : credential
+      };
 
-        const token = await this.createGoogleUser(userObj);
+      const token = await this.createGoogleUser(userObj);
 
-        this.addAuthToken(token);
-      }
+      this.addAuthToken(token);
     },
     async logIn() {
       const userObj = {

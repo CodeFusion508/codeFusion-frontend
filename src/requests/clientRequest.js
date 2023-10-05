@@ -24,6 +24,4 @@ export const recoveryAccount = async (email) => (await request("POST", "/recover
 // Google User Requests
 const requestGoogle = HTTP("Google", "google");
 
-export const createGoogleUserReq = async ({ name, email, token }) => (await requestGoogle("POST", `/users/signUp`, { userName: name, email, idToken: token }));
-
-export const verifyGUserReq = async (dataRequest) => (await requestGoogle("POST", "/users/logIn", { idToken: dataRequest }));
+export const createGoogleUserReq = async ({ name, email, token }) => (await requestGoogle("POST", `/users/`, { userName: name, email, idToken: token }));
