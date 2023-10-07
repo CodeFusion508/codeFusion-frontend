@@ -3,15 +3,15 @@
   <nav-bar />
 
 
-  <div class="container pt-5">
+  <div class="container pt-4 w-100" style="min-height: 100vh;">
     <div class="row">
       <div class="col-md-12">
-        <md-block :mdContent="lesson" class="md-block-height" />
+        <md-block :mdContent="lesson" class="flex-grow-1" />
       </div>
     </div>
   </div>
 
-  <nav-footer />
+  <nav-footer style="margin-top: 50px !important;" />
 </template>
 
 <script>
@@ -34,11 +34,9 @@ export default {
 
 <style scoped>
 md-block {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
-}
-.md-block-height {
-  height: 60vh;
+  width: 100%
 }
 </style>
