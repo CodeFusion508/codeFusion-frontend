@@ -113,7 +113,6 @@ export const useUserStore = defineStore("user", {
                 name     : "",
                 uuid     : localStorage.getItem("uuid") !== undefined || localStorage.getItem("uuid") !== null ? localStorage.getItem("uuid") : "",
                 email    : "",
-                avatar   : { image: "", file: null },
                 tkn      : localStorage.getItem("tkn") !== undefined || localStorage.getItem("tkn") !== null ? localStorage.getItem("tkn") : "",
                 password : ""
             },

@@ -131,6 +131,7 @@
                   </p>
                 </form>
               </div>
+
               <div v-if="confirmAccountCard.layout">
                 <p>Esperando Confirmación de cuenta</p>
                 <b>{{ confirmAccountCard.message }}</b>
