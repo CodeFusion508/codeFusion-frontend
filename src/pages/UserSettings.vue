@@ -8,10 +8,11 @@
         </h4>
         <div class="row px-3">
           <div class="d-flex justify-content-center my-3">
-            <div
+            <img
+              src="https://storage.googleapis.com/pai-images/c93b1c94b4ab436da0e5bc4cf7fa502c.jpeg"
+              alt="An image of a monkey in a suit"
               class="style-avatar shadow-sm"
-              :style="{ 'background-image': 'url(https://storage.googleapis.com/pai-images/c93b1c94b4ab436da0e5bc4cf7fa502c.jpeg)' }"
-            />
+            >
           </div>
 
           <div class="row mx-0">

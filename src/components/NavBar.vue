@@ -48,7 +48,8 @@
               </router-link>
             </div>
           </div>
-          <div v-else class="dropstart btn-group">
+
+          <div v-else class="dropstart btn-group" style="margin-left: 80%;">
             <button
               class="btn btn-primary rounded-circle"
               type="button"
@@ -56,13 +57,6 @@
               aria-expanded="false"
             >
               <i class="bi bi-person-fill" />
-              <span
-                v-if="verificationAlerts !== 0"
-                class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger"
-              >
-                {{ verificationAlerts }}
-                <span class="visually-hidden">unread messages</span>
-              </span>
             </button>
             <ul class="dropdown-menu">
               <li>
@@ -128,8 +122,7 @@ export default {
           activated : false,
           meta      : "articles"
         }
-      ],
-      verificationAlerts: 0
+      ]
     };
   },
   computed: {
