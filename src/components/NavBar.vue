@@ -11,7 +11,7 @@
       </button>
 
       <div
-        :class="['d-flex justify-content-between content-menu-deslizable col-xl-11 mx-0 px-0', classMenu ? 'menu-activated':'']"
+        :class="['d-flex justify-content-between content-menu-deslizable col-xl-11 mx-0 px-0', classMenu ? 'menu-activated' : '']"
       >
         <div class="border-bottom col-sm-12 p-2 display-mobile">
           <a class="navbar-brand text-white" href="#">
@@ -230,7 +230,7 @@ export default {
   }
 
   .activated-btn-menu {
-    background: linear-gradient(#6878E2,#7352AB) !important;
+    background: linear-gradient(#6878E2, #7352AB) !important;
   }
 
   .property-logIn {
@@ -242,7 +242,5 @@ export default {
     padding-top: 10px;
     padding-bottom: 10px;
   }
-
-
 }
 </style>

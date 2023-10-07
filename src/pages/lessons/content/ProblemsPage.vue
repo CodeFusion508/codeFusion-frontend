@@ -13,7 +13,8 @@
       v-model:value="code"
       :language="result[contIndex].language || 'javascript'"
       theme="vs-dark"
-      height="400px"
+      width="70vw"
+      height="70vh"
     />
 
     <div class="d-flex justify-content-end mt-2 mb-4">
