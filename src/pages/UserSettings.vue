@@ -1,27 +1,18 @@
 <template>
   <nav-bar />
-  <div class="container-fluid my-3 d-flex justify-content-center">
+  <div class="container-fluid my-3 d-flex justify-content-center mt-5">
     <div class="card col-12 col-sm-8 col-md-6 col-lg-7 col-xl-4 border-0">
-      <div class="card-body " style="background-color: #17202A;">
+      <div class="card-body bg-dark-subtle border-0 rounded-lg shadow-dark">
         <h4 class="card-title text-center">
           Configuración de Perfil
         </h4>
         <div class="row px-3">
           <div class="d-flex justify-content-center my-3">
-            <div class="style-avatar shadow-lg" :style="{ 'background-image': 'url(' + userObj.avatar.image + ')' }">
-              <input
-                ref="fileImageProfile"
-                type="file"
-                hidden
-                @change="uploadImage"
-              >
-              <div
-                class="content-save d-flex justify-content-center align-items-center shadow-lg rounded-circle"
-                @click="eventSelectedImage"
-              >
-                <i class="bi bi-camera-fill" />
-              </div>
-            </div>
+            <img
+              src="https://storage.googleapis.com/pai-images/c93b1c94b4ab436da0e5bc4cf7fa502c.jpeg"
+              alt="An image of a monkey in a suit"
+              class="style-avatar shadow-sm"
+            >
           </div>
 
           <div class="row mx-0">
@@ -33,7 +24,7 @@
                 <input
                   v-model="userObj.name"
                   type="text"
-                  class="form-control"
+                  class="form-control text-white"
                   placeholder="Nombre(s) Completo"
                 >
               </div>
@@ -47,7 +38,7 @@
                 <input
                   v-model="userObj.email"
                   type="text"
-                  class="form-control"
+                  class="form-control  text-white"
                   placeholder="Correo Electrónico"
                   @keyup="validEmail"
                 >
@@ -62,7 +53,7 @@
                 <input
                   v-model="userObj.password"
                   type="text"
-                  class="form-control d-block"
+                  class="form-control d-block text-white mb-4"
                   placeholder="Contraseña"
                   @keyup="passwordChanged"
                 >
@@ -78,7 +69,8 @@
       </div>
     </div>
   </div>
-  <nav-footer />
+
+  <nav-footer class="position-absolute" />
 </template>
 
 <script lang="js">
@@ -107,17 +99,6 @@ export default {
     },
     eventSelectedImage() {
       this.$refs.fileImageProfile.click();
-    },
-    uploadImage(event) {
-      const [file] = event.target.files;
-      const reader = new FileReader();
-      const that = this;
-
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        that.userObj.avatar.image = this.result;
-        that.userObj.avatar.file = file;
-      };
     },
     passwordChanged() {
       this.$refs.passProgress.checkPassword();

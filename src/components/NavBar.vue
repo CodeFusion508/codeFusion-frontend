@@ -11,7 +11,7 @@
       </button>
 
       <div
-        :class="['d-flex justify-content-between content-menu-deslizable col-xl-11 mx-0 px-0', classMenu ? 'menu-activated':'']"
+        :class="['d-flex justify-content-between content-menu-deslizable col-xl-11 mx-0 px-0', classMenu ? 'menu-activated' : '']"
       >
         <div class="border-bottom col-sm-12 p-2 display-mobile">
           <a class="navbar-brand text-white" href="#">
@@ -48,7 +48,8 @@
               </router-link>
             </div>
           </div>
-          <div v-else class="dropstart btn-group">
+
+          <div v-else class="dropstart btn-group" style="margin-left: 80%;">
             <button
               class="btn btn-primary rounded-circle"
               type="button"
@@ -56,13 +57,6 @@
               aria-expanded="false"
             >
               <i class="bi bi-person-fill" />
-              <span
-                v-if="verificationAlerts !== 0"
-                class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger"
-              >
-                {{ verificationAlerts }}
-                <span class="visually-hidden">unread messages</span>
-              </span>
             </button>
             <ul class="dropdown-menu">
               <li>
@@ -128,8 +122,7 @@ export default {
           activated : false,
           meta      : "articles"
         }
-      ],
-      verificationAlerts: 0
+      ]
     };
   },
   computed: {
@@ -237,7 +230,7 @@ export default {
   }
 
   .activated-btn-menu {
-    background: linear-gradient(#6878E2,#7352AB) !important;
+    background: linear-gradient(#6878E2, #7352AB) !important;
   }
 
   .property-logIn {
@@ -249,7 +242,5 @@ export default {
     padding-top: 10px;
     padding-bottom: 10px;
   }
-
-
 }
 </style>
