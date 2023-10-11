@@ -1,29 +1,31 @@
 <template>
   <nav-bar />
 
-  <div v-for="(_, index) in sprints" :key="index">
-    <h3 class="text-center mt-3 fst-italic">
-      Sección {{ index }}
-    </h3>
+  <div style="min-height: 100vh;">
+    <div v-for="(_, index) in sprints" :key="index">
+      <h3 class="text-center mt-3 fst-italic">
+        Sección {{ index }}
+      </h3>
 
-    <div class="row g-0 text-center mx-3">
-      <div
-        v-for="(sprint) in sprints[index]"
-        :key="sprint"
-        :class="['col-12 px-2 my-3', sprints.length <= 3 ? 'col-sm' : 'col-sm-3']"
-      >
-        <div class="card card grow-on-hover bg-dark-subtle border-0 shadow-dark rounded-lg">
-          <div class="card-body">
-            <h5 class="card-title text-white" @click="changeRouteLessons(sprint.uuid)">
-              {{ sprint.title }}
-            </h5>
-            <hr>
-            <p class="card-text text-white">
-              {{ sprint.desc }}
-            </p>
-            <button class="btn gradient-purple text-white" @click="changeRouteLessons(sprint.uuid)">
-              Aprende
-            </button>
+      <div class="row g-0 text-center mx-3">
+        <div
+          v-for="(sprint) in sprints[index]"
+          :key="sprint"
+          :class="['col-12 px-2 my-3', sprints.length <= 3 ? 'col-sm' : 'col-sm-3']"
+        >
+          <div class="card card grow-on-hover bg-dark-subtle border-0 shadow-dark rounded-lg">
+            <div class="card-body">
+              <h5 class="card-title text-white" @click="changeRouteLessons(sprint.uuid)">
+                {{ sprint.title }}
+              </h5>
+              <hr>
+              <p class="card-text text-white">
+                {{ sprint.desc }}
+              </p>
+              <button class="btn gradient-purple text-white" @click="changeRouteLessons(sprint.uuid)">
+                Aprende
+              </button>
+            </div>
           </div>
         </div>
       </div>

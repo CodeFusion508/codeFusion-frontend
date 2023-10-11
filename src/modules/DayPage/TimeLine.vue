@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="card border-0 shadow-sm">
+    <div class="g-dark-subtle border-0 rounded-lg shadow-dark">
       <div class="card-body">
         <h6 class="card-title text-center py-3">
           <h4>Día {{ index + 1 }}</h4>
@@ -10,7 +10,7 @@
           <hr class="hr hr-blurry">
         </h6>
 
-        <div>
+        <div class="pb-3">
           <ul class="timeline">
             <li v-for="(obj, ind) in listTask" :key="obj" class="event">
               <div>

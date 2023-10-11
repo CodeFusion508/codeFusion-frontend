@@ -1,13 +1,13 @@
 <template>
   <nav-bar />
-  <div class="container mt-5">
-    <div class="row">
+  <div class="container mt-5 pb-3" style="min-height: 100vh;">
+    <div class="row ">
       <div class="col-sm-12 col-md-12 col-lg-12 col-12 pb-3">
         <div class="row justify-content-between">
           <div v-for="(item, index) in days" :key="index" class="col-sm px-3">
             <div
               :class="[
-                'content-item-day d-flex justify-content-center align-items-center',
+                'content-item-day d-flex justify-content-center align-items-center  border-0 rounded-lg',
                 indexContent === index ? 'content-activated' : ''
               ]"
               @click="getContent(index, item.uuid)"
