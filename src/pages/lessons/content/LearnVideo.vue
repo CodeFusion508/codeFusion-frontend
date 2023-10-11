@@ -5,7 +5,7 @@
       style="height: 95vh; width: 100%;"
       :src="result[contIndex].node.link"
       title="YouTube video player"
-      frameborder="1"
+      frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen
     />

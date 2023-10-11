@@ -1,7 +1,7 @@
 <template>
   <nav-bar />
   <div class="container mt-5 pb-3" style="min-height: 100vh;">
-    <div class="row ">
+    <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12 col-12 pb-3">
         <div class="row justify-content-between">
           <div v-for="(item, index) in days" :key="index" class="col-sm px-3">
