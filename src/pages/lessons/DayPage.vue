@@ -54,7 +54,7 @@ export default {
 
     await this.getDaysByModule();
 
-    if (this.days.length >= 1) await this.getContent(0);
+    await this.getContent(0, this.days[0].uuid);
   },
   methods: {
     ...mapActions(useDaysStore, ["getDaysByModule"]),
