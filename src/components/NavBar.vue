@@ -1,10 +1,12 @@
 <template>
   <nav class="navbar navbar-expand-md bg-dark-subtle">
     <div class="container-fluid">
-      <a class="navbar-brand text-white col-xl-1 display-desktop mx-0" href="#">
-        <img src="../assets/CodeFusion508.ico" alt="an icon of">
-        CodeFusion508
-      </a>
+      <router-link to="/" style="text-decoration: none;">
+        <a class="navbar-brand text-white col-xl-1 display-desktop mx-0" href="#">
+          <img src="../assets/CodeFusion508.ico" alt="an icon of">
+          CodeFusion508
+        </a>
+      </router-link>
 
       <button type="button" class="btn text-white display-mobile" @click="changeHomePage">
         <i class="navbar-toggler-icon" />

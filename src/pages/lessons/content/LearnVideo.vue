@@ -2,7 +2,7 @@
   <nav-bar />
   <div style="position: fit-content; overflow: hidden; width: 90%;" class="mx-auto pt-3">
     <iframe
-      style="height: 95vh; width: 100vw;"
+      style="height: 95vh; width: 100%;"
       :src="result[contIndex].node.link"
       title="YouTube video player"
       frameborder="0"
