@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-md bg-dark-subtle">
-    <div class="container-fluid">
+    <div class="container-fluid d-flex justify-content-start">
       <router-link to="/" style="text-decoration: none;">
         <a class="navbar-brand text-white col-xl-1 display-desktop mx-0" href="#">
           <img src="../assets/CodeFusion508.ico" alt="an icon of">
@@ -13,7 +13,7 @@
       </button>
 
       <div
-        :class="['d-flex justify-content-between content-menu-deslizable col-xl-11 mx-0 px-0', classMenu ? 'menu-activated' : '']"
+        :class="['d-flex justify-content-flex-start align-item-start mx-0 px-0 content-menu-deslizable', classMenu ? 'menu-activated' : '']"
       >
         <div class="border-bottom col-sm-12 p-2 display-mobile">
           <a class="navbar-brand text-white" href="#">
@@ -189,7 +189,7 @@ export default {
 }
 
 .content-menu-deslizable {
-  position: relative;
+  width: 100vw;
 }
 
 .menu-mobile {
@@ -200,7 +200,7 @@ export default {
   .content-menu-deslizable {
     display: block !important;
     position: fixed;
-    width: 275px;
+    width: 275px !important;
     height: 100%;
     left: -275px;
     top: 0%;
