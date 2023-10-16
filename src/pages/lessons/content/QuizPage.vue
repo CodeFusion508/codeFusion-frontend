@@ -2,39 +2,41 @@
   <nav-bar />
 
   <div class="container rounded bg-dark-subtle p-3 shadow-dark mt-5">
-    <div v-if="currentQuestionIndex < questions.length">
-      <h4>{{ questions[currentQuestionIndex].question }}</h4>
-      <hr>
-      <div>
-        <div v-for="(answer, index) in questions[currentQuestionIndex].answers" :key="index" class="form-check">
-          <input
-            :id="'flexRadioDefault' + index"
-            v-model="selectedAnswer"
-            class="form-check-input"
-            type="radio"
-            :name="'flexRadioDefault'"
-            :value="answer"
-          >
-          <label :for="'flexRadioDefault' + index" class="form-check-label text-white">
-            {{ answer.text }}
-          </label>
+    <div v-if="continueQuestions">
+      <div v-for="(question, index) in questions" :key="index" class="form-check">
+        <h4>{{ question.question }}</h4>
+        <hr>
+        <div>
+          <div v-for="(ans, i) in question.answers" :key="i">
+            <input
+              :id="`${index}` + i"
+              v-model="selectedAnswer"
+              class="form-check-input"
+              type="radio"
+              :name="'flexRadioDefault'"
+              :value="`${index}` + i"
+            >
+            <label :for="`${index}` + i" class="form-check-label text-white mb-1">
+              {{ ans.text }}
+            </label>
+          </div>
         </div>
       </div>
-      <button @click="checkAnswer">
-        Submit
+      <button class="btn gradient-purple rounded-lg text-white mt-3" @click="checkAnswer">
+        Enviar
       </button>
     </div>
     <div v-else>
       <p v-if="quizCompleted">
-        Quiz Completed!
+        Examen Completado!
       </p>
       <button v-else @click="startQuiz">
-        Start Quiz
+        Comienza el Examen!
       </button>
     </div>
   </div>
 
-  <nav-footer class="position-absolute" />
+  <nav-footer />
 </template>
 
 <script>
@@ -48,7 +50,9 @@ export default {
       questions            : [],
       currentQuestionIndex : 0,
       selectedAnswer       : null,
-      quizCompleted        : false
+      continueQuestions    : true,
+      quizCompleted        : false,
+      answers              : []
     };
   },
   computed: {
@@ -73,20 +77,18 @@ export default {
     startQuiz() {
       this.currentQuestionIndex = 0;
       this.quizCompleted = false;
-      // Load the first question and answers
     },
     loadNextQuestion() {
       if (this.currentQuestionIndex < this.questions.length - 1) {
         this.currentQuestionIndex++;
         this.selectedAnswer = null;
       } else {
+        this.continueQuestions = false;
         this.quizCompleted = true;
       }
     },
     checkAnswer() {
-      // Implement your answer checking logic here
-      // Update the score or perform other actions as needed
-      // Then move to the next question using loadNextQuestion()
+      this.answers = this.questions[this.currentQuestionIndex];
       this.loadNextQuestion();
     }
   }
