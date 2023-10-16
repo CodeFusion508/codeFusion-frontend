@@ -1,7 +1,7 @@
 <template>
   <nav-bar />
 
-  <div class="container mt-3 rounded bg-dark-subtle p-3 shadow-sm">
+  <div class="container rounded bg-dark-subtle p-3 shadow-dark mt-5">
     <div v-if="currentQuestionIndex < questions.length">
       <h4>{{ questions[currentQuestionIndex].question }}</h4>
       <hr>
@@ -38,47 +38,36 @@
 </template>
 
 <script>
+import { mapState } from "pinia";
+
+import { useContentStore } from "@/store/lessons/contentStore.js";
+
 export default {
   data() {
     return {
-      questions: [
-        {
-          question : "Question 1: What is HTML?",
-          answers  : [
-            {
-              "text"      : "answer number one",
-              "isCorrect" : true
-            },
-            {
-              "text"      : "answer number two",
-              "isCorrect" : true
-            },
-            {
-              "text"      : "answer number three",
-              "isCorrect" : true
-            },
-            {
-              "text"      : "answer number four",
-              "isCorrect" : true
-            },
-            {
-              "text"      : "answer number five",
-              "isCorrect" : true
-            }
-          ]
-        },
-        {
-          question : "Question 2: Your next question here",
-          answers  : [
-            // Define answers for question 2
-          ]
-        }
-        // Repeat this structure for all 10 questions
-      ],
+      questions            : [],
       currentQuestionIndex : 0,
       selectedAnswer       : null,
       quizCompleted        : false
     };
+  },
+  computed: {
+    ...mapState(useContentStore, ["result", "contIndex"])
+  },
+  async created() {
+    const qna = await JSON.parse(this.result[this.contIndex].node.questions);
+
+    for (const key in qna) {
+      let obj = {};
+      obj.question = qna[key].question;
+      obj.answers = [];
+
+      for (const key2 in qna[key].answers) {
+        obj.answers.push(qna[key].answers[key2]);
+      }
+
+      this.questions.push(obj);
+    }
   },
   methods: {
     startQuiz() {
