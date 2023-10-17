@@ -1,22 +1,26 @@
 <template>
   <nav-bar />
 
-  <div class="container rounded bg-dark-subtle p-3 shadow-dark mt-5">
+  <div class="container rounded bg-dark-subtle p-3 shadow-dark mt-5 mb-5">
+    <h1 class="text-center">
+      Examen
+    </h1>
+    <hr>
     <div v-if="continueQuestions">
-      <div v-for="(question, index) in questions" :key="index" class="form-check">
+      <div v-for="(question, qIndex) in questions" :key="qIndex" class="form-check">
         <h4>{{ question.question }}</h4>
         <hr>
         <div>
-          <div v-for="(ans, i) in question.answers" :key="i">
+          <div v-for="(ans, aIndex) in question.answers" :key="aIndex">
             <input
-              :id="`${index}` + i"
-              v-model="selectedAnswer"
+              :id="`${qIndex}` + aIndex"
+              v-model="selectedAnswers[qIndex]"
               class="form-check-input"
               type="radio"
-              :name="'flexRadioDefault'"
-              :value="`${index}` + i"
+              :name="'flexRadioDefault' + qIndex"
+              :value="`${qIndex}` + aIndex"
             >
-            <label :for="`${index}` + i" class="form-check-label text-white mb-1">
+            <label :for="`${qIndex}` + aIndex" class="form-check-label text-white mb-1">
               {{ ans.text }}
             </label>
           </div>
@@ -49,10 +53,9 @@ export default {
     return {
       questions            : [],
       currentQuestionIndex : 0,
-      selectedAnswer       : null,
+      selectedAnswers      : [],
       continueQuestions    : true,
-      quizCompleted        : false,
-      answers              : []
+      quizCompleted        : false
     };
   },
   computed: {
@@ -78,18 +81,19 @@ export default {
       this.currentQuestionIndex = 0;
       this.quizCompleted = false;
     },
-    loadNextQuestion() {
-      if (this.currentQuestionIndex < this.questions.length - 1) {
-        this.currentQuestionIndex++;
-        this.selectedAnswer = null;
-      } else {
-        this.continueQuestions = false;
-        this.quizCompleted = true;
-      }
-    },
     checkAnswer() {
-      this.answers = this.questions[this.currentQuestionIndex];
-      this.loadNextQuestion();
+      const answers = [];
+
+      for (let i = 0; i < this.selectedAnswers.length; i++) {
+        const numbers = this.selectedAnswers[i].split("");
+        const question = {...this.questions[numbers[0]]};
+        question.answers =  {...this.questions[numbers[0]].answers[numbers[1]]};
+
+        answers.push(question);
+      }
+
+      this.continueQuestions = false;
+      this.quizCompleted = true;
     }
   }
 };
