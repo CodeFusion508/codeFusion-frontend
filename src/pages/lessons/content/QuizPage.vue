@@ -21,7 +21,7 @@
               :value="`${qIndex}` + aIndex"
             >
             <label :for="`${qIndex}` + aIndex" class="form-check-label text-white mb-1">
-              {{ ans.text }}
+              {{ ans }}
             </label>
           </div>
         </div>
@@ -82,15 +82,7 @@ export default {
       this.quizCompleted = false;
     },
     checkAnswer() {
-      const answers = [];
-
-      for (let i = 0; i < this.selectedAnswers.length; i++) {
-        const numbers = this.selectedAnswers[i].split("");
-        const question = {...this.questions[numbers[0]]};
-        question.answers =  {...this.questions[numbers[0]].answers[numbers[1]]};
-
-        answers.push(question);
-      }
+      this.selectedAnswers;
 
       this.continueQuestions = false;
       this.quizCompleted = true;
