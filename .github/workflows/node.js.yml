@@ -24,9 +24,9 @@ jobs:
           printf "VITE_SERVER=\"${{ secrets.VITE_SERVER }}\"\n" >> .env.production
           printf "VITE_GOOGLE_API=\"${{ secrets.VITE_GOOGLE_API }}\"" >> .env.production
       - name: Install
-        run: npm i
+        run: npm i --production
       - name: Build
-        run: npm i
+        run: npm run build
       - name: Replace dist and restart nginx
         run: |
           sudo rm -rf /var/www/dist/
