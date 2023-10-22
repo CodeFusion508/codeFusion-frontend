@@ -17,7 +17,7 @@
     "vite": "^4.5.0",
     "vue": "^3.3.6",
     "vue-router": "^4.2.5",
-    "vue3-google-login": "^2.0.24"
+    "vue3-google-login": "^2.0.22"
   },
   "devDependencies": {
     "@pinia/testing": "^0.1.3",
