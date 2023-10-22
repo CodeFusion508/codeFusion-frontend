@@ -1,8 +1,8 @@
 <template>
   <nav-bar />
 
-  <div class="d-flex justify-content-center mt-5 mb-3">
-    <div class="col-lg-4  mt-3">
+  <div class="d-flex justify-content-center mt-5 mb-5">
+    <div class="col-lg-4 mt-3 pb-5">
       <div class="container-fluid">
         <div class="row">
           <div class="col">
@@ -164,7 +164,7 @@
     </div>
   </div>
 
-  <nav-footer class="position-absolute" />
+  <nav-footer />
 </template>
 
 <script>
