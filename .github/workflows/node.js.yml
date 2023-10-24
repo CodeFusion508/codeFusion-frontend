@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.18.2]
+        node-version: [18.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -24,7 +24,7 @@ jobs:
           printf "VITE_SERVER=\"${{ secrets.VITE_SERVER }}\"\n" >> .env.production
           printf "VITE_GOOGLE_API=\"${{ secrets.VITE_GOOGLE_API }}\"" >> .env.production
       - name: Install
-        run: npm i --production
+        run: npm i --omit=dev
       - name: Build
         run: npm run build
       - name: Replace dist and restart nginx
