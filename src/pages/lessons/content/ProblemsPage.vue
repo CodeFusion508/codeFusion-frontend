@@ -31,6 +31,7 @@
 
 <script>
 import { mapActions, mapState } from "pinia";
+import ivm from "isolated-vm";
 
 import { useUserStore } from "@/store/user/userStore.js";
 import { useContentStore } from "@/store/lessons/contentStore.js";
@@ -46,7 +47,24 @@ export default {
     ...mapState(useContentStore, ["contIndex", "result"])
   },
   methods: {
-    ...mapActions(useUserStore, ["createdRelation"])
+    ...mapActions(useUserStore, ["createdRelation"]),
+    runCode() {
+      const code = `++count;`;
+      // setting rules for a new vm process
+      const isolate = new ivm.Isolate({ memoryLimit: 50 /* MB */ });
+      // probable parses the code to actually run it later
+      const script = isolate.compileScriptSync(code);
+
+      // Like the name implies this keeps the context of the code, almost like a mini vm instance
+      // This would be really cool to provide more customization of testing of our code
+      const context = isolate.createContextSync();
+      // The "context code" before the actual code actually runs
+      context.evalSync("let count = 0;");
+
+      // script.runSync(context); actually executes the code and we get back the results
+      console.log(script.runSync(context)); // Prints "1"
+      console.log(script.runSync(context)); // Prints "2"
+    }
   }
 };
 </script>
