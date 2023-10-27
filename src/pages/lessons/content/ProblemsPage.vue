@@ -17,10 +17,22 @@
       height="70vh"
     />
 
+    <div class="container mt-4">
+      <div class="container-fluid">
+        <div class="card mb-4 bg-dark-subtle border-0 shadow-dark p-4">
+          <pre
+            class="text-monospace p-3 text-white"
+          >{{ userCode || "Esta es tu consola, presiona el botón para correr tu código" }}</pre>
+        </div>
+      </div>
+    </div>
+
+
+
     <div class="d-flex justify-content-end mt-2 mb-4">
       <div class="col-sm-2 col-12">
-        <button class="btn btn-primary form-control" @click="createdRelation">
-          Aceptar
+        <button class="btn form-control gradient-purple rounded-lg text-white" @click="runCode">
+          Correr
         </button>
       </div>
     </div>
@@ -38,8 +50,9 @@ import { useContentStore } from "@/store/lessons/contentStore.js";
 export default {
   data() {
     return {
-      text : "Hola, en esta problema necesitan crear párrafo con una imagen",
-      code : ""
+      text     : "Hola, en esta problema necesitan crear párrafo con una imagen",
+      code     : "",
+      userCode : ""
     };
   },
   computed: {
@@ -48,6 +61,27 @@ export default {
   methods: {
     ...mapActions(useUserStore, ["createdRelation"]),
     async runCode() {
+      /* eslint-disable */
+      let originalConsoleLog = console.log;
+      let consoleOutput = "";
+
+      console.log = function (message) {
+        consoleOutput += message + "\n";
+        originalConsoleLog.apply(console, arguments);
+      };
+
+      let error;
+      try {
+        this.userCode = await eval(this.code);
+      } catch (err) {
+        error = err;
+      }
+
+      console.log = originalConsoleLog;
+      /* eslint-enable */
+
+      if (error) this.userCode = "Error: " + error;
+      else this.userCode = consoleOutput;
     }
   }
 };
