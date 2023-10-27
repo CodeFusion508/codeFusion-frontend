@@ -11,7 +11,7 @@
 
     <vue-monaco-editor
       v-model:value="code"
-      :language="result[contIndex].language || 'javascript'"
+      :language="lang"
       theme="vs-dark"
       width="70vw"
       height="70vh"
@@ -31,7 +31,7 @@
 
     <div class="d-flex justify-content-end mt-2 mb-4">
       <div class="col-sm-2 col-12">
-        <button class="btn form-control gradient-purple rounded-lg text-white" @click="runCode">
+        <button class="btn form-control gradient-purple rounded-lg text-white" @click="languageHandler">
           Correr
         </button>
       </div>
@@ -51,6 +51,7 @@ export default {
   data() {
     return {
       text     : "Hola, en esta problema necesitan crear párrafo con una imagen",
+      lang     : this.result[this.contIndex].language || "javascript",
       code     : "",
       userCode : ""
     };
@@ -60,7 +61,14 @@ export default {
   },
   methods: {
     ...mapActions(useUserStore, ["createdRelation"]),
-    async runCode() {
+    languageHandler() {
+      if (this.lang === "javascript") {
+        this.runJS();
+      } else if(this.lang === "html") {
+        this.runHTML();
+      }
+    },
+    async runJS() {
       /* eslint-disable */
       let originalConsoleLog = console.log;
       let consoleOutput = "";
@@ -82,6 +90,10 @@ export default {
 
       if (error) this.userCode = "Error: " + error;
       else this.userCode = consoleOutput;
+    },
+    runHTML() {
+      const previewWindow = window.open();
+      previewWindow.document.body.innerHTML = this.code;
     }
   }
 };
