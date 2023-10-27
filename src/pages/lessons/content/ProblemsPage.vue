@@ -11,7 +11,7 @@
 
     <vue-monaco-editor
       v-model:value="code"
-      :language="lang"
+      :language="result[contIndex].language || 'javascript'"
       theme="vs-dark"
       width="70vw"
       height="70vh"
@@ -51,7 +51,6 @@ export default {
   data() {
     return {
       text     : "Hola, en esta problema necesitan crear párrafo con una imagen",
-      lang     : this.result[this.contIndex].language || "javascript",
       code     : "",
       userCode : ""
     };
@@ -62,9 +61,11 @@ export default {
   methods: {
     ...mapActions(useUserStore, ["createdRelation"]),
     languageHandler() {
-      if (this.lang === "javascript") {
+      const lang = this.result[this.contIndex].language || "javascript";
+
+      if (lang === "javascript") {
         this.runJS();
-      } else if(this.lang === "html") {
+      } else if(lang === "html") {
         this.runHTML();
       }
     },
