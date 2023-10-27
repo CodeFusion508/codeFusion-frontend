@@ -65,12 +65,11 @@ export default {
 
       if (lang === "javascript") {
         this.runJS();
-      } else if(lang === "html") {
+      } else if (lang === "html") {
         this.runHTML();
       }
     },
     async runJS() {
-      /* eslint-disable */
       let originalConsoleLog = console.log;
       let consoleOutput = "";
 
@@ -87,7 +86,6 @@ export default {
       }
 
       console.log = originalConsoleLog;
-      /* eslint-enable */
 
       if (error) this.userCode = "Error: " + error;
       else this.userCode = consoleOutput;
