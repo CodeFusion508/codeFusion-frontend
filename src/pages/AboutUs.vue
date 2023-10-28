@@ -49,6 +49,53 @@
     </div>
   </div>
 
+  <div class="container mt-4">
+    <div class="container-fluid">
+      <div class="card mb-4 bg-dark-subtle border-0 shadow-dark">
+        <div class="row no-gutters">
+          <div class="col-auto m-2">
+            <img
+              src="../assets/Jose Ricardo.jpeg"
+              alt="Una imagen de José"
+              class="rounded-lg mt-1 ms-1"
+              width="200"
+              height="200"
+            >
+          </div>
+
+          <div class="col">
+            <div class="card-block px-2 mt-3 pb-3">
+              <h5 class="card-title text-white animated-underline">
+                José Ricardo <i>- Developer</i>
+              </h5>
+              <hr>
+              <p class="card-text text-white">
+                Soy José Ricardo, estudiante de maestría en Ciencias de la Computación en CICESE.
+                Tengo experiencia en el ecosistema de JavaScript y he trabajado en proyectos como un sitio de subastas
+                deportivas en
+                Vue.js, Express.js y MongoDB, y en el desarrollo de contratos inteligentes en Moonbeam. Me apasiona
+                aprender
+                y trabajar en proyectos con tecnologías disruptivas y de impacto social, y disfruto colaborar en equipos
+                heterogéneos para ampliar
+                mis conocimientos y perspectivas.
+              </p>
+              <a href="https://github.com/Ember96" class="btn me-4 gradient-purple text-white"> <i
+                class="bi bi-github"
+                style="color: white;"
+              />
+                GitHub</a>
+              <a href="https://www.linkedin.com/in/callmerick" class="btn gradient-purple text-white"> <i
+                class="bi bi-linkedin"
+                style="color: white;"
+              />
+                LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <h3 class="text-center mt-2 fw-light fst-italic text-white">
     Contribuidores
   </h3>
@@ -95,7 +142,8 @@
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* This ensures the page takes up at least the full viewport height. */
+  min-height: 100vh;
+  /* This ensures the page takes up at least the full viewport height. */
   margin: 0;
 }
 
