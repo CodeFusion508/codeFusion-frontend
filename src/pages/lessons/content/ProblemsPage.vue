@@ -3,15 +3,18 @@
 
   <div class="container flex-grow-1">
     <div class="container mt-3 mb-3 text-center">
-      <h1 class="fw-lighter fs-3">
-        <b>{{ result[contIndex].desc }}</b>
+      <h1 class="fw-lighter fs-3 text-white">
+        <b>{{ result[contIndex].node.title }}</b>
       </h1>
+      <p class="text-white pt-2">
+        {{ result[contIndex].node.desc }}
+      </p>
     </div>
     <hr>
 
     <vue-monaco-editor
       v-model:value="code"
-      :language="result[contIndex].language || 'javascript'"
+      :language="result[contIndex].node.language || 'javascript'"
       theme="vs-dark"
       width="70vw"
       height="70vh"
@@ -58,10 +61,13 @@ export default {
   computed: {
     ...mapState(useContentStore, ["contIndex", "result"])
   },
+  created() {
+    if (this.result[this.contIndex].node.preCode) this.code = this.result[this.contIndex].node.preCode;
+  },
   methods: {
     ...mapActions(useUserStore, ["createdRelation"]),
     languageHandler() {
-      const lang = this.result[this.contIndex].language || "javascript";
+      const lang = this.result[this.contIndex].node.language || "javascript";
 
       if (lang === "javascript") {
         this.runJS();

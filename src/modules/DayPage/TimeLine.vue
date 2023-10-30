@@ -69,7 +69,7 @@ export default {
       const secondLabels = labels[1];
 
       switch (secondLabels) {
-        case "Problems":
+        case "Problem":
           return "content-problems";
         case "Video":
           return "content-video";
