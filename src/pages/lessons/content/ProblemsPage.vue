@@ -87,6 +87,14 @@ export default {
       try {
         const result = await eval(this.code);
 
+        if(result === this.result[this.contIndex].node.expectedResult) {
+          // Send request of passed result
+          // Show that answer was correct to the user
+        } else {
+          // Send request of failed result
+          // Show that answer was not correct to the user
+        }
+
         this.userCode = "Valor Retornado: " + result + "\n";
       } catch (err) {
         error = err;
