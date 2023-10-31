@@ -222,7 +222,7 @@ export default {
     async createAccount() {
       const userObj = {
         userName : this.userName,
-        email    : this.email,
+        email    : this.email.text,
         password : this.password
       };
 
