@@ -25,7 +25,7 @@
         <div class="card mb-4 bg-dark-subtle border-0 shadow-dark p-4">
           <pre
             class="text-monospace p-3 text-white"
-          >{{ userCode || "Esta es tu consola, presiona el botón para correr tu código" }}</pre>
+          >{{ userCode || "Esta es tu consola, presiona el botón para correr tu código.\nTambién puedes mirar tu código en mas detalle en los Dev Tools(Inspeccionar) ------->" }}</pre>
         </div>
       </div>
     </div>
@@ -53,7 +53,6 @@ import { useContentStore } from "@/store/lessons/contentStore.js";
 export default {
   data() {
     return {
-      text     : "Hola, en esta problema necesitan crear párrafo con una imagen",
       code     : "",
       userCode : ""
     };
@@ -86,7 +85,9 @@ export default {
 
       let error;
       try {
-        this.userCode = "Valor Retornado: " + (await eval(this.code)) + "\n";
+        const result = await eval(this.code);
+
+        this.userCode = "Valor Retornado: " + result + "\n";
       } catch (err) {
         error = err;
       }
