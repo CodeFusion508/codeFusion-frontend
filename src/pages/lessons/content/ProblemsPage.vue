@@ -86,15 +86,18 @@ export default {
 
       let error;
       try {
-        this.userCode = await eval(this.code);
+        this.userCode = "Valor Retornado: " + (await eval(this.code)) + "\n";
       } catch (err) {
         error = err;
       }
 
       console.log = originalConsoleLog;
 
-      if (error) this.userCode = "Error: " + error;
-      else this.userCode = consoleOutput;
+      if (error) {
+        this.userCode = "Error: " + error;
+      } else {
+        this.userCode += "Logger: " + consoleOutput;
+      }
     },
     runHTML() {
       const previewWindow = window.open();
