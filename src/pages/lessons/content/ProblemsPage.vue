@@ -3,15 +3,18 @@
 
   <div class="container flex-grow-1">
     <div class="container mt-3 mb-3 text-center">
-      <h1 class="fw-lighter fs-3">
-        <b>{{ result[contIndex].desc }}</b>
+      <h1 class="fw-lighter fs-3 text-white">
+        <b>{{ result[contIndex].node.title }}</b>
       </h1>
+      <p class="text-white pt-2">
+        {{ result[contIndex].node.desc }}
+      </p>
     </div>
     <hr>
 
     <vue-monaco-editor
       v-model:value="code"
-      :language="result[contIndex].language || 'javascript'"
+      :language="result[contIndex].node.language || 'javascript'"
       theme="vs-dark"
       width="70vw"
       height="70vh"
@@ -22,7 +25,7 @@
         <div class="card mb-4 bg-dark-subtle border-0 shadow-dark p-4">
           <pre
             class="text-monospace p-3 text-white"
-          >{{ userCode || "Esta es tu consola, presiona el botón para correr tu código" }}</pre>
+          >{{ userCode || "Esta es tu consola, presiona el botón para correr tu código.\nTambién puedes mirar tu código en mas detalle en los Dev Tools(Inspeccionar) ------->" }}</pre>
         </div>
       </div>
     </div>
@@ -50,7 +53,6 @@ import { useContentStore } from "@/store/lessons/contentStore.js";
 export default {
   data() {
     return {
-      text     : "Hola, en esta problema necesitan crear párrafo con una imagen",
       code     : "",
       userCode : ""
     };
@@ -58,10 +60,13 @@ export default {
   computed: {
     ...mapState(useContentStore, ["contIndex", "result"])
   },
+  created() {
+    if (this.result[this.contIndex].node.preCode) this.code = this.result[this.contIndex].node.preCode;
+  },
   methods: {
     ...mapActions(useUserStore, ["createdRelation"]),
     languageHandler() {
-      const lang = this.result[this.contIndex].language || "javascript";
+      const lang = this.result[this.contIndex].node.language || "javascript";
 
       if (lang === "javascript") {
         this.runJS();
@@ -80,15 +85,28 @@ export default {
 
       let error;
       try {
-        this.userCode = await eval(this.code);
+        const result = await eval(this.code);
+
+        if(result === this.result[this.contIndex].node.expectedResult) {
+          // Send request of passed result
+          // Show that answer was correct to the user
+        } else {
+          // Send request of failed result
+          // Show that answer was not correct to the user
+        }
+
+        this.userCode = "Valor Retornado: " + result + "\n";
       } catch (err) {
         error = err;
       }
 
       console.log = originalConsoleLog;
 
-      if (error) this.userCode = "Error: " + error;
-      else this.userCode = consoleOutput;
+      if (error) {
+        this.userCode = "Error: " + error;
+      } else {
+        this.userCode += "Logger: " + consoleOutput;
+      }
     },
     runHTML() {
       const previewWindow = window.open();

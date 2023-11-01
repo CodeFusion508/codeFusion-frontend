@@ -22,11 +22,11 @@
           </a>
         </div>
 
-        <ul class="nav nav-pills flex-grow-1 menu-mobile ms-5">
+        <ul class="nav nav-pills flex-grow-1 menu-mobile ms-5 tablet-nav-pills">
           <li
             v-for="(item, index) in routes"
             :key="index"
-            :class="['nav-item', item.activated ? 'activated activated-btn-menu rounded' : '']"
+            :class="['nav-item', item.activated ? 'activated activated-btn-menu rounded tablet-nav-pill' : 'tablet-nav-pill']"
           >
             <router-link :to="item.path" :class="['text-white nav-link']">
               {{ item.title }}
@@ -34,8 +34,8 @@
           </li>
         </ul>
 
-        <div class="content-logIn property-logIn col-xl-3 col-12">
-          <div v-if="!authToken" class="navbar-nav d-flex align-items-center justify-space-center mx-0">
+        <div class="content-logIn property-logIn col-xl-3 col-12 tablet-flex">
+          <div v-if="!authToken" class="navbar-nav d-flex align-items-center justify-space-center mx-0 tablet-register">
             <div class="col-xl-5 col-10 bs-primary-navbar rounded-lg text-center">
               <router-link to="/session" class="nav-link text-white px-3">
                 Ingresar
@@ -194,6 +194,25 @@ export default {
 
 .menu-mobile {
   width: 50%;
+}
+
+@media (min-width: 767px) and (max-width: 1199px) {
+  .tablet-register {
+    flex-direction: column !important;
+  }
+
+  .tablet-flex {
+    flex: fit-content !important;
+  }
+
+  .tablet-nav-pills {
+    height: fit-content !important;
+    align-self: center !important;
+  }
+
+  .tablet-nav-pill {
+    margin-bottom: 15px !important;
+  }
 }
 
 @media (max-width: 767px) {
